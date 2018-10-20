@@ -202,16 +202,6 @@
         </li>
       
         
-        <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
-            
-            Tags
-          </a>
-        </li>
-      
-        
         <li class="menu-item menu-item-categories">
           <a href="/categories/" rel="section">
             
@@ -240,20 +230,26 @@
   
     <div class="site-search">
       
-  <div class="popup search-popup local-search-popup">
-  <div class="local-search-header clearfix">
-    <span class="search-icon">
-      <i class="fa fa-search"></i>
-    </span>
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
     <span class="popup-btn-close">
       <i class="fa fa-times-circle"></i>
     </span>
-    <div class="local-search-input-wrapper">
-      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
-    </div>
   </div>
-  <div id="local-search-result"></div>
-</div>
+
 
 
 
@@ -348,21 +344,8 @@
         
           
           Welcome to JunYu Wang’s siteI am proud that I’ve keep writing blogs for almost half year in 2018. The content are as followed.
- Notes of the CS system and data structure from the class
- Notes of the Deep-learning courses from Udacity
- ….
-
-
-The reason why today is very important is that I realize that my blogs shouldn’t have been regarded as merely “records of my study”. It should be more formal, more beautiful, more ordered, and most importantly, more inspiring.I always like new beginings and new challanges, which make me feel alive. So I want to delve furture into some specific areas of study to equip myself to be more professional.
- Notes of how to deal with the problems on Leetcode
- Notes of deeper details of algorithm such as object detection
- Notes of new classes in new school
- …..
-
-
-1234567891011if (you have any questions)&#123;    case email:        wangjunyu0808@gmail.com;    case insgram:        wangjunyu0808;    case wechat:        HeNeArKrXnTn    default;&#125;I will be happy to share ideas with you
-
-          
+ Notes of the CS system
+          ...
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/10/19/New begining/#more" rel="contents">
@@ -511,11 +494,7 @@ The reason why today is very important is that I realize that my blogs shouldn�
 
 
 
-  <span class="post-meta-divider">|</span>
 
-
-
-  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
 
 
 
@@ -995,6 +974,19 @@ The reason why today is very important is that I realize that my blogs shouldn�
   </script>
 
 
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.4"></script>
 
 
 
