@@ -1,6 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[How to apply hexo to Github Page (一)]]></title>
+    <url>%2F2018%2F10%2F20%2Fhexo%2F</url>
+    <content type="text"><![CDATA[How to build up your hexo on Github PageFirstly, you need to sign up a github account and build a repo which has the same name with your github. github name : JasonWang0808gitpage name : JasonWang0808.github.io Secondly, prepare the hexo The set up steps are as followed:Step1. Install Node.js and Git and make sure they have been installed properly. 1234Win+R cmdnode -vgit -version step2. Prepare the SSH key and goto the github “SSH and GPG keys” to fill in 123456#open the git bashssh-keygen -t rsa# type enter three timescd C:\Users\Administrator\.sshcat id_rsa.pub# copy the content 123#evaluatessh -T git@github.com## return Hi step3. Install hexo 123456789cd xxxnpm install hexo-cli -ghexo init Hexo cd /Hexo npm instal hexo cleanhexo generate（可简写为hexo g） hexo sever（可简写为hexo s）npm install –save hexo-deployer-git step4. Modify the config 12345# use sublime to open /blog/_config.yml and find "deploy"deploy:type: gitrepo: git@github.com:yourname/yourname.github.io.gitbranch: master step5. modify ./config.yml and ./themes/next/config.yml depends on your hobby 1hexo d Step6. next, you can change your theme and add more decorations to your website A good way to learn to decorationstep5. modify ./config.yml and ./themes/next/config.yml depends on your hobby 1hexo d Step7. start to write on your github page with hexo 1234hexo new "xxx"# this can help you to build a new xx.mdhexo new page "xxx"# this help you to build a new page, for example, "categories" Every xx.md has its head, for example, Title is the name. Tags are tags, you know. categories is a big package containing all the essays with this category12345---title: Notes of LeetCode(一)tags: [leetcode, c++,algorithm]categories: leetcodeNotes---]]></content>
+      <categories>
+        <category>hexo</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+        <tag>github</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Notes of LeetCode (a)]]></title>
+    <url>%2F2018%2F10%2F20%2Fleetcode%2F</url>
+    <content type="text"><![CDATA[hello]]></content>
+      <categories>
+        <category>leetcodeNotes</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+        <tag>c++</tag>
+        <tag>algorithm</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Welcome]]></title>
     <url>%2F2018%2F10%2F19%2FNew%20begining%2F</url>
     <content type="text"><![CDATA[Welcome to JunYu Wang’s siteI am proud that I’ve keep writing blogs for almost half year in 2018. The content are as followed. Notes of the CS system and data structure from the class Notes of the Deep-learning courses from Udacity …. The reason why today is very important is that I realize that my blogs shouldn’t have been regarded as merely “records of my study”. It should be more formal, more beautiful, more ordered, and most importantly, more inspiring.I always like new beginings and new challanges, which make me feel alive. So I want to delve furture into some specific areas of study to equip myself to be more professional. Notes of how to deal with the problems on Leetcode Notes of deeper details of algorithm such as object detection Notes of new classes in new school ….. CLICK “About” to see my RESUME CLICK “Categories” to see all the topics of my articles CLICK “Tags”… OOPS, this is under building CLICK “Search” to find the topic you have interests on Hope you Enjoy this 1234567891011if (you have any questions)&#123; case email: wangjunyu0808@gmail.com; case insgram: wangjunyu0808; case wechat: HeNeArKrXnTn default;&#125;I will be happy to share ideas with you]]></content>
