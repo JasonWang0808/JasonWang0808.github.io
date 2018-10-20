@@ -15,7 +15,7 @@
   <entry>
     <title><![CDATA[Notes of LeetCode (a)]]></title>
     <url>%2F2018%2F10%2F20%2Fleetcode%2F</url>
-    <content type="text"><![CDATA[hello]]></content>
+    <content type="text"><![CDATA[3. Longest Substring Without Repeating CharactersⅠ. DATA STRUCTURE: HashMap HashMap is a quick way to find elements in the time complexity of O(1) and is commonly used in leetcode. 1HashMap&lt;Charactor,Integer&gt; map = new HashMap&lt;&gt; (); Ⅱ. Method:Sliding WindowThe sliding window is an abstract concept commonly used in array/String problems. It likes Dynamic Programming, because we don’t know the answer until we finish it. The length is j - i because the arrange is [i, j) (left-closed, right-open). We set the ANS to record the longest answer. Once we find our next number is replucated in our map, we change the i to the number in our map, same with truncating. Then next, until we reach the end of the array. 1234567891011121314151617class Solution &#123; //map.put map.get map.containsKey public int lengthOfLongestSubstring(String s) &#123; HashMap&lt;Character, Integer&gt; map = new HashMap&lt;&gt;(); int i = 0, j = 0, ans = 0; int l = s.length(); while(i &lt; l &amp;&amp; j &lt; l)&#123; if(map.containsKey(s.charAt(j)))&#123; //if next element in the map i = Math.max(map.get(s.charAt(j)) + 1, i); // abba, max is to prevent : "a" in the end makes i be '0' &#125; ans = Math.max(ans, j-i+1); // keep the bigger ans map.put(s.charAt(j), j); // refresh the map j ++; // goto next number &#125; return ans; &#125;&#125;]]></content>
       <categories>
         <category>leetcodeNotes</category>
       </categories>

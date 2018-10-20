@@ -81,18 +81,18 @@
 
 
 
-<meta name="description" content="hello">
+<meta name="description" content="3. Longest Substring Without Repeating CharactersⅠ.  DATA STRUCTURE: HashMap  HashMap is a quick way to find elements in the time complexity of O(1) and is commonly used in leetcode.  1HashMap&amp;lt;Char">
 <meta name="keywords" content="leetcode,c++,algorithm">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Notes of LeetCode (a)">
 <meta property="og:url" content="http://yoursite.com/2018/10/20/leetcode/index.html">
 <meta property="og:site_name" content="Junyu Wang&#39;s Blog">
-<meta property="og:description" content="hello">
+<meta property="og:description" content="3. Longest Substring Without Repeating CharactersⅠ.  DATA STRUCTURE: HashMap  HashMap is a quick way to find elements in the time complexity of O(1) and is commonly used in leetcode.  1HashMap&amp;lt;Char">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-10-20T12:07:01.747Z">
+<meta property="og:updated_time" content="2018-10-20T15:20:15.375Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Notes of LeetCode (a)">
-<meta name="twitter:description" content="hello">
+<meta name="twitter:description" content="3. Longest Substring Without Repeating CharactersⅠ.  DATA STRUCTURE: HashMap  HashMap is a quick way to find elements in the time complexity of O(1) and is commonly used in leetcode.  1HashMap&amp;lt;Char">
 
 
 
@@ -361,7 +361,15 @@
       
 
       
-        <p>hello</p>
+        <h3 id="3-Longest-Substring-Without-Repeating-Characters"><a href="#3-Longest-Substring-Without-Repeating-Characters" class="headerlink" title="3. Longest Substring Without Repeating Characters"></a>3. Longest Substring Without Repeating Characters</h3><p>Ⅰ.  <strong>DATA STRUCTURE: HashMap</strong></p>
+<blockquote>
+<p>HashMap is a quick way to find elements in the time complexity of O(1) and is commonly used in leetcode.</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">HashMap&lt;Charactor,Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt; ();</span><br></pre></td></tr></table></figure>
+<p>Ⅱ. <strong>Method:Sliding Window</strong><br>The sliding window is an abstract concept <strong>commonly used in array/String problem</strong>s. It likes <strong>Dynamic Programming</strong>, because we don’t know the answer until we finish it.</p>
+<p>The length is <strong>j - i</strong> because the arrange is [i, j) (left-closed, right-open). We set the <strong>ANS</strong> to record the longest answer.</p>
+<p>Once we find our next number is replucated in our map, we change the i to the number in our map, same with truncating. Then next, until we reach the end of the array.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="comment">//map.put  map.get    map.containsKey</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">lengthOfLongestSubstring</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        HashMap&lt;Character, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>, j = <span class="number">0</span>, ans = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> l = s.length();</span><br><span class="line">        <span class="keyword">while</span>(i &lt; l &amp;&amp; j &lt; l)&#123;</span><br><span class="line">            <span class="keyword">if</span>(map.containsKey(s.charAt(j)))&#123; <span class="comment">//if next element in the map</span></span><br><span class="line">                i = Math.max(map.get(s.charAt(j)) + <span class="number">1</span>, i); <span class="comment">// abba, max is to prevent : "a" in the end makes i be '0'</span></span><br><span class="line">            &#125;</span><br><span class="line">            ans = Math.max(ans, j-i+<span class="number">1</span>); <span class="comment">// keep the bigger ans</span></span><br><span class="line">            map.put(s.charAt(j), j); <span class="comment">// refresh the map</span></span><br><span class="line">            j ++; <span class="comment">// goto next number</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -460,8 +468,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -528,6 +545,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Longest-Substring-Without-Repeating-Characters"><span class="nav-number">1.</span> <span class="nav-text">3. Longest Substring Without Repeating Characters</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
