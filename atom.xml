@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-10-20T12:24:39.116Z</updated>
+  <updated>2018-10-30T02:30:46.858Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,48 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Recursion---leetcode</title>
+    <link href="http://yoursite.com/2018/10/30/Recursion/"/>
+    <id>http://yoursite.com/2018/10/30/Recursion/</id>
+    <published>2018-10-30T02:28:18.149Z</published>
+    <updated>2018-10-30T02:30:46.858Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Recursion"><a href="#Recursion" class="headerlink" title="Recursion"></a>Recursion</h2><p>From my perspective, Recursion is an efficient way because it makes us to <strong>only look at the current step</strong>. However, its <strong>complexity is very high.</strong></p><hr><h4 id="Example1-10-Regular-Expression-Matching-from-Leetcode"><a href="#Example1-10-Regular-Expression-Matching-from-Leetcode" class="headerlink" title="Example1. 10. Regular Expression Matching from Leetcode"></a>Example1. <a href="https://leetcode.com/problems/regular-expression-matching/solution/" target="_blank" rel="noopener">10. Regular Expression Matching</a> from Leetcode</h4><blockquote><p>You can see the description on the above link.  </p></blockquote><p>My problem is that it contains tooooo many different combination of <strong>“character”, “.” and “*“</strong>. It looks like a time array, which you should look at <strong>the moment</strong>. <strong>time before</strong> and the <strong>future</strong>, which is very bothering.   </p><blockquote><p>So what we do here is only determine the current action, and let the function to judge what to do next itself.  </p></blockquote><p>So, given two arries, we have several choices  </p><ol><li>whether reach the end?<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># p and s reach the end at the same time</span></span><br><span class="line"><span class="comment"># p reach the end, but s doesn't</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">isMatch</span><span class="params">(s, p)</span></span>&#123;</span><br><span class="line"><span class="keyword">if</span>(p.empty())&#123;</span><br><span class="line"><span class="keyword">if</span>(s == empty()) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"><span class="keyword">else</span> <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="string">``</span><span class="string">`  </span></span><br><span class="line"><span class="string">2. if the first character match?</span></span><br></pre></td></tr></table></figure></li></ol><p>def isMatch(s, p){<br>    bool first_match;<br>    if(s[0] == p[0] || p[0] == ‘.’) first_match = true;</p><p>}<br><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">3.</span> <span class="keyword">is</span> <span class="keyword">it</span> followed <span class="keyword">by</span> * ?</span><br></pre></td></tr></table></figure></p><p>def isMatch(s, p){<br>    if(p.length() &gt;= 2 || p[1] == ‘<em>‘): # the second character of p is </em></p><pre><code># this if means: * is 0 or not    return isMatch(s, p.substr(2)) || (first_match &amp;&amp; isMatch(s.substr(1), p)else:    return first_match &amp;&amp; isMatch(s.substr(1), p.substr(1))</code></pre><p>}<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">The complete <span class="selector-tag">code</span> <span class="keyword">in</span> C++</span><br></pre></td></tr></table></figure></p><p>#include <iostream><br>using namespace std;<br>class Solution {<br>public:<br>    bool isMatch(string s, string p) {<br>        bool first = false;<br>        if(p.empty()){<br>            return (s.empty());<br>        }<br>        else{<br>            first = (!s.empty() &amp;&amp; (s[0] == p[0] || p[0] == ‘.’));<br>        }<br>        if(p.length()&gt;= 2 &amp;&amp; p[1] == ‘<em>‘){<br>            return (isMatch(s, p.substr(2)) || (first &amp;&amp; isMatch(s.substr(1), p) ) ); // make </em> be 0  || make * be at least 1<br>        }<br>        else return first &amp;&amp; isMatch(s.substr(1), p.substr(1));<br>    }<br>};<br>int main() {<br>    Solution solution;</iostream></p><pre><code>return 0;</code></pre><p>}<br><code>`</code><br>We can see that the compexity is high. Because there are many duplicated calculations. SO we can set an array to solve this problem, this is same with <strong>DYNAMIC PROGRAMMING</strong>, which we will dicuss in there.</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;Recursion&quot;&gt;&lt;a href=&quot;#Recursion&quot; class=&quot;headerlink&quot; title=&quot;Recursion&quot;&gt;&lt;/a&gt;Recursion&lt;/h2&gt;&lt;p&gt;From my perspective, Recursion is an effic
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Dynamic Programming---Leetcode</title>
+    <link href="http://yoursite.com/2018/10/30/DP/"/>
+    <id>http://yoursite.com/2018/10/30/DP/</id>
+    <published>2018-10-30T02:28:18.140Z</published>
+    <updated>2018-10-30T02:30:26.545Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="Dynamic-Programming"><a href="#Dynamic-Programming" class="headerlink" title="Dynamic Programming"></a>Dynamic Programming</h3><p>The situations are that our current situations depend on the old calculations. So we don’t need to start from the begining again, <strong>we can store the outcome of each step so we can cite it directly.</strong></p><p>Usually, the parameters of the function are the index instead of the object (string etc.) itself. Because our operations are on the matrix.</p><hr><h5 id="Example1-5-Longest-Palindromic-Substring-from-Leetcode"><a href="#Example1-5-Longest-Palindromic-Substring-from-Leetcode" class="headerlink" title="Example1. 5. Longest Palindromic Substring from Leetcode"></a>Example1. <a href="https://leetcode.com/problems/longest-palindromic-substring/description/" target="_blank" rel="noopener">5. Longest Palindromic Substring</a> from Leetcode</h5><p>We calculation according to the length of the string. If we wanna judge ‘cbbaac’, we can find whether ‘bbaa’ is Palindromic, then find the character from the two ends are same.</p><hr><h5 id="Example2-10-Regular-Expression-Matching-from-the-Leetcode"><a href="#Example2-10-Regular-Expression-Matching-from-the-Leetcode" class="headerlink" title="Example2. 10. Regular Expression Matching from the Leetcode"></a>Example2. <a href="https://leetcode.com/problems/regular-expression-matching/description/" target="_blank" rel="noopener">10. Regular Expression Matching</a> from the Leetcode</h5><p>Just like we talk in  “Recursion”, DP algorithm sometimes help Recursion to decrease the calculation. Such as:</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">dp</span><span class="params">(i, j, arr)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> arr[i][j] != null: <span class="comment">## it can returns directly</span></span><br><span class="line">        <span class="keyword">return</span> arr[i][j] </span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        calculate the arr[i][j]</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;Dynamic-Programming&quot;&gt;&lt;a href=&quot;#Dynamic-Programming&quot; class=&quot;headerlink&quot; title=&quot;Dynamic Programming&quot;&gt;&lt;/a&gt;Dynamic Programming&lt;/h3&gt;&lt;p&gt;Th
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>How to apply hexo to Github Page (一)</title>
