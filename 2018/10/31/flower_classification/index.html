@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="CV,transfer learning,CNN,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Junyu Wang's Blog" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="利用vgg迁移学习实现花朵的分类，基于tensorflow进行实现为什么要迁移学习 一个好的CNN可以判断出一个图片的基本轮廓, 我们利用这个训练好的CNN得到轮廓并扁平化处理, 我们要做的就是搭建ANN, 来实现我们自己的classifier一个理解的网站  首先介绍两个比较常用的方法1. 单热点编码 在这里我们有五种花, 他们的名字都是中文, 我们需要对他进行编码 1234567/* labe">
+<meta name="keywords" content="CV,transfer learning,CNN">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Flower Classification via VGG">
+<meta property="og:url" content="http://yoursite.com/2018/10/31/flower_classification/index.html">
+<meta property="og:site_name" content="Junyu Wang&#39;s Blog">
+<meta property="og:description" content="利用vgg迁移学习实现花朵的分类，基于tensorflow进行实现为什么要迁移学习 一个好的CNN可以判断出一个图片的基本轮廓, 我们利用这个训练好的CNN得到轮廓并扁平化处理, 我们要做的就是搭建ANN, 来实现我们自己的classifier一个理解的网站  首先介绍两个比较常用的方法1. 单热点编码 在这里我们有五种花, 他们的名字都是中文, 我们需要对他进行编码 1234567/* labe">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-10-31T13:19:37.499Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Flower Classification via VGG">
+<meta name="twitter:description" content="利用vgg迁移学习实现花朵的分类，基于tensorflow进行实现为什么要迁移学习 一个好的CNN可以判断出一个图片的基本轮廓, 我们利用这个训练好的CNN得到轮廓并扁平化处理, 我们要做的就是搭建ANN, 来实现我们自己的classifier一个理解的网站  首先介绍两个比较常用的方法1. 单热点编码 在这里我们有五种花, 他们的名字都是中文, 我们需要对他进行编码 1234567/* labe">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/10/31/flower_classification/">
+
+
+
+
+
+  <title>Flower Classification via VGG | Junyu Wang's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+<script type="text/javascript" src="/lib/clipboard/clipboard.js"></script>
+<script type="text/javascript" src="/js/src/custom.js"></script>
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https:JasonWang0808.github.io" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Junyu Wang's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">hello</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/31/flower_classification/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JunYu Wang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Junyu Wang's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Flower Classification via VGG</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Computer-Vision/" itemprop="url" rel="index">
+                    <span itemprop="name">Computer Vision</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="利用vgg迁移学习实现花朵的分类，基于tensorflow进行实现"><a href="#利用vgg迁移学习实现花朵的分类，基于tensorflow进行实现" class="headerlink" title="利用vgg迁移学习实现花朵的分类，基于tensorflow进行实现"></a>利用vgg迁移学习实现花朵的分类，基于tensorflow进行实现</h3><h4 id="为什么要迁移学习"><a href="#为什么要迁移学习" class="headerlink" title="为什么要迁移学习"></a>为什么要迁移学习</h4><blockquote>
+<h5 id="一个好的CNN可以判断出一个图片的基本轮廓-我们利用这个训练好的CNN得到轮廓并扁平化处理-我们要做的就是搭建ANN-来实现我们自己的classifier"><a href="#一个好的CNN可以判断出一个图片的基本轮廓-我们利用这个训练好的CNN得到轮廓并扁平化处理-我们要做的就是搭建ANN-来实现我们自己的classifier" class="headerlink" title="一个好的CNN可以判断出一个图片的基本轮廓, 我们利用这个训练好的CNN得到轮廓并扁平化处理, 我们要做的就是搭建ANN, 来实现我们自己的classifier"></a>一个好的CNN可以判断出一个图片的基本轮廓, 我们利用这个训练好的CNN得到轮廓并扁平化处理, 我们要做的就是搭建ANN, 来实现我们自己的classifier</h5><p><a href="http://setosa.io/ev/image-kernels/" target="_blank" rel="noopener">一个理解的网站</a></p>
+</blockquote>
+<h3 id="首先介绍两个比较常用的方法"><a href="#首先介绍两个比较常用的方法" class="headerlink" title="首先介绍两个比较常用的方法"></a>首先介绍两个比较常用的方法</h3><h4 id="1-单热点编码"><a href="#1-单热点编码" class="headerlink" title="1. 单热点编码"></a>1. 单热点编码</h4><blockquote>
+<h5 id="在这里我们有五种花-他们的名字都是中文-我们需要对他进行编码"><a href="#在这里我们有五种花-他们的名字都是中文-我们需要对他进行编码" class="headerlink" title="在这里我们有五种花, 他们的名字都是中文, 我们需要对他进行编码"></a>在这里我们有五种花, 他们的名字都是中文, 我们需要对他进行编码</h5></blockquote>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">/* labels是我们要编码的str数组，生成了labels_vecs的二维单热点编码  */</span><br><span class="line">from sklearn.preprocessing import LabelBinarizer</span><br><span class="line"></span><br><span class="line">lb = LabelBinarizer()</span><br><span class="line">lb.fit(labels)</span><br><span class="line"></span><br><span class="line">labels_vecs = lb.transform(labels)</span><br></pre></td></tr></table></figure>
+<p><strong>array</strong><br>([[0, 1, 0, 0, 0],<br>       [0, 1, 0, 0, 0],<br>       [0, 1, 0, 0, 0],<br>       …,<br>       [0, 0, 0, 1, 0],<br>       [0, 0, 0, 1, 0],<br>       [0, 0, 0, 1, 0]])<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
+<h4 id="2-分类—我们需要随机的分出test、valid和Train"><a href="#2-分类—我们需要随机的分出test、valid和Train" class="headerlink" title="2. 分类—我们需要随机的分出test、valid和Train"></a>2. 分类—我们需要随机的分出test、valid和Train</h4><blockquote>
+<h5 id="这里使用机器学习库-how-to-use"><a href="#这里使用机器学习库-how-to-use" class="headerlink" title="这里使用机器学习库 how to use"></a>这里使用机器学习库 <a href="http://scikit-learn.org/stable/modules/generated/sklearn.model_selection.StratifiedShuffleSplit.html" target="_blank" rel="noopener">how to use</a></h5></blockquote>
+<figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.model_selection <span class="built_in">import</span> StratifiedShuffleSplit</span><br><span class="line"><span class="comment">/*  固定搭配，里面的参数要弄懂  */</span></span><br><span class="line"><span class="attr">ss</span> = StratifiedShuffleSplit(<span class="attr">n_splits=1,</span> <span class="attr">test_size=0.2)</span></span><br><span class="line"><span class="comment">/* 注意一定要加next，这里返回的是indices（指数） 即数标  */</span></span><br><span class="line">train_idx, <span class="attr">val_idxs</span> = next(ss.split(codes,labels_vecs))</span><br><span class="line"></span><br><span class="line"><span class="attr">half_val</span> = int(len(val_idxs)/<span class="number">2</span>)</span><br><span class="line"><span class="comment">/*  把valid拆分成valid和test    */</span></span><br><span class="line"></span><br><span class="line">val_idx,<span class="attr">test_idx</span> = val_idxs[:half_val],val_idxs[half_val:]</span><br><span class="line"></span><br><span class="line">train_x, <span class="attr">train_y</span> = codes[train_idx],labels_vecs[train_idx]</span><br><span class="line"></span><br><span class="line">val_x, <span class="attr">val_y</span> = codes[val_idx],labels_vecs[val_idx]</span><br><span class="line">test_x, <span class="attr">test_y</span> =  codes[test_idx],labels_vecs[test_idx]</span><br></pre></td></tr></table></figure>
+<h4 id="3-储存结果"><a href="#3-储存结果" class="headerlink" title="3. 储存结果"></a>3. 储存结果</h4><blockquote>
+<h5 id="每次训练结束都要把参数的结果储存到checkpoint中来-下一次test时候直接进行调用"><a href="#每次训练结束都要把参数的结果储存到checkpoint中来-下一次test时候直接进行调用" class="headerlink" title="每次训练结束都要把参数的结果储存到checkpoint中来, 下一次test时候直接进行调用"></a>每次训练结束都要把参数的结果储存到checkpoint中来, 下一次test时候直接进行调用</h5></blockquote>
+<h4 id="4-计算主体"><a href="#4-计算主体" class="headerlink" title="4. 计算主体"></a>4. 计算主体</h4><blockquote>
+<h5 id="外部一个epochs的循环，内部一个计算函数"><a href="#外部一个epochs的循环，内部一个计算函数" class="headerlink" title="外部一个epochs的循环，内部一个计算函数"></a>外部一个epochs的循环，内部一个计算函数</h5></blockquote>
+<h4 id="储存结果"><a href="#储存结果" class="headerlink" title="储存结果"></a>储存结果</h4><figure class="highlight gauss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*  详见training部分 */</span></span><br><span class="line">saver.<span class="keyword">save</span>(sess, <span class="string">"checkpoints/flowers.ckpt"</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="加载结果进行使用"><a href="#加载结果进行使用" class="headerlink" title="加载结果进行使用"></a>加载结果进行使用</h4><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 先迁移得到一维矩阵，然后Saver加载参数，test一边   */</span></span><br><span class="line">with tf.Session() as sess:</span><br><span class="line">    <span class="selector-tag">img</span> = utils.load_image(test_img_path)</span><br><span class="line">    <span class="selector-tag">img</span> = <span class="selector-tag">img</span>.reshape((<span class="number">1</span>, <span class="number">224</span>, <span class="number">224</span>, <span class="number">3</span>))</span><br><span class="line"></span><br><span class="line">    feed_dict = &#123;input_: img&#125;</span><br><span class="line">    <span class="selector-tag">code</span> = sess.run(vgg<span class="selector-class">.relu6</span>, feed_dict=feed_dict)</span><br><span class="line">        </span><br><span class="line">saver = tf<span class="selector-class">.train</span><span class="selector-class">.Saver</span>()</span><br><span class="line">with tf.Session() as sess:</span><br><span class="line">    saver.restore(sess, tf<span class="selector-class">.train</span><span class="selector-class">.latest_checkpoint</span>(<span class="string">'checkpoints'</span>))</span><br><span class="line">    </span><br><span class="line">    feed = &#123;inputs_: code&#125;</span><br><span class="line">    prediction = sess.run(predicted, feed_dict=feed).squeeze()</span><br></pre></td></tr></table></figure>
+<h4 id="data-cutting"><a href="#data-cutting" class="headerlink" title="data cutting"></a>data cutting</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">/* 设置函数<span class="number">10</span>个图片的处理    */</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_batches</span><span class="params">(x, y, n_batches=<span class="number">10</span>)</span>:</span></span><br><span class="line">    <span class="string">""" Return a generator that yields batches from arrays x and y. """</span></span><br><span class="line">    batch_size = len(x)//n_batches</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> ii <span class="keyword">in</span> range(<span class="number">0</span>, n_batches*batch_size, batch_size):</span><br><span class="line">        <span class="comment"># If we're not on the last batch, grab data with size batch_size</span></span><br><span class="line">        <span class="keyword">if</span> ii != (n_batches<span class="number">-1</span>)*batch_size:</span><br><span class="line">            X, Y = x[ii: ii+batch_size], y[ii: ii+batch_size] </span><br><span class="line">        <span class="comment"># On the last batch, grab the rest of the data</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            X, Y = x[ii:], y[ii:]</span><br><span class="line">        <span class="comment"># I love generators</span></span><br><span class="line">        <span class="keyword">yield</span> X, Y</span><br></pre></td></tr></table></figure>
+<h4 id="building-NN"><a href="#building-NN" class="headerlink" title="building NN"></a>building NN</h4><figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">inputs_ = tf.placeholder(tf.float32, shape=[None, codes.shape[1]])</span><br><span class="line">labels_ = tf.placeholder(tf.int64, shape=[None, labels_vecs.shape[1]])</span><br><span class="line"></span><br><span class="line"><span class="comment"># <span class="doctag">TODO:</span> Classifier layers and operations</span></span><br><span class="line">/* 搭建一个简单的ANN   */</span><br><span class="line">fc = tf.contrib.layers.fully_connected(inputs_,256)</span><br><span class="line"></span><br><span class="line">logits = tf.contrib.layers.fully_connected(fc, labels_vecs.shape[1], activation_fn=None)</span><br><span class="line">cross_entropy = tf.nn.softmax_cross_entropy_with_logits(labels=labels_, logits=logits)</span><br><span class="line">cost = tf.reduce_mean(cross_entropy)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">optimizer =  tf.train.AdamOptimizer().minimize(cost)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Operations for validation/test accuracy</span></span><br><span class="line">predicted = tf.nn.softmax(logits)</span><br><span class="line">correct_pred = tf.equal(tf.argmax(predicted, 1), tf.argmax(labels_, 1))</span><br><span class="line">accuracy = tf.reduce_mean(tf.cast(correct_pred, tf.float32))</span><br></pre></td></tr></table></figure>
+<h4 id="Training"><a href="#Training" class="headerlink" title="Training"></a>Training</h4><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">epochs = 10</span><br><span class="line">iteration = 0</span><br><span class="line">saver = tf.train.Saver()</span><br><span class="line">with tf.Session() as sess:</span><br><span class="line">    </span><br><span class="line">    sess.<span class="builtin-name">run</span>(tf.global_variables_initializer())</span><br><span class="line">    <span class="keyword">for</span> e <span class="keyword">in</span> range(epochs):</span><br><span class="line">        <span class="keyword">for</span> x, y <span class="keyword">in</span> get_batches(train_x, train_y):</span><br><span class="line">            feed = &#123;inputs_: x,</span><br><span class="line">                    labels_: y&#125;</span><br><span class="line">            loss, _ = sess.<span class="builtin-name">run</span>([cost, optimizer], <span class="attribute">feed_dict</span>=feed)</span><br><span class="line">            <span class="builtin-name">print</span>(<span class="string">"Epoch: &#123;&#125;/&#123;&#125;"</span>.format(e+1, epochs),</span><br><span class="line">                  <span class="string">"Iteration: &#123;&#125;"</span>.format(iteration),</span><br><span class="line">                  <span class="string">"Training loss: &#123;:.5f&#125;"</span>.format(loss))</span><br><span class="line">            iteration += 1</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span> iteration % 5 == 0:</span><br><span class="line">                feed = &#123;inputs_: val_x,</span><br><span class="line">                        labels_: val_y&#125;</span><br><span class="line">                val_acc = sess.<span class="builtin-name">run</span>(accuracy, <span class="attribute">feed_dict</span>=feed)</span><br><span class="line">                <span class="builtin-name">print</span>(<span class="string">"Epoch: &#123;&#125;/&#123;&#125;"</span>.format(e, epochs),</span><br><span class="line">                      <span class="string">"Iteration: &#123;&#125;"</span>.format(iteration),</span><br><span class="line">                      <span class="string">"Validation Acc: &#123;:.4f&#125;"</span>.format(val_acc))</span><br><span class="line">    saver.save(sess, <span class="string">"checkpoints/flowers.ckpt"</span>)</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/CV/" rel="tag"># CV</a>
+          
+            <a href="/tags/transfer-learning/" rel="tag"># transfer learning</a>
+          
+            <a href="/tags/CNN/" rel="tag"># CNN</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/31/Model_detexting_1/" rel="next" title="OBject claasification via Resnet50">
+                <i class="fa fa-chevron-left"></i> OBject claasification via Resnet50
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/10/31/tensorflow_basic/" rel="prev" title="Basic Rules of Tensorflow">
+                Basic Rules of Tensorflow <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">JunYu Wang</p>
+              <p class="site-description motion-element" itemprop="description">share your ideas with the world</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#利用vgg迁移学习实现花朵的分类，基于tensorflow进行实现"><span class="nav-number">1.</span> <span class="nav-text">利用vgg迁移学习实现花朵的分类，基于tensorflow进行实现</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么要迁移学习"><span class="nav-number">1.1.</span> <span class="nav-text">为什么要迁移学习</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#一个好的CNN可以判断出一个图片的基本轮廓-我们利用这个训练好的CNN得到轮廓并扁平化处理-我们要做的就是搭建ANN-来实现我们自己的classifier"><span class="nav-number">1.1.1.</span> <span class="nav-text">一个好的CNN可以判断出一个图片的基本轮廓, 我们利用这个训练好的CNN得到轮廓并扁平化处理, 我们要做的就是搭建ANN, 来实现我们自己的classifier</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#首先介绍两个比较常用的方法"><span class="nav-number">2.</span> <span class="nav-text">首先介绍两个比较常用的方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-单热点编码"><span class="nav-number">2.1.</span> <span class="nav-text">1. 单热点编码</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#在这里我们有五种花-他们的名字都是中文-我们需要对他进行编码"><span class="nav-number">2.1.1.</span> <span class="nav-text">在这里我们有五种花, 他们的名字都是中文, 我们需要对他进行编码</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-分类—我们需要随机的分出test、valid和Train"><span class="nav-number">2.2.</span> <span class="nav-text">2. 分类—我们需要随机的分出test、valid和Train</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#这里使用机器学习库-how-to-use"><span class="nav-number">2.2.1.</span> <span class="nav-text">这里使用机器学习库 how to use</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-储存结果"><span class="nav-number">2.3.</span> <span class="nav-text">3. 储存结果</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#每次训练结束都要把参数的结果储存到checkpoint中来-下一次test时候直接进行调用"><span class="nav-number">2.3.1.</span> <span class="nav-text">每次训练结束都要把参数的结果储存到checkpoint中来, 下一次test时候直接进行调用</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-计算主体"><span class="nav-number">2.4.</span> <span class="nav-text">4. 计算主体</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#外部一个epochs的循环，内部一个计算函数"><span class="nav-number">2.4.1.</span> <span class="nav-text">外部一个epochs的循环，内部一个计算函数</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#储存结果"><span class="nav-number">2.5.</span> <span class="nav-text">储存结果</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#加载结果进行使用"><span class="nav-number">2.6.</span> <span class="nav-text">加载结果进行使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#data-cutting"><span class="nav-number">2.7.</span> <span class="nav-text">data cutting</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#building-NN"><span class="nav-number">2.8.</span> <span class="nav-text">building NN</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Training"><span class="nav-number">2.9.</span> <span class="nav-text">Training</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">JunYu Wang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+
+
+
+
+
+<div class="busuanzi-count"> 
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+   <span class="site-uv">
+    <i class="fa fa-user"></i>
+     <span class="busuanzi-value" id="busuanzi_value_site_uv">
+    </span>
+
+    </span> <span class="site-pv">
+     <i class="fa fa-eye"></i> <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      </span>
+      </div>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.4"></script>
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
