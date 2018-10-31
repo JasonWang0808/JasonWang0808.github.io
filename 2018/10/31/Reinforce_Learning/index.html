@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="Reinforcement Learning,python,">
 
 
 
@@ -81,17 +81,18 @@
 
 
 
-<meta name="description" content="EDCATION BACKGROUND JunYu Wang Male,1998.8.8  Bachlor: Hunan University,Changsha; Major: CS GPA:3.81/4.5 #rank1   HONOR Won the Second Place, Enterprise Prize of KOHLER in Hack-Shanghai 2018">
-<meta property="og:type" content="website">
-<meta property="og:title" content="RESUME">
-<meta property="og:url" content="http://yoursite.com/about/index.html">
+<meta name="description" content="我看到网上的强化学习教程通常比较复杂, 看完莫烦python后总结出来如下, 我将主要用代码形式进行理论的展现, 其中个别地方用的是OPENAI的表示方式 一、回合更新(Monte-Carlo update)玩完所有的步数, 等到一个episode结束之后再更新数值 Monte-Carlo Learning这个方法比较esay, 就是根据尽可能多的经验, 以及平均期望来更新数值。实验成本大, 并且">
+<meta name="keywords" content="Reinforcement Learning,python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="强化学习（一）">
+<meta property="og:url" content="http://yoursite.com/2018/10/31/Reinforce_Learning/index.html">
 <meta property="og:site_name" content="Junyu Wang&#39;s Blog">
-<meta property="og:description" content="EDCATION BACKGROUND JunYu Wang Male,1998.8.8  Bachlor: Hunan University,Changsha; Major: CS GPA:3.81/4.5 #rank1   HONOR Won the Second Place, Enterprise Prize of KOHLER in Hack-Shanghai 2018">
+<meta property="og:description" content="我看到网上的强化学习教程通常比较复杂, 看完莫烦python后总结出来如下, 我将主要用代码形式进行理论的展现, 其中个别地方用的是OPENAI的表示方式 一、回合更新(Monte-Carlo update)玩完所有的步数, 等到一个episode结束之后再更新数值 Monte-Carlo Learning这个方法比较esay, 就是根据尽可能多的经验, 以及平均期望来更新数值。实验成本大, 并且">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-10-21T07:26:29.838Z">
+<meta property="og:updated_time" content="2018-10-31T13:01:46.492Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="RESUME">
-<meta name="twitter:description" content="EDCATION BACKGROUND JunYu Wang Male,1998.8.8  Bachlor: Hunan University,Changsha; Major: CS GPA:3.81/4.5 #rank1   HONOR Won the Second Place, Enterprise Prize of KOHLER in Hack-Shanghai 2018">
+<meta name="twitter:title" content="强化学习（一）">
+<meta name="twitter:description" content="我看到网上的强化学习教程通常比较复杂, 看完莫烦python后总结出来如下, 我将主要用代码形式进行理论的展现, 其中个别地方用的是OPENAI的表示方式 一、回合更新(Monte-Carlo update)玩完所有的步数, 等到一个episode结束之后再更新数值 Monte-Carlo Learning这个方法比较esay, 就是根据尽可能多的经验, 以及平均期望来更新数值。实验成本大, 并且">
 
 
 
@@ -121,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/about/">
+  <link rel="canonical" href="http://yoursite.com/2018/10/31/Reinforce_Learning/">
 
 
 
 
 
-  <title>RESUME | Junyu Wang's Blog</title>
+  <title>强化学习（一） | Junyu Wang's Blog</title>
   
 
 
@@ -271,87 +272,176 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/31/Reinforce_Learning/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JunYu Wang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Junyu Wang's Blog">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-	<h1 class="post-title" itemprop="name headline">RESUME</h1>
-
-
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
-          <h2 id="EDCATION-BACKGROUND"><a href="#EDCATION-BACKGROUND" class="headerlink" title="EDCATION BACKGROUND"></a>EDCATION BACKGROUND</h2><ul>
-<li><strong>JunYu Wang</strong></li>
-<li><strong>Male,1998.8.8</strong> </li>
-<li><strong>Bachlor:</strong> <strong>Hunan University</strong>,Changsha; <strong>Major</strong>: CS <strong>GPA</strong>:3.81/4.5 <strong>#rank1</strong></li>
-</ul>
-<hr>
-<h2 id="HONOR"><a href="#HONOR" class="headerlink" title="HONOR"></a>HONOR</h2><ul>
-<li><strong>Won the Second Place, Enterprise Prize of KOHLER in Hack-Shanghai 2018</strong>                      (07/2018)</li>
-<li><strong>Won the Third Place of the Central China of Hackathon jointly held by Microsoft Research and Hunan University Student Union</strong>  (05/2018)</li>
-<li><strong>Won the First Prize of Robot Programming Contest held by Hunan University</strong> (09/2017)</li>
-</ul>
-<hr>
-<h2 id="RESEARCH-EXPERIENCE"><a href="#RESEARCH-EXPERIENCE" class="headerlink" title="RESEARCH EXPERIENCE"></a>RESEARCH EXPERIENCE</h2><h3 id="Research-the-basic-methods-of-Object-Detection"><a href="#Research-the-basic-methods-of-Object-Detection" class="headerlink" title="Research the basic methods of Object Detection"></a>Research the basic methods of Object Detection</h3><p><strong>09/2018-10/2018</strong></p>
-<ul>
-<li><strong>Tutor:</strong> JunYu Wang</li>
-<li><strong>Purpose:</strong> To be familiar with different ways to detect objects from classic methods to the state-of-art deep-learning methods; Try to use Latex to write papers  </li>
-<li><strong>Duties:</strong> Do research of classical mehtods(Hog+SVM, Hog+Adaboost, ICF+Adaboost, DMP+latent SVM) and DL methods(Fast/Faster R-CNN, SSD, FPN, YOLO). </li>
-<li><strong><a href="https://github.com/JasonWang0808/paper_reading/blob/master/Detection_wjy.pdf" target="_blank" rel="noopener">Finish a simple method report in this link</a></strong>. <strong>(&lt;-CLICK)</strong></li>
-</ul>
-<h3 id="Adapt-Super-resolution-into-real-production"><a href="#Adapt-Super-resolution-into-real-production" class="headerlink" title="Adapt Super-resolution into real production"></a>Adapt Super-resolution into real production</h3><h4 id="07-2018-09-2018"><a href="#07-2018-09-2018" class="headerlink" title="07/2018-09/2018"></a>07/2018-09/2018</h4><ul>
-<li><strong>Tutor:</strong> <a href="http://www.cs.cornell.edu/selman/" target="_blank" rel="noopener">Bart Selman from Cornell University</a> </li>
-<li><strong>Purpose:</strong> Used symmetric padding to improve perceptual quality of image after super-resolution   </li>
-<li><strong>Duties:</strong> Edited code to realize VDSR using tensorflow and symmetric padding to process the images with three channels; Used EC2 of AWS to do experiments using classic Datasets (ImageNet, Set5, Set14) and evaluated the outcomes via PSNR and SSIM; Wrote the Introduction and Experiment&amp;Analysis of the final paper</li>
-<li><a href="https://github.com/JasonWang0808/paper_reading/blob/master/Super-resolution-final.pdf" target="_blank" rel="noopener">Final paper</a> and <a href="https://github.com/JasonWang0808/paper_reading/blob/master/RL.jpg" target="_blank" rel="noopener">Recommendation Letter</a> <strong>(&lt;-CLICK)</strong></li>
-</ul>
-<h3 id="Malicious-Code-Detection"><a href="#Malicious-Code-Detection" class="headerlink" title="Malicious Code Detection"></a>Malicious Code Detection</h3><h4 id="03-2018-Present"><a href="#03-2018-Present" class="headerlink" title="03/2018-Present"></a>03/2018-Present</h4><ul>
-<li><strong>Tutor:</strong>  Yupeng Hu from Hunan University</li>
-<li><strong>Purpose:</strong> Transferred malicious codes to visual interface, processed the code via CNN, and used it in Android and Web  </li>
-<li><strong>Duties:</strong>  Downloaded the specified datasets on Github to train neural network; Used transfer-learning via VGG19 algorithm to enhance computing speed and accuracy</li>
-</ul>
-<h3 id="Research-on-Task-Scheduling-Optimization-Methods-Concerning-Big-Data-Analysis-System"><a href="#Research-on-Task-Scheduling-Optimization-Methods-Concerning-Big-Data-Analysis-System" class="headerlink" title="Research on Task Scheduling Optimization Methods Concerning Big Data Analysis System"></a>Research on Task Scheduling Optimization Methods Concerning Big Data Analysis System</h3><h4 id="10-2017-Present"><a href="#10-2017-Present" class="headerlink" title="10/2017-Present"></a>10/2017-Present</h4><ul>
-<li><strong>Tutor:</strong>   Zhiyong Li from Hunan University</li>
-<li><strong>Purpose:</strong> Applied big data and edge computing to enhance factories efficiency </li>
-<li><strong>Duties:</strong>  Applied docker, HDFS pseudo distributed storage mode and other techniques to build platform; Used the template generated by the device sdk tools of Edgex Foundry to write the function of device service using JAVA; Used different devices to confirm the capacity of device service is 800000 bytes at least</li>
-</ul>
-<hr>
-<h2 id="ACTIVITY"><a href="#ACTIVITY" class="headerlink" title="ACTIVITY"></a>ACTIVITY</h2><p><strong>Conducted some tiny projects on AI following the course of Deep Learning on Udacity</strong>  </p>
-<ul>
-<li>Used transfer-learning to classify different categories of puppies and predict <a href="https://github.com/JasonWang0808/doctor_project" target="_blank" rel="noopener">skin cancers of human</a>(&lt;-CLICK)</li>
-<li>Used RNN and LSTM to generate movie scripts and predict the semantic emotion</li>
-<li>Used DCGAN to generate white noise human face based on training data  </li>
-</ul>
-<p><strong>Department Leader of Hunan University Student Union</strong></p>
-<ul>
-<li>Organized several large-scaled activities with positive feedback from the schoolmates, such as, Top 10 Singers Contest, Debating Contest, and Flea Market</li>
-</ul>
-<hr>
-<h2 id="SKILLS-amp-ENGLISH-PROFICIENCY"><a href="#SKILLS-amp-ENGLISH-PROFICIENCY" class="headerlink" title="SKILLS &amp; ENGLISH PROFICIENCY"></a>SKILLS &amp; ENGLISH PROFICIENCY</h2><ul>
-<li>Proficient in programming languages including c++, Tensorflow&amp;Keras with python, Java</li>
-<li>Familiar with <strong>EC2 of AWS</strong>, usage of <strong>Git</strong>, writing with <strong>Latex</strong></li>
-<li>Good at Go(chess)</li>
-<li>IELTS 7.0(L 8.5, R 8.0)</li>
-</ul>
-<hr>
-<h1 id="Thanks"><a href="#Thanks" class="headerlink" title="Thanks"></a>Thanks</h1><h4 id="Thank-you-for-taking-the-time-to-read-my-resume-and-I’m-looking-forward-to-having-the-opportunity-to-work-with-you"><a href="#Thank-you-for-taking-the-time-to-read-my-resume-and-I’m-looking-forward-to-having-the-opportunity-to-work-with-you" class="headerlink" title="Thank you for taking the time to read my resume and I’m looking forward to having the opportunity to work with you =)"></a>Thank you for taking the time to read my resume and I’m looking forward to having the opportunity to work with you =)</h4>
+          <h1 class="post-title" itemprop="name headline">强化学习（一）</h1>
         
-      </div>
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Reinforcement-Learning/" itemprop="url" rel="index">
+                    <span itemprop="name">Reinforcement Learning</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <h4 id="我看到网上的强化学习教程通常比较复杂-看完莫烦python后总结出来如下-我将主要用代码形式进行理论的展现-其中个别地方用的是OPENAI的表示方式"><a href="#我看到网上的强化学习教程通常比较复杂-看完莫烦python后总结出来如下-我将主要用代码形式进行理论的展现-其中个别地方用的是OPENAI的表示方式" class="headerlink" title="我看到网上的强化学习教程通常比较复杂, 看完莫烦python后总结出来如下, 我将主要用代码形式进行理论的展现, 其中个别地方用的是OPENAI的表示方式"></a>我看到网上的强化学习教程通常比较复杂, 看完莫烦python后总结出来如下, 我将主要用代码形式进行理论的展现, 其中个别地方用的是OPENAI的表示方式</h4><hr>
+<h3 id="一、回合更新-Monte-Carlo-update"><a href="#一、回合更新-Monte-Carlo-update" class="headerlink" title="一、回合更新(Monte-Carlo update)"></a>一、回合更新(Monte-Carlo update)</h3><h4 id="玩完所有的步数-等到一个episode结束之后再更新数值"><a href="#玩完所有的步数-等到一个episode结束之后再更新数值" class="headerlink" title="玩完所有的步数, 等到一个episode结束之后再更新数值"></a>玩完所有的步数, 等到一个episode结束之后再更新数值</h4><blockquote>
+<p>Monte-Carlo Learning<br>这个方法比较esay, 就是根据尽可能多的经验, 以及平均期望来更新数值。实验成本大, 并且现在很多需要决策的问题是没有结束标志的。  </p>
+</blockquote>
+<h3 id="二、单步更新-Temporal-Difference-update"><a href="#二、单步更新-Temporal-Difference-update" class="headerlink" title="二、单步更新(Temporal-Difference update)"></a>二、单步更新(Temporal-Difference update)</h3><h4 id="每走一步都会更新当前的数值"><a href="#每走一步都会更新当前的数值" class="headerlink" title="每走一步都会更新当前的数值"></a>每走一步都会更新当前的数值</h4><blockquote>
+<p>Q-Learning(off-policy), Sarsa(on-policy)    </p>
+</blockquote>
+<h4 id="1-什么是off-on-policy"><a href="#1-什么是off-on-policy" class="headerlink" title="1. 什么是off/on-policy?"></a>1. 什么是off/on-policy?</h4><h4 id="off-policy的更新value时候的next-action不一定会真实采取-而on-policy更新时候的next-value就是真实采取的"><a href="#off-policy的更新value时候的next-action不一定会真实采取-而on-policy更新时候的next-value就是真实采取的" class="headerlink" title="off-policy的更新value时候的next_action不一定会真实采取, 而on-policy更新时候的next_value就是真实采取的"></a>off-policy的更新value时候的next_action不一定会真实采取, 而on-policy更新时候的next_value就是真实采取的</h4><blockquote>
+<p>小明正在准备高考, 课间的时候小明在思考接下来学习什么知识。首先, 小明想学习数学, 但是小明的数学已经学习的很熟练了，于是<strong>小明并没有拿出课本, 而是在脑海里把课本背诵了一边, 这样一来, 小明虽然没有拿出课本, 但是依然更新了当前的知识,</strong> 接下来小明可能拿出的是英语/语文/物理课本进行学习。这就是我们的off-policy。<strong>倘若是on-policy, 小明就失去了默背这一流程, 想回忆一下数学下一步骤必须拿出数学课本</strong>   </p>
+</blockquote>
+<h4 id="2-epsilon-greedy策略"><a href="#2-epsilon-greedy策略" class="headerlink" title="2. epsilon_greedy策略"></a>2. epsilon_greedy策略</h4><blockquote>
+<p>取到最大值的概率为 <strong>(1-eps) + (eps)/n</strong><br>取到其他n-1种动作的概率为 <strong>(eps)/n</strong></p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">epsilon_greedy</span><span class="params">(Q, state, nA, eps)</span>:</span></span><br><span class="line">    <span class="string">"""Selects epsilon-greedy action for supplied state.</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">    Params</span></span><br><span class="line"><span class="string">    ======</span></span><br><span class="line"><span class="string">        Q (dictionary): action-value function</span></span><br><span class="line"><span class="string">        state (int): current state</span></span><br><span class="line"><span class="string">        nA (int): number actions in the environment</span></span><br><span class="line"><span class="string">        eps (float): epsilon</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    <span class="keyword">if</span> random.random() &gt; eps: </span><br><span class="line">    <span class="comment">#  此时是选取最大数值的action进行返回</span></span><br><span class="line">        <span class="keyword">return</span> np.argmax(Q[state])</span><br><span class="line">    <span class="keyword">else</span>:                     </span><br><span class="line">    <span class="comment"># 这个时候对每个取平均</span></span><br><span class="line">        <span class="keyword">return</span> random.choice(np.arange(env.action_space.n))</span><br></pre></td></tr></table></figure>
+<h4 id="3-Q-learning-with-sarsa-max-off-policy"><a href="#3-Q-learning-with-sarsa-max-off-policy" class="headerlink" title="3. Q-learning with sarsa_max?(off-policy)"></a>3. Q-learning with sarsa_max?(off-policy)</h4><p>sarsa_max: 选取下一状态是value最大的动作更新当前状态  </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Q-learning Sarsamax</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">update_Q_sarsamax</span><span class="params">(alpha, gamma, Q, state, action, reward, next_state=None)</span>:</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Returns updated Q-value for the most recent experience.</span></span><br><span class="line">    </span><br><span class="line">    current = Q[state][action]  <span class="comment"># estimate in Q-table (for current state, action pair)</span></span><br><span class="line">    Qsa_next = np.max(Q[next_state]) <span class="keyword">if</span> next_state <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span> <span class="keyword">else</span> <span class="number">0</span> </span><br><span class="line">    <span class="comment"># find the max q in next_state, but this action is not the real action</span></span><br><span class="line">    target = reward + (gamma * Qsa_next)               <span class="comment"># construct TD target</span></span><br><span class="line">    new_value = current + (alpha * (target - current)) <span class="comment"># get updated value </span></span><br><span class="line">    <span class="keyword">return</span> new_value</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Q-learning</span></span><br><span class="line"> <span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">    </span><br><span class="line">    action = epsilon_greedy(Q, state, nA, eps)</span><br><span class="line">    <span class="comment"># epsilon-greedy action selection, get next_action in every interation</span></span><br><span class="line">    next_state, reward, done, info = env.step(action)  <span class="comment"># take action A, observe R, S'</span></span><br><span class="line">    score += reward                                    <span class="comment"># add reward to agent's score</span></span><br><span class="line">    Q[state][action] = update_Q_sarsamax(alpha, gamma, Q, \</span><br><span class="line">                                                 state, action, reward, next_state)        </span><br><span class="line">    state = next_state                                 </span><br><span class="line">    <span class="comment">#只更新状态</span></span><br><span class="line">    <span class="keyword">if</span> done:</span><br><span class="line">        tmp_scores.append(score)                       <span class="comment"># append score</span></span><br><span class="line">        <span class="keyword">break</span></span><br></pre></td></tr></table></figure>
+<h4 id="4-Sarsa-Learning"><a href="#4-Sarsa-Learning" class="headerlink" title="4. Sarsa Learning"></a>4. Sarsa Learning</h4><p>每次迭代都会选出下一状态和下一状态将要采取的动作，根据事实(update_Q_sarsa)来进行更新<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">update_Q_sarsa</span><span class="params">(alpha, gamma, Q, state, action, reward, next_state=None, next_action=None)</span>:</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">#Returns updated Q-value for the most recent experience.</span></span><br><span class="line">    </span><br><span class="line">    current = Q[state][action]  <span class="comment"># estimate in Q-table (for current state, action pair)</span></span><br><span class="line">    <span class="comment"># get value of state, action pair at next time step</span></span><br><span class="line">    Qsa_next = Q[next_state][next_action] <span class="keyword">if</span> next_state <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span> <span class="keyword">else</span> <span class="number">0</span>    </span><br><span class="line">    target = reward + (gamma * Qsa_next)               <span class="comment"># construct TD target</span></span><br><span class="line">    new_value = current + (alpha * (target - current)) <span class="comment"># get updated value</span></span><br><span class="line">    <span class="keyword">return</span> new_value</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight pf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">while True:</span><br><span class="line">    next_state, reward, done, info = env.step(action) <span class="comment"># take action A, observe R, S'</span></span><br><span class="line">    score += reward                                   <span class="comment"># add reward to agent's score</span></span><br><span class="line">    if not done:</span><br><span class="line">    next_action = epsilon_greedy(Q, next_state, nA, eps) <span class="comment"># epsilon-greedy action</span></span><br><span class="line">    Q[<span class="keyword">state</span>][action] = update_Q_sarsa(alpha, gamma, Q, \</span><br><span class="line">                                                  <span class="keyword">state</span>, action, reward, next_state, next_action)</span><br><span class="line">                </span><br><span class="line">                <span class="keyword">state</span> = next_state     <span class="comment"># S &lt;- S'</span></span><br><span class="line">                action = next_action   <span class="comment"># A &lt;- A'</span></span><br><span class="line">                '''</span><br><span class="line">                这里会根据传入update函数的next_action 和 next_state进行更新</span><br><span class="line">                '''</span><br><span class="line">            if done:</span><br><span class="line">                Q[<span class="keyword">state</span>][action] = update_Q_sarsa(alpha, gamma, Q, \</span><br><span class="line">                                                  <span class="keyword">state</span>, action, reward)</span><br><span class="line">                tmp_scores.append(score)    <span class="comment"># append score</span></span><br><span class="line">                break</span><br></pre></td></tr></table></figure>
+<h4 id="5-expected-Sarsa"><a href="#5-expected-Sarsa" class="headerlink" title="5. expected Sarsa"></a>5. expected Sarsa</h4><p>3,4 种描述的更新方法都是取单一action的value, 在期望Sarsa中将对所有的action产生的value计算一个平均期望进行更新  </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">update_Q_expsarsa</span><span class="params">(alpha, gamma, nA, eps, Q, state, action, reward, next_state=None)</span>:</span></span><br><span class="line">    <span class="string">"""Returns updated Q-value for the most recent experience."""</span></span><br><span class="line">    current = Q[state][action]         <span class="comment"># estimate in Q-table (for current state, action pair)</span></span><br><span class="line">    policy_s = np.ones(nA) * eps / nA  </span><br><span class="line">    <span class="comment"># 建立一个向量储存概率，每一个都是 （eps / nA）, nA表示action数量</span></span><br><span class="line">    policy_s[np.argmax(Q[next_state])] = <span class="number">1</span> - eps + (eps / nA) </span><br><span class="line">    <span class="comment"># 将最大value的action的概率变为1 - eps + (eps / nA) </span></span><br><span class="line">    Qsa_next = np.dot(Q[next_state], policy_s)         <span class="comment"># get value of state at next time step</span></span><br><span class="line">    target = reward + (gamma * Qsa_next)               <span class="comment"># construct target</span></span><br><span class="line">    new_value = current + (alpha * (target - current)) <span class="comment"># get updated value </span></span><br><span class="line">    <span class="keyword">return</span> new_value</span><br></pre></td></tr></table></figure>
+
       
     </div>
     
     
     
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Reinforcement-Learning/" rel="tag"># Reinforcement Learning</a>
+          
+            <a href="/tags/python/" rel="tag"># python</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/30/c++_rules/" rel="next" title="c++ basic rules">
+                <i class="fa fa-chevron-left"></i> c++ basic rules
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -471,7 +561,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#EDCATION-BACKGROUND"><span class="nav-number">1.</span> <span class="nav-text">EDCATION BACKGROUND</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HONOR"><span class="nav-number">2.</span> <span class="nav-text">HONOR</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RESEARCH-EXPERIENCE"><span class="nav-number">3.</span> <span class="nav-text">RESEARCH EXPERIENCE</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Research-the-basic-methods-of-Object-Detection"><span class="nav-number">3.1.</span> <span class="nav-text">Research the basic methods of Object Detection</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Adapt-Super-resolution-into-real-production"><span class="nav-number">3.2.</span> <span class="nav-text">Adapt Super-resolution into real production</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#07-2018-09-2018"><span class="nav-number">3.2.1.</span> <span class="nav-text">07/2018-09/2018</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Malicious-Code-Detection"><span class="nav-number">3.3.</span> <span class="nav-text">Malicious Code Detection</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#03-2018-Present"><span class="nav-number">3.3.1.</span> <span class="nav-text">03/2018-Present</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Research-on-Task-Scheduling-Optimization-Methods-Concerning-Big-Data-Analysis-System"><span class="nav-number">3.4.</span> <span class="nav-text">Research on Task Scheduling Optimization Methods Concerning Big Data Analysis System</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#10-2017-Present"><span class="nav-number">3.4.1.</span> <span class="nav-text">10/2017-Present</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ACTIVITY"><span class="nav-number">4.</span> <span class="nav-text">ACTIVITY</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SKILLS-amp-ENGLISH-PROFICIENCY"><span class="nav-number">5.</span> <span class="nav-text">SKILLS &amp; ENGLISH PROFICIENCY</span></a></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#Thanks"><span class="nav-number"></span> <span class="nav-text">Thanks</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Thank-you-for-taking-the-time-to-read-my-resume-and-I’m-looking-forward-to-having-the-opportunity-to-work-with-you"><span class="nav-number">0.0.1.</span> <span class="nav-text">Thank you for taking the time to read my resume and I’m looking forward to having the opportunity to work with you =)</span></a></li></ol></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#我看到网上的强化学习教程通常比较复杂-看完莫烦python后总结出来如下-我将主要用代码形式进行理论的展现-其中个别地方用的是OPENAI的表示方式"><span class="nav-number">1.</span> <span class="nav-text">我看到网上的强化学习教程通常比较复杂, 看完莫烦python后总结出来如下, 我将主要用代码形式进行理论的展现, 其中个别地方用的是OPENAI的表示方式</span></a></li></ol><li class="nav-item nav-level-3"><a class="nav-link" href="#一、回合更新-Monte-Carlo-update"><span class="nav-number"></span> <span class="nav-text">一、回合更新(Monte-Carlo update)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#玩完所有的步数-等到一个episode结束之后再更新数值"><span class="nav-number">1.</span> <span class="nav-text">玩完所有的步数, 等到一个episode结束之后再更新数值</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、单步更新-Temporal-Difference-update"><span class="nav-number"></span> <span class="nav-text">二、单步更新(Temporal-Difference update)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#每走一步都会更新当前的数值"><span class="nav-number">1.</span> <span class="nav-text">每走一步都会更新当前的数值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-什么是off-on-policy"><span class="nav-number">2.</span> <span class="nav-text">1. 什么是off/on-policy?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#off-policy的更新value时候的next-action不一定会真实采取-而on-policy更新时候的next-value就是真实采取的"><span class="nav-number">3.</span> <span class="nav-text">off-policy的更新value时候的next_action不一定会真实采取, 而on-policy更新时候的next_value就是真实采取的</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-epsilon-greedy策略"><span class="nav-number">4.</span> <span class="nav-text">2. epsilon_greedy策略</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-Q-learning-with-sarsa-max-off-policy"><span class="nav-number">5.</span> <span class="nav-text">3. Q-learning with sarsa_max?(off-policy)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-Sarsa-Learning"><span class="nav-number">6.</span> <span class="nav-text">4. Sarsa Learning</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-expected-Sarsa"><span class="nav-number">7.</span> <span class="nav-text">5. expected Sarsa</span></a></li></ol></li></div>
             
 
           </div>
