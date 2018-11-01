@@ -1,128 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[强化学习二]]></title>
+    <title><![CDATA[Reinforcement Learning (Second)]]></title>
     <url>%2F2018%2F11%2F01%2FReinforce_Learning2%2F</url>
     <content type="text"><![CDATA[Reference : An introduction to Deep Q-Learning: let’s play DoomDeep Q-Learning Network (DQN)1. 深度强化学习对于一个复杂的游戏，表示动作及其Value、在Q表里搜索相应的动作变得十分没有效率。因此这里改用神经网络进行Q表的计算。 每次将S放入，即可计算出相应的action及对应的value \(w\)表示神经网络的权值，\(R\)表示Reward，\(Q\)表示Q表中相应状态和动作对应的数值 $$current\_predict\_Q = \hat{Q}(s,a,w)$$ $$Grdient = \bigtriangledown \hat{Q}(s,a,w)$$ $$\Delta w(TDerror) = \alpha[R + \gamma max_{a} \hat{Q}(s\prime ,a, w)) - current\_predict\_Q]$$ 2. 主要优化方法 经验回放(Experience Deplay)和固定Q目标是其中的两个主要贡献 经验回放有些动作的代价很大，我们可以把经历过的 \(&lt;S_{t}, A_{t}, R_{t+1}, S_{t+1}&gt;\) 储存在缓冲区中(replay buffer)，后面可以再次用来学习。并可以采取优先经验回收我们认为，loss越大的数值越具有学习价值，因此buffer里的所有数据都根据其loss决定被选择的概率，每一次学习之后都会更新其概率\(p(i)=\frac{p_{i}^{a}}{\sum_{k=1}^{n} p_{k}^{a}}\),这里的\(a\)保证了不完全按照概率，减少过拟合。（a=1时完全按照概率选取） 研究证明，优先经验回收策略可以减少迭代次数 Q固定我们可以看到在我们的\(R + \gamma max_{a} \hat{Q}(s\prime ,a, w)\)和\(\hat{Q}(s,a,w)\)中都有\(w\)存在。因此两者都在变，导致无法持续收敛。 打个比方。小明在追他养的牛，想要不断向他的牛靠近。然而他的牛的位置（Q）因为\(w\)的改变也在不断变化。可能一会在小明前，一会去小明后。小明也会懵逼，到底该往哪个方向追。因此我们将\(w^{-}\)固定，事后更新\(w^{-} \gets w\)。这样保证了在收敛过程中目标是确定的不会变化。 $$\Delta w(TDerror) = \alpha[R + \gamma max_{a} \hat{Q}(s\prime ,a, w^{-})) - \hat{Q}(s,a,w)]\bigtriangledown \hat{Q}(s,a,w)$$ Thrun 和 Schwartz，1993 年，《使用函数逼近进行强化学习存在的问题》（ 高估 Q 值）van Hasselt et al.，2015 年，《双 Q 学习的深度强化学习》Schaul et al.，2016 年，《优先经验回放》Wang et al.，2015 年，《深度强化学习的对抗网络架构》Hausknecht 和 Stone，2015 年，《部分可观察 MDP 的深度递归 Q 学习》]]></content>
-      <categories>
-        <category>Reinforcement Learning</category>
-      </categories>
-      <tags>
-        <tag>deep learning</tag>
-      </tags>
   </entry>
   <entry>
     <title><![CDATA[Basic Rules of Tensorflow]]></title>
     <url>%2F2018%2F10%2F31%2Ftensorflow_basic%2F</url>
     <content type="text"><![CDATA[常见符号1. tf.Variable 与 tf.constant 第一个可以根据计算改变，第二个是不能变的, 因此神经网络的权值通常都是Variable另外要注意, 定义了变量和常量之后，要初始化才能使用 123init = tf.global_variables_initializer()with tf.Session() as sess: sess.run(init) 2. tf.reduce_mean 取平均值，后面跟1是取行，跟0是取列 123456789101112import numpy as npimport tensorflow as tfx = np.array([[1.,2.,3.],[4.,5.,6.]])with tf.Session() as sess: mean_none = sess.run(tf.reduce_mean(x)) mean_1 = sess.run(tf.reduce_mean(x,1)) mean_2 = sess.run(tf.reduce_mean(x,0)) print(x) print(mean_none) print(mean_1) print(mean_2) 3. tf.equal 分别比较矩阵中相同的元素，相同就返回true,不同就返回false 12345678import tensorflow as tf import numpy as np A = [[1,3,4,5,6]] B = [[1,3,4,3,2]] with tf.Session() as sess: print(sess.run(tf.equal(A, B))) 4. tf.truncated_normal shape 表示要生成的矩阵的大小mean 表示正态函数的均值stddev表示要生成的随机数的方差seed 是随机数种，通常条件下为None 1tf.random_normal(shape, mean=0.0, stddev=1.0, dtype=tf.float32, seed=None, name=None) 5. tf.reshape 更改矩阵的大小, 通常对图像进行改变参数中可以指定一个 -1 （且只能有一个）, 将根据其他参数的指定自动计算出该维度 1https://blog.csdn.net/m0_37592397/article/details/78695318]]></content>
-      <categories>
-        <category>Tensorflow</category>
-      </categories>
-      <tags>
-        <tag>Tensorflow</tag>
-      </tags>
   </entry>
   <entry>
     <title><![CDATA[Flower Classification via VGG]]></title>
     <url>%2F2018%2F10%2F31%2Fflower_classification%2F</url>
     <content type="text"><![CDATA[利用vgg迁移学习实现花朵的分类，基于tensorflow进行实现为什么要迁移学习 一个好的CNN可以判断出一个图片的基本轮廓, 我们利用这个训练好的CNN得到轮廓并扁平化处理, 我们要做的就是搭建ANN, 来实现我们自己的classifier一个理解的网站 首先介绍两个比较常用的方法1. 单热点编码 在这里我们有五种花, 他们的名字都是中文, 我们需要对他进行编码 1234567/* labels是我们要编码的str数组，生成了labels_vecs的二维单热点编码 */from sklearn.preprocessing import LabelBinarizerlb = LabelBinarizer()lb.fit(labels)labels_vecs = lb.transform(labels) array([[0, 1, 0, 0, 0], [0, 1, 0, 0, 0], [0, 1, 0, 0, 0], …, [0, 0, 0, 1, 0], [0, 0, 0, 1, 0], [0, 0, 0, 1, 0]])12 2. 分类—我们需要随机的分出test、valid和Train 这里使用机器学习库 how to use 123456789101112131415from sklearn.model_selection import StratifiedShuffleSplit/* 固定搭配，里面的参数要弄懂 */ss = StratifiedShuffleSplit(n_splits=1, test_size=0.2)/* 注意一定要加next，这里返回的是indices（指数） 即数标 */train_idx, val_idxs = next(ss.split(codes,labels_vecs))half_val = int(len(val_idxs)/2)/* 把valid拆分成valid和test */val_idx,test_idx = val_idxs[:half_val],val_idxs[half_val:]train_x, train_y = codes[train_idx],labels_vecs[train_idx]val_x, val_y = codes[val_idx],labels_vecs[val_idx]test_x, test_y = codes[test_idx],labels_vecs[test_idx] 3. 储存结果 每次训练结束都要把参数的结果储存到checkpoint中来, 下一次test时候直接进行调用 4. 计算主体 外部一个epochs的循环，内部一个计算函数 储存结果12/* 详见training部分 */saver.save(sess, "checkpoints/flowers.ckpt") 加载结果进行使用1234567891011121314/* 先迁移得到一维矩阵，然后Saver加载参数，test一边 */with tf.Session() as sess: img = utils.load_image(test_img_path) img = img.reshape((1, 224, 224, 3)) feed_dict = &#123;input_: img&#125; code = sess.run(vgg.relu6, feed_dict=feed_dict) saver = tf.train.Saver()with tf.Session() as sess: saver.restore(sess, tf.train.latest_checkpoint('checkpoints')) feed = &#123;inputs_: code&#125; prediction = sess.run(predicted, feed_dict=feed).squeeze() data cutting1234567891011121314/* 设置函数10个图片的处理 */def get_batches(x, y, n_batches=10): """ Return a generator that yields batches from arrays x and y. """ batch_size = len(x)//n_batches for ii in range(0, n_batches*batch_size, batch_size): # If we're not on the last batch, grab data with size batch_size if ii != (n_batches-1)*batch_size: X, Y = x[ii: ii+batch_size], y[ii: ii+batch_size] # On the last batch, grab the rest of the data else: X, Y = x[ii:], y[ii:] # I love generators yield X, Y building NN123456789101112131415161718inputs_ = tf.placeholder(tf.float32, shape=[None, codes.shape[1]])labels_ = tf.placeholder(tf.int64, shape=[None, labels_vecs.shape[1]])# TODO: Classifier layers and operations/* 搭建一个简单的ANN */fc = tf.contrib.layers.fully_connected(inputs_,256)logits = tf.contrib.layers.fully_connected(fc, labels_vecs.shape[1], activation_fn=None)cross_entropy = tf.nn.softmax_cross_entropy_with_logits(labels=labels_, logits=logits)cost = tf.reduce_mean(cross_entropy)optimizer = tf.train.AdamOptimizer().minimize(cost)# Operations for validation/test accuracypredicted = tf.nn.softmax(logits)correct_pred = tf.equal(tf.argmax(predicted, 1), tf.argmax(labels_, 1))accuracy = tf.reduce_mean(tf.cast(correct_pred, tf.float32)) Training123456789101112131415161718192021222324epochs = 10iteration = 0saver = tf.train.Saver()with tf.Session() as sess: sess.run(tf.global_variables_initializer()) for e in range(epochs): for x, y in get_batches(train_x, train_y): feed = &#123;inputs_: x, labels_: y&#125; loss, _ = sess.run([cost, optimizer], feed_dict=feed) print("Epoch: &#123;&#125;/&#123;&#125;".format(e+1, epochs), "Iteration: &#123;&#125;".format(iteration), "Training loss: &#123;:.5f&#125;".format(loss)) iteration += 1 if iteration % 5 == 0: feed = &#123;inputs_: val_x, labels_: val_y&#125; val_acc = sess.run(accuracy, feed_dict=feed) print("Epoch: &#123;&#125;/&#123;&#125;".format(e, epochs), "Iteration: &#123;&#125;".format(iteration), "Validation Acc: &#123;:.4f&#125;".format(val_acc)) saver.save(sess, "checkpoints/flowers.ckpt")]]></content>
-      <categories>
-        <category>Computer Vision</category>
-      </categories>
-      <tags>
-        <tag>CV</tag>
-        <tag>transfer learning</tag>
-        <tag>CNN</tag>
-      </tags>
   </entry>
   <entry>
     <title><![CDATA[OBject claasification via Resnet50]]></title>
     <url>%2F2018%2F10%2F31%2FModel_detexting_1%2F</url>
     <content type="text"><![CDATA[how to detect a model1234567891011121314from keras.preprocessing import image from tqdm import tqdmdef path_to_tensor(img_path): # loads RGB image as PIL.Image.Image type img = image.load_img(img_path, target_size=(224, 224)) # convert PIL.Image.Image type to 3D tensor with shape (224, 224, 3) x = image.img_to_array(img) # convert 3D tensor to 4D tensor with shape (1, 224, 224, 3) and return 4D tensor return np.expand_dims(x, axis=0)def paths_to_tensor(img_paths): list_of_tensors = [path_to_tensor(img_path) for img_path in tqdm(img_paths)] return np.vstack(list_of_tensors) you can check in this Dictionary 123456from keras.applications.resnet50 import preprocess_input, decode_predictionsdef ResNet50_predict_labels(img_path): # returns prediction vector for image located at img_path img = preprocess_input(path_to_tensor(img_path)) return np.argmax(ResNet50_model.predict(img))]]></content>
-      <categories>
-        <category>Computer Vision</category>
-      </categories>
-      <tags>
-        <tag>classification</tag>
-        <tag>CV</tag>
-      </tags>
   </entry>
   <entry>
     <title><![CDATA[一些在图像处理上常用的方法]]></title>
     <url>%2F2018%2F10%2F31%2Fbasic%20operations%20of%20CV%2F</url>
     <content type="text"><![CDATA[1. 获取图像目录 glob, cv2 123456789import globfiles_path = glob.glob(r'flower/*')import cv2img = cv2.imread(files_path[1])img = cv2.reshape(img, (224,224))size = img.size()print(size) 2. 将图像矩阵连接12345codes = Noneif codes is None: codes = code_batchelse: codes = np.concatnate((codes,code_batch)) 3. 将图像矩阵（经过CNN处理完）写入txt，并将结果一并储存123456with open('codes','w') as f: codes.tofile(f) with open('labels','w') as f: writer = csv.writer(f,delimiter='\n') writer.writerow(labels) 4. 将图像矩阵（经过CNN处理完）从txt和CSV读出12345678import csvwith open('labels') as f: reader = csv.reader(f,delimiter='\n') labels = np.array([each for each in reader if len(each) &gt; 0] ).squeeze() with open('codes') as f: codes = np.fromfile(f, dtype=np.float32) codes = np.codes.reshape(len(labels),-1) 5. 图像读出并存回123456789import cv2 as cv# load img = cv.imread(imagepath)# shape=(height, width, channel)h,w,c = img.shape# showcv.imshow('window_title', img)# savecv.imwrite(savepath, img) 6.图像旋转12345678910111213141516171819import cv2from math import *import numpy as npimg = cv2.imread(path[0])height,width=img.shape[:2]degree=45#旋转后的尺寸heightNew=int(width*fabs(sin(radians(degree)))+height*fabs(cos(radians(degree))))widthNew=int(height*fabs(sin(radians(degree)))+width*fabs(cos(radians(degree))))matRotation=cv2.getRotationMatrix2D((width/2,height/2),degree,1)matRotation[0,2] +=(widthNew-width)/2 #重点在这步，目前不懂为什么加这步matRotation[1,2] +=(heightNew-height)/2 #重点在这步imgRotation=cv2.warpAffine(img,matRotation,(widthNew,heightNew),borderValue=(255,255,255)) 7. 图像色道分离与合并# 加载图像 image = cv2.imread(args[&quot;image&quot;]) # 通道分离，注意顺序BGR不是RGB,并且会发现得到的都是灰度图 (B, G, R) = cv2.split(image) # 生成一个值为0的单通道数组 zeros = np.zeros(image.shape[:2], dtype = &quot;uint8&quot;) # 分别扩展B、G、R成为三通道。另外两个通道用上面的值为0的数组填充 cv2.imshow(&quot;Blue&quot;, cv2.merge([B, zeros, zeros])) cv2.imshow(&quot;Green&quot;, cv2.merge([zeros, G, zeros])) cv2.imshow(&quot;Red&quot;, cv2.merge([zeros, zeros, R]))]]></content>
-      <categories>
-        <category>Computer Vision</category>
-      </categories>
   </entry>
   <entry>
-    <title><![CDATA[强化学习（一）]]></title>
+    <title><![CDATA[强化学习（First）]]></title>
     <url>%2F2018%2F10%2F31%2FReinforce_Learning1%2F</url>
     <content type="text"><![CDATA[我看到网上的强化学习教程通常比较复杂, 看完莫烦python后总结出来如下, 我将主要用代码形式进行理论的展现, 其中个别地方用的是OPENAI的表示方式 一、回合更新(Monte-Carlo update)玩完所有的步数, 等到一个episode结束之后再更新数值 Monte-Carlo Learning这个方法比较esay, 就是根据尽可能多的经验, 以及平均期望来更新数值。实验成本大, 并且现在很多需要决策的问题是没有结束标志的。 二、单步更新(Temporal-Difference update)每走一步都会更新当前的数值 Q-Learning(off-policy), Sarsa(on-policy) 1. 什么是off/on-policy?off-policy的更新value时候的next_action不一定会真实采取, 而on-policy更新时候的next_value就是真实采取的 小明正在准备高考, 课间的时候小明在思考接下来学习什么知识。首先, 小明想学习数学, 但是小明的数学已经学习的很熟练了，于是小明并没有拿出课本, 而是在脑海里把课本背诵了一边, 这样一来, 小明虽然没有拿出课本, 但是依然更新了当前的知识, 接下来小明可能拿出的是英语/语文/物理课本进行学习。这就是我们的off-policy。倘若是on-policy, 小明就失去了默背这一流程, 想回忆一下数学下一步骤必须拿出数学课本 2. epsilon_greedy策略 取到最大值的概率为 (1-eps) + (eps)/n取到其他n-1种动作的概率为 (eps)/n 12345678910111213141516def epsilon_greedy(Q, state, nA, eps): """Selects epsilon-greedy action for supplied state. Params ====== Q (dictionary): action-value function state (int): current state nA (int): number actions in the environment eps (float): epsilon """ if random.random() &gt; eps: # 此时是选取最大数值的action进行返回 return np.argmax(Q[state]) else: # 这个时候对每个取平均 return random.choice(np.arange(env.action_space.n)) 3. Q-learning with sarsa_max?(off-policy)sarsa_max: 选取下一状态是value最大的动作更新当前状态 1234567891011# Q-learning Sarsamaxdef update_Q_sarsamax(alpha, gamma, Q, state, action, reward, next_state=None): # Returns updated Q-value for the most recent experience. current = Q[state][action] # estimate in Q-table (for current state, action pair) Qsa_next = np.max(Q[next_state]) if next_state is not None else 0 # find the max q in next_state, but this action is not the real action target = reward + (gamma * Qsa_next) # construct TD target new_value = current + (alpha * (target - current)) # get updated value return new_value 1234567891011121314# Q-learning while True: action = epsilon_greedy(Q, state, nA, eps) # epsilon-greedy action selection, get next_action in every interation next_state, reward, done, info = env.step(action) # take action A, observe R, S' score += reward # add reward to agent's score Q[state][action] = update_Q_sarsamax(alpha, gamma, Q, \ state, action, reward, next_state) state = next_state #只更新状态 if done: tmp_scores.append(score) # append score break 4. Sarsa Learning每次迭代都会选出下一状态和下一状态将要采取的动作，根据事实(update_Q_sarsa)来进行更新12345678910def update_Q_sarsa(alpha, gamma, Q, state, action, reward, next_state=None, next_action=None): #Returns updated Q-value for the most recent experience. current = Q[state][action] # estimate in Q-table (for current state, action pair) # get value of state, action pair at next time step Qsa_next = Q[next_state][next_action] if next_state is not None else 0 target = reward + (gamma * Qsa_next) # construct TD target new_value = current + (alpha * (target - current)) # get updated value return new_value 123456789101112131415161718while True: next_state, reward, done, info = env.step(action) # take action A, observe R, S' score += reward # add reward to agent's score if not done: next_action = epsilon_greedy(Q, next_state, nA, eps) # epsilon-greedy action Q[state][action] = update_Q_sarsa(alpha, gamma, Q, \ state, action, reward, next_state, next_action) state = next_state # S &lt;- S' action = next_action # A &lt;- A' ''' 这里会根据传入update函数的next_action 和 next_state进行更新 ''' if done: Q[state][action] = update_Q_sarsa(alpha, gamma, Q, \ state, action, reward) tmp_scores.append(score) # append score break 5. expected Sarsa3,4 种描述的更新方法都是取单一action的value, 在期望Sarsa中将对所有的action产生的value计算一个平均期望进行更新 1234567891011def update_Q_expsarsa(alpha, gamma, nA, eps, Q, state, action, reward, next_state=None): """Returns updated Q-value for the most recent experience.""" current = Q[state][action] # estimate in Q-table (for current state, action pair) policy_s = np.ones(nA) * eps / nA # 建立一个向量储存概率，每一个都是 （eps / nA）, nA表示action数量 policy_s[np.argmax(Q[next_state])] = 1 - eps + (eps / nA) # 将最大value的action的概率变为1 - eps + (eps / nA) Qsa_next = np.dot(Q[next_state], policy_s) # get value of state at next time step target = reward + (gamma * Qsa_next) # construct target new_value = current + (alpha * (target - current)) # get updated value return new_value]]></content>
-      <categories>
-        <category>Reinforcement Learning</category>
-      </categories>
-      <tags>
-        <tag>Reinforcement Learning</tag>
-        <tag>python</tag>
-      </tags>
   </entry>
   <entry>
     <title><![CDATA[c++ basic rules]]></title>
     <url>%2F2018%2F10%2F30%2Fc%2B%2B_rules%2F</url>
     <content type="text"><![CDATA[C++ STL1. mapThis can be use there are some simple rules, for example, an integer refers to a string, like in leetcode12 and leetcode1312345678910111213141516//#include &lt;iostream&gt;#include &lt;map&gt;using namespace std; int main()&#123; map&lt;int, string&gt; mymap; mymap.insert(pair&lt;int, string&gt;(3,"sdf"));//using "insert" to do the insert operation map&lt;int, string&gt;::iterator iter;// define an interator for (iter = mymap.begin(); iter != mymap.end(); iter ++)&#123;// from begin() to the end() cout&lt;&lt;iter-&gt;first&lt;&lt;" "&lt;&lt;iter-&gt;second;// first and second value &#125; return 0;&#125; c++ String12int first = str.find(s); // return the first index of substring "s" in "str"int last = str.find(s); // return the last index of substring "s" in "str"]]></content>
-      <categories>
-        <category>c++</category>
-      </categories>
-      <tags>
-        <tag>c++</tag>
-        <tag>data_structure</tag>
-        <tag>map</tag>
-      </tags>
   </entry>
   <entry>
     <title><![CDATA[Recursion---leetcode]]></title>
     <url>%2F2018%2F10%2F30%2FRecursion%2F</url>
     <content type="text"><![CDATA[RecursionFrom my perspective, Recursion is an efficient way because it makes us to only look at the current step. However, its complexity is very high. Example1. 10. Regular Expression Matching from Leetcode You can see the description on the above link. My problem is that it contains tooooo many different combination of “character”, “.” and “*“. It looks like a time array, which you should look at the moment. time before and the future, which is very bothering. So what we do here is only determine the current action, and let the function to judge what to do next itself. So, given two arries, we have several choices whether reach the end?12345678910# p and s reach the end at the same time# p reach the end, but s doesn'tdef isMatch(s, p)&#123; if(p.empty())&#123; if(s == empty()) return 1; else return 0 &#125;&#125;``` 2. if the first character match? def isMatch(s, p){ bool first_match; if(s[0] == p[0] || p[0] == ‘.’) first_match = true; }13. is it followed by * ? def isMatch(s, p){ if(p.length() &gt;= 2 || p[1] == ‘‘): # the second character of p is # this if means: * is 0 or not return isMatch(s, p.substr(2)) || (first_match &amp;&amp; isMatch(s.substr(1), p) else: return first_match &amp;&amp; isMatch(s.substr(1), p.substr(1)) }1The complete code in C++ #include using namespace std;class Solution {public: bool isMatch(string s, string p) { bool first = false; if(p.empty()){ return (s.empty()); } else{ first = (!s.empty() &amp;&amp; (s[0] == p[0] || p[0] == ‘.’)); } if(p.length()&gt;= 2 &amp;&amp; p[1] == ‘‘){ return (isMatch(s, p.substr(2)) || (first &amp;&amp; isMatch(s.substr(1), p) ) ); // make be 0 || make * be at least 1 } else return first &amp;&amp; isMatch(s.substr(1), p.substr(1)); }};int main() { Solution solution; return 0; }`We can see that the compexity is high. Because there are many duplicated calculations. SO we can set an array to solve this problem, this is same with DYNAMIC PROGRAMMING, which we will dicuss in there.]]></content>
-      <categories>
-        <category>leetcodeNotes</category>
-      </categories>
-      <tags>
-        <tag>algorithm</tag>
-      </tags>
   </entry>
   <entry>
     <title><![CDATA[Dynamic Programming---Leetcode]]></title>
     <url>%2F2018%2F10%2F30%2FDP%2F</url>
     <content type="text"><![CDATA[Dynamic ProgrammingThe situations are that our current situations depend on the old calculations. So we don’t need to start from the begining again, we can store the outcome of each step so we can cite it directly. Usually, the parameters of the function are the index instead of the object (string etc.) itself. Because our operations are on the matrix. Example1. 5. Longest Palindromic Substring from LeetcodeWe calculation according to the length of the string. If we wanna judge ‘cbbaac’, we can find whether ‘bbaa’ is Palindromic, then find the character from the two ends are same. Example2. 10. Regular Expression Matching from the LeetcodeJust like we talk in “Recursion”, DP algorithm sometimes help Recursion to decrease the calculation. Such as: 12345def dp(i, j, arr): if arr[i][j] != null: ## it can returns directly return arr[i][j] else: calculate the arr[i][j]]]></content>
-      <categories>
-        <category>leetcodeNotes</category>
-      </categories>
   </entry>
   <entry>
     <title><![CDATA[How to apply hexo to Github Page (一)]]></title>
     <url>%2F2018%2F10%2F20%2Fhexo%2F</url>
     <content type="text"><![CDATA[How to build up your hexo on Github PageFirstly, you need to sign up a github account and build a repo which has the same name with your github. github name : JasonWang0808gitpage name : JasonWang0808.github.io Secondly, prepare the hexo The set up steps are as followed:Step1. Install Node.js and Git and make sure they have been installed properly. 1234Win+R cmdnode -vgit -version step2. Prepare the SSH key and goto the github “SSH and GPG keys” to fill in 123456#open the git bashssh-keygen -t rsa# type enter three timescd C:\Users\Administrator\.sshcat id_rsa.pub# copy the content 123#evaluatessh -T git@github.com## return Hi step3. Install hexo 123456789cd xxxnpm install hexo-cli -ghexo init Hexo cd /Hexo npm instal hexo cleanhexo generate（可简写为hexo g） hexo sever（可简写为hexo s）npm install –save hexo-deployer-git step4. Modify the config 12345# use sublime to open /blog/_config.yml and find "deploy"deploy:type: gitrepo: git@github.com:yourname/yourname.github.io.gitbranch: master step5. modify ./config.yml and ./themes/next/config.yml depends on your hobby 1hexo d Step6. next, you can change your theme and add more decorations to your website A good way to learn to decorationstep5. modify ./config.yml and ./themes/next/config.yml depends on your hobby 1hexo d Step7. start to write on your github page with hexo 1234hexo new "xxx"# this can help you to build a new xx.mdhexo new page "xxx"# this help you to build a new page, for example, "categories" Every xx.md has its head, for example, Title is the name. Tags are tags, you know. categories is a big package containing all the essays with this category12345---title: Notes of LeetCode(一)tags: [leetcode, c++,algorithm]categories: leetcodeNotes--- Finally, you can use Tengxun cloud to get a domain for your pageThere are two records you need to add12#get the ip address of your page ping www.xx.github.io]]></content>
-      <categories>
-        <category>hexo</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
-        <tag>github</tag>
-      </tags>
   </entry>
   <entry>
     <title><![CDATA[Notes of LeetCode (a)]]></title>
     <url>%2F2018%2F10%2F20%2Fleetcode%2F</url>
     <content type="text"><![CDATA[3. Longest Substring Without Repeating CharactersⅠ. DATA STRUCTURE: HashMap HashMap is a quick way to find elements in the time complexity of O(1) and is commonly used in leetcode. 1HashMap&lt;Charactor,Integer&gt; map = new HashMap&lt;&gt; (); Ⅱ. Method:Sliding WindowThe sliding window is an abstract concept commonly used in array/String problems. It likes Dynamic Programming, because we don’t know the answer until we finish it. The length is j - i because the arrange is [i, j) (left-closed, right-open). We set the ANS to record the longest answer. Once we find our next number is replucated in our map, we change the i to the number in our map, same with truncating. Then next, until we reach the end of the array. 1234567891011121314151617class Solution &#123; //map.put map.get map.containsKey public int lengthOfLongestSubstring(String s) &#123; HashMap&lt;Character, Integer&gt; map = new HashMap&lt;&gt;(); int i = 0, j = 0, ans = 0; int l = s.length(); while(i &lt; l &amp;&amp; j &lt; l)&#123; if(map.containsKey(s.charAt(j)))&#123; //if next element in the map i = Math.max(map.get(s.charAt(j)) + 1, i); // abba, max is to prevent : "a" in the end makes i be '0' &#125; ans = Math.max(ans, j-i+1); // keep the bigger ans map.put(s.charAt(j), j); // refresh the map j ++; // goto next number &#125; return ans; &#125;&#125;]]></content>
-      <categories>
-        <category>leetcodeNotes</category>
-      </categories>
-      <tags>
-        <tag>algorithm</tag>
-        <tag>c++</tag>
-        <tag>leetcode</tag>
-      </tags>
   </entry>
   <entry>
     <title><![CDATA[Welcome]]></title>
