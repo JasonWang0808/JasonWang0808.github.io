@@ -81,17 +81,17 @@
 
 
 
-<meta name="description" content="C++ STL1. mapThis can be use there are some simple rules, for example, an integer refers to a string, like in leetcode12 and leetcode1312345678910111213141516//#include &amp;lt;iostream&amp;gt;#include &amp;lt;ma">
+<meta name="description" content="Policy Based method莫烦python Policy Based Method意思是给特定的状态特定的动作 ,适用于一个连续的运动 , 相比于Value-Based方法，我们只在乎当前状态经过神经网络运算出来的action。通过Reward进行训练神经网络的参数\(w\)，而不考虑其数值的算法进行收敛。随机性搜索策略 (这里以蒙特卡洛为例子，即有限个动作)\(w = w +">
 <meta property="og:type" content="article">
-<meta property="og:title" content="c++ basic rules">
-<meta property="og:url" content="http://yoursite.com/2018/10/30/c++_rules/index.html">
+<meta property="og:title" content="Reinforment Learning(Four) Policy Based Method">
+<meta property="og:url" content="http://yoursite.com/2018/11/03/Reinforcement_Learning4/index.html">
 <meta property="og:site_name" content="Junyu Wang&#39;s Blog">
-<meta property="og:description" content="C++ STL1. mapThis can be use there are some simple rules, for example, an integer refers to a string, like in leetcode12 and leetcode1312345678910111213141516//#include &amp;lt;iostream&amp;gt;#include &amp;lt;ma">
+<meta property="og:description" content="Policy Based method莫烦python Policy Based Method意思是给特定的状态特定的动作 ,适用于一个连续的运动 , 相比于Value-Based方法，我们只在乎当前状态经过神经网络运算出来的action。通过Reward进行训练神经网络的参数\(w\)，而不考虑其数值的算法进行收敛。随机性搜索策略 (这里以蒙特卡洛为例子，即有限个动作)\(w = w +">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-11-01T12:31:40.251Z">
+<meta property="og:updated_time" content="2018-11-03T04:14:10.211Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="c++ basic rules">
-<meta name="twitter:description" content="C++ STL1. mapThis can be use there are some simple rules, for example, an integer refers to a string, like in leetcode12 and leetcode1312345678910111213141516//#include &amp;lt;iostream&amp;gt;#include &amp;lt;ma">
+<meta name="twitter:title" content="Reinforment Learning(Four) Policy Based Method">
+<meta name="twitter:description" content="Policy Based method莫烦python Policy Based Method意思是给特定的状态特定的动作 ,适用于一个连续的运动 , 相比于Value-Based方法，我们只在乎当前状态经过神经网络运算出来的action。通过Reward进行训练神经网络的参数\(w\)，而不考虑其数值的算法进行收敛。随机性搜索策略 (这里以蒙特卡洛为例子，即有限个动作)\(w = w +">
 
 
 
@@ -121,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/10/30/c++_rules/">
+  <link rel="canonical" href="http://yoursite.com/2018/11/03/Reinforcement_Learning4/">
 
 
 
 
 
-  <title>c++ basic rules | Junyu Wang's Blog</title>
+  <title>Reinforment Learning(Four) Policy Based Method | Junyu Wang's Blog</title>
   
 
 
@@ -273,7 +273,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/30/c++_rules/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/03/Reinforcement_Learning4/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="JunYu Wang">
@@ -290,7 +290,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">c++ basic rules</h1>
+          <h1 class="post-title" itemprop="name headline">Reinforment Learning(Four) Policy Based Method</h1>
         
 
         <div class="post-meta">
@@ -330,9 +330,14 @@
       
 
       
-        <h3 id="C-STL"><a href="#C-STL" class="headerlink" title="C++ STL"></a>C++ STL</h3><h4 id="1-map"><a href="#1-map" class="headerlink" title="1. map"></a>1. map</h4><p>This can be use there are some simple rules, for example, an integer refers to a string, like in leetcode12 and leetcode13<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;map&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>; </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">map</span>&lt;<span class="keyword">int</span>, <span class="built_in">string</span>&gt; mymap;</span><br><span class="line">    mymap.insert(pair&lt;<span class="keyword">int</span>, <span class="built_in">string</span>&gt;(<span class="number">3</span>,<span class="string">"sdf"</span>));<span class="comment">//using "insert" to do the insert operation</span></span><br><span class="line">    </span><br><span class="line">    <span class="built_in">map</span>&lt;<span class="keyword">int</span>, <span class="built_in">string</span>&gt;::iterator iter;<span class="comment">// define an interator</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span> (iter = mymap.begin(); iter != mymap.end(); iter ++)&#123;<span class="comment">// from begin() to the end()</span></span><br><span class="line">		<span class="built_in">cout</span>&lt;&lt;iter-&gt;first&lt;&lt;<span class="string">" "</span>&lt;&lt;iter-&gt;second;<span class="comment">// first and second value</span></span><br><span class="line">	&#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h3 id="c-String"><a href="#c-String" class="headerlink" title="c++ String"></a>c++ String</h3><figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">int <span class="built_in">first</span> = str.find(s); // <span class="built_in">return</span> the <span class="built_in">first</span> index of <span class="built_in">substring</span> <span class="string">"s"</span> <span class="keyword">in</span> <span class="string">"str"</span></span><br><span class="line">int <span class="built_in">last</span> = str.find(s); // <span class="built_in">return</span> the <span class="built_in">last</span> index of <span class="built_in">substring</span> <span class="string">"s"</span> <span class="keyword">in</span> <span class="string">"str"</span></span><br></pre></td></tr></table></figure>
+        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>  
 
+<h3 id="Policy-Based-method"><a href="#Policy-Based-method" class="headerlink" title="Policy Based method"></a>Policy Based method</h3><h5 id="莫烦python-Policy-Based-Method"><a href="#莫烦python-Policy-Based-Method" class="headerlink" title="莫烦python Policy Based Method"></a><a href="https://github.com/MorvanZhou/Reinforcement-learning-with-tensorflow/tree/master/contents/7_Policy_gradient_softmax" target="_blank" rel="noopener">莫烦python Policy Based Method</a></h5><p>意思是给特定的状态特定的动作 ,适用于一个连续的运动 , <strong>相比于Value-Based方法，我们只在乎当前状态经过神经网络运算出来的action。通过Reward进行训练神经网络的参数\(w\)，而不考虑其数值的算法进行收敛</strong>。<br>随机性搜索策略 (这里以蒙特卡洛为例子，即有限个动作)<br>\(w = w + \alpha \bigtriangledown_{\theta}log \pi_{\theta}(s_{\tau},a_{t}, w)v_{\tau}，可以看到v_{\tau}越大，更新的幅度越大\)<br>\(R_{\tau} = R_{t+1} + \gamma R_{t+2} + \gamma^{2} R_{t+3} + ….\)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">neg_log_prob = tf.reduce_sum(-tf.log(self.all_act_prob)*tf.one_hot(self.tf_acts, self.n_actions), axis=<span class="number">1</span>)</span><br><span class="line"><span class="comment">##这里log有符号，因此minimize其实是增大</span></span><br><span class="line">loss = tf.reduce_mean(neg_log_prob * self.tf_vt) </span><br><span class="line"><span class="comment"># 对于不同action，他们的tf.vt不同，train的过程都是增加，但是vt越大增加的概率越大，训练到最后会选择那些vt大的动作</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>\(v_{t}\)是指奖惩的大小，如果我们发现奖惩很好，那么调整神经网络使得这个动作以后多被选中一些。 如果觉得不好，则下一次选中的机会会变小  </p>
+</blockquote>
+<h3 id="actor-critic-method"><a href="#actor-critic-method" class="headerlink" title="actor-critic method"></a>actor-critic method</h3>
       
     </div>
     
@@ -356,8 +361,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/10/30/Recursion/" rel="next" title="Recursion---leetcode">
-                <i class="fa fa-chevron-left"></i> Recursion---leetcode
+              <a href="/2018/11/02/Reinforcement_Learning3/" rel="next" title="Reinforcement Learning（Third）Code of DQN with TF">
+                <i class="fa fa-chevron-left"></i> Reinforcement Learning（Third）Code of DQN with TF
               </a>
             
           </div>
@@ -365,10 +370,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/10/31/Reinforce_Learning1/" rel="prev" title="Reinforcement Learning（First）">
-                Reinforcement Learning（First） <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -489,7 +490,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#C-STL"><span class="nav-number">1.</span> <span class="nav-text">C++ STL</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-map"><span class="nav-number">1.1.</span> <span class="nav-text">1. map</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#c-String"><span class="nav-number">2.</span> <span class="nav-text">c++ String</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Policy-Based-method"><span class="nav-number">1.</span> <span class="nav-text">Policy Based method</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#莫烦python-Policy-Based-Method"><span class="nav-number">1.0.1.</span> <span class="nav-text">莫烦python Policy Based Method</span></a></li></ol></li></ol><li class="nav-item nav-level-3"><a class="nav-link" href="#actor-critic-method"><span class="nav-number">2.</span> <span class="nav-text">actor-critic method</span></a></li></div>
             
 
           </div>
