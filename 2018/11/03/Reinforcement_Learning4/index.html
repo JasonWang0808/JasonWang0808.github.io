@@ -88,7 +88,7 @@
 <meta property="og:site_name" content="Junyu Wang&#39;s Blog">
 <meta property="og:description" content="Policy Based method莫烦python Policy Based Method意思是给特定的状态特定的动作 ,适用于一个连续的运动 , 相比于Value-Based方法，我们只在乎当前状态经过神经网络运算出来的action。通过Reward进行训练神经网络的参数\(w\)，而不考虑其数值的算法进行收敛。随机性搜索策略 (这里以蒙特卡洛为例子，即有限个动作)\(w = w +">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-11-03T04:14:10.211Z">
+<meta property="og:updated_time" content="2018-11-03T04:30:02.915Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Reinforment Learning(Four) Policy Based Method">
 <meta name="twitter:description" content="Policy Based method莫烦python Policy Based Method意思是给特定的状态特定的动作 ,适用于一个连续的运动 , 相比于Value-Based方法，我们只在乎当前状态经过神经网络运算出来的action。通过Reward进行训练神经网络的参数\(w\)，而不考虑其数值的算法进行收敛。随机性搜索策略 (这里以蒙特卡洛为例子，即有限个动作)\(w = w +">
@@ -337,6 +337,9 @@
 <blockquote>
 <p>\(v_{t}\)是指奖惩的大小，如果我们发现奖惩很好，那么调整神经网络使得这个动作以后多被选中一些。 如果觉得不好，则下一次选中的机会会变小  </p>
 </blockquote>
+<p>但是对于没有终点的任务，比如我们训练一个小孩子上学、吃饭、睡觉、再上学….显然这个是没有终点的，我们找不到一个合适的时间点来更新我们的\(w\)，因此我们采用下面的公式</p>
+<p>$$<br>\Delta w = \alpha \ \bigtriangledown_{w}(log (S_{t}, A_{t}, w) Q(S_{t},A_{t}), 我们采用Q(S_{t},A_{t}来替换R_{\tau}<br>$$</p>
+<p>$$<br>Q(S_{t},A_{t} = Q(S_{t}, A_{t}) + \beta(R_{t+1} + \gamma Q(S_{t+1}, A_{t+1} - Q(S_{t},A_{t})<br>$$</p>
 <h3 id="actor-critic-method"><a href="#actor-critic-method" class="headerlink" title="actor-critic method"></a>actor-critic method</h3>
       
     </div>
