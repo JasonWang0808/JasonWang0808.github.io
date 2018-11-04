@@ -81,17 +81,17 @@
 
 
 
-<meta name="description" content="常见符号1. tf.Variable 与 tf.constant 第一个可以根据计算改变，第二个是不能变的, 因此神经网络的权值通常都是Variable另外要注意, 定义了变量和常量之后，要初始化才能使用  123init = tf.global_variables_initializer()with tf.Session() as sess:    sess.run(init) 2. tf.re">
+<meta name="description" content="Adapt Super-resolution into real production08/2018-11/2018 Tutor: Bart Selman from Cornell University  Purpose: Used symmetric padding to improve perceptual quality of image after super-resolution">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Basic Rules of Tensorflow">
-<meta property="og:url" content="http://yoursite.com/2018/10/31/tensorflow_basic/index.html">
+<meta property="og:title" content="Super-Resolution Research">
+<meta property="og:url" content="http://yoursite.com/2018/11/04/super-resolution/index.html">
 <meta property="og:site_name" content="Junyu Wang&#39;s Blog">
-<meta property="og:description" content="常见符号1. tf.Variable 与 tf.constant 第一个可以根据计算改变，第二个是不能变的, 因此神经网络的权值通常都是Variable另外要注意, 定义了变量和常量之后，要初始化才能使用  123init = tf.global_variables_initializer()with tf.Session() as sess:    sess.run(init) 2. tf.re">
+<meta property="og:description" content="Adapt Super-resolution into real production08/2018-11/2018 Tutor: Bart Selman from Cornell University  Purpose: Used symmetric padding to improve perceptual quality of image after super-resolution">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-11-01T12:31:48.900Z">
+<meta property="og:updated_time" content="2018-11-04T10:34:24.148Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Basic Rules of Tensorflow">
-<meta name="twitter:description" content="常见符号1. tf.Variable 与 tf.constant 第一个可以根据计算改变，第二个是不能变的, 因此神经网络的权值通常都是Variable另外要注意, 定义了变量和常量之后，要初始化才能使用  123init = tf.global_variables_initializer()with tf.Session() as sess:    sess.run(init) 2. tf.re">
+<meta name="twitter:title" content="Super-Resolution Research">
+<meta name="twitter:description" content="Adapt Super-resolution into real production08/2018-11/2018 Tutor: Bart Selman from Cornell University  Purpose: Used symmetric padding to improve perceptual quality of image after super-resolution">
 
 
 
@@ -121,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/10/31/tensorflow_basic/">
+  <link rel="canonical" href="http://yoursite.com/2018/11/04/super-resolution/">
 
 
 
 
 
-  <title>Basic Rules of Tensorflow | Junyu Wang's Blog</title>
+  <title>Super-Resolution Research | Junyu Wang's Blog</title>
   
 
 
@@ -273,7 +273,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/31/tensorflow_basic/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/04/super-resolution/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="JunYu Wang">
@@ -290,7 +290,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Basic Rules of Tensorflow</h1>
+          <h1 class="post-title" itemprop="name headline">Super-Resolution Research</h1>
         
 
         <div class="post-meta">
@@ -330,26 +330,12 @@
       
 
       
-        <h2 id="常见符号"><a href="#常见符号" class="headerlink" title="常见符号"></a>常见符号</h2><h3 id="1-tf-Variable-与-tf-constant"><a href="#1-tf-Variable-与-tf-constant" class="headerlink" title="1. tf.Variable 与 tf.constant"></a>1. tf.Variable 与 tf.constant</h3><blockquote>
-<p>第一个可以根据计算改变，第二个是不能变的, 因此神经网络的权值通常都是Variable<br>另外要注意, 定义了变量和常量之后，要初始化才能使用</p>
-</blockquote>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">init = <span class="keyword">tf</span>.global_variables_initializer()</span><br><span class="line">with <span class="keyword">tf</span>.Session() <span class="keyword">as</span> ses<span class="variable">s:</span></span><br><span class="line">    sess.run(init)</span><br></pre></td></tr></table></figure>
-<h3 id="2-tf-reduce-mean"><a href="#2-tf-reduce-mean" class="headerlink" title="2. tf.reduce_mean"></a>2. tf.reduce_mean</h3><blockquote>
-<p>取平均值，后面跟1是取行，跟0是取列</p>
-</blockquote>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">import tensorflow as tf</span><br><span class="line">x = np.array([[1.,2.,3.],[4.,5.,6.]])</span><br><span class="line"></span><br><span class="line">with tf.Session() as sess:</span><br><span class="line">    mean_none = sess.<span class="builtin-name">run</span>(tf.reduce_mean(x))</span><br><span class="line">    mean_1 = sess.<span class="builtin-name">run</span>(tf.reduce_mean(x,1))</span><br><span class="line">    mean_2 = sess.<span class="builtin-name">run</span>(tf.reduce_mean(x,0))</span><br><span class="line">    <span class="builtin-name">print</span>(x)</span><br><span class="line">    <span class="builtin-name">print</span>(mean_none)</span><br><span class="line">    <span class="builtin-name">print</span>(mean_1)</span><br><span class="line">    <span class="builtin-name">print</span>(mean_2)</span><br></pre></td></tr></table></figure>
-<h3 id="3-tf-equal"><a href="#3-tf-equal" class="headerlink" title="3. tf.equal"></a>3. tf.equal</h3><blockquote>
-<p>分别比较矩阵中相同的元素，相同就返回true,不同就返回false</p>
-</blockquote>
-<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">import tensorflow as tf  </span><br><span class="line"> import numpy as np  </span><br><span class="line">   </span><br><span class="line"> A = <span class="string">[[1,3,4,5,6]]</span>  </span><br><span class="line"> B = <span class="string">[[1,3,4,3,2]]</span>  </span><br><span class="line">   </span><br><span class="line"> with tf.Session() as sess:  </span><br><span class="line">     <span class="built_in">print</span>(sess.run(tf.equal(A, B)))</span><br></pre></td></tr></table></figure>
-<h3 id="4-tf-truncated-normal"><a href="#4-tf-truncated-normal" class="headerlink" title="4. tf.truncated_normal"></a>4. tf.truncated_normal</h3><blockquote>
-<p>shape 表示要生成的矩阵的大小<br>mean 表示正态函数的均值<br>stddev表示要生成的随机数的方差<br>seed 是随机数种，通常条件下为None</p>
-</blockquote>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tf.random_normal(shape, <span class="attribute">mean</span>=0.0, <span class="attribute">stddev</span>=1.0, <span class="attribute">dtype</span>=tf.float32, <span class="attribute">seed</span>=None, <span class="attribute">name</span>=None)</span><br></pre></td></tr></table></figure>
-<h3 id="5-tf-reshape"><a href="#5-tf-reshape" class="headerlink" title="5. tf.reshape"></a>5. tf.reshape</h3><blockquote>
-<p>更改矩阵的大小, 通常对图像进行改变<br>参数中可以指定一个 -1 （且只能有一个）, 将根据其他参数的指定自动计算出该维度</p>
-</blockquote>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:<span class="regexp">//</span>blog.csdn.net<span class="regexp">/m0_37592397/</span>article<span class="regexp">/details/</span><span class="number">78695318</span></span><br></pre></td></tr></table></figure>
+        <h3 id="Adapt-Super-resolution-into-real-production"><a href="#Adapt-Super-resolution-into-real-production" class="headerlink" title="Adapt Super-resolution into real production"></a>Adapt Super-resolution into real production</h3><h4 id="08-2018-11-2018"><a href="#08-2018-11-2018" class="headerlink" title="08/2018-11/2018"></a>08/2018-11/2018</h4><ul>
+<li><strong>Tutor:</strong> <a href="http://www.cs.cornell.edu/selman/" target="_blank" rel="noopener">Bart Selman from Cornell University</a> </li>
+<li><strong>Purpose:</strong> Used symmetric padding to improve perceptual quality of image after super-resolution   </li>
+<li><strong>Duties:</strong> Edited code to realize VDSR using tensorflow and symmetric padding to process the images with three channels; Used EC2 of AWS to do experiments using classic Datasets (ImageNet, Set5, Set14) and evaluated the outcomes via PSNR and SSIM; Wrote the Introduction and Experiment&amp;Analysis of the final paper</li>
+<li><a href="https://github.com/JasonWang0808/paper_reading/blob/master/Super-resolution-final.pdf" target="_blank" rel="noopener">Final paper</a> and <a href="https://github.com/JasonWang0808/paper_reading/blob/master/RL.jpg" target="_blank" rel="noopener">Recommendation Letter</a> <strong>(&lt;-CLICK)</strong></li>
+</ul>
 
       
     </div>
@@ -374,8 +360,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/10/31/flower_classification/" rel="next" title="Flower Classification via VGG">
-                <i class="fa fa-chevron-left"></i> Flower Classification via VGG
+              <a href="/2018/11/04/Reinforment_Learning5/" rel="next" title="Reinforment Learning(Five) Actor-Critic">
+                <i class="fa fa-chevron-left"></i> Reinforment Learning(Five) Actor-Critic
               </a>
             
           </div>
@@ -383,10 +369,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/11/01/Reinforce_Learning2/" rel="prev" title="Reinforcement Learning (Second)">
-                Reinforcement Learning (Second) <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -507,7 +489,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#常见符号"><span class="nav-number">1.</span> <span class="nav-text">常见符号</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-tf-Variable-与-tf-constant"><span class="nav-number">1.1.</span> <span class="nav-text">1. tf.Variable 与 tf.constant</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-tf-reduce-mean"><span class="nav-number">1.2.</span> <span class="nav-text">2. tf.reduce_mean</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-tf-equal"><span class="nav-number">1.3.</span> <span class="nav-text">3. tf.equal</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-tf-truncated-normal"><span class="nav-number">1.4.</span> <span class="nav-text">4. tf.truncated_normal</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-tf-reshape"><span class="nav-number">1.5.</span> <span class="nav-text">5. tf.reshape</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Adapt-Super-resolution-into-real-production"><span class="nav-number">1.</span> <span class="nav-text">Adapt Super-resolution into real production</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#08-2018-11-2018"><span class="nav-number">1.1.</span> <span class="nav-text">08/2018-11/2018</span></a></li></ol></li></ol></div>
             
 
           </div>
