@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Pyspider (Second) regular expression]]></title>
+    <url>%2F2018%2F11%2F09%2Fpyspider2%2F</url>
+    <content type="text"><![CDATA[一、基本规则 ^b: 强制以b开头 .: 可以匹配任意字符 *: 可以代表无限多个前一字符 3$: 必须以3强制结尾 (): 返回括号内匹配的内容 ？: 非贪婪匹配，遇到该字符的第一个就停下 123456789101112import reline = "waaaaangww123"regex_str = ".*?(w.*w).*" # waaaaangww"""regex_str = ".*?(w.*?w).*" # waaaaangwregex_str = ".*(w.*w).*" # ww"""match_str = re.match(regex_str, line)if match_str: print(match_str.group(1)) +: 前面的字符至少出现一次(与都是次数限定符){2}: 前面的出现2次 {2,}:前面的出现至少两次 {2，5}: 前面的出现至少两次至多5次|：或, 模式1或者模式2 (优先提取竖线前的模式)[abcd]:前面的字符是abcd中任意一个均可[0-9]:区间任意一个字符[^1]: 不为1[.]: 去除特殊字符的特殊含义 123456789import re# 举个例子提取电话号码phone_num = "17673168577"regex_str = "(1[5678][0-9]&#123;9&#125;)" # "(1[5678][^1]&#123;9&#125;)"# 17673168577# 以1开头，后面跟5or6or7or8, 再跟9个任意数字match_str = re.match(regex_str, phone_num)if match_str: print(match_str.group(1)) \s: 空格(小写)\S: 单一字符且只要不为空格都可以(大写)\w: 与[A-Za-z0-9_]相同\W: 与上面的相反[\u4E00–u9FA5]: 任意汉字]]></content>
+  </entry>
+  <entry>
+    <title><![CDATA[Introduction of Pyspider(First)]]></title>
+    <url>%2F2018%2F11%2F09%2Fpyspider1%2F</url>
+    <content type="text"><![CDATA[一、mysql fo navicat连接权限问题 在windows上下载navicat 在linux上配置mysql并在win下用navicat进行连接 mysql配置文件修改 外部访问：/etc/mysql/mysql.conf.d/mysqld.cnf编辑文件：bind-address=0.0.0.0 12GRANT ALL PRIVILEGES ON *.* to 'root'@'%' IDENTIFIED BY 'root' WITH GRANT OPTION;flush privileges; #刷新权限 二、用什么技术requests和beautifulsoup都是库，而scrapy是框架。因此本教程运用scrapy Scrapy内置的css和xpath selector方便 三、网页分类 静态网页（例如hexo） 动态网页（例如淘宝） webservice 四、能做什么 搜索引擎—Baidu 推荐引擎—今日头条 机器学习的数据样本 数据分析 ….]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[Super-Resolution Research]]></title>
     <url>%2F2018%2F11%2F04%2Fsuper-resolution%2F</url>
     <content type="text"><![CDATA[Adapt Super-resolution into real production08/2018-11/2018 Tutor: Bart Selman from Cornell University Purpose: Used symmetric padding to improve perceptual quality of image after super-resolution Duties: Edited code to realize VDSR using tensorflow and symmetric padding to process the images with three channels; Used EC2 of AWS to do experiments using classic Datasets (ImageNet, Set5, Set14) and evaluated the outcomes via PSNR and SSIM; Wrote the Introduction and Experiment&amp;Analysis of the final paper Final paper and Recommendation Letter (&lt;-CLICK)]]></content>
