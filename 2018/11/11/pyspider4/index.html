@@ -81,19 +81,17 @@
 
 
 
-<meta name="description" content="How to build up your hexo on Github PageFirstly, you need to sign up a github account and build a repo which has the same name with your github.  github name : JasonWang0808gitpage name : JasonWang080">
+<meta name="description" content="这里可以一次拉取我们需要的信息，接着我们选取拉回的response进行操作这里我们选取一篇可怜的博客作为实验对象，分别拉取他的title、create_date、praise_nums  实验对象 http://blog.jobbole.com/114461/     这里我们分别采用绝对路径、选取全部class名字、选取部分class名字进行操作。extract()帮助我们提取出里面的有效信息，">
 <meta property="og:type" content="article">
-<meta property="og:title" content="How to apply hexo to Github Page (一)">
-<meta property="og:url" content="http://yoursite.com/2018/10/20/hexo/index.html">
+<meta property="og:title" content="Pyspider (Four) how to use response.xpath">
+<meta property="og:url" content="http://yoursite.com/2018/11/11/pyspider4/index.html">
 <meta property="og:site_name" content="Junyu Wang&#39;s Blog">
-<meta property="og:description" content="How to build up your hexo on Github PageFirstly, you need to sign up a github account and build a repo which has the same name with your github.  github name : JasonWang0808gitpage name : JasonWang080">
+<meta property="og:description" content="这里可以一次拉取我们需要的信息，接着我们选取拉回的response进行操作这里我们选取一篇可怜的博客作为实验对象，分别拉取他的title、create_date、praise_nums  实验对象 http://blog.jobbole.com/114461/     这里我们分别采用绝对路径、选取全部class名字、选取部分class名字进行操作。extract()帮助我们提取出里面的有效信息，">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://github.com/JasonWang0808/JasonWang0808.github.io/blob/master/pictures/hexo/how%20to%20build/picture1.png">
-<meta property="og:updated_time" content="2018-11-01T12:31:31.672Z">
+<meta property="og:updated_time" content="2018-11-11T09:45:02.299Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="How to apply hexo to Github Page (一)">
-<meta name="twitter:description" content="How to build up your hexo on Github PageFirstly, you need to sign up a github account and build a repo which has the same name with your github.  github name : JasonWang0808gitpage name : JasonWang080">
-<meta name="twitter:image" content="https://github.com/JasonWang0808/JasonWang0808.github.io/blob/master/pictures/hexo/how%20to%20build/picture1.png">
+<meta name="twitter:title" content="Pyspider (Four) how to use response.xpath">
+<meta name="twitter:description" content="这里可以一次拉取我们需要的信息，接着我们选取拉回的response进行操作这里我们选取一篇可怜的博客作为实验对象，分别拉取他的title、create_date、praise_nums  实验对象 http://blog.jobbole.com/114461/     这里我们分别采用绝对路径、选取全部class名字、选取部分class名字进行操作。extract()帮助我们提取出里面的有效信息，">
 
 
 
@@ -123,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/10/20/hexo/">
+  <link rel="canonical" href="http://yoursite.com/2018/11/11/pyspider4/">
 
 
 
 
 
-  <title>How to apply hexo to Github Page (一) | Junyu Wang's Blog</title>
+  <title>Pyspider (Four) how to use response.xpath | Junyu Wang's Blog</title>
   
 
 
@@ -275,7 +273,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/20/hexo/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/11/pyspider4/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="JunYu Wang">
@@ -292,7 +290,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">How to apply hexo to Github Page (一)</h1>
+          <h1 class="post-title" itemprop="name headline">Pyspider (Four) how to use response.xpath</h1>
         
 
         <div class="post-meta">
@@ -332,30 +330,18 @@
       
 
       
-        <h3 id="How-to-build-up-your-hexo-on-Github-Page"><a href="#How-to-build-up-your-hexo-on-Github-Page" class="headerlink" title="How to build up your hexo on Github Page"></a>How to build up your hexo on Github Page</h3><p><strong>Firstly, you need to sign up a github account and build a repo which has the same name with your github</strong>.</p>
+        <p>这里可以一次拉取我们需要的信息，接着我们选取拉回的response进行操作<br>这里我们选取一篇可怜的博客作为实验对象，分别拉取他的title、create_date、praise_nums</p>
 <blockquote>
-<p>github name : JasonWang0808<br>gitpage name : JasonWang0808.github.io</p>
+<p>实验对象 <a href="http://blog.jobbole.com/114461/" target="_blank" rel="noopener">http://blog.jobbole.com/114461/</a>   </p>
 </blockquote>
-<p><strong>Secondly, prepare the hexo</strong></p>
-<p><strong>The set up steps are as followed</strong>:<br><strong>Step1.</strong> Install <a href="https://nodejs.org/en/download/" target="_blank" rel="noopener">Node.js</a> and <a href="https://git-scm.com/downloads" target="_blank" rel="noopener">Git</a> and make sure they have been installed properly.</p>
-<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Win+R </span><br><span class="line">cmd</span><br><span class="line"><span class="keyword">node</span> <span class="title">-v</span></span><br><span class="line">git -<span class="keyword">version</span></span><br></pre></td></tr></table></figure>
-<p><strong>step2.</strong> Prepare the SSH key and goto the github “SSH and GPG keys” to fill in</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#open the git bash</span></span><br><span class="line">ssh-keygen -t rsa</span><br><span class="line"><span class="comment"># type enter three times</span></span><br><span class="line">cd C:\Users\Administrator\.ssh</span><br><span class="line">cat id_rsa.pub</span><br><span class="line"><span class="comment"># copy the content</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#evaluate</span></span><br><span class="line"><span class="attribute">ssh</span> -T git<span class="variable">@github</span>.com</span><br><span class="line"><span class="comment">## return Hi</span></span><br></pre></td></tr></table></figure>
-<p><strong>step3.</strong> Install hexo</p>
-<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">cd</span> xxx</span><br><span class="line">npm install hexo-<span class="keyword">cli</span> -<span class="keyword">g</span></span><br><span class="line">hexo init Hexo </span><br><span class="line"><span class="keyword">cd</span> /Hexo </span><br><span class="line">npm instal </span><br><span class="line">hexo clean</span><br><span class="line">hexo <span class="keyword">generate</span>（可简写为hexo <span class="keyword">g</span>） </span><br><span class="line">hexo sever（可简写为hexo s）</span><br><span class="line">npm install –<span class="keyword">save</span> hexo-deployer-git</span><br></pre></td></tr></table></figure>
-<p><strong>step4.</strong> Modify the config</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># use sublime to open /blog/_config.yml and find "deploy"</span></span><br><span class="line">deploy:</span><br><span class="line">type: git</span><br><span class="line">repo: git@github.com:yourname/yourname.github.io.git</span><br><span class="line">branch: master</span><br></pre></td></tr></table></figure>
-<p><strong>step5.</strong> modify <strong>./config.yml</strong> and <strong>./themes/next/config.yml</strong> depends on your hobby</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d</span><br></pre></td></tr></table></figure>
-<p><strong>Step6.</strong> next, you can change your theme and add more decorations to your website  </p>
-<h4 id="A-good-way-to-learn-to-decoration"><a href="#A-good-way-to-learn-to-decoration" class="headerlink" title="A good way to learn to decoration"></a><a href="https://www.jianshu.com/p/9f0e90cc32c2" target="_blank" rel="noopener">A good way to learn to decoration</a></h4><p><strong>step5.</strong> modify <strong>./config.yml</strong> and <strong>./themes/next/config.yml</strong> depends on your hobby</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d</span><br></pre></td></tr></table></figure>
-<p><strong>Step7.</strong> start to write on your github page with hexo</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hexo new <span class="string">"xxx"</span></span><br><span class="line"><span class="comment"># this can help you to build a new xx.md</span></span><br><span class="line">hexo new page <span class="string">"xxx"</span></span><br><span class="line"><span class="comment"># this help you to build a new page, for example, "categories"</span></span><br></pre></td></tr></table></figure>
-<h4 id="Every-xx-md-has-its-head-for-example-Title-is-the-name-Tags-are-tags-you-know-categories-is-a-big-package-containing-all-the-essays-with-this-category"><a href="#Every-xx-md-has-its-head-for-example-Title-is-the-name-Tags-are-tags-you-know-categories-is-a-big-package-containing-all-the-essays-with-this-category" class="headerlink" title="Every xx.md has its head, for example, Title is the name. Tags are tags, you know. categories is a big package containing all the essays with this category"></a>Every xx.md has its head, for example, Title is the name. Tags are tags, you know. categories is a big package containing all the essays with this category</h4><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">Notes</span> <span class="string">of</span> <span class="string">LeetCode(一)</span></span><br><span class="line"><span class="attr">tags:</span> <span class="string">[leetcode,</span> <span class="string">c++,algorithm]</span></span><br><span class="line"><span class="attr">categories:</span> <span class="string">leetcodeNotes</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure>
-<p><strong>Finally, you can use Tengxun cloud to get a domain for your page</strong><br>There are two records you need to add<br><img src="https://github.com/JasonWang0808/JasonWang0808.github.io/blob/master/pictures/hexo/how%20to%20build/picture1.png" alt="image"><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#get the ip address of your page </span></span><br><span class="line">ping www.xx.github.io</span><br></pre></td></tr></table></figure></p>
-
+<p>这里我们分别采用绝对路径、选取全部class名字、选取部分class名字进行操作。<strong>extract()帮助我们提取出里面的有效信息</strong>，操作时候注意我们需要的文本是在 <strong>当前class下还是h10等小标签下</strong> </p>
+<p>注意：在python project中在def parse(self, response)下进行操作</p>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">scrapy shell http://blog.jobbole.com/114461/  </span><br><span class="line"></span><br><span class="line"><span class="comment">#这里是用绝对路径并extract出里面的文本信息  </span></span><br><span class="line">title = response.xpath(<span class="string">"/html/head/title/text()"</span>) </span><br><span class="line">title.extract() </span><br><span class="line"></span><br><span class="line"><span class="comment"># //p: 所有的p标签 、[@class=xxx]:class 名字为xxx</span></span><br><span class="line"><span class="comment"># strip():去掉空格和换行</span></span><br><span class="line">create_date = response.xpath(<span class="string">"//p[@class='entry-meta-hide-on-mobile']/text()"</span>).extract()[0].strip()</span><br><span class="line">create_date = create_date.replace(<span class="string">"`"</span>,<span class="string">""</span>).strip()</span><br><span class="line"></span><br><span class="line"><span class="comment">#用了contains函数：注意要加[]以及'，'分割两个参数</span></span><br><span class="line">praise_nums = response.xpath(<span class="string">"//span[contains(@class,'vote-post-up')]/h10/text()"</span>).extract()</span><br><span class="line"></span><br><span class="line"> favor = response.xpath(<span class="string">"//span[contains(@class,'bookmark-btn')]/text()"</span>).extract()</span><br></pre></td></tr></table></figure>
+<p>全部操作完成后可以用正则表达式进行清洗</p>
+<figure class="highlight mel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">favor = response.xpath(<span class="string">"//span[contains(@class,'bookmark-btn')]/text()"</span>).extract()[<span class="number">0</span>]</span><br><span class="line">        match_f = re.<span class="keyword">match</span>(<span class="string">".*(\d+).*"</span>,favor)</span><br><span class="line">        <span class="keyword">print</span>(<span class="string">"sdfg"</span>)</span><br><span class="line">        <span class="keyword">if</span> match_f:</span><br><span class="line">            <span class="keyword">print</span>(match_f.<span class="keyword">group</span>(<span class="number">1</span>))</span><br></pre></td></tr></table></figure>
+<pre><code># given a tag_list 我们要去除掉不是tag的评论
+[element for element in tag_list if not element.endswith(&quot;评论&quot;)]
+</code></pre>
       
     </div>
     
@@ -379,8 +365,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/10/20/leetcode/" rel="next" title="Notes of LeetCode (a)">
-                <i class="fa fa-chevron-left"></i> Notes of LeetCode (a)
+              <a href="/2018/11/11/pyspider3/" rel="next" title="Pyspider (Third) Basic knowledge">
+                <i class="fa fa-chevron-left"></i> Pyspider (Third) Basic knowledge
               </a>
             
           </div>
@@ -388,10 +374,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/10/30/DP/" rel="prev" title="Dynamic Programming---Leetcode">
-                Dynamic Programming---Leetcode <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -443,17 +425,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -502,22 +475,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#How-to-build-up-your-hexo-on-Github-Page"><span class="nav-number">1.</span> <span class="nav-text">How to build up your hexo on Github Page</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#A-good-way-to-learn-to-decoration"><span class="nav-number">1.1.</span> <span class="nav-text">A good way to learn to decoration</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Every-xx-md-has-its-head-for-example-Title-is-the-name-Tags-are-tags-you-know-categories-is-a-big-package-containing-all-the-essays-with-this-category"><span class="nav-number">1.2.</span> <span class="nav-text">Every xx.md has its head, for example, Title is the name. Tags are tags, you know. categories is a big package containing all the essays with this category</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       

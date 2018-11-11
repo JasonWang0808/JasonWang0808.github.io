@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Pyspider (Four) how to use response.xpath]]></title>
+    <url>%2F2018%2F11%2F11%2Fpyspider4%2F</url>
+    <content type="text"><![CDATA[这里可以一次拉取我们需要的信息，接着我们选取拉回的response进行操作这里我们选取一篇可怜的博客作为实验对象，分别拉取他的title、create_date、praise_nums 实验对象 http://blog.jobbole.com/114461/ 这里我们分别采用绝对路径、选取全部class名字、选取部分class名字进行操作。extract()帮助我们提取出里面的有效信息，操作时候注意我们需要的文本是在 当前class下还是h10等小标签下 注意：在python project中在def parse(self, response)下进行操作 123456789101112131415scrapy shell http://blog.jobbole.com/114461/ #这里是用绝对路径并extract出里面的文本信息 title = response.xpath("/html/head/title/text()") title.extract() # //p: 所有的p标签 、[@class=xxx]:class 名字为xxx# strip():去掉空格和换行create_date = response.xpath("//p[@class='entry-meta-hide-on-mobile']/text()").extract()[0].strip()create_date = create_date.replace("`","").strip()#用了contains函数：注意要加[]以及'，'分割两个参数praise_nums = response.xpath("//span[contains(@class,'vote-post-up')]/h10/text()").extract() favor = response.xpath("//span[contains(@class,'bookmark-btn')]/text()").extract() 全部操作完成后可以用正则表达式进行清洗 12345favor = response.xpath("//span[contains(@class,'bookmark-btn')]/text()").extract()[0] match_f = re.match(".*(\d+).*",favor) print("sdfg") if match_f: print(match_f.group(1)) # given a tag_list 我们要去除掉不是tag的评论 [element for element in tag_list if not element.endswith(&quot;评论&quot;)]]]></content>
+  </entry>
+  <entry>
+    <title><![CDATA[Pyspider (Third) Basic knowledge]]></title>
+    <url>%2F2018%2F11%2F11%2Fpyspider3%2F</url>
+    <content type="text"><![CDATA[URL网络实际是一个树形结构，因此分为广度优先和深度优先搜索。真实网站是存在许多环路的，因此一个重要的方法就是去重。本文介绍去重和字符串编码问题 一、Depth-First &amp; Width-First不做赘述。 二、爬虫去重序列 url经过md5等方法哈希后保存到set中 用bitmap方法，将url hash到某一位（缺点：冲突不命中会比较高） 用bloomfilter对bitmap进行优化 三、Unicode &amp; utf8Unicode将所有语言统一到一套编码，都用2byte表示。但是如果说一篇文章全是英文，储存空间和传输量会比Ascii多一倍utf-8将英文又变回一个字节将UTF-8文件读取成Unicode（方便统一操作），处理完后保存成UFT-8文件（节省空间）python3现在用unicode统一进行表示 12s = "我爱python"s.encode("utf8") # 此时s必须是unicode，不然会报错 前面介绍了基本背景(First)，正则表达式(Second)，和去重及编码，下章节开始讲解Scrapy框架]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[Pyspider (Second) regular expression]]></title>
     <url>%2F2018%2F11%2F09%2Fpyspider2%2F</url>
     <content type="text"><![CDATA[一、基本规则 ^b: 强制以b开头 .: 可以匹配任意字符 *: 可以代表无限多个前一字符 3$: 必须以3强制结尾 (): 返回括号内匹配的内容 ？: 非贪婪匹配，遇到该字符的第一个就停下 123456789101112import reline = "waaaaangww123"regex_str = ".*?(w.*w).*" # waaaaangww"""regex_str = ".*?(w.*?w).*" # waaaaangwregex_str = ".*(w.*w).*" # ww"""match_str = re.match(regex_str, line)if match_str: print(match_str.group(1)) +: 前面的字符至少出现一次(与都是次数限定符){2}: 前面的出现2次 {2,}:前面的出现至少两次 {2，5}: 前面的出现至少两次至多5次|：或, 模式1或者模式2 (优先提取竖线前的模式)[abcd]:前面的字符是abcd中任意一个均可[0-9]:区间任意一个字符[^1]: 不为1[.]: 去除特殊字符的特殊含义 123456789import re# 举个例子提取电话号码phone_num = "17673168577"regex_str = "(1[5678][0-9]&#123;9&#125;)" # "(1[5678][^1]&#123;9&#125;)"# 17673168577# 以1开头，后面跟5or6or7or8, 再跟9个任意数字match_str = re.match(regex_str, phone_num)if match_str: print(match_str.group(1)) \s: 空格(小写)\S: 单一字符且只要不为空格都可以(大写)\w: 与[A-Za-z0-9_]相同\W: 与上面的相反[\u4E00–u9FA5]: 任意汉字]]></content>

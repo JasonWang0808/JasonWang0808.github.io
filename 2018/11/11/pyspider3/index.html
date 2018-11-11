@@ -81,19 +81,17 @@
 
 
 
-<meta name="description" content="How to build up your hexo on Github PageFirstly, you need to sign up a github account and build a repo which has the same name with your github.  github name : JasonWang0808gitpage name : JasonWang080">
+<meta name="description" content="URL网络实际是一个树形结构，因此分为广度优先和深度优先搜索。真实网站是存在许多环路的，因此一个重要的方法就是去重。本文介绍去重和字符串编码问题   一、Depth-First &amp;amp; Width-First不做赘述。   二、爬虫去重序列 url经过md5等方法哈希后保存到set中   用bitmap方法，将url hash到某一位（缺点：冲突不命中会比较高）   用bloomfilter对">
 <meta property="og:type" content="article">
-<meta property="og:title" content="How to apply hexo to Github Page (一)">
-<meta property="og:url" content="http://yoursite.com/2018/10/20/hexo/index.html">
+<meta property="og:title" content="Pyspider (Third) Basic knowledge">
+<meta property="og:url" content="http://yoursite.com/2018/11/11/pyspider3/index.html">
 <meta property="og:site_name" content="Junyu Wang&#39;s Blog">
-<meta property="og:description" content="How to build up your hexo on Github PageFirstly, you need to sign up a github account and build a repo which has the same name with your github.  github name : JasonWang0808gitpage name : JasonWang080">
+<meta property="og:description" content="URL网络实际是一个树形结构，因此分为广度优先和深度优先搜索。真实网站是存在许多环路的，因此一个重要的方法就是去重。本文介绍去重和字符串编码问题   一、Depth-First &amp;amp; Width-First不做赘述。   二、爬虫去重序列 url经过md5等方法哈希后保存到set中   用bitmap方法，将url hash到某一位（缺点：冲突不命中会比较高）   用bloomfilter对">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://github.com/JasonWang0808/JasonWang0808.github.io/blob/master/pictures/hexo/how%20to%20build/picture1.png">
-<meta property="og:updated_time" content="2018-11-01T12:31:31.672Z">
+<meta property="og:updated_time" content="2018-11-11T04:08:48.367Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="How to apply hexo to Github Page (一)">
-<meta name="twitter:description" content="How to build up your hexo on Github PageFirstly, you need to sign up a github account and build a repo which has the same name with your github.  github name : JasonWang0808gitpage name : JasonWang080">
-<meta name="twitter:image" content="https://github.com/JasonWang0808/JasonWang0808.github.io/blob/master/pictures/hexo/how%20to%20build/picture1.png">
+<meta name="twitter:title" content="Pyspider (Third) Basic knowledge">
+<meta name="twitter:description" content="URL网络实际是一个树形结构，因此分为广度优先和深度优先搜索。真实网站是存在许多环路的，因此一个重要的方法就是去重。本文介绍去重和字符串编码问题   一、Depth-First &amp;amp; Width-First不做赘述。   二、爬虫去重序列 url经过md5等方法哈希后保存到set中   用bitmap方法，将url hash到某一位（缺点：冲突不命中会比较高）   用bloomfilter对">
 
 
 
@@ -123,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/10/20/hexo/">
+  <link rel="canonical" href="http://yoursite.com/2018/11/11/pyspider3/">
 
 
 
 
 
-  <title>How to apply hexo to Github Page (一) | Junyu Wang's Blog</title>
+  <title>Pyspider (Third) Basic knowledge | Junyu Wang's Blog</title>
   
 
 
@@ -275,7 +273,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/20/hexo/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/11/pyspider3/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="JunYu Wang">
@@ -292,7 +290,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">How to apply hexo to Github Page (一)</h1>
+          <h1 class="post-title" itemprop="name headline">Pyspider (Third) Basic knowledge</h1>
         
 
         <div class="post-meta">
@@ -332,29 +330,16 @@
       
 
       
-        <h3 id="How-to-build-up-your-hexo-on-Github-Page"><a href="#How-to-build-up-your-hexo-on-Github-Page" class="headerlink" title="How to build up your hexo on Github Page"></a>How to build up your hexo on Github Page</h3><p><strong>Firstly, you need to sign up a github account and build a repo which has the same name with your github</strong>.</p>
-<blockquote>
-<p>github name : JasonWang0808<br>gitpage name : JasonWang0808.github.io</p>
-</blockquote>
-<p><strong>Secondly, prepare the hexo</strong></p>
-<p><strong>The set up steps are as followed</strong>:<br><strong>Step1.</strong> Install <a href="https://nodejs.org/en/download/" target="_blank" rel="noopener">Node.js</a> and <a href="https://git-scm.com/downloads" target="_blank" rel="noopener">Git</a> and make sure they have been installed properly.</p>
-<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Win+R </span><br><span class="line">cmd</span><br><span class="line"><span class="keyword">node</span> <span class="title">-v</span></span><br><span class="line">git -<span class="keyword">version</span></span><br></pre></td></tr></table></figure>
-<p><strong>step2.</strong> Prepare the SSH key and goto the github “SSH and GPG keys” to fill in</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#open the git bash</span></span><br><span class="line">ssh-keygen -t rsa</span><br><span class="line"><span class="comment"># type enter three times</span></span><br><span class="line">cd C:\Users\Administrator\.ssh</span><br><span class="line">cat id_rsa.pub</span><br><span class="line"><span class="comment"># copy the content</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#evaluate</span></span><br><span class="line"><span class="attribute">ssh</span> -T git<span class="variable">@github</span>.com</span><br><span class="line"><span class="comment">## return Hi</span></span><br></pre></td></tr></table></figure>
-<p><strong>step3.</strong> Install hexo</p>
-<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">cd</span> xxx</span><br><span class="line">npm install hexo-<span class="keyword">cli</span> -<span class="keyword">g</span></span><br><span class="line">hexo init Hexo </span><br><span class="line"><span class="keyword">cd</span> /Hexo </span><br><span class="line">npm instal </span><br><span class="line">hexo clean</span><br><span class="line">hexo <span class="keyword">generate</span>（可简写为hexo <span class="keyword">g</span>） </span><br><span class="line">hexo sever（可简写为hexo s）</span><br><span class="line">npm install –<span class="keyword">save</span> hexo-deployer-git</span><br></pre></td></tr></table></figure>
-<p><strong>step4.</strong> Modify the config</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># use sublime to open /blog/_config.yml and find "deploy"</span></span><br><span class="line">deploy:</span><br><span class="line">type: git</span><br><span class="line">repo: git@github.com:yourname/yourname.github.io.git</span><br><span class="line">branch: master</span><br></pre></td></tr></table></figure>
-<p><strong>step5.</strong> modify <strong>./config.yml</strong> and <strong>./themes/next/config.yml</strong> depends on your hobby</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d</span><br></pre></td></tr></table></figure>
-<p><strong>Step6.</strong> next, you can change your theme and add more decorations to your website  </p>
-<h4 id="A-good-way-to-learn-to-decoration"><a href="#A-good-way-to-learn-to-decoration" class="headerlink" title="A good way to learn to decoration"></a><a href="https://www.jianshu.com/p/9f0e90cc32c2" target="_blank" rel="noopener">A good way to learn to decoration</a></h4><p><strong>step5.</strong> modify <strong>./config.yml</strong> and <strong>./themes/next/config.yml</strong> depends on your hobby</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d</span><br></pre></td></tr></table></figure>
-<p><strong>Step7.</strong> start to write on your github page with hexo</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hexo new <span class="string">"xxx"</span></span><br><span class="line"><span class="comment"># this can help you to build a new xx.md</span></span><br><span class="line">hexo new page <span class="string">"xxx"</span></span><br><span class="line"><span class="comment"># this help you to build a new page, for example, "categories"</span></span><br></pre></td></tr></table></figure>
-<h4 id="Every-xx-md-has-its-head-for-example-Title-is-the-name-Tags-are-tags-you-know-categories-is-a-big-package-containing-all-the-essays-with-this-category"><a href="#Every-xx-md-has-its-head-for-example-Title-is-the-name-Tags-are-tags-you-know-categories-is-a-big-package-containing-all-the-essays-with-this-category" class="headerlink" title="Every xx.md has its head, for example, Title is the name. Tags are tags, you know. categories is a big package containing all the essays with this category"></a>Every xx.md has its head, for example, Title is the name. Tags are tags, you know. categories is a big package containing all the essays with this category</h4><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">Notes</span> <span class="string">of</span> <span class="string">LeetCode(一)</span></span><br><span class="line"><span class="attr">tags:</span> <span class="string">[leetcode,</span> <span class="string">c++,algorithm]</span></span><br><span class="line"><span class="attr">categories:</span> <span class="string">leetcodeNotes</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure>
-<p><strong>Finally, you can use Tengxun cloud to get a domain for your page</strong><br>There are two records you need to add<br><img src="https://github.com/JasonWang0808/JasonWang0808.github.io/blob/master/pictures/hexo/how%20to%20build/picture1.png" alt="image"><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#get the ip address of your page </span></span><br><span class="line">ping www.xx.github.io</span><br></pre></td></tr></table></figure></p>
+        <p>URL网络实际是一个树形结构，因此分为广度优先和深度优先搜索。<br>真实网站是存在许多环路的，因此一个重要的方法就是去重。本文介绍去重和字符串编码问题  </p>
+<h4 id="一、Depth-First-amp-Width-First"><a href="#一、Depth-First-amp-Width-First" class="headerlink" title="一、Depth-First &amp; Width-First"></a>一、Depth-First &amp; Width-First</h4><p>不做赘述。  </p>
+<h4 id="二、爬虫去重序列"><a href="#二、爬虫去重序列" class="headerlink" title="二、爬虫去重序列"></a>二、爬虫去重序列</h4><ol>
+<li>url经过md5等方法哈希后保存到set中  </li>
+<li>用bitmap方法，将url hash到某一位（缺点：冲突不命中会比较高）  </li>
+<li>用bloomfilter对bitmap进行优化 </li>
+</ol>
+<h3 id="三、Unicode-amp-utf8"><a href="#三、Unicode-amp-utf8" class="headerlink" title="三、Unicode &amp; utf8"></a>三、Unicode &amp; utf8</h3><p>Unicode将所有语言统一到一套编码，都用2byte表示。但是如果说一篇文章全是英文，储存空间和传输量会比Ascii多一倍<br>utf-8将英文又变回一个字节<br>将UTF-8文件读取成Unicode（方便统一操作），处理完后保存成UFT-8文件（节省空间）<br>python3现在用unicode统一进行表示  </p>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">s = <span class="string">"我爱python"</span></span><br><span class="line">s.encode(<span class="string">"utf8"</span>) <span class="comment"># 此时s必须是unicode，不然会报错</span></span><br></pre></td></tr></table></figure>
+<p>前面介绍了基本背景(First)，正则表达式(Second)，和去重及编码，下章节开始讲解Scrapy框架</p>
 
       
     </div>
@@ -379,8 +364,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/10/20/leetcode/" rel="next" title="Notes of LeetCode (a)">
-                <i class="fa fa-chevron-left"></i> Notes of LeetCode (a)
+              <a href="/2018/11/09/pyspider2/" rel="next" title="Pyspider (Second) regular expression">
+                <i class="fa fa-chevron-left"></i> Pyspider (Second) regular expression
               </a>
             
           </div>
@@ -389,8 +374,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/10/30/DP/" rel="prev" title="Dynamic Programming---Leetcode">
-                Dynamic Programming---Leetcode <i class="fa fa-chevron-right"></i>
+              <a href="/2018/11/11/pyspider4/" rel="prev" title="Pyspider (Four) how to use response.xpath">
+                Pyspider (Four) how to use response.xpath <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -512,7 +497,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#How-to-build-up-your-hexo-on-Github-Page"><span class="nav-number">1.</span> <span class="nav-text">How to build up your hexo on Github Page</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#A-good-way-to-learn-to-decoration"><span class="nav-number">1.1.</span> <span class="nav-text">A good way to learn to decoration</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Every-xx-md-has-its-head-for-example-Title-is-the-name-Tags-are-tags-you-know-categories-is-a-big-package-containing-all-the-essays-with-this-category"><span class="nav-number">1.2.</span> <span class="nav-text">Every xx.md has its head, for example, Title is the name. Tags are tags, you know. categories is a big package containing all the essays with this category</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#一、Depth-First-amp-Width-First"><span class="nav-number">1.</span> <span class="nav-text">一、Depth-First &amp; Width-First</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二、爬虫去重序列"><span class="nav-number">2.</span> <span class="nav-text">二、爬虫去重序列</span></a></li></ol><li class="nav-item nav-level-3"><a class="nav-link" href="#三、Unicode-amp-utf8"><span class="nav-number"></span> <span class="nav-text">三、Unicode &amp; utf8</span></a></li></div>
             
 
           </div>
