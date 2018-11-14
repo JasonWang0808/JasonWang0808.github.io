@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="NLP,">
 
 
 
@@ -81,17 +81,21 @@
 
 
 
-<meta name="description" content="利用vgg迁移学习实现花朵的分类，基于tensorflow进行实现为什么要迁移学习 一个好的CNN可以判断出一个图片的基本轮廓, 我们利用这个训练好的CNN得到轮廓并扁平化处理, 我们要做的就是搭建ANN, 来实现我们自己的classifier一个理解的网站  首先介绍两个比较常用的方法1. 单热点编码 在这里我们有五种花, 他们的名字都是中文, 我们需要对他进行编码 1234567/* labe">
+<meta name="description" content="basic rules of text procession and how to use nltk下图是一个简单的处理流程 判断一段文字中单词出现的数量是一个经典的问题，首先建立一个dict。接着把str用spilt给分开，用正则表达式去除标点，然后统计数量 12345678910111213141516171819202122def count_words(str):    &quot;&quot;&quot;Count">
+<meta name="keywords" content="NLP">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Flower Classification via VGG">
-<meta property="og:url" content="http://yoursite.com/2018/10/31/flower_classification/index.html">
+<meta property="og:title" content="NLP(First) Text Processing">
+<meta property="og:url" content="http://yoursite.com/2018/11/14/NLP1/index.html">
 <meta property="og:site_name" content="Junyu Wang&#39;s Blog">
-<meta property="og:description" content="利用vgg迁移学习实现花朵的分类，基于tensorflow进行实现为什么要迁移学习 一个好的CNN可以判断出一个图片的基本轮廓, 我们利用这个训练好的CNN得到轮廓并扁平化处理, 我们要做的就是搭建ANN, 来实现我们自己的classifier一个理解的网站  首先介绍两个比较常用的方法1. 单热点编码 在这里我们有五种花, 他们的名字都是中文, 我们需要对他进行编码 1234567/* labe">
+<meta property="og:description" content="basic rules of text procession and how to use nltk下图是一个简单的处理流程 判断一段文字中单词出现的数量是一个经典的问题，首先建立一个dict。接着把str用spilt给分开，用正则表达式去除标点，然后统计数量 12345678910111213141516171819202122def count_words(str):    &quot;&quot;&quot;Count">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-11-01T12:31:36.401Z">
+<meta property="og:image" content="http://yoursite.com/images/NLP/text_processing/text_p.png">
+<meta property="og:image" content="http://yoursite.com/images/NLP/text_processing/parse_tree.png">
+<meta property="og:updated_time" content="2018-11-14T14:26:21.557Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Flower Classification via VGG">
-<meta name="twitter:description" content="利用vgg迁移学习实现花朵的分类，基于tensorflow进行实现为什么要迁移学习 一个好的CNN可以判断出一个图片的基本轮廓, 我们利用这个训练好的CNN得到轮廓并扁平化处理, 我们要做的就是搭建ANN, 来实现我们自己的classifier一个理解的网站  首先介绍两个比较常用的方法1. 单热点编码 在这里我们有五种花, 他们的名字都是中文, 我们需要对他进行编码 1234567/* labe">
+<meta name="twitter:title" content="NLP(First) Text Processing">
+<meta name="twitter:description" content="basic rules of text procession and how to use nltk下图是一个简单的处理流程 判断一段文字中单词出现的数量是一个经典的问题，首先建立一个dict。接着把str用spilt给分开，用正则表达式去除标点，然后统计数量 12345678910111213141516171819202122def count_words(str):    &quot;&quot;&quot;Count">
+<meta name="twitter:image" content="http://yoursite.com/images/NLP/text_processing/text_p.png">
 
 
 
@@ -121,13 +125,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/10/31/flower_classification/">
+  <link rel="canonical" href="http://yoursite.com/2018/11/14/NLP1/">
 
 
 
 
 
-  <title>Flower Classification via VGG | Junyu Wang's Blog</title>
+  <title>NLP(First) Text Processing | Junyu Wang's Blog</title>
   
 
 
@@ -273,7 +277,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/31/flower_classification/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/14/NLP1/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="JunYu Wang">
@@ -290,7 +294,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Flower Classification via VGG</h1>
+          <h1 class="post-title" itemprop="name headline">NLP(First) Text Processing</h1>
         
 
         <div class="post-meta">
@@ -302,6 +306,26 @@
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/NLP/" itemprop="url" rel="index">
+                    <span itemprop="name">NLP</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -330,25 +354,36 @@
       
 
       
-        <h3 id="利用vgg迁移学习实现花朵的分类，基于tensorflow进行实现"><a href="#利用vgg迁移学习实现花朵的分类，基于tensorflow进行实现" class="headerlink" title="利用vgg迁移学习实现花朵的分类，基于tensorflow进行实现"></a>利用vgg迁移学习实现花朵的分类，基于tensorflow进行实现</h3><h4 id="为什么要迁移学习"><a href="#为什么要迁移学习" class="headerlink" title="为什么要迁移学习"></a>为什么要迁移学习</h4><blockquote>
-<h5 id="一个好的CNN可以判断出一个图片的基本轮廓-我们利用这个训练好的CNN得到轮廓并扁平化处理-我们要做的就是搭建ANN-来实现我们自己的classifier"><a href="#一个好的CNN可以判断出一个图片的基本轮廓-我们利用这个训练好的CNN得到轮廓并扁平化处理-我们要做的就是搭建ANN-来实现我们自己的classifier" class="headerlink" title="一个好的CNN可以判断出一个图片的基本轮廓, 我们利用这个训练好的CNN得到轮廓并扁平化处理, 我们要做的就是搭建ANN, 来实现我们自己的classifier"></a>一个好的CNN可以判断出一个图片的基本轮廓, 我们利用这个训练好的CNN得到轮廓并扁平化处理, 我们要做的就是搭建ANN, 来实现我们自己的classifier</h5><p><a href="http://setosa.io/ev/image-kernels/" target="_blank" rel="noopener">一个理解的网站</a></p>
+        <h2 id="basic-rules-of-text-procession-and-how-to-use-nltk"><a href="#basic-rules-of-text-procession-and-how-to-use-nltk" class="headerlink" title="basic rules of text procession and how to use nltk"></a>basic rules of text procession and how to use nltk</h2><h3 id="下图是一个简单的处理流程"><a href="#下图是一个简单的处理流程" class="headerlink" title="下图是一个简单的处理流程"></a>下图是一个简单的处理流程</h3><p><img src="/images/NLP/text_processing/text_p.png" alt=""></p>
+<p>判断一段文字中单词出现的数量是一个经典的问题，首先建立一个dict。接着把str用spilt给分开，用正则表达式去除标点，然后统计数量</p>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">def count_words(str):</span><br><span class="line">    <span class="string">""</span><span class="string">"Count how many times each unique word occurs in text."</span><span class="string">""</span></span><br><span class="line">    counts = dict()  <span class="comment"># dictionary of &#123; &lt;word&gt;: &lt;count&gt; &#125; pairs to return</span></span><br><span class="line">    <span class="comment"># text = str(text)</span></span><br><span class="line">    <span class="comment"># str = "one and two and three and two and one\nbuffalo buffalo buffalo, buffalo buffalo!"</span></span><br><span class="line">    str = str.<span class="built_in">replace</span>(<span class="string">"\n"</span>, <span class="string">" "</span>)</span><br><span class="line">    str = str.<span class="built_in">lower</span>()</span><br><span class="line">    word_l = str.<span class="built_in">split</span>(<span class="string">" "</span>)</span><br><span class="line">    <span class="comment"># <span class="doctag">TODO:</span> Split text into tokens (words), leaving out punctuation</span></span><br><span class="line">    <span class="comment"># (Hint: Use regex to split on non-alphanumeric characters)</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># <span class="doctag">TODO:</span> Aggregate word counts using a dictionary</span></span><br><span class="line">    <span class="keyword">for</span> <span class="built_in">word</span> <span class="keyword">in</span> word_l:</span><br><span class="line">        <span class="built_in">word</span> = re.match(<span class="string">"([a-zA-Z]+).*"</span>, <span class="built_in">word</span>)</span><br><span class="line">        <span class="built_in">word</span> = <span class="built_in">word</span>.group(<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">word</span> <span class="keyword">not</span> <span class="keyword">in</span> counts:</span><br><span class="line">            counts[<span class="built_in">word</span>] = <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            counts[<span class="built_in">word</span>] += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="literal">return</span> counts</span><br></pre></td></tr></table></figure>
+<p>看起来不错，但是如果有一套统一的工具来做这些是不是会更好，这时候就出现了nltk(Natural Language ToolKit)  </p>
+<blockquote>
+<p>pip install nltk  </p>
 </blockquote>
-<h3 id="首先介绍两个比较常用的方法"><a href="#首先介绍两个比较常用的方法" class="headerlink" title="首先介绍两个比较常用的方法"></a>首先介绍两个比较常用的方法</h3><h4 id="1-单热点编码"><a href="#1-单热点编码" class="headerlink" title="1. 单热点编码"></a>1. 单热点编码</h4><blockquote>
-<h5 id="在这里我们有五种花-他们的名字都是中文-我们需要对他进行编码"><a href="#在这里我们有五种花-他们的名字都是中文-我们需要对他进行编码" class="headerlink" title="在这里我们有五种花, 他们的名字都是中文, 我们需要对他进行编码"></a>在这里我们有五种花, 他们的名字都是中文, 我们需要对他进行编码</h5></blockquote>
-<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">/* labels是我们要编码的str数组，生成了labels_vecs的二维单热点编码  */</span><br><span class="line">from sklearn.preprocessing import LabelBinarizer</span><br><span class="line"></span><br><span class="line">lb = LabelBinarizer()</span><br><span class="line">lb.fit(labels)</span><br><span class="line"></span><br><span class="line">labels_vecs = lb.transform(labels)</span><br></pre></td></tr></table></figure>
-<p><strong>array</strong><br>([[0, 1, 0, 0, 0],<br>       [0, 1, 0, 0, 0],<br>       [0, 1, 0, 0, 0],<br>       …,<br>       [0, 0, 0, 1, 0],<br>       [0, 0, 0, 1, 0],<br>       [0, 0, 0, 1, 0]])<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
-<h4 id="2-分类—我们需要随机的分出test、valid和Train"><a href="#2-分类—我们需要随机的分出test、valid和Train" class="headerlink" title="2. 分类—我们需要随机的分出test、valid和Train"></a>2. 分类—我们需要随机的分出test、valid和Train</h4><blockquote>
-<h5 id="这里使用机器学习库-how-to-use"><a href="#这里使用机器学习库-how-to-use" class="headerlink" title="这里使用机器学习库 how to use"></a>这里使用机器学习库 <a href="http://scikit-learn.org/stable/modules/generated/sklearn.model_selection.StratifiedShuffleSplit.html" target="_blank" rel="noopener">how to use</a></h5></blockquote>
-<figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.model_selection <span class="built_in">import</span> StratifiedShuffleSplit</span><br><span class="line"><span class="comment">/*  固定搭配，里面的参数要弄懂  */</span></span><br><span class="line"><span class="attr">ss</span> = StratifiedShuffleSplit(<span class="attr">n_splits=1,</span> <span class="attr">test_size=0.2)</span></span><br><span class="line"><span class="comment">/* 注意一定要加next，这里返回的是indices（指数） 即数标  */</span></span><br><span class="line">train_idx, <span class="attr">val_idxs</span> = next(ss.split(codes,labels_vecs))</span><br><span class="line"></span><br><span class="line"><span class="attr">half_val</span> = int(len(val_idxs)/<span class="number">2</span>)</span><br><span class="line"><span class="comment">/*  把valid拆分成valid和test    */</span></span><br><span class="line"></span><br><span class="line">val_idx,<span class="attr">test_idx</span> = val_idxs[:half_val],val_idxs[half_val:]</span><br><span class="line"></span><br><span class="line">train_x, <span class="attr">train_y</span> = codes[train_idx],labels_vecs[train_idx]</span><br><span class="line"></span><br><span class="line">val_x, <span class="attr">val_y</span> = codes[val_idx],labels_vecs[val_idx]</span><br><span class="line">test_x, <span class="attr">test_y</span> =  codes[test_idx],labels_vecs[test_idx]</span><br></pre></td></tr></table></figure>
-<h4 id="3-储存结果"><a href="#3-储存结果" class="headerlink" title="3. 储存结果"></a>3. 储存结果</h4><blockquote>
-<h5 id="每次训练结束都要把参数的结果储存到checkpoint中来-下一次test时候直接进行调用"><a href="#每次训练结束都要把参数的结果储存到checkpoint中来-下一次test时候直接进行调用" class="headerlink" title="每次训练结束都要把参数的结果储存到checkpoint中来, 下一次test时候直接进行调用"></a>每次训练结束都要把参数的结果储存到checkpoint中来, 下一次test时候直接进行调用</h5></blockquote>
-<h4 id="4-计算主体"><a href="#4-计算主体" class="headerlink" title="4. 计算主体"></a>4. 计算主体</h4><blockquote>
-<h5 id="外部一个epochs的循环，内部一个计算函数"><a href="#外部一个epochs的循环，内部一个计算函数" class="headerlink" title="外部一个epochs的循环，内部一个计算函数"></a>外部一个epochs的循环，内部一个计算函数</h5></blockquote>
-<h4 id="储存结果"><a href="#储存结果" class="headerlink" title="储存结果"></a>储存结果</h4><figure class="highlight gauss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*  详见training部分 */</span></span><br><span class="line">saver.<span class="keyword">save</span>(sess, <span class="string">"checkpoints/flowers.ckpt"</span>)</span><br></pre></td></tr></table></figure>
-<h4 id="加载结果进行使用"><a href="#加载结果进行使用" class="headerlink" title="加载结果进行使用"></a>加载结果进行使用</h4><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 先迁移得到一维矩阵，然后Saver加载参数，test一边   */</span></span><br><span class="line">with tf.Session() as sess:</span><br><span class="line">    <span class="selector-tag">img</span> = utils.load_image(test_img_path)</span><br><span class="line">    <span class="selector-tag">img</span> = <span class="selector-tag">img</span>.reshape((<span class="number">1</span>, <span class="number">224</span>, <span class="number">224</span>, <span class="number">3</span>))</span><br><span class="line"></span><br><span class="line">    feed_dict = &#123;input_: img&#125;</span><br><span class="line">    <span class="selector-tag">code</span> = sess.run(vgg<span class="selector-class">.relu6</span>, feed_dict=feed_dict)</span><br><span class="line">        </span><br><span class="line">saver = tf<span class="selector-class">.train</span><span class="selector-class">.Saver</span>()</span><br><span class="line">with tf.Session() as sess:</span><br><span class="line">    saver.restore(sess, tf<span class="selector-class">.train</span><span class="selector-class">.latest_checkpoint</span>(<span class="string">'checkpoints'</span>))</span><br><span class="line">    </span><br><span class="line">    feed = &#123;inputs_: code&#125;</span><br><span class="line">    prediction = sess.run(predicted, feed_dict=feed).squeeze()</span><br></pre></td></tr></table></figure>
-<h4 id="data-cutting"><a href="#data-cutting" class="headerlink" title="data cutting"></a>data cutting</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">/* 设置函数<span class="number">10</span>个图片的处理    */</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_batches</span><span class="params">(x, y, n_batches=<span class="number">10</span>)</span>:</span></span><br><span class="line">    <span class="string">""" Return a generator that yields batches from arrays x and y. """</span></span><br><span class="line">    batch_size = len(x)//n_batches</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> ii <span class="keyword">in</span> range(<span class="number">0</span>, n_batches*batch_size, batch_size):</span><br><span class="line">        <span class="comment"># If we're not on the last batch, grab data with size batch_size</span></span><br><span class="line">        <span class="keyword">if</span> ii != (n_batches<span class="number">-1</span>)*batch_size:</span><br><span class="line">            X, Y = x[ii: ii+batch_size], y[ii: ii+batch_size] </span><br><span class="line">        <span class="comment"># On the last batch, grab the rest of the data</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            X, Y = x[ii:], y[ii:]</span><br><span class="line">        <span class="comment"># I love generators</span></span><br><span class="line">        <span class="keyword">yield</span> X, Y</span><br></pre></td></tr></table></figure>
-<h4 id="building-NN"><a href="#building-NN" class="headerlink" title="building NN"></a>building NN</h4><figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">inputs_ = tf.placeholder(tf.float32, shape=[None, codes.shape[1]])</span><br><span class="line">labels_ = tf.placeholder(tf.int64, shape=[None, labels_vecs.shape[1]])</span><br><span class="line"></span><br><span class="line"><span class="comment"># <span class="doctag">TODO:</span> Classifier layers and operations</span></span><br><span class="line">/* 搭建一个简单的ANN   */</span><br><span class="line">fc = tf.contrib.layers.fully_connected(inputs_,256)</span><br><span class="line"></span><br><span class="line">logits = tf.contrib.layers.fully_connected(fc, labels_vecs.shape[1], activation_fn=None)</span><br><span class="line">cross_entropy = tf.nn.softmax_cross_entropy_with_logits(labels=labels_, logits=logits)</span><br><span class="line">cost = tf.reduce_mean(cross_entropy)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">optimizer =  tf.train.AdamOptimizer().minimize(cost)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Operations for validation/test accuracy</span></span><br><span class="line">predicted = tf.nn.softmax(logits)</span><br><span class="line">correct_pred = tf.equal(tf.argmax(predicted, 1), tf.argmax(labels_, 1))</span><br><span class="line">accuracy = tf.reduce_mean(tf.cast(correct_pred, tf.float32))</span><br></pre></td></tr></table></figure>
-<h4 id="Training"><a href="#Training" class="headerlink" title="Training"></a>Training</h4><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">epochs = 10</span><br><span class="line">iteration = 0</span><br><span class="line">saver = tf.train.Saver()</span><br><span class="line">with tf.Session() as sess:</span><br><span class="line">    </span><br><span class="line">    sess.<span class="builtin-name">run</span>(tf.global_variables_initializer())</span><br><span class="line">    <span class="keyword">for</span> e <span class="keyword">in</span> range(epochs):</span><br><span class="line">        <span class="keyword">for</span> x, y <span class="keyword">in</span> get_batches(train_x, train_y):</span><br><span class="line">            feed = &#123;inputs_: x,</span><br><span class="line">                    labels_: y&#125;</span><br><span class="line">            loss, _ = sess.<span class="builtin-name">run</span>([cost, optimizer], <span class="attribute">feed_dict</span>=feed)</span><br><span class="line">            <span class="builtin-name">print</span>(<span class="string">"Epoch: &#123;&#125;/&#123;&#125;"</span>.format(e+1, epochs),</span><br><span class="line">                  <span class="string">"Iteration: &#123;&#125;"</span>.format(iteration),</span><br><span class="line">                  <span class="string">"Training loss: &#123;:.5f&#125;"</span>.format(loss))</span><br><span class="line">            iteration += 1</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span> iteration % 5 == 0:</span><br><span class="line">                feed = &#123;inputs_: val_x,</span><br><span class="line">                        labels_: val_y&#125;</span><br><span class="line">                val_acc = sess.<span class="builtin-name">run</span>(accuracy, <span class="attribute">feed_dict</span>=feed)</span><br><span class="line">                <span class="builtin-name">print</span>(<span class="string">"Epoch: &#123;&#125;/&#123;&#125;"</span>.format(e, epochs),</span><br><span class="line">                      <span class="string">"Iteration: &#123;&#125;"</span>.format(iteration),</span><br><span class="line">                      <span class="string">"Validation Acc: &#123;:.4f&#125;"</span>.format(val_acc))</span><br><span class="line">    saver.save(sess, <span class="string">"checkpoints/flowers.ckpt"</span>)</span><br></pre></td></tr></table></figure>
+<p><strong>1. from nltk.tokenize import word_tokenize</strong></p>
+<blockquote>
+<p>将一个句子中的单词一个个提取出来，相比于自己split好在他更智能。e.g. 可以提取出Dr.</p>
+</blockquote>
+<p><strong>2. from nltk.tokenize import sent_tokenize</strong> </p>
+<blockquote>
+<p>可以将一个个句子提取出来  </p>
+</blockquote>
+<p><strong>3. from nltk.corpus import stopwords</strong>  </p>
+<blockquote>
+<p>有一些句子中的单词是没有意义的，stopwords可以帮助我们快速提取出来  </p>
+</blockquote>
+<p><strong>4. Sentence Parsing</strong></p>
+<blockquote>
+<p>根据语法规则把一句话变成一棵树，没搞懂啥意思</p>
+</blockquote>
+<p><img src="/images/NLP/text_processing/parse_tree.png" alt=""></p>
+<p><strong>5. Stemming &amp; Lemmatization</strong></p>
+<blockquote>
+<p>同一个单词可能有不同时态、单复数等，取其枝干可以大大减小运算量和内存占用  </p>
+</blockquote>
+<p>另外我们需要了解的还有beautiful的相应用法，imooc的爬虫课程讲解了基础。</p>
+<p>正则表达式也是很重要的知识，在这里就不一一阐述</p>
 
       
     </div>
@@ -364,6 +399,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/NLP/" rel="tag"># NLP</a>
+          
+        </div>
+      
 
       
       
@@ -373,8 +414,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/10/31/Model_detexting_1/" rel="next" title="OBject claasification via Resnet50">
-                <i class="fa fa-chevron-left"></i> OBject claasification via Resnet50
+              <a href="/2018/11/11/pyspider4/" rel="next" title="Pyspider (Four) how to use a simple Spider">
+                <i class="fa fa-chevron-left"></i> Pyspider (Four) how to use a simple Spider
               </a>
             
           </div>
@@ -382,10 +423,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/10/31/tensorflow_basic/" rel="prev" title="Basic Rules of Tensorflow">
-                Basic Rules of Tensorflow <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -524,7 +561,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#利用vgg迁移学习实现花朵的分类，基于tensorflow进行实现"><span class="nav-number">1.</span> <span class="nav-text">利用vgg迁移学习实现花朵的分类，基于tensorflow进行实现</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么要迁移学习"><span class="nav-number">1.1.</span> <span class="nav-text">为什么要迁移学习</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#一个好的CNN可以判断出一个图片的基本轮廓-我们利用这个训练好的CNN得到轮廓并扁平化处理-我们要做的就是搭建ANN-来实现我们自己的classifier"><span class="nav-number">1.1.1.</span> <span class="nav-text">一个好的CNN可以判断出一个图片的基本轮廓, 我们利用这个训练好的CNN得到轮廓并扁平化处理, 我们要做的就是搭建ANN, 来实现我们自己的classifier</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#首先介绍两个比较常用的方法"><span class="nav-number">2.</span> <span class="nav-text">首先介绍两个比较常用的方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-单热点编码"><span class="nav-number">2.1.</span> <span class="nav-text">1. 单热点编码</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#在这里我们有五种花-他们的名字都是中文-我们需要对他进行编码"><span class="nav-number">2.1.1.</span> <span class="nav-text">在这里我们有五种花, 他们的名字都是中文, 我们需要对他进行编码</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-分类—我们需要随机的分出test、valid和Train"><span class="nav-number">2.2.</span> <span class="nav-text">2. 分类—我们需要随机的分出test、valid和Train</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#这里使用机器学习库-how-to-use"><span class="nav-number">2.2.1.</span> <span class="nav-text">这里使用机器学习库 how to use</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-储存结果"><span class="nav-number">2.3.</span> <span class="nav-text">3. 储存结果</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#每次训练结束都要把参数的结果储存到checkpoint中来-下一次test时候直接进行调用"><span class="nav-number">2.3.1.</span> <span class="nav-text">每次训练结束都要把参数的结果储存到checkpoint中来, 下一次test时候直接进行调用</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-计算主体"><span class="nav-number">2.4.</span> <span class="nav-text">4. 计算主体</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#外部一个epochs的循环，内部一个计算函数"><span class="nav-number">2.4.1.</span> <span class="nav-text">外部一个epochs的循环，内部一个计算函数</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#储存结果"><span class="nav-number">2.5.</span> <span class="nav-text">储存结果</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#加载结果进行使用"><span class="nav-number">2.6.</span> <span class="nav-text">加载结果进行使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#data-cutting"><span class="nav-number">2.7.</span> <span class="nav-text">data cutting</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#building-NN"><span class="nav-number">2.8.</span> <span class="nav-text">building NN</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Training"><span class="nav-number">2.9.</span> <span class="nav-text">Training</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#basic-rules-of-text-procession-and-how-to-use-nltk"><span class="nav-number">1.</span> <span class="nav-text">basic rules of text procession and how to use nltk</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#下图是一个简单的处理流程"><span class="nav-number">1.1.</span> <span class="nav-text">下图是一个简单的处理流程</span></a></li></ol></li></ol></div>
             
 
           </div>

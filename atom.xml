@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-11-11T17:15:49.089Z</updated>
+  <updated>2018-11-14T14:26:21.557Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>NLP(First) Text Processing</title>
+    <link href="http://yoursite.com/2018/11/14/NLP1/"/>
+    <id>http://yoursite.com/2018/11/14/NLP1/</id>
+    <published>2018-11-14T14:18:27.448Z</published>
+    <updated>2018-11-14T14:26:21.557Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="basic-rules-of-text-procession-and-how-to-use-nltk"><a href="#basic-rules-of-text-procession-and-how-to-use-nltk" class="headerlink" title="basic rules of text procession and how to use nltk"></a>basic rules of text procession and how to use nltk</h2><h3 id="下图是一个简单的处理流程"><a href="#下图是一个简单的处理流程" class="headerlink" title="下图是一个简单的处理流程"></a>下图是一个简单的处理流程</h3><p><img src="/images/NLP/text_processing/text_p.png" alt=""></p><p>判断一段文字中单词出现的数量是一个经典的问题，首先建立一个dict。接着把str用spilt给分开，用正则表达式去除标点，然后统计数量</p><figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">def count_words(str):</span><br><span class="line">    <span class="string">""</span><span class="string">"Count how many times each unique word occurs in text."</span><span class="string">""</span></span><br><span class="line">    counts = dict()  <span class="comment"># dictionary of &#123; &lt;word&gt;: &lt;count&gt; &#125; pairs to return</span></span><br><span class="line">    <span class="comment"># text = str(text)</span></span><br><span class="line">    <span class="comment"># str = "one and two and three and two and one\nbuffalo buffalo buffalo, buffalo buffalo!"</span></span><br><span class="line">    str = str.<span class="built_in">replace</span>(<span class="string">"\n"</span>, <span class="string">" "</span>)</span><br><span class="line">    str = str.<span class="built_in">lower</span>()</span><br><span class="line">    word_l = str.<span class="built_in">split</span>(<span class="string">" "</span>)</span><br><span class="line">    <span class="comment"># <span class="doctag">TODO:</span> Split text into tokens (words), leaving out punctuation</span></span><br><span class="line">    <span class="comment"># (Hint: Use regex to split on non-alphanumeric characters)</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># <span class="doctag">TODO:</span> Aggregate word counts using a dictionary</span></span><br><span class="line">    <span class="keyword">for</span> <span class="built_in">word</span> <span class="keyword">in</span> word_l:</span><br><span class="line">        <span class="built_in">word</span> = re.match(<span class="string">"([a-zA-Z]+).*"</span>, <span class="built_in">word</span>)</span><br><span class="line">        <span class="built_in">word</span> = <span class="built_in">word</span>.group(<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">word</span> <span class="keyword">not</span> <span class="keyword">in</span> counts:</span><br><span class="line">            counts[<span class="built_in">word</span>] = <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            counts[<span class="built_in">word</span>] += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="literal">return</span> counts</span><br></pre></td></tr></table></figure><p>看起来不错，但是如果有一套统一的工具来做这些是不是会更好，这时候就出现了nltk(Natural Language ToolKit)  </p><blockquote><p>pip install nltk  </p></blockquote><p><strong>1. from nltk.tokenize import word_tokenize</strong></p><blockquote><p>将一个句子中的单词一个个提取出来，相比于自己split好在他更智能。e.g. 可以提取出Dr.</p></blockquote><p><strong>2. from nltk.tokenize import sent_tokenize</strong> </p><blockquote><p>可以将一个个句子提取出来  </p></blockquote><p><strong>3. from nltk.corpus import stopwords</strong>  </p><blockquote><p>有一些句子中的单词是没有意义的，stopwords可以帮助我们快速提取出来  </p></blockquote><p><strong>4. Sentence Parsing</strong></p><blockquote><p>根据语法规则把一句话变成一棵树，没搞懂啥意思</p></blockquote><p><img src="/images/NLP/text_processing/parse_tree.png" alt=""></p><p><strong>5. Stemming &amp; Lemmatization</strong></p><blockquote><p>同一个单词可能有不同时态、单复数等，取其枝干可以大大减小运算量和内存占用  </p></blockquote><p>另外我们需要了解的还有beautiful的相应用法，imooc的爬虫课程讲解了基础。</p><p>正则表达式也是很重要的知识，在这里就不一一阐述</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;basic-rules-of-text-procession-and-how-to-use-nltk&quot;&gt;&lt;a href=&quot;#basic-rules-of-text-procession-and-how-to-use-nltk&quot; class=&quot;headerlink&quot;
+      
+    
+    </summary>
+    
+      <category term="NLP" scheme="http://yoursite.com/categories/NLP/"/>
+    
+    
+      <category term="NLP" scheme="http://yoursite.com/tags/NLP/"/>
+    
+  </entry>
   
   <entry>
     <title>Pyspider (Four) how to use a simple Spider</title>
@@ -419,27 +444,6 @@
       
       
         &lt;h3 id=&quot;3-Longest-Substring-Without-Repeating-Characters&quot;&gt;&lt;a href=&quot;#3-Longest-Substring-Without-Repeating-Characters&quot; class=&quot;headerlink&quot; tit
-      
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Welcome</title>
-    <link href="http://yoursite.com/2018/10/19/New%20begining/"/>
-    <id>http://yoursite.com/2018/10/19/New begining/</id>
-    <published>2018-10-19T14:00:04.183Z</published>
-    <updated>2018-10-20T09:06:37.029Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="Welcome-to-JunYu-Wang’s-site"><a href="#Welcome-to-JunYu-Wang’s-site" class="headerlink" title="Welcome to JunYu Wang’s site"></a>Welcome to JunYu Wang’s site</h2><h3 id="I-am-proud-that-I’ve-keep-writing-blogs-for-almost-half-year-in-2018-The-content-are-as-followed"><a href="#I-am-proud-that-I’ve-keep-writing-blogs-for-almost-half-year-in-2018-The-content-are-as-followed" class="headerlink" title="I am proud that I’ve keep writing blogs for almost half year in 2018. The content are as followed."></a>I am proud that I’ve keep writing blogs for almost half year in 2018. The content are as followed.</h3><ul><li style="list-style: none"><input type="checkbox" checked> Notes of the CS system and data structure from the class</li><li style="list-style: none"><input type="checkbox" checked> Notes of the Deep-learning courses from Udacity</li><li style="list-style: none"><input type="checkbox" checked> ….</li></ul><hr><h3 id="The-reason-why-today-is-very-important-is-that-I-realize-that-my-blogs-shouldn’t-have-been-regarded-as-merely-“records-of-my-study”-It-should-be-more-formal-more-beautiful-more-ordered-and-most-importantly-more-inspiring"><a href="#The-reason-why-today-is-very-important-is-that-I-realize-that-my-blogs-shouldn’t-have-been-regarded-as-merely-“records-of-my-study”-It-should-be-more-formal-more-beautiful-more-ordered-and-most-importantly-more-inspiring" class="headerlink" title="The reason why today is very important is that I realize that my blogs shouldn’t have been regarded as merely “records of my study”. It should be more formal, more beautiful, more ordered, and most importantly, more inspiring."></a>The reason why today is very important is that I realize that my blogs shouldn’t have been regarded as merely “records of my study”. It should be more formal, more beautiful, more ordered, and most importantly, more inspiring.</h3><h4 id="I-always-like-new-beginings-and-new-challanges-which-make-me-feel-alive-So-I-want-to-delve-furture-into-some-specific-areas-of-study-to-equip-myself-to-be-more-professional"><a href="#I-always-like-new-beginings-and-new-challanges-which-make-me-feel-alive-So-I-want-to-delve-furture-into-some-specific-areas-of-study-to-equip-myself-to-be-more-professional" class="headerlink" title="I always like new beginings and new challanges, which make me feel alive. So I want to delve furture into some specific areas of study to equip myself to be more professional."></a>I always like new beginings and new challanges, which make me feel alive. So I want to delve furture into some specific areas of study to equip myself to be more professional.</h4><ul><li style="list-style: none"><input type="checkbox"> Notes of how to deal with the problems on Leetcode</li><li style="list-style: none"><input type="checkbox"> Notes of deeper details of algorithm such as object detection</li><li style="list-style: none"><input type="checkbox"> Notes of new classes in new school</li><li style="list-style: none"><input type="checkbox"> …..</li><li></li></ul><p><strong>CLICK “About” to see my RESUME</strong></p><p><strong>CLICK “Categories” to see all the topics of my articles</strong> </p><p><strong>CLICK “Tags”… OOPS, this is under building</strong></p><p><strong>CLICK “Search” to find the topic you have interests on</strong></p><p><em>Hope you Enjoy this</em></p><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (you have any questions)</span><br><span class="line">&#123;</span><br><span class="line">    case email:</span><br><span class="line">        wangjunyu0808@gmail.com;</span><br><span class="line">    case insgram:</span><br><span class="line">        wangjunyu0808;</span><br><span class="line">    case wechat:</span><br><span class="line">        HeNeArKrXnTn</span><br><span class="line">    default;</span><br><span class="line">&#125;</span><br><span class="line">I will be happy <span class="keyword">to</span> share ideas with you</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;Welcome-to-JunYu-Wang’s-site&quot;&gt;&lt;a href=&quot;#Welcome-to-JunYu-Wang’s-site&quot; class=&quot;headerlink&quot; title=&quot;Welcome to JunYu Wang’s site&quot;&gt;&lt;/a&gt;We
       
     
     </summary>
