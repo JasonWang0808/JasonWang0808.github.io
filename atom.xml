@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-11-14T14:26:21.557Z</updated>
+  <updated>2018-11-17T05:57:39.553Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>spam classification --- naive bayes</title>
+    <link href="http://yoursite.com/2018/11/16/spam-classification/"/>
+    <id>http://yoursite.com/2018/11/16/spam-classification/</id>
+    <published>2018-11-16T12:58:52.786Z</published>
+    <updated>2018-11-17T05:57:39.553Z</updated>
+    
+    <content type="html"><![CDATA[<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script> <h3 id="举个栗子"><a href="#举个栗子" class="headerlink" title="举个栗子"></a>举个栗子</h3><h5 id="我们在清分的时候认为有easy和money就可能使垃圾邮件，通过检查邮件中有两个单词就可以说明是否为spam，“朴素”贝叶斯朴素在于认为各个元素是相互独立的，因此直接将概率相乘"><a href="#我们在清分的时候认为有easy和money就可能使垃圾邮件，通过检查邮件中有两个单词就可以说明是否为spam，“朴素”贝叶斯朴素在于认为各个元素是相互独立的，因此直接将概率相乘" class="headerlink" title="我们在清分的时候认为有easy和money就可能使垃圾邮件，通过检查邮件中有两个单词就可以说明是否为spam，“朴素”贝叶斯朴素在于认为各个元素是相互独立的，因此直接将概率相乘"></a>我们在清分的时候认为有easy和money就可能使垃圾邮件，通过检查邮件中有两个单词就可以说明是否为spam，“朴素”贝叶斯朴素在于认为各个元素是相互独立的，因此直接将概率相乘</h5><p>$$<br>(1) P(spam) P(‘easy’|spam) P(‘money’|spam)  +  P(ham) P(‘easy’|ham) P(‘money’|ham) = \alpha<br>$$</p><p>$$<br>(2) P(spam|’easy’, ‘money’) = \frac{ P(spam) P(‘easy’|spam) P(‘money’|spam) }{\alpha}<br>$$    </p><p>$$<br>(3) P(ham|’easy’, ‘money’) = \frac{ P(ham) P(‘easy’|ham) P(‘money’|ham) }{\alpha}<br>$$</p><p>$$<br> Final : P(spam|’easy’, ‘money’)  +  P(ham|’easy’, ‘money’) = 1<br>$$</p><h5 id="当然我们在实际过程中调用sklearn-naive-bayes-MultinomialNB就可以"><a href="#当然我们在实际过程中调用sklearn-naive-bayes-MultinomialNB就可以" class="headerlink" title="当然我们在实际过程中调用sklearn.naive_bayes.MultinomialNB就可以"></a>当然我们在实际过程中调用sklearn.naive_bayes.MultinomialNB就可以</h5><h5 id="gt-注意训练数据的形式是dataframe，用pandas直接读取或者是用matrix转换"><a href="#gt-注意训练数据的形式是dataframe，用pandas直接读取或者是用matrix转换" class="headerlink" title="&gt; 注意训练数据的形式是dataframe，用pandas直接读取或者是用matrix转换"></a>&gt; 注意训练数据的形式是dataframe，用pandas直接读取或者是用matrix转换</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="comment"># Dataset from - https://archive.ics.uci.edu/ml/datasets/SMS+Spam+Collection</span></span><br><span class="line"><span class="keyword">from</span> sklearn.feature_extraction.text <span class="keyword">import</span> CountVectorizer</span><br><span class="line"></span><br><span class="line">df = pd.read_table(</span><br><span class="line">        <span class="string">'./smsspamcollection/SMSSpamCollection'</span>,</span><br><span class="line">        sep=<span class="string">'\t'</span>,</span><br><span class="line">       names = [<span class="string">'label'</span>, <span class="string">'sms_message'</span>]</span><br><span class="line">        )</span><br><span class="line"><span class="comment"># Note1. 注意读出的是data_frame，命名用names</span></span><br><span class="line"></span><br><span class="line">df[<span class="string">'label'</span>] = df.label.map(&#123;<span class="string">'spam'</span>:<span class="number">1</span>, <span class="string">'ham'</span>:<span class="number">0</span>&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Note2. 二分类问题</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> sklearn.cross_validation <span class="keyword">import</span> train_test_split</span><br><span class="line"></span><br><span class="line">X_train, X_test, y_train, y_test = train_test_split(df[<span class="string">'sms_message'</span>],</span><br><span class="line">                                                    df[<span class="string">'label'</span>],</span><br><span class="line">                                                    random_state=<span class="number">1</span>)</span><br><span class="line">count_vector = CountVectorizer()</span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">fit是找到规律，如果fit过之后就可以直接transform，因为规律已经学会了</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line">training_data = count_vector.fit_transform(X_train)</span><br><span class="line">testing_data = count_vector.transform(X_test)</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> sklearn.naive_bayes <span class="keyword">import</span> MultinomialNB</span><br><span class="line">naive_bayes = MultinomialNB()</span><br><span class="line">naive_bayes.fit(training_data, y_train)</span><br><span class="line">predictions = naive_bayes.predict(testing_data)</span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">Precision tells us what proportion of messages we classified as spam, actually were spam.</span></span><br><span class="line"><span class="string">[True Positives/(True Positives + False Positives)]</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Recall tells us what proportion of messages we classified as spam in the total number of spam</span></span><br><span class="line"><span class="string">[True Positives/(True Positives + False Negatives)]</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> accuracy_score, precision_score, recall_score, f1_score</span><br><span class="line">print(<span class="string">'Accuracy score: '</span>, format(accuracy_score(y_test, predictions)))</span><br><span class="line">print(<span class="string">'Precision score: '</span>, format(precision_score(y_test, predictions)))</span><br><span class="line">print(<span class="string">'Recall score: '</span>, format(recall_score(y_test, predictions)))</span><br><span class="line">print(<span class="string">'F1 score: '</span>, format(f1_score(y_test, predictions)))</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;script type=&quot;text/javascript&quot; src=&quot;https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML&quot;&gt;&lt;/script&gt; 
+
+&lt;h3 id=&quot;举个栗子&quot;&gt;&lt;a href
+      
+    
+    </summary>
+    
+    
+      <category term="machine learning" scheme="http://yoursite.com/tags/machine-learning/"/>
+    
+  </entry>
   
   <entry>
     <title>NLP(First) Text Processing</title>
@@ -423,27 +448,6 @@
       
       
         &lt;h3 id=&quot;How-to-build-up-your-hexo-on-Github-Page&quot;&gt;&lt;a href=&quot;#How-to-build-up-your-hexo-on-Github-Page&quot; class=&quot;headerlink&quot; title=&quot;How to build
-      
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Notes of LeetCode (a)</title>
-    <link href="http://yoursite.com/2018/10/20/leetcode/"/>
-    <id>http://yoursite.com/2018/10/20/leetcode/</id>
-    <published>2018-10-20T11:13:06.252Z</published>
-    <updated>2018-11-01T12:31:11.757Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="3-Longest-Substring-Without-Repeating-Characters"><a href="#3-Longest-Substring-Without-Repeating-Characters" class="headerlink" title="3. Longest Substring Without Repeating Characters"></a>3. Longest Substring Without Repeating Characters</h3><p>Ⅰ.  <strong>DATA STRUCTURE: HashMap</strong></p><blockquote><p>HashMap is a quick way to find elements in the time complexity of O(1) and is commonly used in leetcode.</p></blockquote><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">HashMap&lt;Charactor,Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt; ();</span><br></pre></td></tr></table></figure><p>Ⅱ. <strong>Method:Sliding Window</strong><br>The sliding window is an abstract concept <strong>commonly used in array/String problem</strong>s. It likes <strong>Dynamic Programming</strong>, because we don’t know the answer until we finish it.</p><p>The length is <strong>j - i</strong> because the arrange is [i, j) (left-closed, right-open). We set the <strong>ANS</strong> to record the longest answer.</p><p>Once we find our next number is replucated in our map, we change the i to the number in our map, same with truncating. Then next, until we reach the end of the array.</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="comment">//map.put  map.get    map.containsKey</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">lengthOfLongestSubstring</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        HashMap&lt;Character, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>, j = <span class="number">0</span>, ans = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> l = s.length();</span><br><span class="line">        <span class="keyword">while</span>(i &lt; l &amp;&amp; j &lt; l)&#123;</span><br><span class="line">            <span class="keyword">if</span>(map.containsKey(s.charAt(j)))&#123; <span class="comment">//if next element in the map</span></span><br><span class="line">                i = Math.max(map.get(s.charAt(j)) + <span class="number">1</span>, i); <span class="comment">// abba, max is to prevent : "a" in the end makes i be '0'</span></span><br><span class="line">            &#125;</span><br><span class="line">            ans = Math.max(ans, j-i+<span class="number">1</span>); <span class="comment">// keep the bigger ans</span></span><br><span class="line">            map.put(s.charAt(j), j); <span class="comment">// refresh the map</span></span><br><span class="line">            j ++; <span class="comment">// goto next number</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;3-Longest-Substring-Without-Repeating-Characters&quot;&gt;&lt;a href=&quot;#3-Longest-Substring-Without-Repeating-Characters&quot; class=&quot;headerlink&quot; tit
       
     
     </summary>
