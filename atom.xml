@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-11-18T12:10:25.936Z</updated>
+  <updated>2018-11-18T14:13:35.963Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Basic modules of NLP python</title>
+    <link href="http://yoursite.com/2018/11/18/python_models/"/>
+    <id>http://yoursite.com/2018/11/18/python_models/</id>
+    <published>2018-11-18T14:08:09.835Z</published>
+    <updated>2018-11-18T14:13:35.963Z</updated>
+    
+    <content type="html"><![CDATA[<ol><li>指定二维数组, 可以调用a.keys()来查看索引  </li></ol><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">a</span> = defaultdict(list)</span><br></pre></td></tr></table></figure><ol start="2"><li>Cunter 可以统计一个list中各个部件出现的数量，可以搭配上面的defaultlist使用  </li></ol><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> Counter</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;ol&gt;
+&lt;li&gt;指定二维数组, 可以调用a.keys()来查看索引  &lt;/li&gt;
+&lt;/ol&gt;
+&lt;figure class=&quot;highlight ini&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;
+      
+    
+    </summary>
+    
+      <category term="tool" scheme="http://yoursite.com/categories/tool/"/>
+    
+    
+      <category term="tool" scheme="http://yoursite.com/tags/tool/"/>
+    
+  </entry>
   
   <entry>
     <title>Hidden Markov Model，HMM</title>
@@ -433,27 +461,6 @@
       
       
         &lt;h2 id=&quot;Recursion&quot;&gt;&lt;a href=&quot;#Recursion&quot; class=&quot;headerlink&quot; title=&quot;Recursion&quot;&gt;&lt;/a&gt;Recursion&lt;/h2&gt;&lt;p&gt;From my perspective, Recursion is an effic
-      
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Dynamic Programming---Leetcode</title>
-    <link href="http://yoursite.com/2018/10/30/DP/"/>
-    <id>http://yoursite.com/2018/10/30/DP/</id>
-    <published>2018-10-30T02:28:18.140Z</published>
-    <updated>2018-11-01T12:31:23.431Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="Dynamic-Programming"><a href="#Dynamic-Programming" class="headerlink" title="Dynamic Programming"></a>Dynamic Programming</h3><p>The situations are that our current situations depend on the old calculations. So we don’t need to start from the begining again, <strong>we can store the outcome of each step so we can cite it directly.</strong></p><p>Usually, the parameters of the function are the index instead of the object (string etc.) itself. Because our operations are on the matrix.</p><hr><h5 id="Example1-5-Longest-Palindromic-Substring-from-Leetcode"><a href="#Example1-5-Longest-Palindromic-Substring-from-Leetcode" class="headerlink" title="Example1. 5. Longest Palindromic Substring from Leetcode"></a>Example1. <a href="https://leetcode.com/problems/longest-palindromic-substring/description/" target="_blank" rel="noopener">5. Longest Palindromic Substring</a> from Leetcode</h5><p>We calculation according to the length of the string. If we wanna judge ‘cbbaac’, we can find whether ‘bbaa’ is Palindromic, then find the character from the two ends are same.</p><hr><h5 id="Example2-10-Regular-Expression-Matching-from-the-Leetcode"><a href="#Example2-10-Regular-Expression-Matching-from-the-Leetcode" class="headerlink" title="Example2. 10. Regular Expression Matching from the Leetcode"></a>Example2. <a href="https://leetcode.com/problems/regular-expression-matching/description/" target="_blank" rel="noopener">10. Regular Expression Matching</a> from the Leetcode</h5><p>Just like we talk in  “Recursion”, DP algorithm sometimes help Recursion to decrease the calculation. Such as:</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">dp</span><span class="params">(i, j, arr)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> arr[i][j] != null: <span class="comment">## it can returns directly</span></span><br><span class="line">        <span class="keyword">return</span> arr[i][j] </span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        calculate the arr[i][j]</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;Dynamic-Programming&quot;&gt;&lt;a href=&quot;#Dynamic-Programming&quot; class=&quot;headerlink&quot; title=&quot;Dynamic Programming&quot;&gt;&lt;/a&gt;Dynamic Programming&lt;/h3&gt;&lt;p&gt;Th
       
     
     </summary>

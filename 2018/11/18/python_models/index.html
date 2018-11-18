@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="tool,">
 
 
 
@@ -81,17 +81,18 @@
 
 
 
-<meta name="description" content="Policy Based method莫烦python Policy Based Method意思是给特定的状态特定的动作 ,适用于一个连续的运动 , 相比于Value-Based方法，我们只在乎当前状态经过神经网络运算出来的action。通过Reward进行训练神经网络的参数\(w\)，而不考虑其数值的算法进行收敛。随机性搜索策略 (这里以蒙特卡洛为例子，即有限个动作)$$\theta">
+<meta name="description" content="指定二维数组, 可以调用a.keys()来查看索引    1a = defaultdict(list)  Cunter 可以统计一个list中各个部件出现的数量，可以搭配上面的defaultlist使用    1from collections import Counter">
+<meta name="keywords" content="tool">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Reinforment Learning(Four) Policy Based Method">
-<meta property="og:url" content="http://yoursite.com/2018/11/03/Reinforcement_Learning4/index.html">
+<meta property="og:title" content="Basic modules of NLP python">
+<meta property="og:url" content="http://yoursite.com/2018/11/18/python_models/index.html">
 <meta property="og:site_name" content="Junyu Wang&#39;s Blog">
-<meta property="og:description" content="Policy Based method莫烦python Policy Based Method意思是给特定的状态特定的动作 ,适用于一个连续的运动 , 相比于Value-Based方法，我们只在乎当前状态经过神经网络运算出来的action。通过Reward进行训练神经网络的参数\(w\)，而不考虑其数值的算法进行收敛。随机性搜索策略 (这里以蒙特卡洛为例子，即有限个动作)$$\theta">
+<meta property="og:description" content="指定二维数组, 可以调用a.keys()来查看索引    1a = defaultdict(list)  Cunter 可以统计一个list中各个部件出现的数量，可以搭配上面的defaultlist使用    1from collections import Counter">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-11-04T07:59:39.221Z">
+<meta property="og:updated_time" content="2018-11-18T14:13:35.963Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Reinforment Learning(Four) Policy Based Method">
-<meta name="twitter:description" content="Policy Based method莫烦python Policy Based Method意思是给特定的状态特定的动作 ,适用于一个连续的运动 , 相比于Value-Based方法，我们只在乎当前状态经过神经网络运算出来的action。通过Reward进行训练神经网络的参数\(w\)，而不考虑其数值的算法进行收敛。随机性搜索策略 (这里以蒙特卡洛为例子，即有限个动作)$$\theta">
+<meta name="twitter:title" content="Basic modules of NLP python">
+<meta name="twitter:description" content="指定二维数组, 可以调用a.keys()来查看索引    1a = defaultdict(list)  Cunter 可以统计一个list中各个部件出现的数量，可以搭配上面的defaultlist使用    1from collections import Counter">
 
 
 
@@ -121,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/11/03/Reinforcement_Learning4/">
+  <link rel="canonical" href="http://yoursite.com/2018/11/18/python_models/">
 
 
 
 
 
-  <title>Reinforment Learning(Four) Policy Based Method | Junyu Wang's Blog</title>
+  <title>Basic modules of NLP python | Junyu Wang's Blog</title>
   
 
 
@@ -273,7 +274,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/03/Reinforcement_Learning4/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/18/python_models/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="JunYu Wang">
@@ -290,7 +291,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Reinforment Learning(Four) Policy Based Method</h1>
+          <h1 class="post-title" itemprop="name headline">Basic modules of NLP python</h1>
         
 
         <div class="post-meta">
@@ -302,6 +303,26 @@
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/tool/" itemprop="url" rel="index">
+                    <span itemprop="name">tool</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -330,31 +351,14 @@
       
 
       
-        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>  
-
-<h3 id="Policy-Based-method"><a href="#Policy-Based-method" class="headerlink" title="Policy Based method"></a>Policy Based method</h3><h5 id="莫烦python-Policy-Based-Method"><a href="#莫烦python-Policy-Based-Method" class="headerlink" title="莫烦python Policy Based Method"></a><a href="https://github.com/MorvanZhou/Reinforcement-learning-with-tensorflow/tree/master/contents/7_Policy_gradient_softmax" target="_blank" rel="noopener">莫烦python Policy Based Method</a></h5><p>意思是给特定的状态特定的动作 ,适用于一个连续的运动 , <strong>相比于Value-Based方法，我们只在乎当前状态经过神经网络运算出来的action。通过Reward进行训练神经网络的参数\(w\)，而不考虑其数值的算法进行收敛</strong>。<br>随机性搜索策略 (这里以蒙特卡洛为例子，即有限个动作)<br>$$<br>\theta = \theta + \alpha \bigtriangledown_{\theta}log \pi_{\theta}(s_{\tau},a_{t}, \theta)v_{\tau}，可以看到v_{\tau}越大，更新的幅度越大<br>$$</p>
-<blockquote>
-</blockquote>
-<p>$$<br>R_{\tau} = R_{t+1} + \gamma R_{t+2} + \gamma^{2} R_{t+3} + ….<br>$$</p>
-<blockquote>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">neg_log_prob = tf.reduce_sum(-tf.log(self.all_act_prob)*tf.one_hot(self.tf_acts, self.n_actions), axis=<span class="number">1</span>)</span><br><span class="line"><span class="comment">##这里log有符号，因此minimize其实是增大</span></span><br><span class="line">loss = tf.reduce_mean(neg_log_prob * self.tf_vt) </span><br><span class="line"><span class="comment"># 对于不同action，他们的tf.vt不同，train的过程都是增加，但是vt越大增加的概率越大，训练到最后会选择那些vt大的动作</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>\(v_{t}\)是指奖惩的大小，如果我们发现奖惩很好，那么调整神经网络使得这个动作以后多被选中一些。 如果觉得不好，则下一次选中的机会会变小  </p>
-</blockquote>
-<p>但是对于没有终点的任务，比如我们训练一个小孩子上学、吃饭、睡觉、再上学….显然这个是没有终点的，我们找不到一个合适的时间点来更新我们的\(w\)，因此我们采用下面的公式</p>
-<p>$$<br>\Delta \theta = \alpha \ \bigtriangledown_{\theta}(log (S_{t}, A_{t}, \theta) Q(S_{t},A_{t}), 我们采用Q(S_{t},A_{t}来替换R_{\tau}<br>$$</p>
-<p>$$<br>Q(S_{t},A_{t} )= Q(S_{t}, A_{t}) + \beta(R_{t+1} + \gamma Q(S_{t+1}, A_{t+1} - Q(S_{t},A_{t}))<br>$$</p>
-<h4 id="actor-critic-method"><a href="#actor-critic-method" class="headerlink" title="actor-critic method"></a>actor-critic method</h4><p>用两套神经网络，一套用于预测动作，另一套用于评估动作的好坏。 \(\theta \)是Policy Based 来选择动作，\(w\)是前面DQN来生成反馈\(\hat{q}(S, A)\)。因此这个方法也叫做Actor-Critic</p>
-<blockquote>
-<p>actor来源于policy-based， critic来源于value-based。actor来指手画脚，critic告诉他哪一个动作是对，哪一个是错  </p>
-</blockquote>
-<p>$$<br>Actor : \Delta \theta = \alpha \bigtriangledown_{\theta}(log\pi(S_{t},A_{t},\theta))\hat{q}(S_{t}, A_{t}, w)<br>\pi 是选取动作的指令，q是反馈的动作值<br>$$</p>
-<blockquote>
-</blockquote>
-<p>$$<br>Critic : \Delta w = \beta(R_{t+1} + \gamma \hat{q}(S_{t+1}, A_{t}, w)) - \hat{q}(S_{t}, A_{t}, w)) \bigtriangledown_{w} \hat{q}(S_{t}, A_{t}, w)<br>$$</p>
-<h3 id="Deep-Deterministic-Policy-Gradient-DDPG"><a href="#Deep-Deterministic-Policy-Gradient-DDPG" class="headerlink" title="Deep Deterministic Policy Gradient(DDPG)"></a>Deep Deterministic Policy Gradient(DDPG)</h3><p>Deep: 仿照DQN，有一个buffer，两个更新频率不相同的神经网络参数\(w\) , 由deepMind对actor-critic method  </p>
-
+        <ol>
+<li>指定二维数组, 可以调用a.keys()来查看索引  </li>
+</ol>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">a</span> = defaultdict(list)</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>Cunter 可以统计一个list中各个部件出现的数量，可以搭配上面的defaultlist使用  </li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> Counter</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -369,6 +373,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/tool/" rel="tag"># tool</a>
+          
+        </div>
+      
 
       
       
@@ -378,8 +388,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/11/02/Reinforcement_Learning3/" rel="next" title="Reinforcement Learning（Third）Code of DQN with TF">
-                <i class="fa fa-chevron-left"></i> Reinforcement Learning（Third）Code of DQN with TF
+              <a href="/2018/11/18/HMM/" rel="next" title="Hidden Markov Model，HMM">
+                <i class="fa fa-chevron-left"></i> Hidden Markov Model，HMM
               </a>
             
           </div>
@@ -387,10 +397,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/11/04/Reinforment_Learning5/" rel="prev" title="Reinforment Learning(Five) Actor-Critic">
-                Reinforment Learning(Five) Actor-Critic <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -442,17 +448,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -519,22 +516,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Policy-Based-method"><span class="nav-number">1.</span> <span class="nav-text">Policy Based method</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#莫烦python-Policy-Based-Method"><span class="nav-number">1.0.1.</span> <span class="nav-text">莫烦python Policy Based Method</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#actor-critic-method"><span class="nav-number">1.1.</span> <span class="nav-text">actor-critic method</span></a></li></ol><li class="nav-item nav-level-3"><a class="nav-link" href="#Deep-Deterministic-Policy-Gradient-DDPG"><span class="nav-number">2.</span> <span class="nav-text">Deep Deterministic Policy Gradient(DDPG)</span></a></li></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
