@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="NLP,">
 
 
 
@@ -81,17 +81,23 @@
 
 
 
-<meta name="description" content="常见符号1. tf.Variable 与 tf.constant 第一个可以根据计算改变，第二个是不能变的, 因此神经网络的权值通常都是Variable另外要注意, 定义了变量和常量之后，要初始化才能使用  123init = tf.global_variables_initializer()with tf.Session() as sess:    sess.run(init) 2. tf.re">
+<meta name="description" content="隐马尔可夫模型在词性标注上的应用 给定前提我们只关注N/M/V三个词性    首先介绍第一个概念  Emission Probabilities&amp;gt; 是指同一种状态各个数值得可能性，可以看下图   我们可以看到，当认为是当前词语是N的时候有4/9的可能性是mary接下来是第二个概念  Transition Probabilities&amp;gt; 指状态之间的转换概率，/分别表示开始和结束，">
+<meta name="keywords" content="NLP">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Basic Rules of Tensorflow">
-<meta property="og:url" content="http://yoursite.com/2018/10/31/tensorflow_basic/index.html">
+<meta property="og:title" content="Hidden Markov Model，HMM">
+<meta property="og:url" content="http://yoursite.com/2018/11/18/HMM/index.html">
 <meta property="og:site_name" content="Junyu Wang&#39;s Blog">
-<meta property="og:description" content="常见符号1. tf.Variable 与 tf.constant 第一个可以根据计算改变，第二个是不能变的, 因此神经网络的权值通常都是Variable另外要注意, 定义了变量和常量之后，要初始化才能使用  123init = tf.global_variables_initializer()with tf.Session() as sess:    sess.run(init) 2. tf.re">
+<meta property="og:description" content="隐马尔可夫模型在词性标注上的应用 给定前提我们只关注N/M/V三个词性    首先介绍第一个概念  Emission Probabilities&amp;gt; 是指同一种状态各个数值得可能性，可以看下图   我们可以看到，当认为是当前词语是N的时候有4/9的可能性是mary接下来是第二个概念  Transition Probabilities&amp;gt; 指状态之间的转换概率，/分别表示开始和结束，">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-11-01T12:31:48.900Z">
+<meta property="og:image" content="http://yoursite.com/images/NLP/HMM/1.png">
+<meta property="og:image" content="http://yoursite.com/images/NLP/HMM/2.png">
+<meta property="og:image" content="http://yoursite.com/images/NLP/HMM/3.png">
+<meta property="og:image" content="http://yoursite.com/images/NLP/HMM/3.png">
+<meta property="og:updated_time" content="2018-11-18T12:10:25.936Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Basic Rules of Tensorflow">
-<meta name="twitter:description" content="常见符号1. tf.Variable 与 tf.constant 第一个可以根据计算改变，第二个是不能变的, 因此神经网络的权值通常都是Variable另外要注意, 定义了变量和常量之后，要初始化才能使用  123init = tf.global_variables_initializer()with tf.Session() as sess:    sess.run(init) 2. tf.re">
+<meta name="twitter:title" content="Hidden Markov Model，HMM">
+<meta name="twitter:description" content="隐马尔可夫模型在词性标注上的应用 给定前提我们只关注N/M/V三个词性    首先介绍第一个概念  Emission Probabilities&amp;gt; 是指同一种状态各个数值得可能性，可以看下图   我们可以看到，当认为是当前词语是N的时候有4/9的可能性是mary接下来是第二个概念  Transition Probabilities&amp;gt; 指状态之间的转换概率，/分别表示开始和结束，">
+<meta name="twitter:image" content="http://yoursite.com/images/NLP/HMM/1.png">
 
 
 
@@ -121,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/10/31/tensorflow_basic/">
+  <link rel="canonical" href="http://yoursite.com/2018/11/18/HMM/">
 
 
 
 
 
-  <title>Basic Rules of Tensorflow | Junyu Wang's Blog</title>
+  <title>Hidden Markov Model，HMM | Junyu Wang's Blog</title>
   
 
 
@@ -273,7 +279,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/31/tensorflow_basic/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/18/HMM/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="JunYu Wang">
@@ -290,7 +296,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Basic Rules of Tensorflow</h1>
+          <h1 class="post-title" itemprop="name headline">Hidden Markov Model，HMM</h1>
         
 
         <div class="post-meta">
@@ -302,6 +308,26 @@
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/NLP/" itemprop="url" rel="index">
+                    <span itemprop="name">NLP</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -330,26 +356,85 @@
       
 
       
-        <h2 id="常见符号"><a href="#常见符号" class="headerlink" title="常见符号"></a>常见符号</h2><h3 id="1-tf-Variable-与-tf-constant"><a href="#1-tf-Variable-与-tf-constant" class="headerlink" title="1. tf.Variable 与 tf.constant"></a>1. tf.Variable 与 tf.constant</h3><blockquote>
-<p>第一个可以根据计算改变，第二个是不能变的, 因此神经网络的权值通常都是Variable<br>另外要注意, 定义了变量和常量之后，要初始化才能使用</p>
+        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>  
+
+<h3 id="隐马尔可夫模型在词性标注上的应用"><a href="#隐马尔可夫模型在词性标注上的应用" class="headerlink" title="隐马尔可夫模型在词性标注上的应用"></a>隐马尔可夫模型在词性标注上的应用</h3><blockquote>
+<p>给定前提我们只关注N/M/V三个词性  </p>
 </blockquote>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">init = <span class="keyword">tf</span>.global_variables_initializer()</span><br><span class="line">with <span class="keyword">tf</span>.Session() <span class="keyword">as</span> ses<span class="variable">s:</span></span><br><span class="line">    sess.run(init)</span><br></pre></td></tr></table></figure>
-<h3 id="2-tf-reduce-mean"><a href="#2-tf-reduce-mean" class="headerlink" title="2. tf.reduce_mean"></a>2. tf.reduce_mean</h3><blockquote>
-<p>取平均值，后面跟1是取行，跟0是取列</p>
+<h4 id="首先介绍第一个概念-Emission-Probabilities"><a href="#首先介绍第一个概念-Emission-Probabilities" class="headerlink" title="首先介绍第一个概念  Emission Probabilities"></a>首先介绍第一个概念  Emission Probabilities</h4><h4 id="gt-是指同一种状态各个数值得可能性，可以看下图"><a href="#gt-是指同一种状态各个数值得可能性，可以看下图" class="headerlink" title="&gt; 是指同一种状态各个数值得可能性，可以看下图"></a>&gt; 是指同一种状态各个数值得可能性，可以看下图</h4><p><img src="/images/NLP/HMM/1.png" alt="">  </p>
+<h4 id="我们可以看到，当认为是当前词语是N的时候有4-9的可能性是mary"><a href="#我们可以看到，当认为是当前词语是N的时候有4-9的可能性是mary" class="headerlink" title="我们可以看到，当认为是当前词语是N的时候有4/9的可能性是mary"></a>我们可以看到，当认为是当前词语是N的时候有4/9的可能性是mary</h4><h4 id="接下来是第二个概念-Transition-Probabilities"><a href="#接下来是第二个概念-Transition-Probabilities" class="headerlink" title="接下来是第二个概念  Transition Probabilities"></a>接下来是第二个概念  Transition Probabilities</h4><h4 id="gt-指状态之间的转换概率，-分别表示开始和结束，看下图"><a href="#gt-指状态之间的转换概率，-分别表示开始和结束，看下图" class="headerlink" title="&gt; 指状态之间的转换概率，/分别表示开始和结束，看下图"></a>&gt; 指状态之间的转换概率，<s>/<e>分别表示开始和结束，看下图</e></s></h4><p><img src="/images/NLP/HMM/2.png" alt="">  </p>
+<h4 id="OK，那我们先来看一个例子"><a href="#OK，那我们先来看一个例子" class="headerlink" title="OK，那我们先来看一个例子"></a>OK，那我们先来看一个例子</h4><blockquote>
+<p>Jane will spot Will  </p>
 </blockquote>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">import tensorflow as tf</span><br><span class="line">x = np.array([[1.,2.,3.],[4.,5.,6.]])</span><br><span class="line"></span><br><span class="line">with tf.Session() as sess:</span><br><span class="line">    mean_none = sess.<span class="builtin-name">run</span>(tf.reduce_mean(x))</span><br><span class="line">    mean_1 = sess.<span class="builtin-name">run</span>(tf.reduce_mean(x,1))</span><br><span class="line">    mean_2 = sess.<span class="builtin-name">run</span>(tf.reduce_mean(x,0))</span><br><span class="line">    <span class="builtin-name">print</span>(x)</span><br><span class="line">    <span class="builtin-name">print</span>(mean_none)</span><br><span class="line">    <span class="builtin-name">print</span>(mean_1)</span><br><span class="line">    <span class="builtin-name">print</span>(mean_2)</span><br></pre></td></tr></table></figure>
-<h3 id="3-tf-equal"><a href="#3-tf-equal" class="headerlink" title="3. tf.equal"></a>3. tf.equal</h3><blockquote>
-<p>分别比较矩阵中相同的元素，相同就返回true,不同就返回false</p>
+<h4 id="我们根据前序经验统计出前面的两个概率，然后可以构造流程图如下"><a href="#我们根据前序经验统计出前面的两个概率，然后可以构造流程图如下" class="headerlink" title="我们根据前序经验统计出前面的两个概率，然后可以构造流程图如下"></a>我们根据前序经验统计出前面的两个概率，然后可以构造流程图如下</h4><p><img src="/images/NLP/HMM/3.png" alt="">   </p>
+<h4 id="我们要计算每一条链的可能性就是把边数值与节点数值一路相乘，为了减少计算，我们采用每一层的动态规划（就是最简单那种），每个节点只保留前序节点数值最大的那一条。"><a href="#我们要计算每一条链的可能性就是把边数值与节点数值一路相乘，为了减少计算，我们采用每一层的动态规划（就是最简单那种），每个节点只保留前序节点数值最大的那一条。" class="headerlink" title="我们要计算每一条链的可能性就是把边数值与节点数值一路相乘，为了减少计算，我们采用每一层的动态规划（就是最简单那种），每个节点只保留前序节点数值最大的那一条。"></a>我们要计算每一条链的可能性就是把边数值与节点数值一路相乘，为了减少计算，我们采用每一层的动态规划（就是最简单那种），每个节点只保留前序节点数值最大的那一条。</h4><h4 id="最后我们就可以得到这样一条-通过分析我们可以发现确实得到的结果和我们预期相同"><a href="#最后我们就可以得到这样一条-通过分析我们可以发现确实得到的结果和我们预期相同" class="headerlink" title="最后我们就可以得到这样一条,通过分析我们可以发现确实得到的结果和我们预期相同"></a>最后我们就可以得到这样一条,通过分析我们可以发现确实得到的结果和我们预期相同</h4><h2 id=""><a href="#" class="headerlink" title="   "></a><img src="/images/NLP/HMM/3.png" alt="">   </h2><h3 id="以上是找best-path，接下来我们看一下HMM的forward-algorithm"><a href="#以上是找best-path，接下来我们看一下HMM的forward-algorithm" class="headerlink" title="以上是找best path，接下来我们看一下HMM的forward algorithm"></a>以上是找best path，接下来我们看一下HMM的forward algorithm</h3><hr>
+<p>已知概率分布  </p>
+<p><strong>1. Initial</strong></p>
+<table>
+<thead>
+<tr>
+<th>Sunny</th>
+<th>Rainy</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0.5</td>
+<td>0.5</td>
+</tr>
+</tbody>
+</table>
+<p><strong>2. Emission Probabilities</strong></p>
+<table>
+<thead>
+<tr>
+<th>null</th>
+<th>yes</th>
+<th>no</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sunny</td>
+<td>0.1</td>
+<td>0.9</td>
+</tr>
+<tr>
+<td>rainy</td>
+<td>0.8</td>
+<td>0.2</td>
+</tr>
+</tbody>
+</table>
+<p><strong>3. State transition probabilities</strong></p>
+<table>
+<thead>
+<tr>
+<th>null</th>
+<th>sunny</th>
+<th>rainy</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sunny</td>
+<td>0.8</td>
+<td>0.2</td>
+</tr>
+<tr>
+<td>rainy</td>
+<td>0.4</td>
+<td>0.6  </td>
+</tr>
+</tbody>
+</table>
+<h5 id="现在给定一个序列-S-‘yes’-‘no’-‘yes’"><a href="#现在给定一个序列-S-‘yes’-‘no’-‘yes’" class="headerlink" title="现在给定一个序列 S = [‘yes’, ‘no’, ‘yes’]"></a>现在给定一个序列 S = [‘yes’, ‘no’, ‘yes’]</h5><h5 id="通过forward-algorithm可以计算出在所有的天气组合当中所有满足该序列的概率"><a href="#通过forward-algorithm可以计算出在所有的天气组合当中所有满足该序列的概率" class="headerlink" title="通过forward algorithm可以计算出在所有的天气组合当中所有满足该序列的概率\"></a>通过forward algorithm可以计算出在所有的天气组合当中所有满足该序列的概率\</h5><p>$$<br>P(S|1-sunny) = 0.5 * 0.1 = 0.05<br>$$</p>
+<p>$$<br>P(S|1-rainy) = 0.5 * 0.8 = 0.4<br>$$</p>
+<p>$$<br>P(S|2-sunny) = (P(S|1-sunny)*0.8 + P(S|1-rainy)*0.4)P(no|sunny)<br>$$</p>
+<h4 id="以此类推，最终结果为-P-S-3-sunny-P-S-3-rainy"><a href="#以此类推，最终结果为-P-S-3-sunny-P-S-3-rainy" class="headerlink" title="以此类推，最终结果为\(P(S|3-sunny) + P(S|3-rainy)\)"></a>以此类推，最终结果为\(P(S|3-sunny) + P(S|3-rainy)\)</h4><h4 id="我们可以看出来这个过程相当繁琐-这里用pomegranate库来实现"><a href="#我们可以看出来这个过程相当繁琐-这里用pomegranate库来实现" class="headerlink" title="我们可以看出来这个过程相当繁琐, 这里用pomegranate库来实现"></a>我们可以看出来这个过程相当繁琐, 这里用pomegranate库来实现</h4><blockquote>
+<p>参考的问题是关于一个海藻的理论推导 <a href="https://blog.csdn.net/TH_NUM/article/details/51570174" target="_blank" rel="noopener">https://blog.csdn.net/TH_NUM/article/details/51570174</a></p>
 </blockquote>
-<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">import tensorflow as tf  </span><br><span class="line"> import numpy as np  </span><br><span class="line">   </span><br><span class="line"> A = <span class="string">[[1,3,4,5,6]]</span>  </span><br><span class="line"> B = <span class="string">[[1,3,4,3,2]]</span>  </span><br><span class="line">   </span><br><span class="line"> with tf.Session() as sess:  </span><br><span class="line">     <span class="built_in">print</span>(sess.run(tf.equal(A, B)))</span><br></pre></td></tr></table></figure>
-<h3 id="4-tf-truncated-normal"><a href="#4-tf-truncated-normal" class="headerlink" title="4. tf.truncated_normal"></a>4. tf.truncated_normal</h3><blockquote>
-<p>shape 表示要生成的矩阵的大小<br>mean 表示正态函数的均值<br>stddev表示要生成的随机数的方差<br>seed 是随机数种，通常条件下为None</p>
-</blockquote>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tf.random_normal(shape, <span class="attribute">mean</span>=0.0, <span class="attribute">stddev</span>=1.0, <span class="attribute">dtype</span>=tf.float32, <span class="attribute">seed</span>=None, <span class="attribute">name</span>=None)</span><br></pre></td></tr></table></figure>
-<h3 id="5-tf-reshape"><a href="#5-tf-reshape" class="headerlink" title="5. tf.reshape"></a>5. tf.reshape</h3><blockquote>
-<p>更改矩阵的大小, 通常对图像进行改变<br>参数中可以指定一个 -1 （且只能有一个）, 将根据其他参数的指定自动计算出该维度</p>
-</blockquote>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:<span class="regexp">//</span>blog.csdn.net<span class="regexp">/m0_37592397/</span>article<span class="regexp">/details/</span><span class="number">78695318</span></span><br></pre></td></tr></table></figure>
+<h4 id="为什么和手动算的结果有些偏差呢，因为这个每一步都会进行估算"><a href="#为什么和手动算的结果有些偏差呢，因为这个每一步都会进行估算" class="headerlink" title="为什么和手动算的结果有些偏差呢，因为这个每一步都会进行估算"></a>为什么和手动算的结果有些偏差呢，因为这个每一步都会进行估算</h4><figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">from pomegranate import State, HiddenMarkovModel, <span class="keyword">DiscreteDistribution</span></span><br><span class="line"><span class="keyword">import </span>numpy as np</span><br><span class="line">model = HiddenMarkovModel(name=<span class="string">"Example Model"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置每个状态的发射概率</span></span><br><span class="line">sunny_emissions = <span class="keyword">DiscreteDistribution(&#123;"Dry": </span><span class="number">0</span>.<span class="number">6</span>, <span class="string">"Dryish"</span>: <span class="number">0</span>.<span class="number">2</span>, <span class="string">"Damp"</span>:<span class="number">0</span>.<span class="number">15</span>, <span class="string">"Soggy"</span>:<span class="number">0</span>.<span class="number">05</span>&#125;)</span><br><span class="line">sunny_state = State(sunny_emissions, name=<span class="string">"Sunny"</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">cloud_emissions </span>= <span class="keyword">DiscreteDistribution(&#123;"Dry": </span><span class="number">0</span>.<span class="number">25</span>, <span class="string">"Dryish"</span>: <span class="number">0</span>.<span class="number">25</span>, <span class="string">"Damp"</span>:<span class="number">0</span>.<span class="number">25</span>, <span class="string">"Soggy"</span>:<span class="number">0</span>.<span class="number">25</span>&#125;)</span><br><span class="line"><span class="keyword">cloud_state </span>= State(<span class="keyword">cloud_emissions, </span>name=<span class="string">"Cloud"</span>)</span><br><span class="line"></span><br><span class="line">rainy_emissions = <span class="keyword">DiscreteDistribution(&#123;"Dry": </span><span class="number">0</span>.<span class="number">05</span>, <span class="string">"Dryish"</span>: <span class="number">0</span>.<span class="number">10</span>, <span class="string">"Damp"</span>:<span class="number">0</span>.<span class="number">35</span>, <span class="string">"Soggy"</span>:<span class="number">0</span>.<span class="number">50</span>&#125;)</span><br><span class="line">rainy_state = State(rainy_emissions, name=<span class="string">"Rainy"</span>)</span><br><span class="line"></span><br><span class="line">print(<span class="keyword">cloud_emissions.probability("Dryish"))</span></span><br><span class="line"><span class="keyword"></span></span><br><span class="line"><span class="keyword"># </span>添加状态</span><br><span class="line">model.<span class="keyword">add_states(sunny_state, </span><span class="keyword">cloud_state, </span>rainy_state)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加转移概率，从init开始</span></span><br><span class="line">model.<span class="keyword">add_transition(model.start, </span>sunny_state, <span class="number">0</span>.<span class="number">63</span>)</span><br><span class="line">model.<span class="keyword">add_transition(model.start, </span>rainy_state, <span class="number">0</span>.<span class="number">20</span>)</span><br><span class="line">model.<span class="keyword">add_transition(model.start, </span><span class="keyword">cloud_state, </span><span class="number">0</span>.<span class="number">17</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">model.<span class="keyword">add_transition(sunny_state, </span>sunny_state, <span class="number">0</span>.<span class="number">5</span>)  <span class="comment"># 50% sunny-&gt;sunny</span></span><br><span class="line">model.<span class="keyword">add_transition(sunny_state, </span>rainy_state, <span class="number">0</span>.<span class="number">125</span>)  <span class="comment"># 12.5% sunny-&gt;rainy</span></span><br><span class="line">model.<span class="keyword">add_transition(sunny_state, </span><span class="keyword">cloud_state, </span><span class="number">0</span>.<span class="number">375</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">model.<span class="keyword">add_transition(rainy_state, </span>sunny_state, <span class="number">0</span>.<span class="number">25</span>)  <span class="comment"># 25% rainy-&gt;sunny</span></span><br><span class="line">model.<span class="keyword">add_transition(rainy_state, </span>rainy_state, <span class="number">0</span>.<span class="number">375</span>)  <span class="comment"># 37.5% rainy-&gt;rainy</span></span><br><span class="line">model.<span class="keyword">add_transition(rainy_state, </span><span class="keyword">cloud_state, </span><span class="number">0</span>.<span class="number">375</span>)</span><br><span class="line"></span><br><span class="line">model.<span class="keyword">add_transition(cloud_state, </span><span class="keyword">cloud_state, </span><span class="number">0</span>.<span class="number">125</span>)</span><br><span class="line">model.<span class="keyword">add_transition(cloud_state, </span>sunny_state, <span class="number">0</span>.<span class="number">25</span>)</span><br><span class="line">model.<span class="keyword">add_transition(cloud_state, </span>rainy_state, <span class="number">0</span>.<span class="number">625</span>)</span><br><span class="line"><span class="comment"># 最后使用bake完结</span></span><br><span class="line">model.<span class="keyword">bake()</span></span><br><span class="line"><span class="keyword"></span></span><br><span class="line"><span class="keyword"></span></span><br><span class="line"><span class="keyword">observations </span>= [<span class="string">'Dry'</span>, <span class="string">'Damp'</span>, <span class="string">'Soggy'</span>]</span><br><span class="line">forward_matrix = np.exp(model.forward(observations))</span><br><span class="line"></span><br><span class="line"><span class="comment"># <span class="doctag">TODO:</span> use model.log_probability() to calculate the all-paths likelihood of the</span></span><br><span class="line"><span class="comment"># observed sequence and then use np.exp() to convert log-likelihood to likelihood</span></span><br><span class="line">probability_percentage = np.exp(model.log_probability(observations))</span><br><span class="line"></span><br><span class="line"><span class="comment"># Display the forward probabilities</span></span><br><span class="line">print(<span class="string">"         "</span> + <span class="string">""</span>.<span class="keyword">join(s.name.center(len(s.name)+6) </span>for s in model.states))</span><br><span class="line">for i in range(len(observations) + <span class="number">1</span>):</span><br><span class="line">    print(<span class="string">" &lt;start&gt; "</span> if i==<span class="number">0</span> else observations[i - <span class="number">1</span>].center(<span class="number">9</span>), end=<span class="string">""</span>)</span><br><span class="line">    print(<span class="string">""</span>.<span class="keyword">join("&#123;:.0f&#125;%".format(100 </span>* forward_matrix[i, <span class="keyword">j]).center(len(s.name) </span>+ <span class="number">6</span>)</span><br><span class="line">                  for <span class="keyword">j, </span>s in enumerate(model.states)))</span><br><span class="line"></span><br><span class="line">print(<span class="string">"\nThe likelihood over all possible paths "</span> + \</span><br><span class="line">      <span class="string">"of this model producing the sequence &#123;&#125; is &#123;:.2f&#125;%\n\n"</span></span><br><span class="line">      .format(observations, <span class="number">100</span> * probability_percentage))</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -365,6 +450,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/NLP/" rel="tag"># NLP</a>
+          
+        </div>
+      
 
       
       
@@ -374,8 +465,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/10/31/flower_classification/" rel="next" title="Flower Classification via VGG">
-                <i class="fa fa-chevron-left"></i> Flower Classification via VGG
+              <a href="/2018/11/16/spam-classification/" rel="next" title="spam classification --- naive bayes">
+                <i class="fa fa-chevron-left"></i> spam classification --- naive bayes
               </a>
             
           </div>
@@ -383,10 +474,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/11/01/Reinforce_Learning2/" rel="prev" title="Reinforcement Learning (Second)">
-                Reinforcement Learning (Second) <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -525,7 +612,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#常见符号"><span class="nav-number">1.</span> <span class="nav-text">常见符号</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-tf-Variable-与-tf-constant"><span class="nav-number">1.1.</span> <span class="nav-text">1. tf.Variable 与 tf.constant</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-tf-reduce-mean"><span class="nav-number">1.2.</span> <span class="nav-text">2. tf.reduce_mean</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-tf-equal"><span class="nav-number">1.3.</span> <span class="nav-text">3. tf.equal</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-tf-truncated-normal"><span class="nav-number">1.4.</span> <span class="nav-text">4. tf.truncated_normal</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-tf-reshape"><span class="nav-number">1.5.</span> <span class="nav-text">5. tf.reshape</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#隐马尔可夫模型在词性标注上的应用"><span class="nav-number">1.</span> <span class="nav-text">隐马尔可夫模型在词性标注上的应用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#首先介绍第一个概念-Emission-Probabilities"><span class="nav-number">1.1.</span> <span class="nav-text">首先介绍第一个概念  Emission Probabilities</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#gt-是指同一种状态各个数值得可能性，可以看下图"><span class="nav-number">1.2.</span> <span class="nav-text">&gt; 是指同一种状态各个数值得可能性，可以看下图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#我们可以看到，当认为是当前词语是N的时候有4-9的可能性是mary"><span class="nav-number">1.3.</span> <span class="nav-text">我们可以看到，当认为是当前词语是N的时候有4/9的可能性是mary</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#接下来是第二个概念-Transition-Probabilities"><span class="nav-number">1.4.</span> <span class="nav-text">接下来是第二个概念  Transition Probabilities</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#gt-指状态之间的转换概率，-分别表示开始和结束，看下图"><span class="nav-number">1.5.</span> <span class="nav-text">&gt; 指状态之间的转换概率，/分别表示开始和结束，看下图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#OK，那我们先来看一个例子"><span class="nav-number">1.6.</span> <span class="nav-text">OK，那我们先来看一个例子</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#我们根据前序经验统计出前面的两个概率，然后可以构造流程图如下"><span class="nav-number">1.7.</span> <span class="nav-text">我们根据前序经验统计出前面的两个概率，然后可以构造流程图如下</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#我们要计算每一条链的可能性就是把边数值与节点数值一路相乘，为了减少计算，我们采用每一层的动态规划（就是最简单那种），每个节点只保留前序节点数值最大的那一条。"><span class="nav-number">1.8.</span> <span class="nav-text">我们要计算每一条链的可能性就是把边数值与节点数值一路相乘，为了减少计算，我们采用每一层的动态规划（就是最简单那种），每个节点只保留前序节点数值最大的那一条。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#最后我们就可以得到这样一条-通过分析我们可以发现确实得到的结果和我们预期相同"><span class="nav-number">1.9.</span> <span class="nav-text">最后我们就可以得到这样一条,通过分析我们可以发现确实得到的结果和我们预期相同</span></a></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number"></span> <span class="nav-text">   </span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#以上是找best-path，接下来我们看一下HMM的forward-algorithm"><span class="nav-number">1.</span> <span class="nav-text">以上是找best path，接下来我们看一下HMM的forward algorithm</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#现在给定一个序列-S-‘yes’-‘no’-‘yes’"><span class="nav-number">1.0.1.</span> <span class="nav-text">现在给定一个序列 S = [‘yes’, ‘no’, ‘yes’]</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#通过forward-algorithm可以计算出在所有的天气组合当中所有满足该序列的概率"><span class="nav-number">1.0.2.</span> <span class="nav-text">通过forward algorithm可以计算出在所有的天气组合当中所有满足该序列的概率\</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#以此类推，最终结果为-P-S-3-sunny-P-S-3-rainy"><span class="nav-number">1.1.</span> <span class="nav-text">以此类推，最终结果为\(P(S|3-sunny) + P(S|3-rainy)\)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#我们可以看出来这个过程相当繁琐-这里用pomegranate库来实现"><span class="nav-number">1.2.</span> <span class="nav-text">我们可以看出来这个过程相当繁琐, 这里用pomegranate库来实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么和手动算的结果有些偏差呢，因为这个每一步都会进行估算"><span class="nav-number">1.3.</span> <span class="nav-text">为什么和手动算的结果有些偏差呢，因为这个每一步都会进行估算</span></a></li></ol></li></div>
             
 
           </div>
