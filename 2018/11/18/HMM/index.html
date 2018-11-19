@@ -81,22 +81,22 @@
 
 
 
-<meta name="description" content="隐马尔可夫模型在词性标注上的应用 给定前提我们只关注N/M/V三个词性    首先介绍第一个概念  Emission Probabilities&amp;gt; 是指同一种状态各个数值得可能性，可以看下图   我们可以看到，当认为是当前词语是N的时候有4/9的可能性是mary接下来是第二个概念  Transition Probabilities&amp;gt; 指状态之间的转换概率，/分别表示开始和结束，">
+<meta name="description" content="隐马尔可夫模型在词性标注上的应用 给定前提我们只关注N/M/V三个词性    首先介绍第一个概念  Emission Probabilities&amp;gt; 是指同一种状态各个数值得可能性，可以看下图   我们可以看到，当认为是当前词语是N的时候有4/9的可能性是mary接下来是第二个概念  Transition Probabilities&amp;gt; 指状态之间的转换概率，S/E分别表示开始和结">
 <meta name="keywords" content="NLP">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hidden Markov Model，HMM">
 <meta property="og:url" content="http://yoursite.com/2018/11/18/HMM/index.html">
 <meta property="og:site_name" content="Junyu Wang&#39;s Blog">
-<meta property="og:description" content="隐马尔可夫模型在词性标注上的应用 给定前提我们只关注N/M/V三个词性    首先介绍第一个概念  Emission Probabilities&amp;gt; 是指同一种状态各个数值得可能性，可以看下图   我们可以看到，当认为是当前词语是N的时候有4/9的可能性是mary接下来是第二个概念  Transition Probabilities&amp;gt; 指状态之间的转换概率，/分别表示开始和结束，">
+<meta property="og:description" content="隐马尔可夫模型在词性标注上的应用 给定前提我们只关注N/M/V三个词性    首先介绍第一个概念  Emission Probabilities&amp;gt; 是指同一种状态各个数值得可能性，可以看下图   我们可以看到，当认为是当前词语是N的时候有4/9的可能性是mary接下来是第二个概念  Transition Probabilities&amp;gt; 指状态之间的转换概率，S/E分别表示开始和结">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/images/NLP/HMM/1.png">
 <meta property="og:image" content="http://yoursite.com/images/NLP/HMM/2.png">
 <meta property="og:image" content="http://yoursite.com/images/NLP/HMM/3.png">
 <meta property="og:image" content="http://yoursite.com/images/NLP/HMM/3.png">
-<meta property="og:updated_time" content="2018-11-18T12:10:25.936Z">
+<meta property="og:updated_time" content="2018-11-19T02:25:43.691Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hidden Markov Model，HMM">
-<meta name="twitter:description" content="隐马尔可夫模型在词性标注上的应用 给定前提我们只关注N/M/V三个词性    首先介绍第一个概念  Emission Probabilities&amp;gt; 是指同一种状态各个数值得可能性，可以看下图   我们可以看到，当认为是当前词语是N的时候有4/9的可能性是mary接下来是第二个概念  Transition Probabilities&amp;gt; 指状态之间的转换概率，/分别表示开始和结束，">
+<meta name="twitter:description" content="隐马尔可夫模型在词性标注上的应用 给定前提我们只关注N/M/V三个词性    首先介绍第一个概念  Emission Probabilities&amp;gt; 是指同一种状态各个数值得可能性，可以看下图   我们可以看到，当认为是当前词语是N的时候有4/9的可能性是mary接下来是第二个概念  Transition Probabilities&amp;gt; 指状态之间的转换概率，S/E分别表示开始和结">
 <meta name="twitter:image" content="http://yoursite.com/images/NLP/HMM/1.png">
 
 
@@ -362,7 +362,7 @@
 <p>给定前提我们只关注N/M/V三个词性  </p>
 </blockquote>
 <h4 id="首先介绍第一个概念-Emission-Probabilities"><a href="#首先介绍第一个概念-Emission-Probabilities" class="headerlink" title="首先介绍第一个概念  Emission Probabilities"></a>首先介绍第一个概念  Emission Probabilities</h4><h4 id="gt-是指同一种状态各个数值得可能性，可以看下图"><a href="#gt-是指同一种状态各个数值得可能性，可以看下图" class="headerlink" title="&gt; 是指同一种状态各个数值得可能性，可以看下图"></a>&gt; 是指同一种状态各个数值得可能性，可以看下图</h4><p><img src="/images/NLP/HMM/1.png" alt="">  </p>
-<h4 id="我们可以看到，当认为是当前词语是N的时候有4-9的可能性是mary"><a href="#我们可以看到，当认为是当前词语是N的时候有4-9的可能性是mary" class="headerlink" title="我们可以看到，当认为是当前词语是N的时候有4/9的可能性是mary"></a>我们可以看到，当认为是当前词语是N的时候有4/9的可能性是mary</h4><h4 id="接下来是第二个概念-Transition-Probabilities"><a href="#接下来是第二个概念-Transition-Probabilities" class="headerlink" title="接下来是第二个概念  Transition Probabilities"></a>接下来是第二个概念  Transition Probabilities</h4><h4 id="gt-指状态之间的转换概率，-分别表示开始和结束，看下图"><a href="#gt-指状态之间的转换概率，-分别表示开始和结束，看下图" class="headerlink" title="&gt; 指状态之间的转换概率，/分别表示开始和结束，看下图"></a>&gt; 指状态之间的转换概率，<s>/<e>分别表示开始和结束，看下图</e></s></h4><p><img src="/images/NLP/HMM/2.png" alt="">  </p>
+<h4 id="我们可以看到，当认为是当前词语是N的时候有4-9的可能性是mary"><a href="#我们可以看到，当认为是当前词语是N的时候有4-9的可能性是mary" class="headerlink" title="我们可以看到，当认为是当前词语是N的时候有4/9的可能性是mary"></a>我们可以看到，当认为是当前词语是N的时候有4/9的可能性是mary</h4><h4 id="接下来是第二个概念-Transition-Probabilities"><a href="#接下来是第二个概念-Transition-Probabilities" class="headerlink" title="接下来是第二个概念  Transition Probabilities"></a>接下来是第二个概念  Transition Probabilities</h4><h4 id="gt-指状态之间的转换概率，S-E分别表示开始和结束，看下图"><a href="#gt-指状态之间的转换概率，S-E分别表示开始和结束，看下图" class="headerlink" title="&gt; 指状态之间的转换概率，S/E分别表示开始和结束，看下图"></a>&gt; 指状态之间的转换概率，S/E分别表示开始和结束，看下图</h4><p><img src="/images/NLP/HMM/2.png" alt="">  </p>
 <h4 id="OK，那我们先来看一个例子"><a href="#OK，那我们先来看一个例子" class="headerlink" title="OK，那我们先来看一个例子"></a>OK，那我们先来看一个例子</h4><blockquote>
 <p>Jane will spot Will  </p>
 </blockquote>
@@ -554,7 +554,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-count">25</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -565,7 +565,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -576,7 +576,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">tags</span>
                 
               </div>
@@ -616,7 +616,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#隐马尔可夫模型在词性标注上的应用"><span class="nav-number">1.</span> <span class="nav-text">隐马尔可夫模型在词性标注上的应用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#首先介绍第一个概念-Emission-Probabilities"><span class="nav-number">1.1.</span> <span class="nav-text">首先介绍第一个概念  Emission Probabilities</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#gt-是指同一种状态各个数值得可能性，可以看下图"><span class="nav-number">1.2.</span> <span class="nav-text">&gt; 是指同一种状态各个数值得可能性，可以看下图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#我们可以看到，当认为是当前词语是N的时候有4-9的可能性是mary"><span class="nav-number">1.3.</span> <span class="nav-text">我们可以看到，当认为是当前词语是N的时候有4/9的可能性是mary</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#接下来是第二个概念-Transition-Probabilities"><span class="nav-number">1.4.</span> <span class="nav-text">接下来是第二个概念  Transition Probabilities</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#gt-指状态之间的转换概率，-分别表示开始和结束，看下图"><span class="nav-number">1.5.</span> <span class="nav-text">&gt; 指状态之间的转换概率，/分别表示开始和结束，看下图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#OK，那我们先来看一个例子"><span class="nav-number">1.6.</span> <span class="nav-text">OK，那我们先来看一个例子</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#我们根据前序经验统计出前面的两个概率，然后可以构造流程图如下"><span class="nav-number">1.7.</span> <span class="nav-text">我们根据前序经验统计出前面的两个概率，然后可以构造流程图如下</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#我们要计算每一条链的可能性就是把边数值与节点数值一路相乘，为了减少计算，我们采用每一层的动态规划（就是最简单那种），每个节点只保留前序节点数值最大的那一条。"><span class="nav-number">1.8.</span> <span class="nav-text">我们要计算每一条链的可能性就是把边数值与节点数值一路相乘，为了减少计算，我们采用每一层的动态规划（就是最简单那种），每个节点只保留前序节点数值最大的那一条。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#最后我们就可以得到这样一条-通过分析我们可以发现确实得到的结果和我们预期相同"><span class="nav-number">1.9.</span> <span class="nav-text">最后我们就可以得到这样一条,通过分析我们可以发现确实得到的结果和我们预期相同</span></a></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number"></span> <span class="nav-text">   </span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#以上是找best-path，接下来我们看一下HMM的forward-algorithm"><span class="nav-number">1.</span> <span class="nav-text">以上是找best path，接下来我们看一下HMM的forward algorithm</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#现在给定一个序列-S-‘yes’-‘no’-‘yes’"><span class="nav-number">1.0.1.</span> <span class="nav-text">现在给定一个序列 S = [‘yes’, ‘no’, ‘yes’]</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#通过forward-algorithm可以计算出在所有的天气组合当中所有满足该序列的概率"><span class="nav-number">1.0.2.</span> <span class="nav-text">通过forward algorithm可以计算出在所有的天气组合当中所有满足该序列的概率\</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#以此类推，最终结果为-P-S-3-sunny-P-S-3-rainy"><span class="nav-number">1.1.</span> <span class="nav-text">以此类推，最终结果为\(P(S|3-sunny) + P(S|3-rainy)\)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#我们可以看出来这个过程相当繁琐-这里用pomegranate库来实现"><span class="nav-number">1.2.</span> <span class="nav-text">我们可以看出来这个过程相当繁琐, 这里用pomegranate库来实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么和手动算的结果有些偏差呢，因为这个每一步都会进行估算"><span class="nav-number">1.3.</span> <span class="nav-text">为什么和手动算的结果有些偏差呢，因为这个每一步都会进行估算</span></a></li></ol></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#隐马尔可夫模型在词性标注上的应用"><span class="nav-number">1.</span> <span class="nav-text">隐马尔可夫模型在词性标注上的应用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#首先介绍第一个概念-Emission-Probabilities"><span class="nav-number">1.1.</span> <span class="nav-text">首先介绍第一个概念  Emission Probabilities</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#gt-是指同一种状态各个数值得可能性，可以看下图"><span class="nav-number">1.2.</span> <span class="nav-text">&gt; 是指同一种状态各个数值得可能性，可以看下图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#我们可以看到，当认为是当前词语是N的时候有4-9的可能性是mary"><span class="nav-number">1.3.</span> <span class="nav-text">我们可以看到，当认为是当前词语是N的时候有4/9的可能性是mary</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#接下来是第二个概念-Transition-Probabilities"><span class="nav-number">1.4.</span> <span class="nav-text">接下来是第二个概念  Transition Probabilities</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#gt-指状态之间的转换概率，S-E分别表示开始和结束，看下图"><span class="nav-number">1.5.</span> <span class="nav-text">&gt; 指状态之间的转换概率，S/E分别表示开始和结束，看下图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#OK，那我们先来看一个例子"><span class="nav-number">1.6.</span> <span class="nav-text">OK，那我们先来看一个例子</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#我们根据前序经验统计出前面的两个概率，然后可以构造流程图如下"><span class="nav-number">1.7.</span> <span class="nav-text">我们根据前序经验统计出前面的两个概率，然后可以构造流程图如下</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#我们要计算每一条链的可能性就是把边数值与节点数值一路相乘，为了减少计算，我们采用每一层的动态规划（就是最简单那种），每个节点只保留前序节点数值最大的那一条。"><span class="nav-number">1.8.</span> <span class="nav-text">我们要计算每一条链的可能性就是把边数值与节点数值一路相乘，为了减少计算，我们采用每一层的动态规划（就是最简单那种），每个节点只保留前序节点数值最大的那一条。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#最后我们就可以得到这样一条-通过分析我们可以发现确实得到的结果和我们预期相同"><span class="nav-number">1.9.</span> <span class="nav-text">最后我们就可以得到这样一条,通过分析我们可以发现确实得到的结果和我们预期相同</span></a></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number"></span> <span class="nav-text">   </span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#以上是找best-path，接下来我们看一下HMM的forward-algorithm"><span class="nav-number">1.</span> <span class="nav-text">以上是找best path，接下来我们看一下HMM的forward algorithm</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#现在给定一个序列-S-‘yes’-‘no’-‘yes’"><span class="nav-number">1.0.1.</span> <span class="nav-text">现在给定一个序列 S = [‘yes’, ‘no’, ‘yes’]</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#通过forward-algorithm可以计算出在所有的天气组合当中所有满足该序列的概率"><span class="nav-number">1.0.2.</span> <span class="nav-text">通过forward algorithm可以计算出在所有的天气组合当中所有满足该序列的概率\</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#以此类推，最终结果为-P-S-3-sunny-P-S-3-rainy"><span class="nav-number">1.1.</span> <span class="nav-text">以此类推，最终结果为\(P(S|3-sunny) + P(S|3-rainy)\)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#我们可以看出来这个过程相当繁琐-这里用pomegranate库来实现"><span class="nav-number">1.2.</span> <span class="nav-text">我们可以看出来这个过程相当繁琐, 这里用pomegranate库来实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么和手动算的结果有些偏差呢，因为这个每一步都会进行估算"><span class="nav-number">1.3.</span> <span class="nav-text">为什么和手动算的结果有些偏差呢，因为这个每一步都会进行估算</span></a></li></ol></li></div>
             
 
           </div>
