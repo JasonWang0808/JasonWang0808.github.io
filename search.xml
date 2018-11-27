@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[收到offer之后的申请流程]]></title>
+    <url>%2F2018%2F11%2F27%2Fwisc_prepare%2F</url>
+    <content type="text"><![CDATA[我们这里以UW-Madison为例讲一下留学得到offer后的操作先给出一个流程图，大概说一下整个的流程 1. 首先要做的当然是Accept offer2. 接着我们需要拿到一个叫做I-20的文件（这个每个学校的操作可能各有不同） Checklist 4. 中列出了需要的文件 申请I20在UW-Madison一共需要4个文件 Financial Verification Form 存款证明 Student Visa Information and Mailing Form Copies of passport pages showing your identity and full legal name 准备好了四个文件，将pdf发给onwisconsin@admissions.wisc.edu就结束了I20的申请3. 等待I-20，这是一个漫长的过程，大概需要两个半星期4. 拿到I-20之后就要申请F-1签证了 这里UW-Madison给出了一些F-1签证的tips 但是个人感觉上述说的不是很具体，这里给出两个比较生动形象的公众号贴文 (文章1，文章2)看完这两个文章，并准备好相应的材料就可以预约面签了 5. 拿到F-1签证准备好行李顺顺利利去上学]]></content>
+      <categories>
+        <category>留学申请</category>
+      </categories>
+  </entry>
+  <entry>
     <title><![CDATA[how to use Ubuntu and Git to push projects]]></title>
     <url>%2F2018%2F11%2F19%2FUbuntu-git%2F</url>
     <content type="text"><![CDATA[首先下载git，这个不用我说了在github上建立一个名字为XXX的仓库作为你要托管的对象，这里我采用learn-repo作为我的名字 JasonWang0808/Learn-repo 在Ubuntu下生成SSH key来连接自己的github，可以参考这个博文, 此处也不啰嗦 接下来在ubuntu中建立一个文件夹作为本地仓库 12345678910111213141516# 初始化git init# 建立文件（以及做出类似改动）touch README.mdgit add README.md# 提交本次的改动，注意后面的注释参数不要拉下git commit -m 'first_commit'# 建立远程连接 origin就是仓库名字而已，允许修改git remote add origin https://github.com/JasonWang0808/learn-repo.git# 将新的仓库内容push到刚刚命名的origin，并且为master分支 git push origin master--------------------- 遇到的坑 直接复制文件夹过来上传后是灰色的 不知道为啥，自己新建然后cp吧 报错：error:failed to push som refs to…… git pull –rebase origin master 可能是本地和远程有区别等原因]]></content>
