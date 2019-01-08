@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="DT,">
 
 
 
@@ -81,17 +81,18 @@
 
 
 
-<meta name="description" content="share your ideas with the world">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Categories">
-<meta property="og:url" content="http://yoursite.com/categories/index.html">
+<meta name="description" content="Reverse Linked List Reverse Linked List 2考察链表的指针操作    Notes: 要充分注意首尾是否指针为空 Tips：虚拟头节点  可以定义一个dummyHead作为head前面的标志性指针, 好处是，不管head怎样变化，只要调用其next总能找到现在的head（203，82）  12ListNode *dummyHead = ListNode(-1)">
+<meta name="keywords" content="DT">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Data Structure(1) Linked List">
+<meta property="og:url" content="http://yoursite.com/2019/01/08/DT_LinkedList1/index.html">
 <meta property="og:site_name" content="Junyu Wang&#39;s Blog">
-<meta property="og:description" content="share your ideas with the world">
+<meta property="og:description" content="Reverse Linked List Reverse Linked List 2考察链表的指针操作    Notes: 要充分注意首尾是否指针为空 Tips：虚拟头节点  可以定义一个dummyHead作为head前面的标志性指针, 好处是，不管head怎样变化，只要调用其next总能找到现在的head（203，82）  12ListNode *dummyHead = ListNode(-1)">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-10-20T11:20:54.000Z">
+<meta property="og:updated_time" content="2019-01-08T00:57:45.896Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Categories">
-<meta name="twitter:description" content="share your ideas with the world">
+<meta name="twitter:title" content="Data Structure(1) Linked List">
+<meta name="twitter:description" content="Reverse Linked List Reverse Linked List 2考察链表的指针操作    Notes: 要充分注意首尾是否指针为空 Tips：虚拟头节点  可以定义一个dummyHead作为head前面的标志性指针, 好处是，不管head怎样变化，只要调用其next总能找到现在的head（203，82）  12ListNode *dummyHead = ListNode(-1)">
 
 
 
@@ -121,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/categories/">
+  <link rel="canonical" href="http://yoursite.com/2019/01/08/DT_LinkedList1/">
 
 
 
 
 
-  <title>Categories | Junyu Wang's Blog</title>
+  <title>Data Structure(1) Linked List | Junyu Wang's Blog</title>
   
 
 
@@ -261,40 +262,169 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/08/DT_LinkedList1/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JunYu Wang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Junyu Wang's Blog">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-	<h1 class="post-title" itemprop="name headline">Categories</h1>
-
-
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
-          <div class="category-all-page">
-            <div class="category-all-title">
-                4 categories in total
-            </div>
-            <div class="category-all">
-              <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/DT/">DT</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NLP/">NLP</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tool/">tool</a><span class="category-list-count">1</span></li></ul>
-            </div>
-          </div>
+          <h1 class="post-title" itemprop="name headline">Data Structure(1) Linked List</h1>
         
-      </div>
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/DT/" itemprop="url" rel="index">
+                    <span itemprop="name">DT</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <ol start="206">
+<li>Reverse Linked List</li>
+<li>Reverse Linked List 2<br>考察链表的指针操作  </li>
+</ol>
+<p>Notes: 要充分注意首尾是否指针为空</p>
+<p>Tips：<strong>虚拟头节点</strong></p>
+<blockquote>
+<p>可以定义一个dummyHead作为head前面的标志性指针, 好处是，不管head怎样变化，只要调用其next总能找到现在的head（203，82）</p>
+</blockquote>
+<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ListNode *dummyHead = ListNode(-<span class="number">1</span>)<span class="comment">;</span></span><br><span class="line">dummyHead-&gt;next = head<span class="comment">;</span></span><br></pre></td></tr></table></figure>
+<p>对于特定的92号问题，反转链表，我们可以通过一个函数返回两个数据：  </p>
+<ol>
+<li>最左边的元素  </li>
+<li>原本最左边的元素的next</li>
+</ol>
+<p>在链表中穿针引线（23，24，124，125， 237）<br>双指针（61，143，234，19）</p>
+
       
     </div>
     
     
     
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/DT/" rel="tag"># DT</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/01/08/DT_LinkedList/" rel="next" title="Data Structure(1) Linked List">
+                <i class="fa fa-chevron-left"></i> Data Structure(1) Linked List
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 

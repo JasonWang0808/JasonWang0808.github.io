@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[test]]></title>
-    <url>%2F2019%2F01%2F08%2F---%2F</url>
-    <content type="text"></content>
+    <title><![CDATA[Data Structure(1) Linked List]]></title>
+    <url>%2F2019%2F01%2F08%2FDT_LinkedList1%2F</url>
+    <content type="text"><![CDATA[Reverse Linked List Reverse Linked List 2考察链表的指针操作 Notes: 要充分注意首尾是否指针为空 Tips：虚拟头节点 可以定义一个dummyHead作为head前面的标志性指针, 好处是，不管head怎样变化，只要调用其next总能找到现在的head（203，82） 12ListNode *dummyHead = ListNode(-1);dummyHead-&gt;next = head; 对于特定的92号问题，反转链表，我们可以通过一个函数返回两个数据： 最左边的元素 原本最左边的元素的next 在链表中穿针引线（23，24，124，125， 237）双指针（61，143，234，19）]]></content>
+      <categories>
+        <category>DT</category>
+      </categories>
+      <tags>
+        <tag>DT</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[Data Structure(1) Linked List]]></title>
@@ -19,7 +25,7 @@
   <entry>
     <title><![CDATA[Data Structure(2) Stack VS queue]]></title>
     <url>%2F2019%2F01%2F07%2FDT_stack%2F</url>
-    <content type="text"><![CDATA[一、基本介绍Stack，又名堆，后进先出问题。非常经典的一个括号匹配问题就是出自Stack之手。Queue，又名队列，先进先出，常用于对“TreeNode”的层级问题的解答，因为每一层都可以看作是一个队列来进行处理。常用Vector&lt;Vector&gt;来进行计算 102,103,104,199都可以用队列来解答 123456// Stack常用用法#include &lt;stack&gt;stack&lt; pair &lt;Node*, int&gt;&gt; s1; //设立一个包含pair的Stack s1.top();s1.push_back();s1.pop(); 123456// queue常用用法#include &lt;queue&gt;queue&lt;&lt; pair &lt;Node*, int&gt;&gt; q1; //设立一个包含pair的Stack s1.top();s1.push();s1.pop(); 二、图论应用 类似练习127，126例如leetcode279题，寻找相加平方数最少的一种方案。我们可以将其想像成求无权边的最短路径，使用BFS 例如计算9，首先8–&gt;9(1), 5–&gt;9(2), 0–&gt;9(3) , 9就连接了三个顶点分别是0,5,8 1234567891011121314151617181920212223242526272829303132//Leetcode279class Solution &#123;public: int numSquares(int n) &#123; vector&lt;bool&gt; isvisit(n+1, 0); isvisit[n] = 1; queue&lt; pair&lt;int, int&gt;&gt; queue1; queue1.push(make_pair(n, 0)); while(queue1.empty() == 0)&#123; int Node_n = queue1.front().first; int dis = queue1.front().second; queue1.pop(); for(int i = 1; ; i ++)&#123; int temp = i * i; if(temp &gt; Node_n) break; else if(temp == Node_n)&#123; return dis + 1; &#125; else&#123; if(isvisit[Node_n - temp] == 0 )&#123; queue1.push(make_pair(Node_n - temp, dis+1)); isvisit[Node_n - temp] = 1; &#125; &#125; &#125; &#125; &#125;&#125;;]]></content>
+    <content type="text"><![CDATA[一、基本介绍Stack，又名堆，后进先出问题。非常经典的一个括号匹配问题就是出自Stack之手。Queue，又名队列，先进先出，常用于对“TreeNode”的层级问题的解答，因为每一层都可以看作是一个队列来进行处理。常用Vector&lt;Vector&gt;来进行计算 102,103,104,199都可以用队列来解答 123456// Stack常用用法#include &lt;stack&gt;stack&lt; pair &lt;Node*, int&gt;&gt; s1; //设立一个包含pair的Stack s1.top();s1.push_back();s1.pop(); 123456// queue常用用法#include &lt;queue&gt;queue&lt;&lt; pair &lt;Node*, int&gt;&gt; q1; //设立一个包含pair的Stack s1.top();s1.push();s1.pop(); 二、图论应用 类似练习127，126例如leetcode279题，寻找相加平方数最少的一种方案。我们可以将其想像成求无权边的最短路径，使用BFS 例如计算9，首先8–&gt;9(1), 5–&gt;9(2), 0–&gt;9(3) , 9就连接了三个顶点分别是0,5,8 1234567891011121314151617181920212223242526272829303132//Leetcode279class Solution &#123;public: int numSquares(int n) &#123; vector&lt;bool&gt; isvisit(n+1, 0); isvisit[n] = 1; queue&lt; pair&lt;int, int&gt;&gt; queue1; queue1.push(make_pair(n, 0)); while(queue1.empty() == 0)&#123; int Node_n = queue1.front().first; int dis = queue1.front().second; queue1.pop(); for(int i = 1; ; i ++)&#123; int temp = i * i; if(temp &gt; Node_n) break; else if(temp == Node_n)&#123; return dis + 1; &#125; else&#123; if(isvisit[Node_n - temp] == 0 )&#123; queue1.push(make_pair(Node_n - temp, dis+1)); isvisit[Node_n - temp] = 1; &#125; &#125; &#125; &#125; &#125;&#125;; 三、优先队列优先队列其实就是一个堆，只是能应用的逻辑相对比较简单 123456# include&lt;queue&gt;priority_queue&lt;int, vector&lt;int&gt;, function&lt;bool(int, int)&gt; &gt; pq1(mycmp);bool mycpmp(int a, int b)&#123; return a &lt; b; //大的元素在队列首&#125; 例题：Leetcode347。 Tips： 建立一个map，类似Wordcount 队列的pair运用第一个元素比较，因此要把pair的第一个元素设置成频率。 while循环别把empty的标志设置反 123456789101112131415161718192021222324252627282930313233343536class Solution &#123;public: vector&lt;int&gt; topKFrequent(vector&lt;int&gt;&amp; nums, int k) &#123; assert(k &gt; 0); unordered_map&lt;int ,int&gt; freq; for( int i = 0 ; i &lt; nums.size() ; i ++)&#123; freq[nums[i]] ++; &#125; assert(k &lt;= freq.size()); priority_queue&lt; pair&lt;int, int&gt;, vector&lt;pair&lt;int, int&gt;&gt;, greater&lt;pair&lt;int,int&gt;&gt; &gt; pq; for( unordered_map&lt;int, int&gt;::iterator iter = freq.begin() ; iter != freq.end() ; iter ++)&#123; if(pq.size() == k)&#123; if(iter-&gt;second &gt; pq.top().first)&#123; pq.pop(); pq.push(make_pair(iter-&gt;second, iter-&gt;first)); &#125; &#125; else&#123; pq.push(make_pair(iter-&gt;second, iter-&gt;first)); &#125; &#125; vector&lt;int&gt; res; while(!pq.empty())&#123; res.push_back(pq.top().second); pq.pop(); &#125; return res; &#125;&#125;;]]></content>
       <categories>
         <category>DT</category>
       </categories>
