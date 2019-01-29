@@ -1,14 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[how to use Github on linux]]></title>
-    <url>%2F2019%2F01%2F28%2Fgithub%2F</url>
-    <content type="text"><![CDATA[Step1. 配置SSH key并输入到github上 网上很多教程，这里就不赘述 Step2. 手动添加仓库或者直接clonelink Step3. 添加成为contributorlink]]></content>
-      <categories>
-        <category>git</category>
-      </categories>
-  </entry>
-  <entry>
     <title><![CDATA[Data Structure(4) The using of Set/map]]></title>
     <url>%2F2019%2F01%2F08%2FDS_SetMap%2F</url>
     <content type="text"><![CDATA[1. Set的使用 可用于储存在计算过程中的过程，leetcode202 happy number就需要储存计算中曾经出现过哪些数字。 使用insert排着插入即可 Leetcode 349求补集注意vector和set之间可以直接一键转换。123#include &lt;set&gt;set&lt;int&gt; s1;vector&lt;int&gt; vector1(s1.begin(), s1.end()); 2. map类似于python中的dict3. 补充map和set在底层都是一棵平衡二叉树，有unordered_map和unordered_set底层是哈希表实现]]></content>
@@ -54,12 +46,12 @@
   <entry>
     <title><![CDATA[how to use Ubuntu and Git to push projects]]></title>
     <url>%2F2018%2F11%2F19%2FUbuntu-git%2F</url>
-    <content type="text"><![CDATA[首先下载git，这个不用我说了在github上建立一个名字为XXX的仓库作为你要托管的对象，这里我采用learn-repo作为我的名字 JasonWang0808/Learn-repo 在Ubuntu下生成SSH key来连接自己的github，可以参考这个博文, 此处也不啰嗦 接下来在ubuntu中建立一个文件夹作为本地仓库 12345678910111213141516# 初始化git init# 建立文件（以及做出类似改动）touch README.mdgit add README.md# 提交本次的改动，注意后面的注释参数不要拉下git commit -m 'first_commit'# 建立远程连接 origin就是仓库名字而已，允许修改git remote add origin https://github.com/JasonWang0808/learn-repo.git# 将新的仓库内容push到刚刚命名的origin，并且为master分支 git push origin master--------------------- 遇到的坑 直接复制文件夹过来上传后是灰色的 不知道为啥，自己新建然后cp吧 报错：error:failed to push som refs to…… git pull –rebase origin master 可能是本地和远程有区别等原因]]></content>
+    <content type="text"><![CDATA[Step1. 配置SSH key并输入到github上 见下面 Step2. 手动添加仓库或者直接cloneStep3. 添加成为contributor首先下载git，这个不用我说了在github上建立一个名字为XXX的仓库作为你要托管的对象，这里我采用learn-repo作为我的名字 JasonWang0808/Learn-repo 在Ubuntu下生成SSH key来连接自己的github，可以参考这个博文, 此处也不啰嗦 接下来在ubuntu中建立一个文件夹作为本地仓库 12345678910111213141516# 初始化git init# 建立文件（以及做出类似改动）touch README.mdgit add README.md# 提交本次的改动，注意后面的注释参数不要拉下git commit -m 'first_commit'# 建立远程连接 origin就是仓库名字而已，允许修改git remote add origin https://github.com/JasonWang0808/learn-repo.git# 将新的仓库内容push到刚刚命名的origin，并且为master分支 git push origin master--------------------- 遇到的坑 直接复制文件夹过来上传后是灰色的 不知道为啥，自己新建然后cp吧 报错：error:failed to push som refs to…… git pull –rebase origin master 可能是本地和远程有区别等原因]]></content>
       <categories>
-        <category>Git</category>
+        <category>git</category>
       </categories>
       <tags>
-        <tag>Git</tag>
+        <tag>git</tag>
       </tags>
   </entry>
   <entry>

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-01-29T05:18:20.650Z</updated>
+  <updated>2019-01-09T15:12:48.647Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,29 +15,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>how to use Github on linux</title>
-    <link href="http://yoursite.com/2019/01/28/github/"/>
-    <id>http://yoursite.com/2019/01/28/github/</id>
-    <published>2019-01-29T05:18:20.650Z</published>
-    <updated>2019-01-29T05:18:20.650Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="Step1-配置SSH-key并输入到github上"><a href="#Step1-配置SSH-key并输入到github上" class="headerlink" title="Step1. 配置SSH key并输入到github上"></a>Step1. 配置SSH key并输入到github上</h3><blockquote><p>网上很多教程，这里就不赘述</p></blockquote><h3 id="Step2-手动添加仓库或者直接clone"><a href="#Step2-手动添加仓库或者直接clone" class="headerlink" title="Step2. 手动添加仓库或者直接clone"></a>Step2. 手动添加仓库或者直接clone</h3><p><a href="https://blog.csdn.net/chenguolinblog/article/details/19929509" target="_blank" rel="noopener">link</a></p><h3 id="Step3-添加成为contributor"><a href="#Step3-添加成为contributor" class="headerlink" title="Step3. 添加成为contributor"></a>Step3. 添加成为contributor</h3><p><a href="https://segmentfault.com/a/1190000015798490" target="_blank" rel="noopener">link</a></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;Step1-配置SSH-key并输入到github上&quot;&gt;&lt;a href=&quot;#Step1-配置SSH-key并输入到github上&quot; class=&quot;headerlink&quot; title=&quot;Step1. 配置SSH key并输入到github上&quot;&gt;&lt;/a&gt;Step1. 
-      
-    
-    </summary>
-    
-      <category term="git" scheme="http://yoursite.com/categories/git/"/>
-    
-    
-  </entry>
   
   <entry>
     <title>Data Structure(4) The using of Set/map</title>
@@ -172,27 +149,23 @@
     <link href="http://yoursite.com/2018/11/19/Ubuntu-git/"/>
     <id>http://yoursite.com/2018/11/19/Ubuntu-git/</id>
     <published>2018-11-19T12:28:46.000Z</published>
-    <updated>2018-11-19T12:28:46.000Z</updated>
+    <updated>2019-01-29T05:22:11.358Z</updated>
     
-    <content type="html"><![CDATA[<p>首先下载git，这个不用我说了<br>在github上建立一个名字为XXX的仓库作为你要托管的对象，这里我采用learn-repo作为我的名字  </p><blockquote><p>JasonWang0808/Learn-repo</p></blockquote><p>在Ubuntu下生成SSH key来连接自己的github，可以参考<a href="https://segmentfault.com/a/1190000013154540" target="_blank" rel="noopener">这个博文</a>, 此处也不啰嗦  </p><p>接下来在ubuntu中建立一个文件夹作为本地仓库</p><figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># 初始化</span></span><br><span class="line">git init</span><br><span class="line"></span><br><span class="line"><span class="meta"># 建立文件（以及做出类似改动）</span></span><br><span class="line">touch README.md</span><br><span class="line">git add README.md</span><br><span class="line"></span><br><span class="line"><span class="meta"># 提交本次的改动，注意后面的注释参数不要拉下</span></span><br><span class="line">git commit -m <span class="string">'first_commit'</span></span><br><span class="line"></span><br><span class="line"><span class="meta"># 建立远程连接 origin就是仓库名字而已，允许修改</span></span><br><span class="line">git remote add origin https:<span class="comment">//github.com/JasonWang0808/learn-repo.git</span></span><br><span class="line"></span><br><span class="line"><span class="meta"># 将新的仓库内容push到刚刚命名的origin，并且为master分支  </span></span><br><span class="line">git push origin master</span><br><span class="line">---------------------</span><br></pre></td></tr></table></figure><p>遇到的坑</p><ol><li>直接复制文件夹过来上传后是灰色的</li></ol><blockquote><p>不知道为啥，自己新建然后cp吧</p></blockquote><ol start="2"><li>报错：error:failed to push som refs to……</li></ol><blockquote><p>git pull –rebase origin master   可能是本地和远程有区别等原因</p></blockquote>]]></content>
+    <content type="html"><![CDATA[<h3 id="Step1-配置SSH-key并输入到github上"><a href="#Step1-配置SSH-key并输入到github上" class="headerlink" title="Step1. 配置SSH key并输入到github上"></a>Step1. 配置SSH key并输入到github上</h3><blockquote><p>见下面</p></blockquote><h3 id="Step2-手动添加仓库或者直接clone"><a href="#Step2-手动添加仓库或者直接clone" class="headerlink" title="Step2. 手动添加仓库或者直接clone"></a>Step2. <a href="https://blog.csdn.net/chenguolinblog/article/details/19929509" target="_blank" rel="noopener">手动添加仓库或者直接clone</a></h3><h3 id="Step3-添加成为contributor"><a href="#Step3-添加成为contributor" class="headerlink" title="Step3. 添加成为contributor"></a>Step3. <a href="https://segmentfault.com/a/1190000015798490" target="_blank" rel="noopener">添加成为contributor</a></h3><p>首先下载git，这个不用我说了<br>在github上建立一个名字为XXX的仓库作为你要托管的对象，这里我采用learn-repo作为我的名字  </p><blockquote><p>JasonWang0808/Learn-repo</p></blockquote><p>在Ubuntu下生成SSH key来连接自己的github，可以参考<a href="https://segmentfault.com/a/1190000013154540" target="_blank" rel="noopener">这个博文</a>, 此处也不啰嗦  </p><p>接下来在ubuntu中建立一个文件夹作为本地仓库</p><figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># 初始化</span></span><br><span class="line">git init</span><br><span class="line"></span><br><span class="line"><span class="meta"># 建立文件（以及做出类似改动）</span></span><br><span class="line">touch README.md</span><br><span class="line">git add README.md</span><br><span class="line"></span><br><span class="line"><span class="meta"># 提交本次的改动，注意后面的注释参数不要拉下</span></span><br><span class="line">git commit -m <span class="string">'first_commit'</span></span><br><span class="line"></span><br><span class="line"><span class="meta"># 建立远程连接 origin就是仓库名字而已，允许修改</span></span><br><span class="line">git remote add origin https:<span class="comment">//github.com/JasonWang0808/learn-repo.git</span></span><br><span class="line"></span><br><span class="line"><span class="meta"># 将新的仓库内容push到刚刚命名的origin，并且为master分支  </span></span><br><span class="line">git push origin master</span><br><span class="line">---------------------</span><br></pre></td></tr></table></figure><p>遇到的坑</p><ol><li>直接复制文件夹过来上传后是灰色的</li></ol><blockquote><p>不知道为啥，自己新建然后cp吧</p></blockquote><ol start="2"><li>报错：error:failed to push som refs to……</li></ol><blockquote><p>git pull –rebase origin master   可能是本地和远程有区别等原因</p></blockquote>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;p&gt;首先下载git，这个不用我说了&lt;br&gt;在github上建立一个名字为XXX的仓库作为你要托管的对象，这里我采用learn-repo作为我的名字  &lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;JasonWang0808/Learn-repo&lt;/p&gt;
-&lt;/blockquote&gt;
-
+        &lt;h3 id=&quot;Step1-配置SSH-key并输入到github上&quot;&gt;&lt;a href=&quot;#Step1-配置SSH-key并输入到github上&quot; class=&quot;headerlink&quot; title=&quot;Step1. 配置SSH key并输入到github上&quot;&gt;&lt;/a&gt;Step1. 
       
     
     </summary>
     
-      <category term="Git" scheme="http://yoursite.com/categories/Git/"/>
+      <category term="git" scheme="http://yoursite.com/categories/git/"/>
     
     
-      <category term="Git" scheme="http://yoursite.com/tags/Git/"/>
+      <category term="git" scheme="http://yoursite.com/tags/git/"/>
     
   </entry>
   
@@ -492,6 +465,28 @@
         &lt;script type=&quot;text/javascript&quot; src=&quot;https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML&quot;&gt;&lt;/script&gt;  
 
 &lt;h3 id=&quot;算法思想&quot;&gt;&lt;a hre
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Reinforcement Learning (Second)</title>
+    <link href="http://yoursite.com/2018/11/01/Reinforce_Learning2/"/>
+    <id>http://yoursite.com/2018/11/01/Reinforce_Learning2/</id>
+    <published>2018-11-01T12:32:20.000Z</published>
+    <updated>2018-11-01T12:32:20.000Z</updated>
+    
+    <content type="html"><![CDATA[<p><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script></p><h4 id="Reference-An-introduction-to-Deep-Q-Learning-let’s-play-Doom"><a href="#Reference-An-introduction-to-Deep-Q-Learning-let’s-play-Doom" class="headerlink" title="Reference : An introduction to Deep Q-Learning: let’s play Doom"></a>Reference : <a href="https://medium.freecodecamp.org/an-introduction-to-deep-q-learning-lets-play-doom-54d02d8017d8/" target="_blank" rel="noopener">An introduction to Deep Q-Learning: let’s play Doom</a></h4><h3 id="Deep-Q-Learning-Network-DQN"><a href="#Deep-Q-Learning-Network-DQN" class="headerlink" title="Deep Q-Learning Network (DQN)"></a>Deep Q-Learning Network (DQN)</h3><h5 id="1-深度强化学习"><a href="#1-深度强化学习" class="headerlink" title="1. 深度强化学习"></a>1. 深度强化学习</h5><p>对于一个复杂的游戏，表示动作及其Value、在Q表里搜索相应的动作变得十分没有效率。因此这里改用神经网络进行Q表的计算。  每次将S放入，即可计算出相应的action及对应的value</p><blockquote><p>\(w\)表示神经网络的权值，\(R\)表示Reward，\(Q\)表示Q表中相应状态和动作对应的数值  </p></blockquote><p>$$<br>current\_predict\_Q = \hat{Q}(s,a,w)<br>$$  </p><p>$$<br>Grdient = \bigtriangledown \hat{Q}(s,a,w)<br>$$   </p><p>$$<br>\Delta w(TDerror) = \alpha[R + \gamma max_{a} \hat{Q}(s\prime ,a, w)) - current\_predict\_Q]<br>$$   </p><h5 id="2-主要优化方法"><a href="#2-主要优化方法" class="headerlink" title="2. 主要优化方法"></a>2. 主要优化方法</h5><blockquote><p>经验回放(Experience Deplay)和固定Q目标是其中的两个主要贡献</p></blockquote><ul><li>经验回放<br>有些动作的代价很大，我们可以把经历过的  \(&lt;S_{t}, A_{t}, R_{t+1}, S_{t+1}&gt;\) 储存在缓冲区中(replay buffer)，后面可以再次用来学习。并可以采取<strong>优先经验回收</strong><br>我们认为，loss越大的数值越具有学习价值，因此buffer里的所有数据都根据其loss决定被选择的概率，每一次学习之后都会更新其概率\(p(i)=\frac{p_{i}^{a}}{\sum_{k=1}^{n} p_{k}^{a}}\),这里的\(a\)保证了不完全按照概率，减少过拟合。（a=1时完全按照概率选取）</li></ul><blockquote><p>研究证明，优先经验回收策略可以减少迭代次数</p></blockquote><ul><li>Q固定<br>我们可以看到在我们的\(R + \gamma max_{a} \hat{Q}(s\prime ,a, w)\)和\(\hat{Q}(s,a,w)\)中都有\(w\)存在。因此两者都在变，导致无法持续收敛。<blockquote><p>打个比方。小明在追他养的牛，想要不断向他的牛靠近。然而他的牛的位置（Q）因为\(w\)的改变也在不断变化。可能一会在小明前，一会去小明后。小明也会懵逼，到底该往哪个方向追。因此我们将\(w^{-}\)固定，事后更新\(w^{-} \gets w\)。这样保证了在收敛过程中目标是确定的不会变化。</p></blockquote></li></ul><p>$$<br>\Delta w(TDerror) = \alpha[R + \gamma max_{a} \hat{Q}(s\prime ,a, w^{-})) - \hat{Q}(s,a,w)]\bigtriangledown \hat{Q}(s,a,w)<br>$$   </p><blockquote><p>Thrun 和 Schwartz，1993 年，<a href="http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.73.3097" target="_blank" rel="noopener">《使用函数逼近进行强化学习存在的问题》（ 高估 Q 值）</a><br>van Hasselt et al.，2015 年，<a href="https://arxiv.org/abs/1509.06461" target="_blank" rel="noopener">《双 Q 学习的深度强化学习》</a><br>Schaul et al.，2016 年，<a href="https://arxiv.org/abs/1511.05952" target="_blank" rel="noopener">《优先经验回放》</a><br>Wang et al.，2015 年，<a href="https://arxiv.org/abs/1511.06581/" target="_blank" rel="noopener">《深度强化学习的对抗网络架构》</a><br>Hausknecht 和 Stone，2015 年，<a href="https://arxiv.org/abs/1507.06527/" target="_blank" rel="noopener">《部分可观察 MDP 的深度递归 Q 学习》</a>    </p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;script type=&quot;text/javascript&quot; src=&quot;https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML&quot;&gt;&lt;/script&gt;&lt;/p&gt;
+&lt;h4 id=&quot;Referenc
       
     
     </summary>
