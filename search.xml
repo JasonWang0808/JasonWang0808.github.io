@@ -1,8 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[how to use Github on linux]]></title>
+    <url>%2F2019%2F01%2F28%2Fgithub%2F</url>
+    <content type="text"><![CDATA[Step1. 配置SSH key并输入到github上 网上很多教程，这里就不赘述 Step2. 手动添加仓库或者直接clonelink Step3. 添加成为contributorlink]]></content>
+      <categories>
+        <category>git</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[Data Structure(4) The using of Set/map]]></title>
+    <url>%2F2019%2F01%2F08%2FDS_SetMap%2F</url>
+    <content type="text"><![CDATA[1. Set的使用 可用于储存在计算过程中的过程，leetcode202 happy number就需要储存计算中曾经出现过哪些数字。 使用insert排着插入即可 Leetcode 349求补集注意vector和set之间可以直接一键转换。123#include &lt;set&gt;set&lt;int&gt; s1;vector&lt;int&gt; vector1(s1.begin(), s1.end()); 2. map类似于python中的dict3. 补充map和set在底层都是一棵平衡二叉树，有unordered_map和unordered_set底层是哈希表实现]]></content>
+      <categories>
+        <category>DS</category>
+      </categories>
+  </entry>
+  <entry>
     <title><![CDATA[Data Structure(1) Linked List]]></title>
-    <url>%2F2019%2F01%2F08%2FDT_LinkedList1%2F</url>
+    <url>%2F2019%2F01%2F07%2FDT_LinkedList1%2F</url>
     <content type="text"><![CDATA[Reverse Linked List Reverse Linked List 2考察链表的指针操作 Notes: 要充分注意首尾是否指针为空 Tips：虚拟头节点 可以定义一个dummyHead作为head前面的标志性指针, 好处是，不管head怎样变化，只要调用其next总能找到现在的head（203，82） 12ListNode *dummyHead = ListNode(-1);dummyHead-&gt;next = head; 对于特定的92号问题，反转链表，我们可以通过一个函数返回两个数据： 最左边的元素 原本最左边的元素的next 在链表中穿针引线（23，24，124，125， 237）双指针（61，143，234，19）]]></content>
       <categories>
         <category>DT</category>
@@ -13,21 +29,21 @@
   </entry>
   <entry>
     <title><![CDATA[Data Structure(1) Linked List]]></title>
-    <url>%2F2019%2F01%2F08%2FDT_LinkedList%2F</url>
+    <url>%2F2019%2F01%2F07%2FDS_LinkedList%2F</url>
     <content type="text"><![CDATA[Reverse Linked List Reverse Linked List 2考察链表的指针操作 Notes: 要充分注意首尾是否指针为空 Tips：虚拟头节点 可以定义一个dummyHead作为head前面的标志性指针, 好处是，不管head怎样变化，只要调用其next总能找到现在的head（203，82） 12ListNode *dummyHead = ListNode(-1);dummyHead-&gt;next = head; 对于特定的92号问题，反转链表，我们可以通过一个函数返回两个数据： 最左边的元素 原本最左边的元素的next 在链表中穿针引线（23，24，124，125， 237）双指针（61，143，234，19）]]></content>
       <categories>
-        <category>DT</category>
+        <category>DS</category>
       </categories>
       <tags>
-        <tag>DT</tag>
+        <tag>DS</tag>
       </tags>
   </entry>
   <entry>
     <title><![CDATA[Data Structure(2) Stack VS queue]]></title>
-    <url>%2F2019%2F01%2F07%2FDT_stack%2F</url>
+    <url>%2F2019%2F01%2F07%2FDS_stack%2F</url>
     <content type="text"><![CDATA[一、基本介绍Stack，又名堆，后进先出问题。非常经典的一个括号匹配问题就是出自Stack之手。Queue，又名队列，先进先出，常用于对“TreeNode”的层级问题的解答，因为每一层都可以看作是一个队列来进行处理。常用Vector&lt;Vector&gt;来进行计算 102,103,104,199都可以用队列来解答 123456// Stack常用用法#include &lt;stack&gt;stack&lt; pair &lt;Node*, int&gt;&gt; s1; //设立一个包含pair的Stack s1.top();s1.push_back();s1.pop(); 123456// queue常用用法#include &lt;queue&gt;queue&lt;&lt; pair &lt;Node*, int&gt;&gt; q1; //设立一个包含pair的Stack s1.top();s1.push();s1.pop(); 二、图论应用 类似练习127，126例如leetcode279题，寻找相加平方数最少的一种方案。我们可以将其想像成求无权边的最短路径，使用BFS 例如计算9，首先8–&gt;9(1), 5–&gt;9(2), 0–&gt;9(3) , 9就连接了三个顶点分别是0,5,8 1234567891011121314151617181920212223242526272829303132//Leetcode279class Solution &#123;public: int numSquares(int n) &#123; vector&lt;bool&gt; isvisit(n+1, 0); isvisit[n] = 1; queue&lt; pair&lt;int, int&gt;&gt; queue1; queue1.push(make_pair(n, 0)); while(queue1.empty() == 0)&#123; int Node_n = queue1.front().first; int dis = queue1.front().second; queue1.pop(); for(int i = 1; ; i ++)&#123; int temp = i * i; if(temp &gt; Node_n) break; else if(temp == Node_n)&#123; return dis + 1; &#125; else&#123; if(isvisit[Node_n - temp] == 0 )&#123; queue1.push(make_pair(Node_n - temp, dis+1)); isvisit[Node_n - temp] = 1; &#125; &#125; &#125; &#125; &#125;&#125;; 三、优先队列优先队列其实就是一个堆，只是能应用的逻辑相对比较简单 123456# include&lt;queue&gt;priority_queue&lt;int, vector&lt;int&gt;, function&lt;bool(int, int)&gt; &gt; pq1(mycmp);bool mycpmp(int a, int b)&#123; return a &lt; b; //大的元素在队列首&#125; 例题：Leetcode347。 Tips： 建立一个map，类似Wordcount 队列的pair运用第一个元素比较，因此要把pair的第一个元素设置成频率。 while循环别把empty的标志设置反 123456789101112131415161718192021222324252627282930313233343536class Solution &#123;public: vector&lt;int&gt; topKFrequent(vector&lt;int&gt;&amp; nums, int k) &#123; assert(k &gt; 0); unordered_map&lt;int ,int&gt; freq; for( int i = 0 ; i &lt; nums.size() ; i ++)&#123; freq[nums[i]] ++; &#125; assert(k &lt;= freq.size()); priority_queue&lt; pair&lt;int, int&gt;, vector&lt;pair&lt;int, int&gt;&gt;, greater&lt;pair&lt;int,int&gt;&gt; &gt; pq; for( unordered_map&lt;int, int&gt;::iterator iter = freq.begin() ; iter != freq.end() ; iter ++)&#123; if(pq.size() == k)&#123; if(iter-&gt;second &gt; pq.top().first)&#123; pq.pop(); pq.push(make_pair(iter-&gt;second, iter-&gt;first)); &#125; &#125; else&#123; pq.push(make_pair(iter-&gt;second, iter-&gt;first)); &#125; &#125; vector&lt;int&gt; res; while(!pq.empty())&#123; res.push_back(pq.top().second); pq.pop(); &#125; return res; &#125;&#125;;]]></content>
       <categories>
-        <category>DT</category>
+        <category>DS</category>
       </categories>
   </entry>
   <entry>
@@ -48,7 +64,7 @@
   </entry>
   <entry>
     <title><![CDATA[Hidden Markov Model，HMM]]></title>
-    <url>%2F2018%2F11%2F19%2FHMM%2F</url>
+    <url>%2F2018%2F11%2F18%2FHMM%2F</url>
     <content type="text"><![CDATA[隐马尔可夫模型在词性标注上的应用 给定前提我们只关注N/M/V三个词性 首先介绍第一个概念 Emission Probabilities&gt; 是指同一种状态各个数值得可能性，可以看下图 我们可以看到，当认为是当前词语是N的时候有4/9的可能性是mary接下来是第二个概念 Transition Probabilities&gt; 指状态之间的转换概率，S/E分别表示开始和结束，看下图 OK，那我们先来看一个例子 Jane will spot Will 我们根据前序经验统计出前面的两个概率，然后可以构造流程图如下 我们要计算每一条链的可能性就是把边数值与节点数值一路相乘，为了减少计算，我们采用每一层的动态规划（就是最简单那种），每个节点只保留前序节点数值最大的那一条。最后我们就可以得到这样一条,通过分析我们可以发现确实得到的结果和我们预期相同 以上是找best path，接下来我们看一下HMM的forward algorithm 已知概率分布 1. Initial Sunny Rainy 0.5 0.5 2. Emission Probabilities null yes no sunny 0.1 0.9 rainy 0.8 0.2 3. State transition probabilities null sunny rainy sunny 0.8 0.2 rainy 0.4 0.6 现在给定一个序列 S = [‘yes’, ‘no’, ‘yes’]通过forward algorithm可以计算出在所有的天气组合当中所有满足该序列的概率\$$P(S|1-sunny) = 0.5 * 0.1 = 0.05$$ $$P(S|1-rainy) = 0.5 * 0.8 = 0.4$$ $$P(S|2-sunny) = (P(S|1-sunny)*0.8 + P(S|1-rainy)*0.4)P(no|sunny)$$ 以此类推，最终结果为\(P(S|3-sunny) + P(S|3-rainy)\)我们可以看出来这个过程相当繁琐, 这里用pomegranate库来实现 参考的问题是关于一个海藻的理论推导 https://blog.csdn.net/TH_NUM/article/details/51570174 为什么和手动算的结果有些偏差呢，因为这个每一步都会进行估算1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859from pomegranate import State, HiddenMarkovModel, DiscreteDistributionimport numpy as npmodel = HiddenMarkovModel(name="Example Model")# 设置每个状态的发射概率sunny_emissions = DiscreteDistribution(&#123;"Dry": 0.6, "Dryish": 0.2, "Damp":0.15, "Soggy":0.05&#125;)sunny_state = State(sunny_emissions, name="Sunny")cloud_emissions = DiscreteDistribution(&#123;"Dry": 0.25, "Dryish": 0.25, "Damp":0.25, "Soggy":0.25&#125;)cloud_state = State(cloud_emissions, name="Cloud")rainy_emissions = DiscreteDistribution(&#123;"Dry": 0.05, "Dryish": 0.10, "Damp":0.35, "Soggy":0.50&#125;)rainy_state = State(rainy_emissions, name="Rainy")print(cloud_emissions.probability("Dryish"))# 添加状态model.add_states(sunny_state, cloud_state, rainy_state)# 添加转移概率，从init开始model.add_transition(model.start, sunny_state, 0.63)model.add_transition(model.start, rainy_state, 0.20)model.add_transition(model.start, cloud_state, 0.17)model.add_transition(sunny_state, sunny_state, 0.5) # 50% sunny-&gt;sunnymodel.add_transition(sunny_state, rainy_state, 0.125) # 12.5% sunny-&gt;rainymodel.add_transition(sunny_state, cloud_state, 0.375)model.add_transition(rainy_state, sunny_state, 0.25) # 25% rainy-&gt;sunnymodel.add_transition(rainy_state, rainy_state, 0.375) # 37.5% rainy-&gt;rainymodel.add_transition(rainy_state, cloud_state, 0.375)model.add_transition(cloud_state, cloud_state, 0.125)model.add_transition(cloud_state, sunny_state, 0.25)model.add_transition(cloud_state, rainy_state, 0.625)# 最后使用bake完结model.bake()observations = ['Dry', 'Damp', 'Soggy']forward_matrix = np.exp(model.forward(observations))# TODO: use model.log_probability() to calculate the all-paths likelihood of the# observed sequence and then use np.exp() to convert log-likelihood to likelihoodprobability_percentage = np.exp(model.log_probability(observations))# Display the forward probabilitiesprint(" " + "".join(s.name.center(len(s.name)+6) for s in model.states))for i in range(len(observations) + 1): print(" &lt;start&gt; " if i==0 else observations[i - 1].center(9), end="") print("".join("&#123;:.0f&#125;%".format(100 * forward_matrix[i, j]).center(len(s.name) + 6) for j, s in enumerate(model.states)))print("\nThe likelihood over all possible paths " + \ "of this model producing the sequence &#123;&#125; is &#123;:.2f&#125;%\n\n" .format(observations, 100 * probability_percentage))]]></content>
       <categories>
         <category>NLP</category>
@@ -70,7 +86,7 @@
   </entry>
   <entry>
     <title><![CDATA[spam classification --- naive bayes]]></title>
-    <url>%2F2018%2F11%2F17%2Fspam-classification%2F</url>
+    <url>%2F2018%2F11%2F16%2Fspam-classification%2F</url>
     <content type="text"><![CDATA[举个栗子我们在清分的时候认为有easy和money就可能使垃圾邮件，通过检查邮件中有两个单词就可以说明是否为spam，“朴素”贝叶斯朴素在于认为各个元素是相互独立的，因此直接将概率相乘$$(1) P(spam) P(‘easy’|spam) P(‘money’|spam) + P(ham) P(‘easy’|ham) P(‘money’|ham) = \alpha$$ $$(2) P(spam|’easy’, ‘money’) = \frac{ P(spam) P(‘easy’|spam) P(‘money’|spam) }{\alpha}$$ $$(3) P(ham|’easy’, ‘money’) = \frac{ P(ham) P(‘easy’|ham) P(‘money’|ham) }{\alpha}$$ $$ Final : P(spam|’easy’, ‘money’) + P(ham|’easy’, ‘money’) = 1$$ 当然我们在实际过程中调用sklearn.naive_bayes.MultinomialNB就可以&gt; 注意训练数据的形式是dataframe，用pandas直接读取或者是用matrix转换1234567891011121314151617181920212223242526272829303132333435363738394041424344import pandas as pd# Dataset from - https://archive.ics.uci.edu/ml/datasets/SMS+Spam+Collectionfrom sklearn.feature_extraction.text import CountVectorizerdf = pd.read_table( './smsspamcollection/SMSSpamCollection', sep='\t', names = ['label', 'sms_message'] )# Note1. 注意读出的是data_frame，命名用namesdf['label'] = df.label.map(&#123;'spam':1, 'ham':0&#125;)# Note2. 二分类问题from sklearn.cross_validation import train_test_splitX_train, X_test, y_train, y_test = train_test_split(df['sms_message'], df['label'], random_state=1)count_vector = CountVectorizer()"""fit是找到规律，如果fit过之后就可以直接transform，因为规律已经学会了"""training_data = count_vector.fit_transform(X_train)testing_data = count_vector.transform(X_test)from sklearn.naive_bayes import MultinomialNBnaive_bayes = MultinomialNB()naive_bayes.fit(training_data, y_train)predictions = naive_bayes.predict(testing_data)"""Precision tells us what proportion of messages we classified as spam, actually were spam.[True Positives/(True Positives + False Positives)]Recall tells us what proportion of messages we classified as spam in the total number of spam[True Positives/(True Positives + False Negatives)]"""from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_scoreprint('Accuracy score: ', format(accuracy_score(y_test, predictions)))print('Precision score: ', format(precision_score(y_test, predictions)))print('Recall score: ', format(recall_score(y_test, predictions)))print('F1 score: ', format(f1_score(y_test, predictions)))]]></content>
       <tags>
         <tag>machine learning</tag>
@@ -89,17 +105,17 @@
   </entry>
   <entry>
     <title><![CDATA[Pyspider (Four) how to use a simple Spider]]></title>
-    <url>%2F2018%2F11%2F12%2Fpyspider4%2F</url>
+    <url>%2F2018%2F11%2F11%2Fpyspider4%2F</url>
     <content type="text"><![CDATA[一、创建环境使用pycharm安装spyder打开想要创建的目录 12scrapy startproject ArticleSpyder #创建工程scrapy genspider jobbole blog.jobbole.com #创建模板 这时候我们就会发现用pycharm打开这个文件~在setting.py中将obey robots.txt 设置为false防止去多url被过滤在ArticleSpider下创立main.py 12345678from scrapy.cmdline import executeimport sysimport ospath = os.path.dirname(os.path.abspath(__file__))print(path)sys.path.append(path)execute(["scrapy","crawl", "jobblole"]) 二、在cmd中进行实验好处是不用反复run对网页内容进行拉取 1scrapy shell http://blog.jobbole.com/114461/ 三、使用xpath这里可以一次拉取我们需要的信息，接着我们选取拉回的response进行操作这里我们选取一篇可怜的博客作为实验对象，分别拉取他的title、create_date、praise_nums 实验对象 http://blog.jobbole.com/114461/ 这里我们分别采用绝对路径、选取全部class名字、选取部分class名字进行操作。extract()帮助我们提取出里面的有效信息，操作时候注意我们需要的文本是在 当前class下还是h10等小标签下 注意：在python project中在def parse(self, response)下进行操作 1234567891011121314#这里是用绝对路径并extract出里面的文本信息 title = response.xpath("/html/head/title/text()") title.extract() # //p: 所有的p标签 、[@class=xxx]:class 名字为xxx# strip():去掉空格和换行create_date = response.xpath("//p[@class='entry-meta-hide-on-mobile']/text()").extract()[0].strip()create_date = create_date.replace("`","").strip()#用了contains函数：注意要加[]以及'，'分割两个参数praise_nums = response.xpath("//span[contains(@class,'vote-post-up')]/h10/text()").extract() favor = response.xpath("//span[contains(@class,'bookmark-btn')]/text()").extract() 全部操作完成后可以用正则表达式进行清洗 123456789favor = response.xpath("//span[contains(@class,'bookmark-btn')]/text()").extract()[0] match_f = re.match(".*(\d+).*",favor) print("sdfg") if match_f: print(match_f.group(1))# given a tag_list 我们要去除掉不是tag的评论[element for element in tag_list if not element.endswith("评论")] ``` 四、使用css*: 选择所有 #container: 选择id为container的节点.container: 选取所有class包含container的节点li a: 选取所有li下的所有a节点ul + p: 选择ul后面的第一个p元素div#container &gt; ul: 选取id为container的div的第一个ul元素ul ~ p : 选取和ul相邻的所有p元素a[href=”http://jobbole.com&quot;]: 选出所有该gref的所有元素a[href*=”jobblole”]: 选出所有该gref的所有元素a[href^=”http”]: 选出所有该gref以http的所有元素a[href$=”.jpg”]: 选出所有该gref以jpg结尾的所有元素 #id: id 写法 爬取例子 http://blog.jobbole.com/107390/ 选取p元素下的entry-meta-hide-on-mobile类的text 1date = response.css("p.entry-meta-hide-on-mobile::text").extract()[0].strip() 取span下vote-post-up中和h10的文本（点赞数），第一个用’.’,后面的用空格，text用冒号。如果说后面的class唯一可以省去span 1vote = response.css("span.vote-post-up h10::text").extract()[0].strip() 取herf=”#article-comment”下的span中的文字 1comment = response.css("a[href='#article-comment'] span::text").extract()[0] 提取内容 1content = response.css(".entry") 提取tag并用’,’连接 12tags = response.css("div.entry-meta p a::text").extract()t = ",".join(tags) 提取一个页面中的所有url 1post_urls = response.css("#archive .floated-thumb .post-thumb a::attr(href)").extract() 选取下一页 注意attr的提取功能 1next_p = response.css(".next.page-numbers::attr(href)").extract_first("") 五、实战这里记录下来debug了两个小时的坑123name = "jobblole" allowed_domains = ["web.jobbole.com"] start_urls = ['http://web.jobbole.com/all-posts/'] 一直没注意domain，我们应该确保搜索的范围在domain中，不然会出现错误接着打开一中创建的模板 12345678910111213141516171819# 递归运行函数 def parse(self, response): """ 1. 获取文章列表页中的文章url并交给scrapy下载后并进行解析 2. 获取下一页的url并交给scrapy进行下载， 下载完成后交给parse """ # 解析列表页中的所有文章url并交给scrapy下载后并进行解析 post_nodes = response.css("#archive .floated-thumb .post-thumb a") for post_node in post_nodes: post_url = post_node.css("::attr(href)").extract_first("") print(post_url) yield Request(url=parse.urljoin(response.url, post_url), callback=self.parse_detail) # 提取下一页并交给scrapy进行下载 next_url = response.css(".next.page-numbers::attr(href)").extract_first("") if next_url: yield Request(url=parse.urljoin(response.url, post_url), callback=self.parse) 这里有三个需要注意的地方 yield Request就是运行，无需其他操作 url要使用parse.urljoin(response.url, post_url), 比如github，能抓取到的只有仓库名，但是前面需要加上github的大域名 callback不需要加括号，只需要函数名字 12345678910111213def parse_detail(self, response): # 通过css选择器提取字段 title = response.css(".entry-header h1::text").extract()[0] create_date = response.css("p.entry-meta-hide-on-mobile::text").extract()[0].strip().replace("·", "").strip() praise_nums = response.css(".vote-post-up h10::text").extract()[0] fav_nums = response.css(".bookmark-btn::text").extract()[0] match_re = re.match(".*?(\d+).*", fav_nums) if match_re: fav_nums = int(match_re.group(1)) else: fav_nums = 0 未完待续….等项目全部做完附赠项目地址]]></content>
   </entry>
   <entry>
     <title><![CDATA[Pyspider (Third) Basic knowledge]]></title>
-    <url>%2F2018%2F11%2F11%2Fpyspider3%2F</url>
+    <url>%2F2018%2F11%2F10%2Fpyspider3%2F</url>
     <content type="text"><![CDATA[URL网络实际是一个树形结构，因此分为广度优先和深度优先搜索。真实网站是存在许多环路的，因此一个重要的方法就是去重。本文介绍去重和字符串编码问题 一、Depth-First &amp; Width-First不做赘述。 二、爬虫去重序列 url经过md5等方法哈希后保存到set中 用bitmap方法，将url hash到某一位（缺点：冲突不命中会比较高） 用bloomfilter对bitmap进行优化 三、Unicode &amp; utf8Unicode将所有语言统一到一套编码，都用2byte表示。但是如果说一篇文章全是英文，储存空间和传输量会比Ascii多一倍utf-8将英文又变回一个字节将UTF-8文件读取成Unicode（方便统一操作），处理完后保存成UFT-8文件（节省空间）python3现在用unicode统一进行表示 12s = "我爱python"s.encode("utf8") # 此时s必须是unicode，不然会报错 前面介绍了基本背景(First)，正则表达式(Second)，和去重及编码，下章节开始讲解Scrapy框架]]></content>
   </entry>
   <entry>
     <title><![CDATA[Pyspider (Second) regular expression]]></title>
-    <url>%2F2018%2F11%2F11%2Fpyspider2%2F</url>
+    <url>%2F2018%2F11%2F10%2Fpyspider2%2F</url>
     <content type="text"><![CDATA[一、基本规则 ^b: 强制以b开头 .: 可以匹配任意字符 *: 可以代表无限多个前一字符 3$: 必须以3强制结尾 (): 返回括号内匹配的内容 ？: 非贪婪匹配，遇到该字符的第一个就停下 123456789101112import reline = "waaaaangww123"regex_str = ".*?(w.*w).*" # waaaaangww"""regex_str = ".*?(w.*?w).*" # waaaaangwregex_str = ".*(w.*w).*" # ww"""match_str = re.match(regex_str, line)if match_str: print(match_str.group(1)) +: 前面的字符至少出现一次(与都是次数限定符){2}: 前面的出现2次 {2,}:前面的出现至少两次 {2，5}: 前面的出现至少两次至多5次|：或, 模式1或者模式2 (优先提取竖线前的模式)[abcd]:前面的字符是abcd中任意一个均可[0-9]:区间任意一个字符[^1]: 不为1[.]: 去除特殊字符的特殊含义 123456789import re# 举个例子提取电话号码phone_num = "17673168577"regex_str = "(1[5678][0-9]&#123;9&#125;)" # "(1[5678][^1]&#123;9&#125;)"# 17673168577# 以1开头，后面跟5or6or7or8, 再跟9个任意数字match_str = re.match(regex_str, phone_num)if match_str: print(match_str.group(1)) \s: 空格(小写)\S: 单一字符且只要不为空格都可以(大写)\w: 与[A-Za-z0-9_]相同\W: 与上面的相反[\u4E00–u9FA5]: 任意汉字]]></content>
   </entry>
   <entry>

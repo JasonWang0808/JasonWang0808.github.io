@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-01-08T00:57:45.896Z</updated>
+  <updated>2019-01-29T05:18:20.650Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,9 +17,56 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>how to use Github on linux</title>
+    <link href="http://yoursite.com/2019/01/28/github/"/>
+    <id>http://yoursite.com/2019/01/28/github/</id>
+    <published>2019-01-29T05:18:20.650Z</published>
+    <updated>2019-01-29T05:18:20.650Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="Step1-配置SSH-key并输入到github上"><a href="#Step1-配置SSH-key并输入到github上" class="headerlink" title="Step1. 配置SSH key并输入到github上"></a>Step1. 配置SSH key并输入到github上</h3><blockquote><p>网上很多教程，这里就不赘述</p></blockquote><h3 id="Step2-手动添加仓库或者直接clone"><a href="#Step2-手动添加仓库或者直接clone" class="headerlink" title="Step2. 手动添加仓库或者直接clone"></a>Step2. 手动添加仓库或者直接clone</h3><p><a href="https://blog.csdn.net/chenguolinblog/article/details/19929509" target="_blank" rel="noopener">link</a></p><h3 id="Step3-添加成为contributor"><a href="#Step3-添加成为contributor" class="headerlink" title="Step3. 添加成为contributor"></a>Step3. 添加成为contributor</h3><p><a href="https://segmentfault.com/a/1190000015798490" target="_blank" rel="noopener">link</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;Step1-配置SSH-key并输入到github上&quot;&gt;&lt;a href=&quot;#Step1-配置SSH-key并输入到github上&quot; class=&quot;headerlink&quot; title=&quot;Step1. 配置SSH key并输入到github上&quot;&gt;&lt;/a&gt;Step1. 
+      
+    
+    </summary>
+    
+      <category term="git" scheme="http://yoursite.com/categories/git/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Data Structure(4) The using of Set/map</title>
+    <link href="http://yoursite.com/2019/01/08/DS_SetMap/"/>
+    <id>http://yoursite.com/2019/01/08/DS_SetMap/</id>
+    <published>2019-01-08T06:48:05.113Z</published>
+    <updated>2019-01-09T15:12:48.647Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="1-Set的使用"><a href="#1-Set的使用" class="headerlink" title="1. Set的使用"></a>1. Set的使用</h4><blockquote><p>可用于储存在计算过程中的过程，leetcode202 happy number就需要储存计算中曾经出现过哪些数字。</p></blockquote><p>使用insert排着插入即可</p><blockquote><p>Leetcode 349求补集<br>注意vector和set之间可以直接一键转换。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;set&gt;</span></span></span><br><span class="line"><span class="built_in">set</span>&lt;<span class="keyword">int</span>&gt; s1;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; vector1(s1.begin(), s1.end());</span><br></pre></td></tr></table></figure></p></blockquote><h4 id="2-map类似于python中的dict"><a href="#2-map类似于python中的dict" class="headerlink" title="2. map类似于python中的dict"></a>2. map类似于python中的dict</h4><h4 id="3-补充"><a href="#3-补充" class="headerlink" title="3. 补充"></a>3. 补充</h4><p>map和set在底层都是一棵平衡二叉树，有unordered_map和unordered_set底层是哈希表实现</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h4 id=&quot;1-Set的使用&quot;&gt;&lt;a href=&quot;#1-Set的使用&quot; class=&quot;headerlink&quot; title=&quot;1. Set的使用&quot;&gt;&lt;/a&gt;1. Set的使用&lt;/h4&gt;&lt;blockquote&gt;
+&lt;p&gt;可用于储存在计算过程中的过程，leetcode202 happ
+      
+    
+    </summary>
+    
+      <category term="DS" scheme="http://yoursite.com/categories/DS/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>Data Structure(1) Linked List</title>
-    <link href="http://yoursite.com/2019/01/08/DT_LinkedList1/"/>
-    <id>http://yoursite.com/2019/01/08/DT_LinkedList1/</id>
+    <link href="http://yoursite.com/2019/01/07/DT_LinkedList1/"/>
+    <id>http://yoursite.com/2019/01/07/DT_LinkedList1/</id>
     <published>2019-01-08T00:57:45.895Z</published>
     <updated>2019-01-08T00:57:45.896Z</updated>
     
@@ -48,10 +95,10 @@
   
   <entry>
     <title>Data Structure(1) Linked List</title>
-    <link href="http://yoursite.com/2019/01/08/DT_LinkedList/"/>
-    <id>http://yoursite.com/2019/01/08/DT_LinkedList/</id>
+    <link href="http://yoursite.com/2019/01/07/DS_LinkedList/"/>
+    <id>http://yoursite.com/2019/01/07/DS_LinkedList/</id>
     <published>2019-01-07T16:12:50.611Z</published>
-    <updated>2019-01-07T16:27:46.502Z</updated>
+    <updated>2019-01-08T06:49:32.671Z</updated>
     
     <content type="html"><![CDATA[<ol start="206"><li>Reverse Linked List</li><li>Reverse Linked List 2<br>考察链表的指针操作  </li></ol><p>Notes: 要充分注意首尾是否指针为空</p><p>Tips：<strong>虚拟头节点</strong></p><blockquote><p>可以定义一个dummyHead作为head前面的标志性指针, 好处是，不管head怎样变化，只要调用其next总能找到现在的head（203，82）</p></blockquote><figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ListNode *dummyHead = ListNode(-<span class="number">1</span>)<span class="comment">;</span></span><br><span class="line">dummyHead-&gt;next = head<span class="comment">;</span></span><br></pre></td></tr></table></figure><p>对于特定的92号问题，反转链表，我们可以通过一个函数返回两个数据：  </p><ol><li>最左边的元素  </li><li>原本最左边的元素的next</li></ol><p>在链表中穿针引线（23，24，124，125， 237）<br>双指针（61，143，234，19）</p>]]></content>
     
@@ -69,21 +116,21 @@
     
     </summary>
     
-      <category term="DT" scheme="http://yoursite.com/categories/DT/"/>
+      <category term="DS" scheme="http://yoursite.com/categories/DS/"/>
     
     
-      <category term="DT" scheme="http://yoursite.com/tags/DT/"/>
+      <category term="DS" scheme="http://yoursite.com/tags/DS/"/>
     
   </entry>
   
   <entry>
     <title>Data Structure(2) Stack VS queue</title>
-    <link href="http://yoursite.com/2019/01/07/DT_stack/"/>
-    <id>http://yoursite.com/2019/01/07/DT_stack/</id>
+    <link href="http://yoursite.com/2019/01/07/DS_stack/"/>
+    <id>http://yoursite.com/2019/01/07/DS_stack/</id>
     <published>2019-01-07T15:33:05.416Z</published>
-    <updated>2019-01-08T00:57:41.089Z</updated>
+    <updated>2019-01-09T15:12:54.354Z</updated>
     
-    <content type="html"><![CDATA[<h4 id="一、基本介绍"><a href="#一、基本介绍" class="headerlink" title="一、基本介绍"></a>一、基本介绍</h4><h5 id="Stack，又名堆，后进先出问题。非常经典的一个括号匹配问题就是出自Stack之手。"><a href="#Stack，又名堆，后进先出问题。非常经典的一个括号匹配问题就是出自Stack之手。" class="headerlink" title="Stack，又名堆，后进先出问题。非常经典的一个括号匹配问题就是出自Stack之手。"></a>Stack，又名堆，后进先出问题。非常经典的一个括号匹配问题就是出自Stack之手。</h5><h5 id="Queue，又名队列，先进先出，常用于对“TreeNode”的层级问题的解答，因为每一层都可以看作是一个队列来进行处理。常用Vector-lt-Vector-gt-来进行计算"><a href="#Queue，又名队列，先进先出，常用于对“TreeNode”的层级问题的解答，因为每一层都可以看作是一个队列来进行处理。常用Vector-lt-Vector-gt-来进行计算" class="headerlink" title="Queue，又名队列，先进先出，常用于对“TreeNode”的层级问题的解答，因为每一层都可以看作是一个队列来进行处理。常用Vector&lt;Vector&gt;来进行计算"></a>Queue，又名队列，先进先出，常用于对“TreeNode”的层级问题的解答，因为每一层都可以看作是一个队列来进行处理。常用Vector&lt;Vector<int>&gt;来进行计算</int></h5><blockquote><p>102,103,104,199都可以用队列来解答</p></blockquote><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Stack常用用法</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stack&gt;</span></span></span><br><span class="line"><span class="built_in">stack</span>&lt; pair &lt;Node*, <span class="keyword">int</span>&gt;&gt; s1; <span class="comment">//设立一个包含pair的Stack  </span></span><br><span class="line">s1.top();</span><br><span class="line">s1.push_back();</span><br><span class="line">s1.pop();</span><br></pre></td></tr></table></figure><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// queue常用用法</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="built_in">queue</span>&lt;&lt; pair &lt;Node*, <span class="keyword">int</span>&gt;&gt; q1; <span class="comment">//设立一个包含pair的Stack  </span></span><br><span class="line">s1.top();</span><br><span class="line">s1.push();</span><br><span class="line">s1.pop();</span><br></pre></td></tr></table></figure><h4 id="二、图论应用"><a href="#二、图论应用" class="headerlink" title="二、图论应用"></a>二、图论应用</h4><blockquote><p>类似练习127，126<br>例如leetcode279题，寻找相加平方数最少的一种方案。<br>我们可以将其想像成求无权边的最短路径，使用BFS</p></blockquote><blockquote><p>例如计算9，首先8–&gt;9(1), 5–&gt;9(2), 0–&gt;9(3) , 9就连接了三个顶点分别是0,5,8</p></blockquote><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Leetcode279</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">numSquares</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">bool</span>&gt; isvisit(n+<span class="number">1</span>, <span class="number">0</span>);</span><br><span class="line">        isvisit[n] = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">        <span class="built_in">queue</span>&lt; pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt;&gt; queue1;</span><br><span class="line">        queue1.push(make_pair(n, <span class="number">0</span>));</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>(queue1.empty() == <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">int</span> Node_n = queue1.front().first;</span><br><span class="line">            <span class="keyword">int</span> dis = queue1.front().second;</span><br><span class="line">            queue1.pop();</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; ; i ++)&#123;</span><br><span class="line">                <span class="keyword">int</span> temp = i * i;</span><br><span class="line">                <span class="keyword">if</span>(temp &gt; Node_n) <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span>(temp == Node_n)&#123;</span><br><span class="line">                    <span class="keyword">return</span> dis + <span class="number">1</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span>&#123;</span><br><span class="line">                    <span class="keyword">if</span>(isvisit[Node_n - temp] == <span class="number">0</span> )&#123;</span><br><span class="line">                        queue1.push(make_pair(Node_n - temp, dis+<span class="number">1</span>));</span><br><span class="line">                        isvisit[Node_n - temp] = <span class="number">1</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><h3 id="三、优先队列"><a href="#三、优先队列" class="headerlink" title="三、优先队列"></a>三、优先队列</h3><p>优先队列其实就是一个堆，只是能应用的逻辑相对比较简单</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># <span class="meta-keyword">include</span><span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line">priority_queue&lt;<span class="keyword">int</span>, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;, function&lt;<span class="keyword">bool</span>(<span class="keyword">int</span>, <span class="keyword">int</span>)&gt; &gt; pq1(mycmp);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">mycpmp</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a &lt; b; <span class="comment">//大的元素在队列首</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>例题：Leetcode347。</p><p>Tips：  </p><ol><li>建立一个map，类似Wordcount</li><li>队列的pair运用第一个元素比较，因此要把pair的第一个元素设置成频率。  </li><li>while循环别把empty的标志设置反</li></ol><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; topKFrequent(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> k) &#123;</span><br><span class="line"></span><br><span class="line">        assert(k &gt; <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">        <span class="built_in">unordered_map</span>&lt;<span class="keyword">int</span> ,<span class="keyword">int</span>&gt; freq;</span><br><span class="line">        <span class="keyword">for</span>( <span class="keyword">int</span> i = <span class="number">0</span> ; i &lt; nums.size() ; i ++)&#123;</span><br><span class="line">            freq[nums[i]] ++;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        assert(k &lt;= freq.size());</span><br><span class="line"></span><br><span class="line">        priority_queue&lt; pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt;, <span class="built_in">vector</span>&lt;pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt;&gt;, greater&lt;pair&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt;&gt; &gt; pq;</span><br><span class="line">        <span class="keyword">for</span>( <span class="built_in">unordered_map</span>&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt;::iterator iter = freq.begin() ; iter != freq.end() ; iter ++)&#123;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span>(pq.size() == k)&#123;</span><br><span class="line">                <span class="keyword">if</span>(iter-&gt;second &gt; pq.top().first)&#123;</span><br><span class="line">                    pq.pop();</span><br><span class="line">                    pq.push(make_pair(iter-&gt;second, iter-&gt;first));</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                pq.push(make_pair(iter-&gt;second, iter-&gt;first));</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; res;</span><br><span class="line">        <span class="keyword">while</span>(!pq.empty())&#123;</span><br><span class="line">            res.push_back(pq.top().second);</span><br><span class="line">            pq.pop();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+    <content type="html"><![CDATA[<h4 id="一、基本介绍"><a href="#一、基本介绍" class="headerlink" title="一、基本介绍"></a>一、基本介绍</h4><h5 id="Stack，又名堆，后进先出问题。非常经典的一个括号匹配问题就是出自Stack之手。"><a href="#Stack，又名堆，后进先出问题。非常经典的一个括号匹配问题就是出自Stack之手。" class="headerlink" title="Stack，又名堆，后进先出问题。非常经典的一个括号匹配问题就是出自Stack之手。"></a>Stack，又名堆，后进先出问题。非常经典的一个括号匹配问题就是出自Stack之手。</h5><h5 id="Queue，又名队列，先进先出，常用于对“TreeNode”的层级问题的解答，因为每一层都可以看作是一个队列来进行处理。常用Vector-lt-Vector-gt-来进行计算"><a href="#Queue，又名队列，先进先出，常用于对“TreeNode”的层级问题的解答，因为每一层都可以看作是一个队列来进行处理。常用Vector-lt-Vector-gt-来进行计算" class="headerlink" title="Queue，又名队列，先进先出，常用于对“TreeNode”的层级问题的解答，因为每一层都可以看作是一个队列来进行处理。常用Vector&lt;Vector&gt;来进行计算"></a>Queue，又名队列，先进先出，常用于对“TreeNode”的层级问题的解答，因为每一层都可以看作是一个队列来进行处理。常用Vector&lt;Vector<int>&gt;来进行计算</int></h5><blockquote><p>102,103,104,199都可以用队列来解答</p></blockquote><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Stack常用用法</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stack&gt;</span></span></span><br><span class="line"><span class="built_in">stack</span>&lt; pair &lt;Node*, <span class="keyword">int</span>&gt;&gt; s1; <span class="comment">//设立一个包含pair的Stack  </span></span><br><span class="line">s1.top();</span><br><span class="line">s1.push_back();</span><br><span class="line">s1.pop();</span><br></pre></td></tr></table></figure><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// queue常用用法</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="built_in">queue</span>&lt;&lt; pair &lt;Node*, <span class="keyword">int</span>&gt;&gt; q1; <span class="comment">//设立一个包含pair的Stack  </span></span><br><span class="line">s1.top();</span><br><span class="line">s1.push();</span><br><span class="line">s1.pop();</span><br></pre></td></tr></table></figure><h4 id="二、图论应用"><a href="#二、图论应用" class="headerlink" title="二、图论应用"></a>二、图论应用</h4><blockquote><p>类似练习127，126<br>例如leetcode279题，寻找相加平方数最少的一种方案。<br>我们可以将其想像成求无权边的最短路径，使用BFS</p></blockquote><blockquote><p>例如计算9，首先8–&gt;9(1), 5–&gt;9(2), 0–&gt;9(3) , 9就连接了三个顶点分别是0,5,8</p></blockquote><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Leetcode279</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">numSquares</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">bool</span>&gt; isvisit(n+<span class="number">1</span>, <span class="number">0</span>);</span><br><span class="line">        isvisit[n] = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">        <span class="built_in">queue</span>&lt; pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt;&gt; queue1;</span><br><span class="line">        queue1.push(make_pair(n, <span class="number">0</span>));</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>(queue1.empty() == <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">int</span> Node_n = queue1.front().first;</span><br><span class="line">            <span class="keyword">int</span> dis = queue1.front().second;</span><br><span class="line">            queue1.pop();</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; ; i ++)&#123;</span><br><span class="line">                <span class="keyword">int</span> temp = i * i;</span><br><span class="line">                <span class="keyword">if</span>(temp &gt; Node_n) <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span>(temp == Node_n)&#123;</span><br><span class="line">                    <span class="keyword">return</span> dis + <span class="number">1</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span>&#123;</span><br><span class="line">                    <span class="keyword">if</span>(isvisit[Node_n - temp] == <span class="number">0</span> )&#123;</span><br><span class="line">                        queue1.push(make_pair(Node_n - temp, dis+<span class="number">1</span>));</span><br><span class="line">                        isvisit[Node_n - temp] = <span class="number">1</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><h4 id="三、优先队列"><a href="#三、优先队列" class="headerlink" title="三、优先队列"></a>三、优先队列</h4><p>优先队列其实就是一个堆，只是能应用的逻辑相对比较简单</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># <span class="meta-keyword">include</span><span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line">priority_queue&lt;<span class="keyword">int</span>, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;, function&lt;<span class="keyword">bool</span>(<span class="keyword">int</span>, <span class="keyword">int</span>)&gt; &gt; pq1(mycmp);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">mycpmp</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a &lt; b; <span class="comment">//大的元素在队列首</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>例题：Leetcode347。</p><p>Tips：  </p><ol><li>建立一个map，类似Wordcount</li><li>队列的pair运用第一个元素比较，因此要把pair的第一个元素设置成频率。  </li><li>while循环别把empty的标志设置反</li></ol><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; topKFrequent(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> k) &#123;</span><br><span class="line"></span><br><span class="line">        assert(k &gt; <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">        <span class="built_in">unordered_map</span>&lt;<span class="keyword">int</span> ,<span class="keyword">int</span>&gt; freq;</span><br><span class="line">        <span class="keyword">for</span>( <span class="keyword">int</span> i = <span class="number">0</span> ; i &lt; nums.size() ; i ++)&#123;</span><br><span class="line">            freq[nums[i]] ++;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        assert(k &lt;= freq.size());</span><br><span class="line"></span><br><span class="line">        priority_queue&lt; pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt;, <span class="built_in">vector</span>&lt;pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt;&gt;, greater&lt;pair&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt;&gt; &gt; pq;</span><br><span class="line">        <span class="keyword">for</span>( <span class="built_in">unordered_map</span>&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt;::iterator iter = freq.begin() ; iter != freq.end() ; iter ++)&#123;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span>(pq.size() == k)&#123;</span><br><span class="line">                <span class="keyword">if</span>(iter-&gt;second &gt; pq.top().first)&#123;</span><br><span class="line">                    pq.pop();</span><br><span class="line">                    pq.push(make_pair(iter-&gt;second, iter-&gt;first));</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                pq.push(make_pair(iter-&gt;second, iter-&gt;first));</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; res;</span><br><span class="line">        <span class="keyword">while</span>(!pq.empty())&#123;</span><br><span class="line">            res.push_back(pq.top().second);</span><br><span class="line">            pq.pop();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
     
     <summary type="html">
     
@@ -94,7 +141,7 @@
     
     </summary>
     
-      <category term="DT" scheme="http://yoursite.com/categories/DT/"/>
+      <category term="DS" scheme="http://yoursite.com/categories/DS/"/>
     
     
   </entry>
@@ -151,8 +198,8 @@
   
   <entry>
     <title>Hidden Markov Model，HMM</title>
-    <link href="http://yoursite.com/2018/11/19/HMM/"/>
-    <id>http://yoursite.com/2018/11/19/HMM/</id>
+    <link href="http://yoursite.com/2018/11/18/HMM/"/>
+    <id>http://yoursite.com/2018/11/18/HMM/</id>
     <published>2018-11-19T02:25:44.000Z</published>
     <updated>2018-11-19T02:25:44.000Z</updated>
     
@@ -206,8 +253,8 @@
   
   <entry>
     <title>spam classification --- naive bayes</title>
-    <link href="http://yoursite.com/2018/11/17/spam-classification/"/>
-    <id>http://yoursite.com/2018/11/17/spam-classification/</id>
+    <link href="http://yoursite.com/2018/11/16/spam-classification/"/>
+    <id>http://yoursite.com/2018/11/16/spam-classification/</id>
     <published>2018-11-17T05:57:40.000Z</published>
     <updated>2018-11-17T05:57:40.000Z</updated>
     
@@ -256,8 +303,8 @@
   
   <entry>
     <title>Pyspider (Four) how to use a simple Spider</title>
-    <link href="http://yoursite.com/2018/11/12/pyspider4/"/>
-    <id>http://yoursite.com/2018/11/12/pyspider4/</id>
+    <link href="http://yoursite.com/2018/11/11/pyspider4/"/>
+    <id>http://yoursite.com/2018/11/11/pyspider4/</id>
     <published>2018-11-11T17:15:50.000Z</published>
     <updated>2018-11-11T17:15:50.000Z</updated>
     
@@ -278,8 +325,8 @@
   
   <entry>
     <title>Pyspider (Third) Basic knowledge</title>
-    <link href="http://yoursite.com/2018/11/11/pyspider3/"/>
-    <id>http://yoursite.com/2018/11/11/pyspider3/</id>
+    <link href="http://yoursite.com/2018/11/10/pyspider3/"/>
+    <id>http://yoursite.com/2018/11/10/pyspider3/</id>
     <published>2018-11-11T04:08:50.000Z</published>
     <updated>2018-11-11T04:08:50.000Z</updated>
     
@@ -300,8 +347,8 @@
   
   <entry>
     <title>Pyspider (Second) regular expression</title>
-    <link href="http://yoursite.com/2018/11/11/pyspider2/"/>
-    <id>http://yoursite.com/2018/11/11/pyspider2/</id>
+    <link href="http://yoursite.com/2018/11/10/pyspider2/"/>
+    <id>http://yoursite.com/2018/11/10/pyspider2/</id>
     <published>2018-11-11T04:06:18.000Z</published>
     <updated>2018-11-11T04:06:18.000Z</updated>
     
@@ -445,49 +492,6 @@
         &lt;script type=&quot;text/javascript&quot; src=&quot;https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML&quot;&gt;&lt;/script&gt;  
 
 &lt;h3 id=&quot;算法思想&quot;&gt;&lt;a hre
-      
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Reinforcement Learning (Second)</title>
-    <link href="http://yoursite.com/2018/11/01/Reinforce_Learning2/"/>
-    <id>http://yoursite.com/2018/11/01/Reinforce_Learning2/</id>
-    <published>2018-11-01T12:32:20.000Z</published>
-    <updated>2018-11-01T12:32:20.000Z</updated>
-    
-    <content type="html"><![CDATA[<p><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script></p><h4 id="Reference-An-introduction-to-Deep-Q-Learning-let’s-play-Doom"><a href="#Reference-An-introduction-to-Deep-Q-Learning-let’s-play-Doom" class="headerlink" title="Reference : An introduction to Deep Q-Learning: let’s play Doom"></a>Reference : <a href="https://medium.freecodecamp.org/an-introduction-to-deep-q-learning-lets-play-doom-54d02d8017d8/" target="_blank" rel="noopener">An introduction to Deep Q-Learning: let’s play Doom</a></h4><h3 id="Deep-Q-Learning-Network-DQN"><a href="#Deep-Q-Learning-Network-DQN" class="headerlink" title="Deep Q-Learning Network (DQN)"></a>Deep Q-Learning Network (DQN)</h3><h5 id="1-深度强化学习"><a href="#1-深度强化学习" class="headerlink" title="1. 深度强化学习"></a>1. 深度强化学习</h5><p>对于一个复杂的游戏，表示动作及其Value、在Q表里搜索相应的动作变得十分没有效率。因此这里改用神经网络进行Q表的计算。  每次将S放入，即可计算出相应的action及对应的value</p><blockquote><p>\(w\)表示神经网络的权值，\(R\)表示Reward，\(Q\)表示Q表中相应状态和动作对应的数值  </p></blockquote><p>$$<br>current\_predict\_Q = \hat{Q}(s,a,w)<br>$$  </p><p>$$<br>Grdient = \bigtriangledown \hat{Q}(s,a,w)<br>$$   </p><p>$$<br>\Delta w(TDerror) = \alpha[R + \gamma max_{a} \hat{Q}(s\prime ,a, w)) - current\_predict\_Q]<br>$$   </p><h5 id="2-主要优化方法"><a href="#2-主要优化方法" class="headerlink" title="2. 主要优化方法"></a>2. 主要优化方法</h5><blockquote><p>经验回放(Experience Deplay)和固定Q目标是其中的两个主要贡献</p></blockquote><ul><li>经验回放<br>有些动作的代价很大，我们可以把经历过的  \(&lt;S_{t}, A_{t}, R_{t+1}, S_{t+1}&gt;\) 储存在缓冲区中(replay buffer)，后面可以再次用来学习。并可以采取<strong>优先经验回收</strong><br>我们认为，loss越大的数值越具有学习价值，因此buffer里的所有数据都根据其loss决定被选择的概率，每一次学习之后都会更新其概率\(p(i)=\frac{p_{i}^{a}}{\sum_{k=1}^{n} p_{k}^{a}}\),这里的\(a\)保证了不完全按照概率，减少过拟合。（a=1时完全按照概率选取）</li></ul><blockquote><p>研究证明，优先经验回收策略可以减少迭代次数</p></blockquote><ul><li>Q固定<br>我们可以看到在我们的\(R + \gamma max_{a} \hat{Q}(s\prime ,a, w)\)和\(\hat{Q}(s,a,w)\)中都有\(w\)存在。因此两者都在变，导致无法持续收敛。<blockquote><p>打个比方。小明在追他养的牛，想要不断向他的牛靠近。然而他的牛的位置（Q）因为\(w\)的改变也在不断变化。可能一会在小明前，一会去小明后。小明也会懵逼，到底该往哪个方向追。因此我们将\(w^{-}\)固定，事后更新\(w^{-} \gets w\)。这样保证了在收敛过程中目标是确定的不会变化。</p></blockquote></li></ul><p>$$<br>\Delta w(TDerror) = \alpha[R + \gamma max_{a} \hat{Q}(s\prime ,a, w^{-})) - \hat{Q}(s,a,w)]\bigtriangledown \hat{Q}(s,a,w)<br>$$   </p><blockquote><p>Thrun 和 Schwartz，1993 年，<a href="http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.73.3097" target="_blank" rel="noopener">《使用函数逼近进行强化学习存在的问题》（ 高估 Q 值）</a><br>van Hasselt et al.，2015 年，<a href="https://arxiv.org/abs/1509.06461" target="_blank" rel="noopener">《双 Q 学习的深度强化学习》</a><br>Schaul et al.，2016 年，<a href="https://arxiv.org/abs/1511.05952" target="_blank" rel="noopener">《优先经验回放》</a><br>Wang et al.，2015 年，<a href="https://arxiv.org/abs/1511.06581/" target="_blank" rel="noopener">《深度强化学习的对抗网络架构》</a><br>Hausknecht 和 Stone，2015 年，<a href="https://arxiv.org/abs/1507.06527/" target="_blank" rel="noopener">《部分可观察 MDP 的深度递归 Q 学习》</a>    </p></blockquote>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;script type=&quot;text/javascript&quot; src=&quot;https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML&quot;&gt;&lt;/script&gt;&lt;/p&gt;
-&lt;h4 id=&quot;Referenc
-      
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Basic Rules of Tensorflow</title>
-    <link href="http://yoursite.com/2018/11/01/tensorflow_basic/"/>
-    <id>http://yoursite.com/2018/11/01/tensorflow_basic/</id>
-    <published>2018-11-01T12:31:50.000Z</published>
-    <updated>2018-11-01T12:31:50.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="常见符号"><a href="#常见符号" class="headerlink" title="常见符号"></a>常见符号</h2><h3 id="1-tf-Variable-与-tf-constant"><a href="#1-tf-Variable-与-tf-constant" class="headerlink" title="1. tf.Variable 与 tf.constant"></a>1. tf.Variable 与 tf.constant</h3><blockquote><p>第一个可以根据计算改变，第二个是不能变的, 因此神经网络的权值通常都是Variable<br>另外要注意, 定义了变量和常量之后，要初始化才能使用</p></blockquote><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">init = <span class="keyword">tf</span>.global_variables_initializer()</span><br><span class="line">with <span class="keyword">tf</span>.Session() <span class="keyword">as</span> ses<span class="variable">s:</span></span><br><span class="line">    sess.run(init)</span><br></pre></td></tr></table></figure><h3 id="2-tf-reduce-mean"><a href="#2-tf-reduce-mean" class="headerlink" title="2. tf.reduce_mean"></a>2. tf.reduce_mean</h3><blockquote><p>取平均值，后面跟1是取行，跟0是取列</p></blockquote><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">import tensorflow as tf</span><br><span class="line">x = np.array([[1.,2.,3.],[4.,5.,6.]])</span><br><span class="line"></span><br><span class="line">with tf.Session() as sess:</span><br><span class="line">    mean_none = sess.<span class="builtin-name">run</span>(tf.reduce_mean(x))</span><br><span class="line">    mean_1 = sess.<span class="builtin-name">run</span>(tf.reduce_mean(x,1))</span><br><span class="line">    mean_2 = sess.<span class="builtin-name">run</span>(tf.reduce_mean(x,0))</span><br><span class="line">    <span class="builtin-name">print</span>(x)</span><br><span class="line">    <span class="builtin-name">print</span>(mean_none)</span><br><span class="line">    <span class="builtin-name">print</span>(mean_1)</span><br><span class="line">    <span class="builtin-name">print</span>(mean_2)</span><br></pre></td></tr></table></figure><h3 id="3-tf-equal"><a href="#3-tf-equal" class="headerlink" title="3. tf.equal"></a>3. tf.equal</h3><blockquote><p>分别比较矩阵中相同的元素，相同就返回true,不同就返回false</p></blockquote><figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">import tensorflow as tf  </span><br><span class="line"> import numpy as np  </span><br><span class="line">   </span><br><span class="line"> A = <span class="string">[[1,3,4,5,6]]</span>  </span><br><span class="line"> B = <span class="string">[[1,3,4,3,2]]</span>  </span><br><span class="line">   </span><br><span class="line"> with tf.Session() as sess:  </span><br><span class="line">     <span class="built_in">print</span>(sess.run(tf.equal(A, B)))</span><br></pre></td></tr></table></figure><h3 id="4-tf-truncated-normal"><a href="#4-tf-truncated-normal" class="headerlink" title="4. tf.truncated_normal"></a>4. tf.truncated_normal</h3><blockquote><p>shape 表示要生成的矩阵的大小<br>mean 表示正态函数的均值<br>stddev表示要生成的随机数的方差<br>seed 是随机数种，通常条件下为None</p></blockquote><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tf.random_normal(shape, <span class="attribute">mean</span>=0.0, <span class="attribute">stddev</span>=1.0, <span class="attribute">dtype</span>=tf.float32, <span class="attribute">seed</span>=None, <span class="attribute">name</span>=None)</span><br></pre></td></tr></table></figure><h3 id="5-tf-reshape"><a href="#5-tf-reshape" class="headerlink" title="5. tf.reshape"></a>5. tf.reshape</h3><blockquote><p>更改矩阵的大小, 通常对图像进行改变<br>参数中可以指定一个 -1 （且只能有一个）, 将根据其他参数的指定自动计算出该维度</p></blockquote><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:<span class="regexp">//</span>blog.csdn.net<span class="regexp">/m0_37592397/</span>article<span class="regexp">/details/</span><span class="number">78695318</span></span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;常见符号&quot;&gt;&lt;a href=&quot;#常见符号&quot; class=&quot;headerlink&quot; title=&quot;常见符号&quot;&gt;&lt;/a&gt;常见符号&lt;/h2&gt;&lt;h3 id=&quot;1-tf-Variable-与-tf-constant&quot;&gt;&lt;a href=&quot;#1-tf-Variable-与-tf
       
     
     </summary>
