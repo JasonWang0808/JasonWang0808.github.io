@@ -81,17 +81,17 @@
 
 
 
-<meta name="description" content="share your ideas with the world">
-<meta property="og:type" content="website">
-<meta property="og:title" content="xx">
-<meta property="og:url" content="http://yoursite.com/xx/index.html">
+<meta name="description" content="出错原因对于这种组合问题，只有三种情况1. （多次）选择当前2. 选择当前3. 不选当前很多时候用递归，可能两个分支会递归到同一种状态，最后导致结果的重复（见下图）因此我们可以将函数的主体改为一个for循环12345for(i : I)&amp;#123;	vector1.push_back(i); // 选择当前	Solve();	// 假定选择当前进行处理	vector.pop_back(); //">
+<meta property="og:type" content="article">
+<meta property="og:title" content="回溯法(Back Tracking)">
+<meta property="og:url" content="http://yoursite.com/2019/02/28/回溯/index.html">
 <meta property="og:site_name" content="Junyu Wang&#39;s Blog">
-<meta property="og:description" content="share your ideas with the world">
+<meta property="og:description" content="出错原因对于这种组合问题，只有三种情况1. （多次）选择当前2. 选择当前3. 不选当前很多时候用递归，可能两个分支会递归到同一种状态，最后导致结果的重复（见下图）因此我们可以将函数的主体改为一个for循环12345for(i : I)&amp;#123;	vector1.push_back(i); // 选择当前	Solve();	// 假定选择当前进行处理	vector.pop_back(); //">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-10-20T12:02:18.000Z">
+<meta property="og:updated_time" content="2019-02-28T21:12:58.118Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="xx">
-<meta name="twitter:description" content="share your ideas with the world">
+<meta name="twitter:title" content="回溯法(Back Tracking)">
+<meta name="twitter:description" content="出错原因对于这种组合问题，只有三种情况1. （多次）选择当前2. 选择当前3. 不选当前很多时候用递归，可能两个分支会递归到同一种状态，最后导致结果的重复（见下图）因此我们可以将函数的主体改为一个for循环12345for(i : I)&amp;#123;	vector1.push_back(i); // 选择当前	Solve();	// 假定选择当前进行处理	vector.pop_back(); //">
 
 
 
@@ -121,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/xx/">
+  <link rel="canonical" href="http://yoursite.com/2019/02/28/回溯/">
 
 
 
 
 
-  <title>xx | Junyu Wang's Blog</title>
+  <title>回溯法(Back Tracking) | Junyu Wang's Blog</title>
   
 
 
@@ -281,33 +281,157 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/28/回溯/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JunYu Wang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Junyu Wang's Blog">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-	<h1 class="post-title" itemprop="name headline">xx</h1>
-
-
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
+          <h1 class="post-title" itemprop="name headline">回溯法(Back Tracking)</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+
+            
+
+            
+          </span>
+
           
-        
-      </div>
+            <span class="post-category">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">algorithm</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <h3 id="出错原因"><a href="#出错原因" class="headerlink" title="出错原因"></a>出错原因</h3><h4 id="对于这种组合问题，只有三种情况"><a href="#对于这种组合问题，只有三种情况" class="headerlink" title="对于这种组合问题，只有三种情况"></a>对于这种组合问题，只有三种情况</h4><h4 id="1-（多次）选择当前"><a href="#1-（多次）选择当前" class="headerlink" title="1. （多次）选择当前"></a>1. （多次）选择当前</h4><h4 id="2-选择当前"><a href="#2-选择当前" class="headerlink" title="2. 选择当前"></a>2. 选择当前</h4><h4 id="3-不选当前"><a href="#3-不选当前" class="headerlink" title="3. 不选当前"></a>3. 不选当前</h4><h4 id="很多时候用递归，可能两个分支会递归到同一种状态，最后导致结果的重复（见下图）"><a href="#很多时候用递归，可能两个分支会递归到同一种状态，最后导致结果的重复（见下图）" class="headerlink" title="很多时候用递归，可能两个分支会递归到同一种状态，最后导致结果的重复（见下图）"></a>很多时候用递归，可能两个分支会递归到同一种状态，最后导致结果的重复（见下图）</h4><h4 id="因此我们可以将函数的主体改为一个for循环"><a href="#因此我们可以将函数的主体改为一个for循环" class="headerlink" title="因此我们可以将函数的主体改为一个for循环"></a>因此我们可以将函数的主体改为一个for循环</h4><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">for</span>(<span class="attribute">i </span>: I)&#123;</span><br><span class="line">	<span class="selector-tag">vector1</span><span class="selector-class">.push_back</span>(i); <span class="comment">// 选择当前</span></span><br><span class="line">	<span class="selector-tag">Solve</span>();	<span class="comment">// 假定选择当前进行处理</span></span><br><span class="line">	<span class="selector-tag">vector</span><span class="selector-class">.pop_back</span>(); <span class="comment">// 不选当前</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="leetcode-39-40-microsoft"><a href="#leetcode-39-40-microsoft" class="headerlink" title="leetcode 39, 40 (microsoft)"></a>leetcode 39, 40 (microsoft)</h4><blockquote>
+<p>the goal is to find </p>
+</blockquote>
+<h5 id="39可以利用上面的方法进行求解。"><a href="#39可以利用上面的方法进行求解。" class="headerlink" title="39可以利用上面的方法进行求解。"></a>39可以利用上面的方法进行求解。</h5><h5 id="40-又多了一个trick"><a href="#40-又多了一个trick" class="headerlink" title="40 又多了一个trick"></a>40 又多了一个trick</h5><blockquote>
+<p>[1,1,2,5,1] , 1+2+5 = 2+5+1 = 8,因此会得到相同的3组解。</p>
+</blockquote>
+<h5 id="我们把这个理解成，“只看个数”不看顺序，假如3个1中，出现了一个没选，那剩下的都不能选。"><a href="#我们把这个理解成，“只看个数”不看顺序，假如3个1中，出现了一个没选，那剩下的都不能选。" class="headerlink" title="我们把这个理解成，“只看个数”不看顺序，假如3个1中，出现了一个没选，那剩下的都不能选。"></a>我们把这个理解成，“只看个数”不看顺序，假如3个1中，出现了一个没选，那剩下的都不能选。</h5><blockquote>
+<p>比如牛肉面加肉，有三块牛腩可以加。但是第一块很小，第二块中等，第三块最大。每一块价格相同，不能跳着选。要想吃到第三块牛肉就要把第一块第二块都选中。 中途放弃的后面的也别想要。这就是这个题如何避免重复解的原理</p>
+</blockquote>
+
       
     </div>
     
     
     
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/02/18/Java_CS400/" rel="next" title="">
+                <i class="fa fa-chevron-left"></i> 
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -340,8 +464,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -408,6 +541,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#出错原因"><span class="nav-number">1.</span> <span class="nav-text">出错原因</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#对于这种组合问题，只有三种情况"><span class="nav-number">1.1.</span> <span class="nav-text">对于这种组合问题，只有三种情况</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-（多次）选择当前"><span class="nav-number">1.2.</span> <span class="nav-text">1. （多次）选择当前</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-选择当前"><span class="nav-number">1.3.</span> <span class="nav-text">2. 选择当前</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-不选当前"><span class="nav-number">1.4.</span> <span class="nav-text">3. 不选当前</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#很多时候用递归，可能两个分支会递归到同一种状态，最后导致结果的重复（见下图）"><span class="nav-number">1.5.</span> <span class="nav-text">很多时候用递归，可能两个分支会递归到同一种状态，最后导致结果的重复（见下图）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#因此我们可以将函数的主体改为一个for循环"><span class="nav-number">1.6.</span> <span class="nav-text">因此我们可以将函数的主体改为一个for循环</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#leetcode-39-40-microsoft"><span class="nav-number">1.7.</span> <span class="nav-text">leetcode 39, 40 (microsoft)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#39可以利用上面的方法进行求解。"><span class="nav-number">1.7.1.</span> <span class="nav-text">39可以利用上面的方法进行求解。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#40-又多了一个trick"><span class="nav-number">1.7.2.</span> <span class="nav-text">40 又多了一个trick</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#我们把这个理解成，“只看个数”不看顺序，假如3个1中，出现了一个没选，那剩下的都不能选。"><span class="nav-number">1.7.3.</span> <span class="nav-text">我们把这个理解成，“只看个数”不看顺序，假如3个1中，出现了一个没选，那剩下的都不能选。</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

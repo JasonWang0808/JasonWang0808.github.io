@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[回溯法(Back Tracking)]]></title>
+    <url>%2F2019%2F02%2F28%2F%E5%9B%9E%E6%BA%AF%2F</url>
+    <content type="text"><![CDATA[出错原因对于这种组合问题，只有三种情况1. （多次）选择当前2. 选择当前3. 不选当前很多时候用递归，可能两个分支会递归到同一种状态，最后导致结果的重复（见下图）因此我们可以将函数的主体改为一个for循环12345for(i : I)&#123; vector1.push_back(i); // 选择当前 Solve(); // 假定选择当前进行处理 vector.pop_back(); // 不选当前&#125; leetcode 39, 40 (microsoft) the goal is to find 39可以利用上面的方法进行求解。40 又多了一个trick [1,1,2,5,1] , 1+2+5 = 2+5+1 = 8,因此会得到相同的3组解。 我们把这个理解成，“只看个数”不看顺序，假如3个1中，出现了一个没选，那剩下的都不能选。 比如牛肉面加肉，有三块牛腩可以加。但是第一块很小，第二块中等，第三块最大。每一块价格相同，不能跳着选。要想吃到第三块牛肉就要把第一块第二块都选中。 中途放弃的后面的也别想要。这就是这个题如何避免重复解的原理]]></content>
+      <categories>
+        <category>algorithm</category>
+      </categories>
+  </entry>
+  <entry>
+    <title></title>
+    <url>%2F2019%2F02%2F18%2FJava_CS400%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
     <title><![CDATA[Data Structure(4) The using of Set/map]]></title>
     <url>%2F2019%2F01%2F08%2FDS_SetMap%2F</url>
     <content type="text"><![CDATA[1. Set的使用 可用于储存在计算过程中的过程，leetcode202 happy number就需要储存计算中曾经出现过哪些数字。 使用insert排着插入即可 Leetcode 349求补集注意vector和set之间可以直接一键转换。123#include &lt;set&gt;set&lt;int&gt; s1;vector&lt;int&gt; vector1(s1.begin(), s1.end()); 2. map类似于python中的dict3. 补充map和set在底层都是一棵平衡二叉树，有unordered_map和unordered_set底层是哈希表实现]]></content>
