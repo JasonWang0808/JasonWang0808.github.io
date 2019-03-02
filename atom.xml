@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-03-01T19:31:27.516Z</updated>
+  <updated>2019-03-02T19:43:14.445Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>B-Tree(AVL, Red-Black, B(2-3))</title>
+    <link href="http://yoursite.com/2019/03/01/B-tree/"/>
+    <id>http://yoursite.com/2019/03/01/B-tree/</id>
+    <published>2019-03-01T19:31:27.515Z</published>
+    <updated>2019-03-02T19:43:14.445Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="Red-Black-Tree"><a href="#Red-Black-Tree" class="headerlink" title="Red-Black Tree"></a>Red-Black Tree</h3><blockquote><p>Balance factor显示了是否要进行旋转。BF = height_left - height_right</p></blockquote><h4 id="性质"><a href="#性质" class="headerlink" title="性质"></a>性质</h4><h5 id="1-根结点必须是黑色"><a href="#1-根结点必须是黑色" class="headerlink" title="1. 根结点必须是黑色"></a>1. 根结点必须是黑色</h5><h5 id="2-红色结点的子结点必须是黑色"><a href="#2-红色结点的子结点必须是黑色" class="headerlink" title="2. 红色结点的子结点必须是黑色"></a>2. 红色结点的子结点必须是黑色</h5><h5 id="3-根结点到任意一个叶子结点路径上的黑色结点数相同"><a href="#3-根结点到任意一个叶子结点路径上的黑色结点数相同" class="headerlink" title="3. 根结点到任意一个叶子结点路径上的黑色结点数相同"></a>3. 根结点到任意一个叶子结点路径上的黑色结点数相同</h5><h4 id="How-to-fix"><a href="#How-to-fix" class="headerlink" title="How to fix"></a>How to fix</h4><blockquote><p>当违反了规则的时候，我们把它称为R.P.V(Red Properties Violation)</p></blockquote><p><img src="https://github.com/JasonWang0808/blog_reference/blob/master/pictures/Red-black.pngg" alt="image"></p><h5 id="1-Recoloring-—-when-the-parent’s-sibling-is-red-but-you-need-recolor-the-root-to-be-black-in-the-end"><a href="#1-Recoloring-—-when-the-parent’s-sibling-is-red-but-you-need-recolor-the-root-to-be-black-in-the-end" class="headerlink" title="1. Recoloring — when the parent’s sibling is red, but you need recolor the root to be black in the end;"></a>1. Recoloring — when the parent’s sibling is red, but you need recolor the root to be black in the end;</h5><h5 id="2-Reconstruting-—-when-the-parent’s-sibling-is-black-or-null"><a href="#2-Reconstruting-—-when-the-parent’s-sibling-is-black-or-null" class="headerlink" title="2. Reconstruting — when the parent’s sibling is black or null"></a>2. Reconstruting — when the parent’s sibling is black or null</h5><h4 id="Hints"><a href="#Hints" class="headerlink" title="Hints:"></a>Hints:</h4><h5 id="1-每一次插入的都是红色"><a href="#1-每一次插入的都是红色" class="headerlink" title="1. 每一次插入的都是红色"></a>1. 每一次插入的都是红色</h5><h5 id="2-left-rotate-是指-Grandparent-变为parent的左孩子"><a href="#2-left-rotate-是指-Grandparent-变为parent的左孩子" class="headerlink" title="2. left-rotate 是指 Grandparent 变为parent的左孩子"></a>2. left-rotate 是指 Grandparent 变为parent的左孩子</h5><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">G</span>.<span class="keyword">right</span> = <span class="type">P</span>.<span class="keyword">right</span>;</span><br><span class="line"><span class="type">P</span>.<span class="keyword">right</span> = <span class="type">G</span>;</span><br><span class="line"><span class="keyword">return</span> <span class="type">P</span>; <span class="comment">// 返回新的根结点</span></span><br></pre></td></tr></table></figure><h5 id="3-复杂度全部为log-N-遍历还是n。"><a href="#3-复杂度全部为log-N-遍历还是n。" class="headerlink" title="3. 复杂度全部为log(N),遍历还是n。"></a>3. 复杂度全部为log(N),遍历还是n。</h5><h3 id="B-Tree"><a href="#B-Tree" class="headerlink" title="B-Tree"></a>B-Tree</h3><h5 id="AVL解决了BST插入不平衡的问题，但是要进行旋转，复杂度较高，因此提出2-3Tree，使得插入更加简便"><a href="#AVL解决了BST插入不平衡的问题，但是要进行旋转，复杂度较高，因此提出2-3Tree，使得插入更加简便" class="headerlink" title="AVL解决了BST插入不平衡的问题，但是要进行旋转，复杂度较高，因此提出2-3Tree，使得插入更加简便"></a>AVL解决了BST插入不平衡的问题，但是要进行旋转，复杂度较高，因此提出2-3Tree，使得插入更加简便</h5><blockquote><p>拥有一个内部结点key以及两个两个子结点，这个叫做<strong>2结点</strong>; 拥有两个内部结点key以及三个子结点，这个叫做<strong>3结点</strong> </p></blockquote><h5 id="这里可以看到一个对B-Tree简单的笔记，介绍了性质"><a href="#这里可以看到一个对B-Tree简单的笔记，介绍了性质" class="headerlink" title="这里可以看到一个对B-Tree简单的笔记，介绍了性质"></a>这里可以看到一个对B-Tree简单的笔记，介绍了性质</h5><p><img src="https://github.com/JasonWang0808/blog_reference/blob/master/pictures/Btree.png" alt="image"></p><p><a href="https://juejin.im/post/5b7e00456fb9a01a0b3193c7" target="_blank" rel="noopener">可以参考这里2-3Tree的插入过程</a></p><h3 id="B-tree"><a href="#B-tree" class="headerlink" title="B+ tree"></a>B+ tree</h3><blockquote><p>B+ tree是Btree的升级，主要改变在以下几个方面</p></blockquote><h4 id="B-tree独有的性质"><a href="#B-tree独有的性质" class="headerlink" title="B+ tree独有的性质"></a>B+ tree独有的性质</h4><h6 id="1-有k个子树的中间节点包含有k个元素（B树中是k-1个元素），每个元素不保存数据，只用来索引，所有数据都保存在叶子节点。"><a href="#1-有k个子树的中间节点包含有k个元素（B树中是k-1个元素），每个元素不保存数据，只用来索引，所有数据都保存在叶子节点。" class="headerlink" title="1.有k个子树的中间节点包含有k个元素（B树中是k-1个元素），每个元素不保存数据，只用来索引，所有数据都保存在叶子节点。"></a>1.有k个子树的中间节点包含有k个元素（B树中是k-1个元素），每个元素不保存数据，只用来索引，所有数据都保存在叶子节点。</h6><h6 id="2-所有的叶子结点中包含了全部元素的信息，及指向含这些元素记录的指针，且叶子结点本身依关键字的大小自小而大顺序链接。"><a href="#2-所有的叶子结点中包含了全部元素的信息，及指向含这些元素记录的指针，且叶子结点本身依关键字的大小自小而大顺序链接。" class="headerlink" title="2.所有的叶子结点中包含了全部元素的信息，及指向含这些元素记录的指针，且叶子结点本身依关键字的大小自小而大顺序链接。"></a>2.所有的叶子结点中包含了全部元素的信息，及指向含这些元素记录的指针，且叶子结点本身依关键字的大小自小而大顺序链接。</h6><h6 id="3-所有的中间节点元素都同时存在于子节点，在子节点元素中是最大（或最小）元素。"><a href="#3-所有的中间节点元素都同时存在于子节点，在子节点元素中是最大（或最小）元素。" class="headerlink" title="3.所有的中间节点元素都同时存在于子节点，在子节点元素中是最大（或最小）元素。"></a>3.所有的中间节点元素都同时存在于子节点，在子节点元素中是最大（或最小）元素。</h6><h4 id="B-Tree的好处"><a href="#B-Tree的好处" class="headerlink" title="B+ Tree的好处"></a>B+ Tree的好处</h4><h5 id="1-单一结点可以储存更多的元素，减少IO的次数"><a href="#1-单一结点可以储存更多的元素，减少IO的次数" class="headerlink" title="1. 单一结点可以储存更多的元素，减少IO的次数"></a>1. 单一结点可以储存更多的元素，减少IO的次数</h5><h5 id="2-所有的data（Satellite-Information）都存在叶结点，每一次的查询都很稳定"><a href="#2-所有的data（Satellite-Information）都存在叶结点，每一次的查询都很稳定" class="headerlink" title="2. 所有的data（Satellite Information）都存在叶结点，每一次的查询都很稳定"></a>2. 所有的data（Satellite Information）都存在叶结点，每一次的查询都很稳定</h5><h5 id="3-叶结点中有指针相互连接，使得查询某个范围中的数据集合更加方便（对于B树可能要不断回溯才能找到下一范围）"><a href="#3-叶结点中有指针相互连接，使得查询某个范围中的数据集合更加方便（对于B树可能要不断回溯才能找到下一范围）" class="headerlink" title="3. 叶结点中有指针相互连接，使得查询某个范围中的数据集合更加方便（对于B树可能要不断回溯才能找到下一范围）"></a>3. 叶结点中有指针相互连接，使得查询某个范围中的数据集合更加方便（对于B树可能要不断回溯才能找到下一范围）</h5>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;Red-Black-Tree&quot;&gt;&lt;a href=&quot;#Red-Black-Tree&quot; class=&quot;headerlink&quot; title=&quot;Red-Black Tree&quot;&gt;&lt;/a&gt;Red-Black Tree&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;Balance f
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>Leetcode classical problem</title>
@@ -30,27 +52,6 @@
       
       
         &lt;h3 id=&quot;big-number-multiply&quot;&gt;&lt;a href=&quot;#big-number-multiply&quot; class=&quot;headerlink&quot; title=&quot;big number multiply&quot;&gt;&lt;/a&gt;big number multiply&lt;/h3&gt;&lt;bloc
-      
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>B-Tree(AVL, Red-Black, B(2-3))</title>
-    <link href="http://yoursite.com/2019/03/01/B-tree/"/>
-    <id>http://yoursite.com/2019/03/01/B-tree/</id>
-    <published>2019-03-01T19:31:27.515Z</published>
-    <updated>2019-03-02T18:54:52.404Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="B-Tree"><a href="#B-Tree" class="headerlink" title="B-Tree"></a>B-Tree</h3><h5 id="AVL解决了BST插入不平衡的问题，但是要进行旋转，复杂度较高，因此提出2-3Tree，使得插入更加简便"><a href="#AVL解决了BST插入不平衡的问题，但是要进行旋转，复杂度较高，因此提出2-3Tree，使得插入更加简便" class="headerlink" title="AVL解决了BST插入不平衡的问题，但是要进行旋转，复杂度较高，因此提出2-3Tree，使得插入更加简便"></a>AVL解决了BST插入不平衡的问题，但是要进行旋转，复杂度较高，因此提出2-3Tree，使得插入更加简便</h5><blockquote><p>拥有一个内部结点key以及两个两个子结点，这个叫做<strong>2结点</strong>; 拥有两个内部结点key以及三个子结点，这个叫做<strong>3结点</strong> </p></blockquote><h5 id="这里可以看到一个对B-Tree简单的笔记，介绍了性质"><a href="#这里可以看到一个对B-Tree简单的笔记，介绍了性质" class="headerlink" title="这里可以看到一个对B-Tree简单的笔记，介绍了性质"></a>这里可以看到一个对B-Tree简单的笔记，介绍了性质</h5><p><img src="./pictures/data_structure/Btree.png" alt="image"></p><p><a href="https://juejin.im/post/5b7e00456fb9a01a0b3193c7" target="_blank" rel="noopener">可以参考这里2-3Tree的插入过程</a></p><h3 id="B-tree"><a href="#B-tree" class="headerlink" title="B+ tree"></a>B+ tree</h3><blockquote><p>B+ tree是Btree的升级，主要改变在以下几个方面</p></blockquote><h4 id="B-tree独有的性质"><a href="#B-tree独有的性质" class="headerlink" title="B+ tree独有的性质"></a>B+ tree独有的性质</h4><h6 id="1-有k个子树的中间节点包含有k个元素（B树中是k-1个元素），每个元素不保存数据，只用来索引，所有数据都保存在叶子节点。"><a href="#1-有k个子树的中间节点包含有k个元素（B树中是k-1个元素），每个元素不保存数据，只用来索引，所有数据都保存在叶子节点。" class="headerlink" title="1.有k个子树的中间节点包含有k个元素（B树中是k-1个元素），每个元素不保存数据，只用来索引，所有数据都保存在叶子节点。"></a>1.有k个子树的中间节点包含有k个元素（B树中是k-1个元素），每个元素不保存数据，只用来索引，所有数据都保存在叶子节点。</h6><h6 id="2-所有的叶子结点中包含了全部元素的信息，及指向含这些元素记录的指针，且叶子结点本身依关键字的大小自小而大顺序链接。"><a href="#2-所有的叶子结点中包含了全部元素的信息，及指向含这些元素记录的指针，且叶子结点本身依关键字的大小自小而大顺序链接。" class="headerlink" title="2.所有的叶子结点中包含了全部元素的信息，及指向含这些元素记录的指针，且叶子结点本身依关键字的大小自小而大顺序链接。"></a>2.所有的叶子结点中包含了全部元素的信息，及指向含这些元素记录的指针，且叶子结点本身依关键字的大小自小而大顺序链接。</h6><h6 id="3-所有的中间节点元素都同时存在于子节点，在子节点元素中是最大（或最小）元素。"><a href="#3-所有的中间节点元素都同时存在于子节点，在子节点元素中是最大（或最小）元素。" class="headerlink" title="3.所有的中间节点元素都同时存在于子节点，在子节点元素中是最大（或最小）元素。"></a>3.所有的中间节点元素都同时存在于子节点，在子节点元素中是最大（或最小）元素。</h6><h4 id="B-Tree的好处"><a href="#B-Tree的好处" class="headerlink" title="B+ Tree的好处"></a>B+ Tree的好处</h4><h5 id="1-单一结点可以储存更多的元素，减少IO的次数"><a href="#1-单一结点可以储存更多的元素，减少IO的次数" class="headerlink" title="1. 单一结点可以储存更多的元素，减少IO的次数"></a>1. 单一结点可以储存更多的元素，减少IO的次数</h5><h5 id="2-所有的data（Satellite-Information）都存在叶结点，每一次的查询都很稳定"><a href="#2-所有的data（Satellite-Information）都存在叶结点，每一次的查询都很稳定" class="headerlink" title="2. 所有的data（Satellite Information）都存在叶结点，每一次的查询都很稳定"></a>2. 所有的data（Satellite Information）都存在叶结点，每一次的查询都很稳定</h5><h5 id="3-叶结点中有指针相互连接，使得查询某个范围中的数据集合更加方便（对于B树可能要不断回溯才能找到下一范围）"><a href="#3-叶结点中有指针相互连接，使得查询某个范围中的数据集合更加方便（对于B树可能要不断回溯才能找到下一范围）" class="headerlink" title="3. 叶结点中有指针相互连接，使得查询某个范围中的数据集合更加方便（对于B树可能要不断回溯才能找到下一范围）"></a>3. 叶结点中有指针相互连接，使得查询某个范围中的数据集合更加方便（对于B树可能要不断回溯才能找到下一范围）</h5>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;B-Tree&quot;&gt;&lt;a href=&quot;#B-Tree&quot; class=&quot;headerlink&quot; title=&quot;B-Tree&quot;&gt;&lt;/a&gt;B-Tree&lt;/h3&gt;&lt;h5 id=&quot;AVL解决了BST插入不平衡的问题，但是要进行旋转，复杂度较高，因此提出2-3Tree，使得插入更
       
     
     </summary>
@@ -268,7 +269,7 @@
     <published>2018-11-18T14:13:36.000Z</published>
     <updated>2018-11-18T14:13:36.000Z</updated>
     
-    <content type="html"><![CDATA[<ol><li>指定二维数组, 可以调用a.keys()来查看索引  </li></ol><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">a</span> = defaultdict(list)</span><br></pre></td></tr></table></figure><ol start="2"><li>Cunter 可以统计一个list中各个部件出现的数量，可以搭配上面的defaultlist使用  </li></ol><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> Counter</span><br></pre></td></tr></table></figure>]]></content>
+    <content type="html"><![CDATA[<ol><li>指定二维数组, 可以调用a.keys()来查看索引  </li></ol><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">a</span> = defaultdict(list)</span><br></pre></td></tr></table></figure><ol start="2"><li>Cunter 可以统计一个list中各个部件出现的数量，可以搭配上面的defaultlist使用  </li></ol><figure class="highlight capnproto"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> Counter</span><br></pre></td></tr></table></figure>]]></content>
     
     <summary type="html">
     
