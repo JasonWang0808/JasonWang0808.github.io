@@ -81,17 +81,19 @@
 
 
 
-<meta name="description" content="AVL解决了BST插入不平衡的问题，但是要进行旋转，复杂度较高，因此提出2-3Tree，使得插入更加简便 拥有一个内部结点key以及两个两个子结点，这个叫做2结点; 拥有两个内部结点key以及三个子结点，这个叫做3结点   这里有一个简单2-3树（B树的一种）的解释 可以参考这里2-3Tree的插入过程">
+<meta name="description" content="B-TreeAVL解决了BST插入不平衡的问题，但是要进行旋转，复杂度较高，因此提出2-3Tree，使得插入更加简便 拥有一个内部结点key以及两个两个子结点，这个叫做2结点; 拥有两个内部结点key以及三个子结点，这个叫做3结点   这里可以看到一个对B-Tree简单的笔记，介绍了性质 可以参考这里2-3Tree的插入过程 B+ tree B+ tree是Btree的升级，主要改变在以下几个方面">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Tree (AVL, Red-Black, B(2-3))">
+<meta property="og:title" content="B-Tree(AVL, Red-Black, B(2-3))">
 <meta property="og:url" content="http://yoursite.com/2019/03/01/B-tree/index.html">
 <meta property="og:site_name" content="Junyu Wang&#39;s Blog">
-<meta property="og:description" content="AVL解决了BST插入不平衡的问题，但是要进行旋转，复杂度较高，因此提出2-3Tree，使得插入更加简便 拥有一个内部结点key以及两个两个子结点，这个叫做2结点; 拥有两个内部结点key以及三个子结点，这个叫做3结点   这里有一个简单2-3树（B树的一种）的解释 可以参考这里2-3Tree的插入过程">
+<meta property="og:description" content="B-TreeAVL解决了BST插入不平衡的问题，但是要进行旋转，复杂度较高，因此提出2-3Tree，使得插入更加简便 拥有一个内部结点key以及两个两个子结点，这个叫做2结点; 拥有两个内部结点key以及三个子结点，这个叫做3结点   这里可以看到一个对B-Tree简单的笔记，介绍了性质 可以参考这里2-3Tree的插入过程 B+ tree B+ tree是Btree的升级，主要改变在以下几个方面">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-02T06:08:16.888Z">
+<meta property="og:image" content="http://yoursite.com/2019/03/01/B-tree/pictures/data_structure/Btree.png">
+<meta property="og:updated_time" content="2019-03-02T18:54:52.404Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Tree (AVL, Red-Black, B(2-3))">
-<meta name="twitter:description" content="AVL解决了BST插入不平衡的问题，但是要进行旋转，复杂度较高，因此提出2-3Tree，使得插入更加简便 拥有一个内部结点key以及两个两个子结点，这个叫做2结点; 拥有两个内部结点key以及三个子结点，这个叫做3结点   这里有一个简单2-3树（B树的一种）的解释 可以参考这里2-3Tree的插入过程">
+<meta name="twitter:title" content="B-Tree(AVL, Red-Black, B(2-3))">
+<meta name="twitter:description" content="B-TreeAVL解决了BST插入不平衡的问题，但是要进行旋转，复杂度较高，因此提出2-3Tree，使得插入更加简便 拥有一个内部结点key以及两个两个子结点，这个叫做2结点; 拥有两个内部结点key以及三个子结点，这个叫做3结点   这里可以看到一个对B-Tree简单的笔记，介绍了性质 可以参考这里2-3Tree的插入过程 B+ tree B+ tree是Btree的升级，主要改变在以下几个方面">
+<meta name="twitter:image" content="http://yoursite.com/2019/03/01/B-tree/pictures/data_structure/Btree.png">
 
 
 
@@ -127,7 +129,7 @@
 
 
 
-  <title>Tree (AVL, Red-Black, B(2-3)) | Junyu Wang's Blog</title>
+  <title>B-Tree(AVL, Red-Black, B(2-3)) | Junyu Wang's Blog</title>
   
 
 
@@ -310,7 +312,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Tree (AVL, Red-Black, B(2-3))</h1>
+          <h1 class="post-title" itemprop="name headline">B-Tree(AVL, Red-Black, B(2-3))</h1>
         
 
         <div class="post-meta">
@@ -350,12 +352,15 @@
       
 
       
-        <h5 id="AVL解决了BST插入不平衡的问题，但是要进行旋转，复杂度较高，因此提出2-3Tree，使得插入更加简便"><a href="#AVL解决了BST插入不平衡的问题，但是要进行旋转，复杂度较高，因此提出2-3Tree，使得插入更加简便" class="headerlink" title="AVL解决了BST插入不平衡的问题，但是要进行旋转，复杂度较高，因此提出2-3Tree，使得插入更加简便"></a>AVL解决了BST插入不平衡的问题，但是要进行旋转，复杂度较高，因此提出2-3Tree，使得插入更加简便</h5><blockquote>
+        <h3 id="B-Tree"><a href="#B-Tree" class="headerlink" title="B-Tree"></a>B-Tree</h3><h5 id="AVL解决了BST插入不平衡的问题，但是要进行旋转，复杂度较高，因此提出2-3Tree，使得插入更加简便"><a href="#AVL解决了BST插入不平衡的问题，但是要进行旋转，复杂度较高，因此提出2-3Tree，使得插入更加简便" class="headerlink" title="AVL解决了BST插入不平衡的问题，但是要进行旋转，复杂度较高，因此提出2-3Tree，使得插入更加简便"></a>AVL解决了BST插入不平衡的问题，但是要进行旋转，复杂度较高，因此提出2-3Tree，使得插入更加简便</h5><blockquote>
 <p>拥有一个内部结点key以及两个两个子结点，这个叫做<strong>2结点</strong>; 拥有两个内部结点key以及三个子结点，这个叫做<strong>3结点</strong> </p>
 </blockquote>
-<p><a href="https://drive.google.com/file/d/1Fm1NF2vJHWVIDFvnrCxi6d5aHtM9UnWw/view?usp=sharing" target="_blank" rel="noopener">这里有一个简单2-3树（B树的一种）的解释</a></p>
+<h5 id="这里可以看到一个对B-Tree简单的笔记，介绍了性质"><a href="#这里可以看到一个对B-Tree简单的笔记，介绍了性质" class="headerlink" title="这里可以看到一个对B-Tree简单的笔记，介绍了性质"></a>这里可以看到一个对B-Tree简单的笔记，介绍了性质</h5><p><img src="./pictures/data_structure/Btree.png" alt="image"></p>
 <p><a href="https://juejin.im/post/5b7e00456fb9a01a0b3193c7" target="_blank" rel="noopener">可以参考这里2-3Tree的插入过程</a></p>
-
+<h3 id="B-tree"><a href="#B-tree" class="headerlink" title="B+ tree"></a>B+ tree</h3><blockquote>
+<p>B+ tree是Btree的升级，主要改变在以下几个方面</p>
+</blockquote>
+<h4 id="B-tree独有的性质"><a href="#B-tree独有的性质" class="headerlink" title="B+ tree独有的性质"></a>B+ tree独有的性质</h4><h6 id="1-有k个子树的中间节点包含有k个元素（B树中是k-1个元素），每个元素不保存数据，只用来索引，所有数据都保存在叶子节点。"><a href="#1-有k个子树的中间节点包含有k个元素（B树中是k-1个元素），每个元素不保存数据，只用来索引，所有数据都保存在叶子节点。" class="headerlink" title="1.有k个子树的中间节点包含有k个元素（B树中是k-1个元素），每个元素不保存数据，只用来索引，所有数据都保存在叶子节点。"></a>1.有k个子树的中间节点包含有k个元素（B树中是k-1个元素），每个元素不保存数据，只用来索引，所有数据都保存在叶子节点。</h6><h6 id="2-所有的叶子结点中包含了全部元素的信息，及指向含这些元素记录的指针，且叶子结点本身依关键字的大小自小而大顺序链接。"><a href="#2-所有的叶子结点中包含了全部元素的信息，及指向含这些元素记录的指针，且叶子结点本身依关键字的大小自小而大顺序链接。" class="headerlink" title="2.所有的叶子结点中包含了全部元素的信息，及指向含这些元素记录的指针，且叶子结点本身依关键字的大小自小而大顺序链接。"></a>2.所有的叶子结点中包含了全部元素的信息，及指向含这些元素记录的指针，且叶子结点本身依关键字的大小自小而大顺序链接。</h6><h6 id="3-所有的中间节点元素都同时存在于子节点，在子节点元素中是最大（或最小）元素。"><a href="#3-所有的中间节点元素都同时存在于子节点，在子节点元素中是最大（或最小）元素。" class="headerlink" title="3.所有的中间节点元素都同时存在于子节点，在子节点元素中是最大（或最小）元素。"></a>3.所有的中间节点元素都同时存在于子节点，在子节点元素中是最大（或最小）元素。</h6><h4 id="B-Tree的好处"><a href="#B-Tree的好处" class="headerlink" title="B+ Tree的好处"></a>B+ Tree的好处</h4><h5 id="1-单一结点可以储存更多的元素，减少IO的次数"><a href="#1-单一结点可以储存更多的元素，减少IO的次数" class="headerlink" title="1. 单一结点可以储存更多的元素，减少IO的次数"></a>1. 单一结点可以储存更多的元素，减少IO的次数</h5><h5 id="2-所有的data（Satellite-Information）都存在叶结点，每一次的查询都很稳定"><a href="#2-所有的data（Satellite-Information）都存在叶结点，每一次的查询都很稳定" class="headerlink" title="2. 所有的data（Satellite Information）都存在叶结点，每一次的查询都很稳定"></a>2. 所有的data（Satellite Information）都存在叶结点，每一次的查询都很稳定</h5><h5 id="3-叶结点中有指针相互连接，使得查询某个范围中的数据集合更加方便（对于B树可能要不断回溯才能找到下一范围）"><a href="#3-叶结点中有指针相互连接，使得查询某个范围中的数据集合更加方便（对于B树可能要不断回溯才能找到下一范围）" class="headerlink" title="3. 叶结点中有指针相互连接，使得查询某个范围中的数据集合更加方便（对于B树可能要不断回溯才能找到下一范围）"></a>3. 叶结点中有指针相互连接，使得查询某个范围中的数据集合更加方便（对于B树可能要不断回溯才能找到下一范围）</h5>
       
     </div>
     
@@ -530,7 +535,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#AVL解决了BST插入不平衡的问题，但是要进行旋转，复杂度较高，因此提出2-3Tree，使得插入更加简便"><span class="nav-number">1.</span> <span class="nav-text">AVL解决了BST插入不平衡的问题，但是要进行旋转，复杂度较高，因此提出2-3Tree，使得插入更加简便</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#B-Tree"><span class="nav-number">1.</span> <span class="nav-text">B-Tree</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#AVL解决了BST插入不平衡的问题，但是要进行旋转，复杂度较高，因此提出2-3Tree，使得插入更加简便"><span class="nav-number">1.0.1.</span> <span class="nav-text">AVL解决了BST插入不平衡的问题，但是要进行旋转，复杂度较高，因此提出2-3Tree，使得插入更加简便</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#这里可以看到一个对B-Tree简单的笔记，介绍了性质"><span class="nav-number">1.0.2.</span> <span class="nav-text">这里可以看到一个对B-Tree简单的笔记，介绍了性质</span></a></li></ol></li></ol><li class="nav-item nav-level-3"><a class="nav-link" href="#B-tree"><span class="nav-number">2.</span> <span class="nav-text">B+ tree</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#B-tree独有的性质"><span class="nav-number">2.1.</span> <span class="nav-text">B+ tree独有的性质</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1-有k个子树的中间节点包含有k个元素（B树中是k-1个元素），每个元素不保存数据，只用来索引，所有数据都保存在叶子节点。"><span class="nav-number">2.1.0.1.</span> <span class="nav-text">1.有k个子树的中间节点包含有k个元素（B树中是k-1个元素），每个元素不保存数据，只用来索引，所有数据都保存在叶子节点。</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-所有的叶子结点中包含了全部元素的信息，及指向含这些元素记录的指针，且叶子结点本身依关键字的大小自小而大顺序链接。"><span class="nav-number">2.1.0.2.</span> <span class="nav-text">2.所有的叶子结点中包含了全部元素的信息，及指向含这些元素记录的指针，且叶子结点本身依关键字的大小自小而大顺序链接。</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#3-所有的中间节点元素都同时存在于子节点，在子节点元素中是最大（或最小）元素。"><span class="nav-number">2.1.0.3.</span> <span class="nav-text">3.所有的中间节点元素都同时存在于子节点，在子节点元素中是最大（或最小）元素。</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#B-Tree的好处"><span class="nav-number">2.2.</span> <span class="nav-text">B+ Tree的好处</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-单一结点可以储存更多的元素，减少IO的次数"><span class="nav-number">2.2.1.</span> <span class="nav-text">1. 单一结点可以储存更多的元素，减少IO的次数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-所有的data（Satellite-Information）都存在叶结点，每一次的查询都很稳定"><span class="nav-number">2.2.2.</span> <span class="nav-text">2. 所有的data（Satellite Information）都存在叶结点，每一次的查询都很稳定</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-叶结点中有指针相互连接，使得查询某个范围中的数据集合更加方便（对于B树可能要不断回溯才能找到下一范围）"><span class="nav-number">2.2.3.</span> <span class="nav-text">3. 叶结点中有指针相互连接，使得查询某个范围中的数据集合更加方便（对于B树可能要不断回溯才能找到下一范围）</span></a></li></ol></li></div>
             
 
           </div>
