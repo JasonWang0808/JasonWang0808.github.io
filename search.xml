@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Tree (AVL, Red-Black, B(2-3))]]></title>
+    <url>%2F2019%2F03%2F01%2FB-tree%2F</url>
+    <content type="text"><![CDATA[AVL解决了BST插入不平衡的问题，但是要进行旋转，复杂度较高，因此提出2-3Tree，使得插入更加简便 拥有一个内部结点key以及两个两个子结点，这个叫做2结点; 拥有两个内部结点key以及三个子结点，这个叫做3结点 这里有一个简单2-3树（B树的一种）的解释 可以参考这里2-3Tree的插入过程]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[Leetcode classical problem]]></title>
     <url>%2F2019%2F03%2F01%2Fleetocde_classic%2F</url>
     <content type="text"><![CDATA[big number multiply will over flow if you transfer them into number and do the product. 因此逐位相乘，下面这行代码可以说明一切12vector1[i+j] = (string1[i] - '0' * string2[i] - '0');// 利用了乘法的性质，把相同位数的加到一起// vector1中会存在有些元素比10大，因此从尾到头遍历一遍，进行进位。]]></content>
