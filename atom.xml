@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-03-04T00:01:25.038Z</updated>
+  <updated>2019-03-05T23:18:38.376Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>JAVA 如何定义数组</title>
+    <link href="http://yoursite.com/2019/03/05/Java_%E5%AE%9A%E4%B9%89%E6%95%B0%E7%BB%84/"/>
+    <id>http://yoursite.com/2019/03/05/Java_定义数组/</id>
+    <published>2019-03-05T23:18:38.376Z</published>
+    <updated>2019-03-05T23:18:38.376Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="JAVA真是个磨人的老妖精，总是出现一些奇奇怪怪的报错，害得我一上午上完课什么也没干，就google了一个怎么定义（key-value）数组。"><a href="#JAVA真是个磨人的老妖精，总是出现一些奇奇怪怪的报错，害得我一上午上完课什么也没干，就google了一个怎么定义（key-value）数组。" class="headerlink" title="JAVA真是个磨人的老妖精，总是出现一些奇奇怪怪的报错，害得我一上午上完课什么也没干，就google了一个怎么定义（key-value）数组。"></a>JAVA真是个磨人的老妖精，总是出现一些奇奇怪怪的报错，害得我一上午上完课什么也没干，就google了一个怎么定义（key-value）数组。</h4><h4 id="首先你需要定义一个inner-class来储存key-value-pair，然后建立这个inner-class-的数组-注意看程序是怎么实现的"><a href="#首先你需要定义一个inner-class来储存key-value-pair，然后建立这个inner-class-的数组-注意看程序是怎么实现的" class="headerlink" title="首先你需要定义一个inner class来储存key-value pair，然后建立这个inner class 的数组,注意看程序是怎么实现的"></a>首先你需要定义一个inner class来储存key-value pair，然后建立这个inner class 的数组,注意看程序是怎么实现的</h4><blockquote><p>以后记住，对于generic的inner class，都在后面加入generic同样的参数，就可以愉快的定义啦～</p></blockquote><h4 id="同时别忘了，定义完数组以后，初始化。打个比方，如果是hashtable，你需要把这个数组初始化一圈，不然他虽然成功定义了，但是里面的全是null"><a href="#同时别忘了，定义完数组以后，初始化。打个比方，如果是hashtable，你需要把这个数组初始化一圈，不然他虽然成功定义了，但是里面的全是null" class="headerlink" title="同时别忘了，定义完数组以后，初始化。打个比方，如果是hashtable，你需要把这个数组初始化一圈，不然他虽然成功定义了，但是里面的全是null"></a>同时别忘了，定义完数组以后，初始化。打个比方，如果是hashtable，你需要把这个数组初始化一圈，不然他虽然成功定义了，但是里面的全是null</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.awt.print.Printable;</span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> junyu</span></span><br><span class="line"><span class="comment"> * The goal here is to </span></span><br><span class="line"><span class="comment"> * 1. test generic class and its inner class</span></span><br><span class="line"><span class="comment"> * 2. try to set up the List of different types</span></span><br><span class="line"><span class="comment"> * 3. constructor don't need &lt;K,V&gt; </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &lt;K&gt;</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &lt;V&gt;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">test</span> &lt;<span class="title">K</span> <span class="keyword">extends</span> <span class="title">Comparable</span>&lt;<span class="title">K</span>&gt;, <span class="title">V</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">test</span><span class="params">(K key, V value)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">test</span><span class="params">()</span> </span>&#123;</span><br><span class="line">arr = <span class="keyword">new</span> ArrayList&lt;hashPair&gt;(<span class="number">10</span>); </span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i ++) &#123;</span><br><span class="line">arr.add(<span class="keyword">new</span> hashPair()); <span class="comment">// array always need to be initialized</span></span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">int</span> a;</span><br><span class="line"><span class="keyword">private</span> List&lt;hashPair&gt; arr; <span class="comment">// this is similar to vector&lt;hashpair&gt; arr in c ++, </span></span><br><span class="line"><span class="comment">//if you want to build a bucket chained hash table, you can </span></span><br><span class="line"><span class="comment">//private List&lt;List&lt;hashPair&gt;&gt; hashList = new ArrayList&lt;List&lt;hashPair&gt;&gt;(10);</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> junyu</span></span><br><span class="line"><span class="comment"> * 1. Build up the inner class, the goal of which is to build up the node storing the key-value pair</span></span><br><span class="line"><span class="comment"> * 2. Remember to add "&lt;K,V&gt;" or there will be mistakes</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &lt;K&gt;</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &lt;T&gt;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">hashPair</span>&lt;<span class="title">K</span> <span class="keyword">extends</span> <span class="title">Comparable</span>&lt;<span class="title">K</span>&gt;, <span class="title">T</span>&gt;</span>&#123;</span><br><span class="line">hashPair(K key, V value)&#123;</span><br><span class="line"><span class="keyword">this</span>.key = key;</span><br><span class="line"><span class="keyword">this</span>.value = value;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">hashPair</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="comment">// TODO Auto-generated constructor stub</span></span><br><span class="line"><span class="keyword">this</span>.key = <span class="keyword">null</span>;</span><br><span class="line"><span class="keyword">this</span>.value = <span class="keyword">null</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">private</span> K key;</span><br><span class="line"><span class="keyword">private</span> V value;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">hashPair[] haPairs = <span class="keyword">new</span> hashPair[<span class="number">10</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"><span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">test&lt;String, Integer&gt; test1Test = <span class="keyword">new</span> test&lt;String, Integer&gt;();</span><br><span class="line"></span><br><span class="line">System.out.print(test1Test.arr.size());</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i ++) System.out.println(test1Test.arr.get(i).value);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h4 id=&quot;JAVA真是个磨人的老妖精，总是出现一些奇奇怪怪的报错，害得我一上午上完课什么也没干，就google了一个怎么定义（key-value）数组。&quot;&gt;&lt;a href=&quot;#JAVA真是个磨人的老妖精，总是出现一些奇奇怪怪的报错，害得我一上午上完课什么也没干，就googl
+      
+    
+    </summary>
+    
+      <category term="CS400" scheme="http://yoursite.com/categories/CS400/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>Leetcode Heap, priority queue</title>
@@ -59,27 +82,6 @@
   </entry>
   
   <entry>
-    <title>Leetcode classical problem</title>
-    <link href="http://yoursite.com/2019/03/01/leetocde_classic/"/>
-    <id>http://yoursite.com/2019/03/01/leetocde_classic/</id>
-    <published>2019-03-01T19:31:27.515Z</published>
-    <updated>2019-03-01T19:31:27.516Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="big-number-multiply"><a href="#big-number-multiply" class="headerlink" title="big number multiply"></a>big number multiply</h3><blockquote><p>will over flow if you transfer them into number and do the product. </p></blockquote><h4 id="因此逐位相乘，下面这行代码可以说明一切"><a href="#因此逐位相乘，下面这行代码可以说明一切" class="headerlink" title="因此逐位相乘，下面这行代码可以说明一切"></a>因此逐位相乘，下面这行代码可以说明一切</h4><figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vector1[i+j] = (string1[i] - <span class="string">'0'</span> * string2[i] - <span class="string">'0'</span>);// 利用了乘法的性质，把相同位数的加到一起</span><br><span class="line">// vector1中会存在有些元素比<span class="number">10</span>大，因此从尾到头遍历一遍，进行进位。</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;big-number-multiply&quot;&gt;&lt;a href=&quot;#big-number-multiply&quot; class=&quot;headerlink&quot; title=&quot;big number multiply&quot;&gt;&lt;/a&gt;big number multiply&lt;/h3&gt;&lt;bloc
-      
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
     <title>B-Tree(AVL, Red-Black, B(2-3))</title>
     <link href="http://yoursite.com/2019/03/01/B-tree/"/>
     <id>http://yoursite.com/2019/03/01/B-tree/</id>
@@ -94,6 +96,27 @@
       
         &lt;h3 id=&quot;Red-Black-Tree&quot;&gt;&lt;a href=&quot;#Red-Black-Tree&quot; class=&quot;headerlink&quot; title=&quot;Red-Black Tree&quot;&gt;&lt;/a&gt;Red-Black Tree&lt;/h3&gt;&lt;blockquote&gt;
 &lt;p&gt;Balance f
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Leetcode classical problem</title>
+    <link href="http://yoursite.com/2019/03/01/leetocde_classic/"/>
+    <id>http://yoursite.com/2019/03/01/leetocde_classic/</id>
+    <published>2019-03-01T19:31:27.515Z</published>
+    <updated>2019-03-01T19:31:27.516Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="big-number-multiply"><a href="#big-number-multiply" class="headerlink" title="big number multiply"></a>big number multiply</h3><blockquote><p>will over flow if you transfer them into number and do the product. </p></blockquote><h4 id="因此逐位相乘，下面这行代码可以说明一切"><a href="#因此逐位相乘，下面这行代码可以说明一切" class="headerlink" title="因此逐位相乘，下面这行代码可以说明一切"></a>因此逐位相乘，下面这行代码可以说明一切</h4><figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vector1[i+j] = (string1[i] - <span class="string">'0'</span> * string2[i] - <span class="string">'0'</span>);// 利用了乘法的性质，把相同位数的加到一起</span><br><span class="line">// vector1中会存在有些元素比<span class="number">10</span>大，因此从尾到头遍历一遍，进行进位。</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;big-number-multiply&quot;&gt;&lt;a href=&quot;#big-number-multiply&quot; class=&quot;headerlink&quot; title=&quot;big number multiply&quot;&gt;&lt;/a&gt;big number multiply&lt;/h3&gt;&lt;bloc
       
     
     </summary>
@@ -311,7 +334,7 @@
     <published>2018-11-18T14:13:36.000Z</published>
     <updated>2018-11-18T14:13:36.000Z</updated>
     
-    <content type="html"><![CDATA[<ol><li>指定二维数组, 可以调用a.keys()来查看索引  </li></ol><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">a</span> = defaultdict(list)</span><br></pre></td></tr></table></figure><ol start="2"><li>Cunter 可以统计一个list中各个部件出现的数量，可以搭配上面的defaultlist使用  </li></ol><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> Counter</span><br></pre></td></tr></table></figure>]]></content>
+    <content type="html"><![CDATA[<ol><li>指定二维数组, 可以调用a.keys()来查看索引  </li></ol><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">a</span> = defaultdict(list)</span><br></pre></td></tr></table></figure><ol start="2"><li>Cunter 可以统计一个list中各个部件出现的数量，可以搭配上面的defaultlist使用  </li></ol><figure class="highlight capnproto"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> Counter</span><br></pre></td></tr></table></figure>]]></content>
     
     <summary type="html">
     
@@ -461,27 +484,6 @@
       
       
         &lt;h4 id=&quot;一、mysql-fo-navicat连接权限问题&quot;&gt;&lt;a href=&quot;#一、mysql-fo-navicat连接权限问题&quot; class=&quot;headerlink&quot; title=&quot;一、mysql fo navicat连接权限问题&quot;&gt;&lt;/a&gt;一、mysql fo nav
-      
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Super-Resolution Research</title>
-    <link href="http://yoursite.com/2018/11/04/super-resolution/"/>
-    <id>http://yoursite.com/2018/11/04/super-resolution/</id>
-    <published>2018-11-04T10:34:26.000Z</published>
-    <updated>2018-11-04T10:34:26.000Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="Adapt-Super-resolution-into-real-production"><a href="#Adapt-Super-resolution-into-real-production" class="headerlink" title="Adapt Super-resolution into real production"></a>Adapt Super-resolution into real production</h3><h4 id="08-2018-11-2018"><a href="#08-2018-11-2018" class="headerlink" title="08/2018-11/2018"></a>08/2018-11/2018</h4><ul><li><strong>Tutor:</strong> <a href="http://www.cs.cornell.edu/selman/" target="_blank" rel="noopener">Bart Selman from Cornell University</a> </li><li><strong>Purpose:</strong> Used symmetric padding to improve perceptual quality of image after super-resolution   </li><li><strong>Duties:</strong> Edited code to realize VDSR using tensorflow and symmetric padding to process the images with three channels; Used EC2 of AWS to do experiments using classic Datasets (ImageNet, Set5, Set14) and evaluated the outcomes via PSNR and SSIM; Wrote the Introduction and Experiment&amp;Analysis of the final paper</li><li><a href="https://github.com/JasonWang0808/paper_reading/blob/master/Super-resolution-final.pdf" target="_blank" rel="noopener">Final paper</a> and <a href="https://github.com/JasonWang0808/paper_reading/blob/master/RL.jpg" target="_blank" rel="noopener">Recommendation Letter</a> <strong>(&lt;-CLICK)</strong></li></ul>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;Adapt-Super-resolution-into-real-production&quot;&gt;&lt;a href=&quot;#Adapt-Super-resolution-into-real-production&quot; class=&quot;headerlink&quot; title=&quot;Adapt 
       
     
     </summary>
