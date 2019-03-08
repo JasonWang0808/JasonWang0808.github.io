@@ -19,14 +19,14 @@
     <content type="text"><![CDATA[AVL解决了BST插入不平衡的问题，但是要进行旋转，复杂度较高，因此提出2-3Tree，使得插入更加简便 拥有一个内部结点key以及两个两个子结点，这个叫做2结点; 拥有两个内部结点key以及三个子结点，这个叫做3结点 这里有一个简单2-3树（B树的一种）的解释 可以参考这里2-3Tree的插入过程]]></content>
   </entry>
   <entry>
-    <title><![CDATA[B-Tree(AVL, Red-Black, B(2-3))]]></title>
-    <url>%2F2019%2F03%2F01%2FB-tree%2F</url>
-    <content type="text"><![CDATA[Red-Black Tree Balance factor显示了是否要进行旋转。BF = height_left - height_right 性质1. 根结点必须是黑色2. 红色结点的子结点必须是黑色3. 根结点到任意一个叶子结点路径上的黑色结点数相同How to fix 当违反了规则的时候，我们把它称为R.P.V(Red Properties Violation) (https://github.com/JasonWang0808/blog_reference/blob/master/pictures/Red-black.png) 1. Recoloring — when the parent’s sibling is red, but you need recolor the root to be black in the end;2. Reconstruting — when the parent’s sibling is black or nullHints:1. 每一次插入的都是红色2. left-rotate 是指 Grandparent 变为parent的左孩子123G.right = P.right;P.right = G;return P; // 返回新的根结点 3. 复杂度全部为log(N),遍历还是n。B-TreeAVL解决了BST插入不平衡的问题，但是要进行旋转，复杂度较高，因此提出2-3Tree，使得插入更加简便 拥有一个内部结点key以及两个两个子结点，这个叫做2结点; 拥有两个内部结点key以及三个子结点，这个叫做3结点 这里可以看到一个对B-Tree简单的笔记，介绍了性质 (https://github.com/JasonWang0808/blog_reference/blob/master/pictures/Btree.png) 可以参考这里2-3Tree的插入过程 B+ tree B+ tree是Btree的升级，主要改变在以下几个方面 B+ tree独有的性质1.有k个子树的中间节点包含有k个元素（B树中是k-1个元素），每个元素不保存数据，只用来索引，所有数据都保存在叶子节点。2.所有的叶子结点中包含了全部元素的信息，及指向含这些元素记录的指针，且叶子结点本身依关键字的大小自小而大顺序链接。3.所有的中间节点元素都同时存在于子节点，在子节点元素中是最大（或最小）元素。B+ Tree的好处1. 单一结点可以储存更多的元素，减少IO的次数2. 所有的data（Satellite Information）都存在叶结点，每一次的查询都很稳定3. 叶结点中有指针相互连接，使得查询某个范围中的数据集合更加方便（对于B树可能要不断回溯才能找到下一范围）]]></content>
-  </entry>
-  <entry>
     <title><![CDATA[Leetcode classical problem]]></title>
     <url>%2F2019%2F03%2F01%2Fleetocde_classic%2F</url>
     <content type="text"><![CDATA[big number multiply will over flow if you transfer them into number and do the product. 因此逐位相乘，下面这行代码可以说明一切12vector1[i+j] = (string1[i] - '0' * string2[i] - '0');// 利用了乘法的性质，把相同位数的加到一起// vector1中会存在有些元素比10大，因此从尾到头遍历一遍，进行进位。]]></content>
+  </entry>
+  <entry>
+    <title><![CDATA[B-Tree(AVL, Red-Black, B(2-3))]]></title>
+    <url>%2F2019%2F03%2F01%2FB-tree%2F</url>
+    <content type="text"><![CDATA[Red-Black Tree Balance factor显示了是否要进行旋转。BF = height_left - height_right 性质1. 根结点必须是黑色2. 红色结点的子结点必须是黑色3. 根结点到任意一个叶子结点路径上的黑色结点数相同How to fix 当违反了规则的时候，我们把它称为R.P.V(Red Properties Violation) (https://github.com/JasonWang0808/blog_reference/blob/master/pictures/Red-black.png) 1. Recoloring — when the parent’s sibling is red, but you need recolor the root to be black in the end;2. Reconstruting — when the parent’s sibling is black or nullHints:1. 每一次插入的都是红色2. left-rotate 是指 Grandparent 变为parent的左孩子123G.right = P.right;P.right = G;return P; // 返回新的根结点 3. 复杂度全部为log(N),遍历还是n。B-TreeAVL解决了BST插入不平衡的问题，但是要进行旋转，复杂度较高，因此提出2-3Tree，使得插入更加简便 拥有一个内部结点key以及两个两个子结点，这个叫做2结点; 拥有两个内部结点key以及三个子结点，这个叫做3结点 这里可以看到一个对B-Tree简单的笔记，介绍了性质 (https://github.com/JasonWang0808/blog_reference/blob/master/pictures/Btree.png) 可以参考这里2-3Tree的插入过程 B+ tree B+ tree是Btree的升级，主要改变在以下几个方面 B+ tree独有的性质1.有k个子树的中间节点包含有k个元素（B树中是k-1个元素），每个元素不保存数据，只用来索引，所有数据都保存在叶子节点。2.所有的叶子结点中包含了全部元素的信息，及指向含这些元素记录的指针，且叶子结点本身依关键字的大小自小而大顺序链接。3.所有的中间节点元素都同时存在于子节点，在子节点元素中是最大（或最小）元素。B+ Tree的好处1. 单一结点可以储存更多的元素，减少IO的次数2. 所有的data（Satellite Information）都存在叶结点，每一次的查询都很稳定3. 叶结点中有指针相互连接，使得查询某个范围中的数据集合更加方便（对于B树可能要不断回溯才能找到下一范围）]]></content>
   </entry>
   <entry>
     <title><![CDATA[Leetocde回溯法(Back Tracking)]]></title>
@@ -39,7 +39,7 @@
   <entry>
     <title><![CDATA[Data Structure(4) The using of Set/map]]></title>
     <url>%2F2019%2F01%2F08%2FDS_SetMap%2F</url>
-    <content type="text"><![CDATA[1. Set的使用 可用于储存在计算过程中的过程，leetcode202 happy number就需要储存计算中曾经出现过哪些数字。 使用insert排着插入即可 Leetcode 349求补集注意vector和set之间可以直接一键转换。123#include &lt;set&gt;set&lt;int&gt; s1;vector&lt;int&gt; vector1(s1.begin(), s1.end()); 2. map类似于python中的dict3. 补充map和set在底层都是一棵平衡二叉树，有unordered_map和unordered_set底层是哈希表实现]]></content>
+    <content type="text"><![CDATA[1. Set的使用可以当作hash table进行使用12345678910111213141516class Solution &#123;public: int singleNumber(vector&lt;int&gt;&amp; nums) &#123; unordered_set&lt;int&gt; hashtable; for(int i = 0; i &lt; nums.size() ; i ++)&#123; if(hashtable.find(nums[i]) == hashtable.end())&#123;// 相当于在hash table中按照index寻找 hashtable.insert(nums[i]); &#125; else&#123; hashtable.erase(nums[i]); &#125; &#125; return *hashtable.begin(); &#125;&#125;; 可用于储存在计算过程中的过程，leetcode202 happy number就需要储存计算中曾经出现过哪些数字。 使用insert排着插入即可 Leetcode 349求补集注意vector和set之间可以直接一键转换。123#include &lt;set&gt;set&lt;int&gt; s1;vector&lt;int&gt; vector1(s1.begin(), s1.end()); 2. map类似于python中的dict3. 补充map和set在底层都是一棵平衡二叉树，有unordered_map和unordered_set底层是哈希表实现而ordered_map 和ordered_set是Red-Black实现]]></content>
       <categories>
         <category>DS</category>
       </categories>
