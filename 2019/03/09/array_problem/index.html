@@ -81,19 +81,17 @@
 
 
 
-<meta name="description" content="How to build up your hexo on Github PageFirstly, you need to sign up a github account and build a repo which has the same name with your github.  github name : JasonWang0808gitpage name : JasonWang080">
+<meta name="description" content="2D array search 1  and  2D array search 2对于1，整个数组完全排序，因此可以把二维的拉长，变成一维数组采用二分查找对于2， 我们必须要找到一个二分中间点 为什么这么说呢，因为如果某一情况有两条路就需要用递归，而递归的过程中又可能回到之前的情况，从而形成死循环  另外我们需要注意一个性质，对于（x，y），其右下角的数据全部大于他，其左下角的数据全部小于他。因此">
 <meta property="og:type" content="article">
-<meta property="og:title" content="How to apply hexo to Github Page (一)">
-<meta property="og:url" content="http://yoursite.com/2018/11/01/hexo/index.html">
+<meta property="og:title" content="array problem">
+<meta property="og:url" content="http://yoursite.com/2019/03/09/array_problem/index.html">
 <meta property="og:site_name" content="Junyu Wang&#39;s Blog">
-<meta property="og:description" content="How to build up your hexo on Github PageFirstly, you need to sign up a github account and build a repo which has the same name with your github.  github name : JasonWang0808gitpage name : JasonWang080">
+<meta property="og:description" content="2D array search 1  and  2D array search 2对于1，整个数组完全排序，因此可以把二维的拉长，变成一维数组采用二分查找对于2， 我们必须要找到一个二分中间点 为什么这么说呢，因为如果某一情况有两条路就需要用递归，而递归的过程中又可能回到之前的情况，从而形成死循环  另外我们需要注意一个性质，对于（x，y），其右下角的数据全部大于他，其左下角的数据全部小于他。因此">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://github.com/JasonWang0808/JasonWang0808.github.io/blob/master/pictures/hexo/how%20to%20build/picture1.png">
-<meta property="og:updated_time" content="2018-11-01T12:31:32.000Z">
+<meta property="og:updated_time" content="2019-03-09T22:33:56.932Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="How to apply hexo to Github Page (一)">
-<meta name="twitter:description" content="How to build up your hexo on Github PageFirstly, you need to sign up a github account and build a repo which has the same name with your github.  github name : JasonWang0808gitpage name : JasonWang080">
-<meta name="twitter:image" content="https://github.com/JasonWang0808/JasonWang0808.github.io/blob/master/pictures/hexo/how%20to%20build/picture1.png">
+<meta name="twitter:title" content="array problem">
+<meta name="twitter:description" content="2D array search 1  and  2D array search 2对于1，整个数组完全排序，因此可以把二维的拉长，变成一维数组采用二分查找对于2， 我们必须要找到一个二分中间点 为什么这么说呢，因为如果某一情况有两条路就需要用递归，而递归的过程中又可能回到之前的情况，从而形成死循环  另外我们需要注意一个性质，对于（x，y），其右下角的数据全部大于他，其左下角的数据全部小于他。因此">
 
 
 
@@ -123,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/11/01/hexo/">
+  <link rel="canonical" href="http://yoursite.com/2019/03/09/array_problem/">
 
 
 
 
 
-  <title>How to apply hexo to Github Page (一) | Junyu Wang's Blog</title>
+  <title>array problem | Junyu Wang's Blog</title>
   
 
 
@@ -295,7 +293,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/01/hexo/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/09/array_problem/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="JunYu Wang">
@@ -312,7 +310,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">How to apply hexo to Github Page (一)</h1>
+          <h1 class="post-title" itemprop="name headline">array problem</h1>
         
 
         <div class="post-meta">
@@ -324,6 +322,26 @@
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/array/" itemprop="url" rel="index">
+                    <span itemprop="name">array</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -357,29 +375,11 @@
       
 
       
-        <h3 id="How-to-build-up-your-hexo-on-Github-Page"><a href="#How-to-build-up-your-hexo-on-Github-Page" class="headerlink" title="How to build up your hexo on Github Page"></a>How to build up your hexo on Github Page</h3><p><strong>Firstly, you need to sign up a github account and build a repo which has the same name with your github</strong>.</p>
-<blockquote>
-<p>github name : JasonWang0808<br>gitpage name : JasonWang0808.github.io</p>
+        <h4 id="2D-array-search-1-and-2D-array-search-2"><a href="#2D-array-search-1-and-2D-array-search-2" class="headerlink" title="2D array search 1  and  2D array search 2"></a><a href="https://leetcode.com/problems/search-a-2d-matrix/" target="_blank" rel="noopener">2D array search 1 </a> and  <a href="https://leetcode.com/problems/search-a-2d-matrix-ii/" target="_blank" rel="noopener">2D array search 2</a></h4><h5 id="对于1，整个数组完全排序，因此可以把二维的拉长，变成一维数组采用二分查找"><a href="#对于1，整个数组完全排序，因此可以把二维的拉长，变成一维数组采用二分查找" class="headerlink" title="对于1，整个数组完全排序，因此可以把二维的拉长，变成一维数组采用二分查找"></a>对于1，整个数组完全排序，因此可以把二维的拉长，变成一维数组采用二分查找</h5><h5 id="对于2，-我们必须要找到一个二分中间点"><a href="#对于2，-我们必须要找到一个二分中间点" class="headerlink" title="对于2， 我们必须要找到一个二分中间点"></a>对于2， 我们必须要找到一个二分中间点</h5><blockquote>
+<p>为什么这么说呢，因为如果某一情况有两条路就需要用递归，而递归的过程中又可能回到之前的情况，从而形成死循环</p>
 </blockquote>
-<p><strong>Secondly, prepare the hexo</strong></p>
-<p><strong>The set up steps are as followed</strong>:<br><strong>Step1.</strong> Install <a href="https://nodejs.org/en/download/" target="_blank" rel="noopener">Node.js</a> and <a href="https://git-scm.com/downloads" target="_blank" rel="noopener">Git</a> and make sure they have been installed properly.</p>
-<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Win+R </span><br><span class="line">cmd</span><br><span class="line"><span class="keyword">node</span> <span class="title">-v</span></span><br><span class="line">git -<span class="keyword">version</span></span><br></pre></td></tr></table></figure>
-<p><strong>step2.</strong> Prepare the SSH key and goto the github “SSH and GPG keys” to fill in</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#open the git bash</span></span><br><span class="line">ssh-keygen -t rsa</span><br><span class="line"><span class="comment"># type enter three times</span></span><br><span class="line">cd C:\Users\Administrator\.ssh</span><br><span class="line">cat id_rsa.pub</span><br><span class="line"><span class="comment"># copy the content</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#evaluate</span></span><br><span class="line"><span class="attribute">ssh</span> -T git<span class="variable">@github</span>.com</span><br><span class="line"><span class="comment">## return Hi</span></span><br></pre></td></tr></table></figure>
-<p><strong>step3.</strong> Install hexo</p>
-<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">cd</span> xxx</span><br><span class="line">npm install hexo-<span class="keyword">cli</span> -<span class="keyword">g</span></span><br><span class="line">hexo init Hexo </span><br><span class="line"><span class="keyword">cd</span> /Hexo </span><br><span class="line">npm instal </span><br><span class="line">hexo clean</span><br><span class="line">hexo <span class="keyword">generate</span>（可简写为hexo <span class="keyword">g</span>） </span><br><span class="line">hexo sever（可简写为hexo s）</span><br><span class="line">npm install –<span class="keyword">save</span> hexo-deployer-git</span><br></pre></td></tr></table></figure>
-<p><strong>step4.</strong> Modify the config</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># use sublime to open /blog/_config.yml and find "deploy"</span></span><br><span class="line">deploy:</span><br><span class="line">type: git</span><br><span class="line">repo: git@github.com:yourname/yourname.github.io.git</span><br><span class="line">branch: master</span><br></pre></td></tr></table></figure>
-<p><strong>step5.</strong> modify <strong>./config.yml</strong> and <strong>./themes/next/config.yml</strong> depends on your hobby</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d</span><br></pre></td></tr></table></figure>
-<p><strong>Step6.</strong> next, you can change your theme and add more decorations to your website  </p>
-<h4 id="A-good-way-to-learn-to-decoration"><a href="#A-good-way-to-learn-to-decoration" class="headerlink" title="A good way to learn to decoration"></a><a href="https://www.jianshu.com/p/9f0e90cc32c2" target="_blank" rel="noopener">A good way to learn to decoration</a></h4><p><strong>step5.</strong> modify <strong>./config.yml</strong> and <strong>./themes/next/config.yml</strong> depends on your hobby</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d</span><br></pre></td></tr></table></figure>
-<p><strong>Step7.</strong> start to write on your github page with hexo</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hexo new <span class="string">"xxx"</span></span><br><span class="line"><span class="comment"># this can help you to build a new xx.md</span></span><br><span class="line">hexo new page <span class="string">"xxx"</span></span><br><span class="line"><span class="comment"># this help you to build a new page, for example, "categories"</span></span><br></pre></td></tr></table></figure>
-<h4 id="Every-xx-md-has-its-head-for-example-Title-is-the-name-Tags-are-tags-you-know-categories-is-a-big-package-containing-all-the-essays-with-this-category"><a href="#Every-xx-md-has-its-head-for-example-Title-is-the-name-Tags-are-tags-you-know-categories-is-a-big-package-containing-all-the-essays-with-this-category" class="headerlink" title="Every xx.md has its head, for example, Title is the name. Tags are tags, you know. categories is a big package containing all the essays with this category"></a>Every xx.md has its head, for example, Title is the name. Tags are tags, you know. categories is a big package containing all the essays with this category</h4><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">Notes</span> <span class="string">of</span> <span class="string">LeetCode(一)</span></span><br><span class="line"><span class="attr">tags:</span> <span class="string">[leetcode,</span> <span class="string">c++,algorithm]</span></span><br><span class="line"><span class="attr">categories:</span> <span class="string">leetcodeNotes</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure>
-<p><strong>Finally, you can use Tengxun cloud to get a domain for your page</strong><br>There are two records you need to add<br><img src="https://github.com/JasonWang0808/JasonWang0808.github.io/blob/master/pictures/hexo/how%20to%20build/picture1.png" alt="image"><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#get the ip address of your page </span></span><br><span class="line">ping www.xx.github.io</span><br></pre></td></tr></table></figure></p>
+<p>另外我们需要注意一个性质，对于（x，y），其右下角的数据全部大于他，其左下角的数据全部小于他。因此我们可以从数组的左下角开始，走到数组的右上角，就完成了查找</p>
+<figure class="highlight mel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    bool searchMatrix(<span class="keyword">vector</span>&lt;<span class="keyword">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; <span class="keyword">matrix</span>, <span class="keyword">int</span> target) &#123;</span><br><span class="line">        <span class="keyword">int</span> row = <span class="keyword">matrix</span>.<span class="keyword">size</span>();</span><br><span class="line">        <span class="keyword">if</span>(row == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> column = <span class="keyword">matrix</span>[<span class="number">0</span>].<span class="keyword">size</span>();</span><br><span class="line">        <span class="keyword">if</span>(column == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span> x = row <span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">int</span> y = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(x &gt;= <span class="number">0</span> &amp;&amp; y &lt; column)&#123;</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span>(<span class="keyword">matrix</span>[x][y] == target) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(<span class="keyword">matrix</span>[x][y] &gt; target)&#123;</span><br><span class="line">                x --;<span class="comment">//意味着我们不需要从（x，y）的右下角找了</span></span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                y ++;<span class="comment">//意味着我们不需要从（x，y）的左上角找了</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -404,8 +404,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/11/01/DP/" rel="next" title="Dynamic Programming---Leetcode">
-                <i class="fa fa-chevron-left"></i> Dynamic Programming---Leetcode
+              <a href="/2019/03/05/Java_定义数组/" rel="next" title="JAVA 如何定义数组">
+                <i class="fa fa-chevron-left"></i> JAVA 如何定义数组
               </a>
             
           </div>
@@ -413,10 +413,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/11/01/flower_classification/" rel="prev" title="Flower Classification via VGG">
-                Flower Classification via VGG <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -555,7 +551,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#How-to-build-up-your-hexo-on-Github-Page"><span class="nav-number">1.</span> <span class="nav-text">How to build up your hexo on Github Page</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#A-good-way-to-learn-to-decoration"><span class="nav-number">1.1.</span> <span class="nav-text">A good way to learn to decoration</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Every-xx-md-has-its-head-for-example-Title-is-the-name-Tags-are-tags-you-know-categories-is-a-big-package-containing-all-the-essays-with-this-category"><span class="nav-number">1.2.</span> <span class="nav-text">Every xx.md has its head, for example, Title is the name. Tags are tags, you know. categories is a big package containing all the essays with this category</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#2D-array-search-1-and-2D-array-search-2"><span class="nav-number">1.</span> <span class="nav-text">2D array search 1  and  2D array search 2</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#对于1，整个数组完全排序，因此可以把二维的拉长，变成一维数组采用二分查找"><span class="nav-number">1.1.</span> <span class="nav-text">对于1，整个数组完全排序，因此可以把二维的拉长，变成一维数组采用二分查找</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#对于2，-我们必须要找到一个二分中间点"><span class="nav-number">1.2.</span> <span class="nav-text">对于2， 我们必须要找到一个二分中间点</span></a></li></ol></li></ol></div>
             
 
           </div>
