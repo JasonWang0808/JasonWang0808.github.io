@@ -105,27 +105,6 @@
   </entry>
   
   <entry>
-    <title>Leetcode classical problem</title>
-    <link href="http://yoursite.com/2019/03/01/leetocde_classic/"/>
-    <id>http://yoursite.com/2019/03/01/leetocde_classic/</id>
-    <published>2019-03-01T19:31:27.515Z</published>
-    <updated>2019-03-01T19:31:27.516Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="big-number-multiply"><a href="#big-number-multiply" class="headerlink" title="big number multiply"></a>big number multiply</h3><blockquote><p>will over flow if you transfer them into number and do the product. </p></blockquote><h4 id="因此逐位相乘，下面这行代码可以说明一切"><a href="#因此逐位相乘，下面这行代码可以说明一切" class="headerlink" title="因此逐位相乘，下面这行代码可以说明一切"></a>因此逐位相乘，下面这行代码可以说明一切</h4><figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vector1[i+j] = (string1[i] - <span class="string">'0'</span> * string2[i] - <span class="string">'0'</span>);// 利用了乘法的性质，把相同位数的加到一起</span><br><span class="line">// vector1中会存在有些元素比<span class="number">10</span>大，因此从尾到头遍历一遍，进行进位。</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;big-number-multiply&quot;&gt;&lt;a href=&quot;#big-number-multiply&quot; class=&quot;headerlink&quot; title=&quot;big number multiply&quot;&gt;&lt;/a&gt;big number multiply&lt;/h3&gt;&lt;bloc
-      
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
     <title>B-Tree(AVL, Red-Black, B(2-3))</title>
     <link href="http://yoursite.com/2019/03/01/B-tree/"/>
     <id>http://yoursite.com/2019/03/01/B-tree/</id>
@@ -140,6 +119,27 @@
       
         &lt;h3 id=&quot;Red-Black-Tree&quot;&gt;&lt;a href=&quot;#Red-Black-Tree&quot; class=&quot;headerlink&quot; title=&quot;Red-Black Tree&quot;&gt;&lt;/a&gt;Red-Black Tree&lt;/h3&gt;&lt;blockquote&gt;
 &lt;p&gt;Balance f
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Leetcode classical problem</title>
+    <link href="http://yoursite.com/2019/03/01/leetocde_classic/"/>
+    <id>http://yoursite.com/2019/03/01/leetocde_classic/</id>
+    <published>2019-03-01T19:31:27.515Z</published>
+    <updated>2019-03-01T19:31:27.516Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="big-number-multiply"><a href="#big-number-multiply" class="headerlink" title="big number multiply"></a>big number multiply</h3><blockquote><p>will over flow if you transfer them into number and do the product. </p></blockquote><h4 id="因此逐位相乘，下面这行代码可以说明一切"><a href="#因此逐位相乘，下面这行代码可以说明一切" class="headerlink" title="因此逐位相乘，下面这行代码可以说明一切"></a>因此逐位相乘，下面这行代码可以说明一切</h4><figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vector1[i+j] = (string1[i] - <span class="string">'0'</span> * string2[i] - <span class="string">'0'</span>);// 利用了乘法的性质，把相同位数的加到一起</span><br><span class="line">// vector1中会存在有些元素比<span class="number">10</span>大，因此从尾到头遍历一遍，进行进位。</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;big-number-multiply&quot;&gt;&lt;a href=&quot;#big-number-multiply&quot; class=&quot;headerlink&quot; title=&quot;big number multiply&quot;&gt;&lt;/a&gt;big number multiply&lt;/h3&gt;&lt;bloc
       
     
     </summary>
@@ -171,13 +171,13 @@
   </entry>
   
   <entry>
-    <title>Data Structure(4) The using of Set/map</title>
+    <title>Data Structure(4) The using of Set/map(hash_table)</title>
     <link href="http://yoursite.com/2019/01/08/DS_SetMap/"/>
     <id>http://yoursite.com/2019/01/08/DS_SetMap/</id>
     <published>2019-01-08T06:48:05.113Z</published>
-    <updated>2019-03-07T05:48:42.818Z</updated>
+    <updated>2019-03-09T22:53:26.261Z</updated>
     
-    <content type="html"><![CDATA[<h4 id="1-Set的使用"><a href="#1-Set的使用" class="headerlink" title="1. Set的使用"></a>1. Set的使用</h4><h5 id="可以当作hash-table进行使用"><a href="#可以当作hash-table进行使用" class="headerlink" title="可以当作hash table进行使用"></a>可以当作hash table进行使用</h5><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">singleNumber</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">unordered_set</span>&lt;<span class="keyword">int</span>&gt; hashtable;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.size() ; i ++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(hashtable.find(nums[i]) == hashtable.end())&#123;<span class="comment">// 相当于在hash table中按照index寻找</span></span><br><span class="line">                hashtable.insert(nums[i]);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                hashtable.erase(nums[i]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> *hashtable.begin();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><blockquote><p>可用于储存在计算过程中的过程，leetcode202 happy number就需要储存计算中曾经出现过哪些数字。</p></blockquote><p>使用insert排着插入即可</p><blockquote><p>Leetcode 349求补集<br>注意vector和set之间可以直接一键转换。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;set&gt;</span></span></span><br><span class="line"><span class="built_in">set</span>&lt;<span class="keyword">int</span>&gt; s1;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; vector1(s1.begin(), s1.end());</span><br></pre></td></tr></table></figure></p></blockquote><h4 id="2-map类似于python中的dict"><a href="#2-map类似于python中的dict" class="headerlink" title="2. map类似于python中的dict"></a>2. map类似于python中的dict</h4><h4 id="3-补充"><a href="#3-补充" class="headerlink" title="3. 补充"></a>3. 补充</h4><p>map和set在底层都是一棵平衡二叉树，有unordered_map和unordered_set底层是哈希表实现<br>而ordered_map 和ordered_set是Red-Black实现</p>]]></content>
+    <content type="html"><![CDATA[<h4 id="1-Set的使用"><a href="#1-Set的使用" class="headerlink" title="1. Set的使用"></a>1. Set的使用</h4><h5 id="可以当作hash-table进行使用"><a href="#可以当作hash-table进行使用" class="headerlink" title="可以当作hash table进行使用"></a>可以当作hash table进行使用</h5><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">singleNumber</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">unordered_set</span>&lt;<span class="keyword">int</span>&gt; hashtable;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.size() ; i ++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(hashtable.find(nums[i]) == hashtable.end())&#123;<span class="comment">// 相当于在hash table中按照index寻找</span></span><br><span class="line">                hashtable.insert(nums[i]);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                hashtable.erase(nums[i]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> *hashtable.begin();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><blockquote><p>可用于储存在计算过程中的过程，leetcode202 happy number就需要储存计算中曾经出现过哪些数字。</p></blockquote><p>使用insert排着插入即可</p><blockquote><p>Leetcode 349求补集<br>注意vector和set之间可以直接一键转换。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;set&gt;</span></span></span><br><span class="line"><span class="built_in">set</span>&lt;<span class="keyword">int</span>&gt; s1;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; vector1(s1.begin(), s1.end());</span><br></pre></td></tr></table></figure></p></blockquote><h4 id="2-map实际上也是hash-table的一种体现"><a href="#2-map实际上也是hash-table的一种体现" class="headerlink" title="2. map实际上也是hash_table的一种体现"></a>2. map实际上也是hash_table的一种体现</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; twoSum(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> target) &#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; res;</span><br><span class="line">        <span class="keyword">if</span>(nums.size() == <span class="number">0</span>) <span class="keyword">return</span> res;</span><br><span class="line">        <span class="built_in">unordered_map</span>&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; m; <span class="comment">// 注意定义方式</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.size(); i ++)&#123;</span><br><span class="line">            m[nums[i]] = i; <span class="comment">//直接像数组一样添加就可以</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.size(); i ++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(m.find(target-nums[i]) != m.end())&#123; <span class="comment">// hash_table的映射函数</span></span><br><span class="line">                <span class="keyword">if</span>(i != m[target-nums[i]])&#123;</span><br><span class="line">                    res.push_back(m[target-nums[i]]);</span><br><span class="line">                    res.push_back(i);</span><br><span class="line">                    <span class="keyword">return</span> res;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><h4 id="3-补充"><a href="#3-补充" class="headerlink" title="3. 补充"></a>3. 补充</h4><p>map和set在底层都是一棵平衡二叉树，有unordered_map和unordered_set底层是哈希表实现<br>而ordered_map 和ordered_set是Red-Black实现</p>]]></content>
     
     <summary type="html">
     

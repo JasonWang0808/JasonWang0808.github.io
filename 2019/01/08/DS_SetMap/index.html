@@ -83,14 +83,14 @@
 
 <meta name="description" content="1. Set的使用可以当作hash table进行使用12345678910111213141516class Solution &amp;#123;public:    int singleNumber(vector&amp;lt;int&amp;gt;&amp;amp; nums) &amp;#123;        unordered_set&amp;lt;int&amp;gt; hashtable;        for(int i = 0;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Data Structure(4) The using of Set&#x2F;map">
+<meta property="og:title" content="Data Structure(4) The using of Set&#x2F;map(hash_table)">
 <meta property="og:url" content="http://yoursite.com/2019/01/08/DS_SetMap/index.html">
 <meta property="og:site_name" content="Junyu Wang&#39;s Blog">
 <meta property="og:description" content="1. Set的使用可以当作hash table进行使用12345678910111213141516class Solution &amp;#123;public:    int singleNumber(vector&amp;lt;int&amp;gt;&amp;amp; nums) &amp;#123;        unordered_set&amp;lt;int&amp;gt; hashtable;        for(int i = 0;">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-07T05:48:42.818Z">
+<meta property="og:updated_time" content="2019-03-09T22:53:26.261Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Data Structure(4) The using of Set&#x2F;map">
+<meta name="twitter:title" content="Data Structure(4) The using of Set&#x2F;map(hash_table)">
 <meta name="twitter:description" content="1. Set的使用可以当作hash table进行使用12345678910111213141516class Solution &amp;#123;public:    int singleNumber(vector&amp;lt;int&amp;gt;&amp;amp; nums) &amp;#123;        unordered_set&amp;lt;int&amp;gt; hashtable;        for(int i = 0;">
 
 
@@ -127,7 +127,7 @@
 
 
 
-  <title>Data Structure(4) The using of Set/map | Junyu Wang's Blog</title>
+  <title>Data Structure(4) The using of Set/map(hash_table) | Junyu Wang's Blog</title>
   
 
 
@@ -310,7 +310,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Data Structure(4) The using of Set/map</h1>
+          <h1 class="post-title" itemprop="name headline">Data Structure(4) The using of Set/map(hash_table)</h1>
         
 
         <div class="post-meta">
@@ -383,7 +383,8 @@
 <blockquote>
 <p>Leetcode 349求补集<br>注意vector和set之间可以直接一键转换。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;set&gt;</span></span></span><br><span class="line"><span class="built_in">set</span>&lt;<span class="keyword">int</span>&gt; s1;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; vector1(s1.begin(), s1.end());</span><br></pre></td></tr></table></figure></p>
 </blockquote>
-<h4 id="2-map类似于python中的dict"><a href="#2-map类似于python中的dict" class="headerlink" title="2. map类似于python中的dict"></a>2. map类似于python中的dict</h4><h4 id="3-补充"><a href="#3-补充" class="headerlink" title="3. 补充"></a>3. 补充</h4><p>map和set在底层都是一棵平衡二叉树，有unordered_map和unordered_set底层是哈希表实现<br>而ordered_map 和ordered_set是Red-Black实现</p>
+<h4 id="2-map实际上也是hash-table的一种体现"><a href="#2-map实际上也是hash-table的一种体现" class="headerlink" title="2. map实际上也是hash_table的一种体现"></a>2. map实际上也是hash_table的一种体现</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; twoSum(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> target) &#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; res;</span><br><span class="line">        <span class="keyword">if</span>(nums.size() == <span class="number">0</span>) <span class="keyword">return</span> res;</span><br><span class="line">        <span class="built_in">unordered_map</span>&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; m; <span class="comment">// 注意定义方式</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.size(); i ++)&#123;</span><br><span class="line">            m[nums[i]] = i; <span class="comment">//直接像数组一样添加就可以</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.size(); i ++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(m.find(target-nums[i]) != m.end())&#123; <span class="comment">// hash_table的映射函数</span></span><br><span class="line">                <span class="keyword">if</span>(i != m[target-nums[i]])&#123;</span><br><span class="line">                    res.push_back(m[target-nums[i]]);</span><br><span class="line">                    res.push_back(i);</span><br><span class="line">                    <span class="keyword">return</span> res;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h4 id="3-补充"><a href="#3-补充" class="headerlink" title="3. 补充"></a>3. 补充</h4><p>map和set在底层都是一棵平衡二叉树，有unordered_map和unordered_set底层是哈希表实现<br>而ordered_map 和ordered_set是Red-Black实现</p>
 
       
     </div>
@@ -559,7 +560,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Set的使用"><span class="nav-number">1.</span> <span class="nav-text">1. Set的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#可以当作hash-table进行使用"><span class="nav-number">1.1.</span> <span class="nav-text">可以当作hash table进行使用</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-map类似于python中的dict"><span class="nav-number">2.</span> <span class="nav-text">2. map类似于python中的dict</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-补充"><span class="nav-number">3.</span> <span class="nav-text">3. 补充</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Set的使用"><span class="nav-number">1.</span> <span class="nav-text">1. Set的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#可以当作hash-table进行使用"><span class="nav-number">1.1.</span> <span class="nav-text">可以当作hash table进行使用</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-map实际上也是hash-table的一种体现"><span class="nav-number">2.</span> <span class="nav-text">2. map实际上也是hash_table的一种体现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-补充"><span class="nav-number">3.</span> <span class="nav-text">3. 补充</span></a></li></ol></div>
             
 
           </div>
