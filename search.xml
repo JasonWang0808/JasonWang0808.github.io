@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[The difference between int and Integer in Java]]></title>
+    <url>%2F2019%2F03%2F14%2Fjava_int_Integer%E5%8C%BA%E5%88%AB%2F</url>
+    <content type="text"><![CDATA[java int与integer的区别int与integer的区别从大的方面来说就是基本数据类型与其包装类的区别： int 是基本类型，直接存数值，而integer是对象，用一个引用指向这个对象 1.Java 中的数据类型分为基本数据类型和复杂数据类型int 是前者而integer 是后者（也就是一个类）；因此在类进行初始化时int类的变量初始为0.而Integer的变量则初始化为null. 2.初始化时： int i =1；Integer i= new Integer(1);(要把integer 当做一个类看)；但由于有了自动装箱和拆箱 使得对Integer类也可使用：Integer i= 1； int 是基本数据类型（面向过程留下的痕迹，不过是对java的有益补充），Integer 是一个类，是int的扩展，定义了很多的转换方法 类似的还有：float Float;double Double;string String等，而且还提供了处理 int 类型时非常有用的其他一些常量和方法 举个例子：当需要往ArrayList，HashMap中放东西时，像int，double这种内建类型是放不进去的，因为容器都是装 object的，这是就需要这些内建类型的外覆类了。 Java中每种内建类型都有相应的外覆类。 Java中int和Integer关系是比较微妙的。关系如下： 1.int是基本的数据类型； 2.Integer是int的封装类； 3.int和Integer都可以表示某一个数值； 4.int和Integer不能够互用，因为他们两种不同的数据类型； 举例说明1234567 ArrayList al=new ArrayList(); int n=40; Integer nI=new Integer(n); al.add(n);//不可以 并且泛型定义时也不支持int: 如：List list = new ArrayList();可以 而List list = new ArrayList();则不行 总而言之：如果我们定义一个int类型的数，只是用来进行一些加减乘除的运算or作为参数进行传递，那么就可以直接声明为int基本数据类型，但如果要像对象一样来进行处理，那么就要用Integer来声明一个对象，因为java是面向对象的语言，因此当声明为对象时能够提供很多对象间转换的方式，与一些常用方法。自认为java作为一们面向对象的语言，我们在声明一个变量时最好声明为对象格式，这样更有利于你对面向对象的理解。]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[hash_table]]></title>
+    <url>%2F2019%2F03%2F14%2Fhash_table%2F</url>
+    <content type="text"><![CDATA[hashtable 分open addressing 和 chunked chain，这里我们采用open addressing 中的linear probing。主要想记录一下踩到的四个坑hashCode() method, 我们来计算index的时候如下。12int keynumber = key.hashCode();int index = keynumber % Capacity; 1. 对于double类型移位➕异或返回int 32位类型。对于string类型应该是$$(int)s[0]*pow(31,n-1)$$ 而不是 $$(int)s[0]*pow(31,0)$$ 2. 对于这里的NullPointException, 是因为没有检查当前node是否为null就直接调用node.key, 因此会报错3. java中大小的比较，要用compare，equals而不要直接比较4. 对于hashtable中找一个不存在元素的情况。假如不经过优化则会一直找，有的时候甚至会找O(n)。因此我们设立一个longestprobing，即冲突地址向前的最大长度，这样可以避免search整个数组，大大降低时间复杂度]]></content>
+      <categories>
+        <category>cs400</category>
+      </categories>
+  </entry>
+  <entry>
     <title><![CDATA[array problem]]></title>
     <url>%2F2019%2F03%2F09%2Farray_problem%2F</url>
     <content type="text"><![CDATA[2D array search 1 and 2D array search 2对于1，整个数组完全排序，因此可以把二维的拉长，变成一维数组采用二分查找对于2， 我们必须要找到一个二分中间点 为什么这么说呢，因为如果某一情况有两条路就需要用递归，而递归的过程中又可能回到之前的情况，从而形成死循环 另外我们需要注意一个性质，对于（x，y），其右下角的数据全部大于他，其左下角的数据全部小于他。因此我们可以从数组的左下角开始，走到数组的右上角，就完成了查找 123456789101112131415161718192021222324class Solution &#123;public: bool searchMatrix(vector&lt;vector&lt;int&gt;&gt;&amp; matrix, int target) &#123; int row = matrix.size(); if(row == 0) return 0; int column = matrix[0].size(); if(column == 0) return 0; int x = row -1; int y = 0; while(x &gt;= 0 &amp;&amp; y &lt; column)&#123; if(matrix[x][y] == target) return 1; else if(matrix[x][y] &gt; target)&#123; x --;//意味着我们不需要从（x，y）的右下角找了 &#125; else &#123; y ++;//意味着我们不需要从（x，y）的左上角找了 &#125; &#125; return 0; &#125;&#125;;]]></content>
@@ -27,14 +43,14 @@
     <content type="text"><![CDATA[AVL解决了BST插入不平衡的问题，但是要进行旋转，复杂度较高，因此提出2-3Tree，使得插入更加简便 拥有一个内部结点key以及两个两个子结点，这个叫做2结点; 拥有两个内部结点key以及三个子结点，这个叫做3结点 这里有一个简单2-3树（B树的一种）的解释 可以参考这里2-3Tree的插入过程]]></content>
   </entry>
   <entry>
-    <title><![CDATA[Leetcode classical problem]]></title>
-    <url>%2F2019%2F03%2F01%2Fleetocde_classic%2F</url>
-    <content type="text"><![CDATA[big number multiply will over flow if you transfer them into number and do the product. 因此逐位相乘，下面这行代码可以说明一切12vector1[i+j] = (string1[i] - '0' * string2[i] - '0');// 利用了乘法的性质，把相同位数的加到一起// vector1中会存在有些元素比10大，因此从尾到头遍历一遍，进行进位。]]></content>
-  </entry>
-  <entry>
     <title><![CDATA[B-Tree(AVL, Red-Black, B(2-3))]]></title>
     <url>%2F2019%2F03%2F01%2FB-tree%2F</url>
     <content type="text"><![CDATA[Red-Black Tree Balance factor显示了是否要进行旋转。BF = height_left - height_right 性质1. 根结点必须是黑色2. 红色结点的子结点必须是黑色3. 根结点到任意一个叶子结点路径上的黑色结点数相同How to fix 当违反了规则的时候，我们把它称为R.P.V(Red Properties Violation) (https://github.com/JasonWang0808/blog_reference/blob/master/pictures/Red-black.png) 1. Recoloring — when the parent’s sibling is red, but you need recolor the root to be black in the end;2. Reconstruting — when the parent’s sibling is black or nullHints:1. 每一次插入的都是红色2. left-rotate 是指 Grandparent 变为parent的左孩子123G.right = P.right;P.right = G;return P; // 返回新的根结点 3. 复杂度全部为log(N),遍历还是n。B-TreeAVL解决了BST插入不平衡的问题，但是要进行旋转，复杂度较高，因此提出2-3Tree，使得插入更加简便 拥有一个内部结点key以及两个两个子结点，这个叫做2结点; 拥有两个内部结点key以及三个子结点，这个叫做3结点 这里可以看到一个对B-Tree简单的笔记，介绍了性质 (https://github.com/JasonWang0808/blog_reference/blob/master/pictures/Btree.png) 可以参考这里2-3Tree的插入过程 B+ tree B+ tree是Btree的升级，主要改变在以下几个方面 B+ tree独有的性质1.有k个子树的中间节点包含有k个元素（B树中是k-1个元素），每个元素不保存数据，只用来索引，所有数据都保存在叶子节点。2.所有的叶子结点中包含了全部元素的信息，及指向含这些元素记录的指针，且叶子结点本身依关键字的大小自小而大顺序链接。3.所有的中间节点元素都同时存在于子节点，在子节点元素中是最大（或最小）元素。B+ Tree的好处1. 单一结点可以储存更多的元素，减少IO的次数2. 所有的data（Satellite Information）都存在叶结点，每一次的查询都很稳定3. 叶结点中有指针相互连接，使得查询某个范围中的数据集合更加方便（对于B树可能要不断回溯才能找到下一范围）]]></content>
+  </entry>
+  <entry>
+    <title><![CDATA[Leetcode classical problem]]></title>
+    <url>%2F2019%2F03%2F01%2Fleetocde_classic%2F</url>
+    <content type="text"><![CDATA[big number multiply will over flow if you transfer them into number and do the product. 因此逐位相乘，下面这行代码可以说明一切12vector1[i+j] = (string1[i] - '0' * string2[i] - '0');// 利用了乘法的性质，把相同位数的加到一起// vector1中会存在有些元素比10大，因此从尾到头遍历一遍，进行进位。]]></content>
   </entry>
   <entry>
     <title><![CDATA[Leetocde回溯法(Back Tracking)]]></title>

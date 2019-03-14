@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-03-09T22:33:56.932Z</updated>
+  <updated>2019-03-14T21:57:35.694Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,52 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>The difference between int and Integer in Java</title>
+    <link href="http://yoursite.com/2019/03/14/java_int_Integer%E5%8C%BA%E5%88%AB/"/>
+    <id>http://yoursite.com/2019/03/14/java_int_Integer区别/</id>
+    <published>2019-03-14T21:54:21.738Z</published>
+    <updated>2019-03-14T21:57:35.694Z</updated>
+    
+    <content type="html"><![CDATA[<h5 id="java-int与integer的区别"><a href="#java-int与integer的区别" class="headerlink" title="java int与integer的区别"></a>java int与integer的区别</h5><p>int与integer的区别从大的方面来说就是基本数据类型与其包装类的区别：</p><p>int 是基本类型，直接存数值，而integer是对象，用一个引用指向这个对象</p><h6 id="1-Java-中的数据类型分为基本数据类型和复杂数据类型"><a href="#1-Java-中的数据类型分为基本数据类型和复杂数据类型" class="headerlink" title="1.Java 中的数据类型分为基本数据类型和复杂数据类型"></a>1.Java 中的数据类型分为基本数据类型和复杂数据类型</h6><p>int 是前者而integer 是后者（也就是一个类）；因此在类进行初始化时int类的变量初始为0.而Integer的变量则初始化为null.</p><h6 id="2-初始化时："><a href="#2-初始化时：" class="headerlink" title="2.初始化时："></a>2.初始化时：</h6><p>　　int i =1；Integer i= new Integer(1);(要把integer 当做一个类看)；但由于有了自动装箱和拆箱</p><p>　　使得对Integer类也可使用：Integer i= 1；　　　　   </p><p>　　int 是基本数据类型（面向过程留下的痕迹，不过是对java的有益补充），Integer 是一个类，是int的扩展，定义了很多的转换方法</p><p>　　类似的还有：float Float;double Double;string String等，而且还提供了处理 int 类型时非常有用的其他一些常量和方法</p><p>　　举个例子：当需要往ArrayList，HashMap中放东西时，像int，double这种内建类型是放不进去的，因为容器都是装 object的，这是就需要这些内建类型的外覆类了。</p><p>　　Java中每种内建类型都有相应的外覆类。</p><p>　　Java中int和Integer关系是比较微妙的。关系如下：</p><p>　　1.int是基本的数据类型；</p><p>　　2.Integer是int的封装类；</p><p>　　3.int和Integer都可以表示某一个数值；</p><p>　　4.int和Integer不能够互用，因为他们两种不同的数据类型；</p><p>　　举例说明<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">　　ArrayList al=<span class="keyword">new</span> ArrayList();</span><br><span class="line"></span><br><span class="line">　　<span class="keyword">int</span> n=<span class="number">40</span>;</span><br><span class="line"></span><br><span class="line">　　Integer nI=<span class="keyword">new</span> Integer(n);</span><br><span class="line"></span><br><span class="line">　　al.<span class="keyword">add</span>(n);<span class="comment">//不可以</span></span><br></pre></td></tr></table></figure></p><p>　　并且泛型定义时也不支持int: 如：List<integer> list = new ArrayList<integer>();可以  而List<int> list = new ArrayList<int>();则不行</int></int></integer></integer></p><h6 id="总而言之：如果我们定义一个int类型的数，只是用来进行一些加减乘除的运算or作为参数进行传递，那么就可以直接声明为int基本数据类型，但如果要像对象一样来进行处理，那么就要用Integer来声明一个对象，因为java是面向对象的语言，因此当声明为对象时能够提供很多对象间转换的方式，与一些常用方法。自认为java作为一们面向对象的语言，我们在声明一个变量时最好声明为对象格式，这样更有利于你对面向对象的理解。"><a href="#总而言之：如果我们定义一个int类型的数，只是用来进行一些加减乘除的运算or作为参数进行传递，那么就可以直接声明为int基本数据类型，但如果要像对象一样来进行处理，那么就要用Integer来声明一个对象，因为java是面向对象的语言，因此当声明为对象时能够提供很多对象间转换的方式，与一些常用方法。自认为java作为一们面向对象的语言，我们在声明一个变量时最好声明为对象格式，这样更有利于你对面向对象的理解。" class="headerlink" title="总而言之：如果我们定义一个int类型的数，只是用来进行一些加减乘除的运算or作为参数进行传递，那么就可以直接声明为int基本数据类型，但如果要像对象一样来进行处理，那么就要用Integer来声明一个对象，因为java是面向对象的语言，因此当声明为对象时能够提供很多对象间转换的方式，与一些常用方法。自认为java作为一们面向对象的语言，我们在声明一个变量时最好声明为对象格式，这样更有利于你对面向对象的理解。"></a>总而言之：如果我们定义一个int类型的数，只是用来进行一些加减乘除的运算or作为参数进行传递，那么就可以直接声明为int基本数据类型，但如果要像对象一样来进行处理，那么就要用Integer来声明一个对象，因为java是面向对象的语言，因此当声明为对象时能够提供很多对象间转换的方式，与一些常用方法。自认为java作为一们面向对象的语言，我们在声明一个变量时最好声明为对象格式，这样更有利于你对面向对象的理解。</h6>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h5 id=&quot;java-int与integer的区别&quot;&gt;&lt;a href=&quot;#java-int与integer的区别&quot; class=&quot;headerlink&quot; title=&quot;java int与integer的区别&quot;&gt;&lt;/a&gt;java int与integer的区别&lt;/h5&gt;&lt;p&gt;in
+      
+    
+    </summary>
+    
+      <category term="Java" scheme="http://yoursite.com/categories/Java/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>hash_table</title>
+    <link href="http://yoursite.com/2019/03/14/hash_table/"/>
+    <id>http://yoursite.com/2019/03/14/hash_table/</id>
+    <published>2019-03-14T21:37:54.004Z</published>
+    <updated>2019-03-14T21:50:10.425Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="hashtable-分open-addressing-和-chunked-chain，这里我们采用open-addressing-中的linear-probing。主要想记录一下踩到的四个坑"><a href="#hashtable-分open-addressing-和-chunked-chain，这里我们采用open-addressing-中的linear-probing。主要想记录一下踩到的四个坑" class="headerlink" title="hashtable 分open addressing 和 chunked chain，这里我们采用open addressing 中的linear probing。主要想记录一下踩到的四个坑"></a>hashtable 分open addressing 和 chunked chain，这里我们采用open addressing 中的linear probing。主要想记录一下踩到的四个坑</h4><h5 id="hashCode-method-我们来计算index的时候如下。"><a href="#hashCode-method-我们来计算index的时候如下。" class="headerlink" title="hashCode() method, 我们来计算index的时候如下。"></a>hashCode() method, 我们来计算index的时候如下。</h5><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">int keynumber</span> = key.hashCode();</span><br><span class="line"><span class="attribute">int index</span> = keynumber % Capacity;</span><br></pre></td></tr></table></figure><h5 id="1-对于double类型移位➕异或返回int-32位类型。对于string类型应该是"><a href="#1-对于double类型移位➕异或返回int-32位类型。对于string类型应该是" class="headerlink" title="1. 对于double类型移位➕异或返回int 32位类型。对于string类型应该是"></a>1. 对于double类型移位➕异或返回int 32位类型。对于string类型应该是</h5><p>$$<br>(int)s[0]*pow(31,n-1)<br>$$  </p><p>而不是</p><p>$$<br>(int)s[0]*pow(31,0)<br>$$</p><h5 id="2-对于这里的NullPointException-是因为没有检查当前node是否为null就直接调用node-key-因此会报错"><a href="#2-对于这里的NullPointException-是因为没有检查当前node是否为null就直接调用node-key-因此会报错" class="headerlink" title="2. 对于这里的NullPointException, 是因为没有检查当前node是否为null就直接调用node.key,  因此会报错"></a>2. 对于这里的NullPointException, 是因为没有检查当前node是否为null就直接调用node.key,  因此会报错</h5><h5 id="3-java中大小的比较，要用compare，equals而不要直接比较"><a href="#3-java中大小的比较，要用compare，equals而不要直接比较" class="headerlink" title="3. java中大小的比较，要用compare，equals而不要直接比较"></a>3. java中大小的比较，要用compare，equals而不要直接比较</h5><h5 id="4-对于hashtable中找一个不存在元素的情况。"><a href="#4-对于hashtable中找一个不存在元素的情况。" class="headerlink" title="4. 对于hashtable中找一个不存在元素的情况。"></a>4. 对于hashtable中找一个不存在元素的情况。</h5><p>假如不经过优化则会一直找，有的时候甚至会找O(n)。因此我们设立一个longestprobing，即冲突地址向前的最大长度，这样可以避免search整个数组，大大降低时间复杂度</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h4 id=&quot;hashtable-分open-addressing-和-chunked-chain，这里我们采用open-addressing-中的linear-probing。主要想记录一下踩到的四个坑&quot;&gt;&lt;a href=&quot;#hashtable-分open-addressin
+      
+    
+    </summary>
+    
+      <category term="cs400" scheme="http://yoursite.com/categories/cs400/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>array problem</title>
@@ -356,7 +402,7 @@
     <published>2018-11-18T14:13:36.000Z</published>
     <updated>2018-11-18T14:13:36.000Z</updated>
     
-    <content type="html"><![CDATA[<ol><li>指定二维数组, 可以调用a.keys()来查看索引  </li></ol><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">a</span> = defaultdict(list)</span><br></pre></td></tr></table></figure><ol start="2"><li>Cunter 可以统计一个list中各个部件出现的数量，可以搭配上面的defaultlist使用  </li></ol><figure class="highlight capnproto"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> Counter</span><br></pre></td></tr></table></figure>]]></content>
+    <content type="html"><![CDATA[<ol><li>指定二维数组, 可以调用a.keys()来查看索引  </li></ol><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">a</span> = defaultdict(list)</span><br></pre></td></tr></table></figure><ol start="2"><li>Cunter 可以统计一个list中各个部件出现的数量，可以搭配上面的defaultlist使用  </li></ol><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> Counter</span><br></pre></td></tr></table></figure>]]></content>
     
     <summary type="html">
     
@@ -442,49 +488,6 @@
       
         &lt;h3 id=&quot;一、创建环境&quot;&gt;&lt;a href=&quot;#一、创建环境&quot; class=&quot;headerlink&quot; title=&quot;一、创建环境&quot;&gt;&lt;/a&gt;一、创建环境&lt;/h3&gt;&lt;p&gt;使用pycharm安装spyder&lt;br&gt;打开想要创建的目录&lt;/p&gt;
 &lt;figure class=&quot;high
-      
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Pyspider (Third) Basic knowledge</title>
-    <link href="http://yoursite.com/2018/11/10/pyspider3/"/>
-    <id>http://yoursite.com/2018/11/10/pyspider3/</id>
-    <published>2018-11-11T04:08:50.000Z</published>
-    <updated>2018-11-11T04:08:50.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>URL网络实际是一个树形结构，因此分为广度优先和深度优先搜索。<br>真实网站是存在许多环路的，因此一个重要的方法就是去重。本文介绍去重和字符串编码问题  </p><h4 id="一、Depth-First-amp-Width-First"><a href="#一、Depth-First-amp-Width-First" class="headerlink" title="一、Depth-First &amp; Width-First"></a>一、Depth-First &amp; Width-First</h4><p>不做赘述。  </p><h4 id="二、爬虫去重序列"><a href="#二、爬虫去重序列" class="headerlink" title="二、爬虫去重序列"></a>二、爬虫去重序列</h4><ol><li>url经过md5等方法哈希后保存到set中  </li><li>用bitmap方法，将url hash到某一位（缺点：冲突不命中会比较高）  </li><li>用bloomfilter对bitmap进行优化 </li></ol><h3 id="三、Unicode-amp-utf8"><a href="#三、Unicode-amp-utf8" class="headerlink" title="三、Unicode &amp; utf8"></a>三、Unicode &amp; utf8</h3><p>Unicode将所有语言统一到一套编码，都用2byte表示。但是如果说一篇文章全是英文，储存空间和传输量会比Ascii多一倍<br>utf-8将英文又变回一个字节<br>将UTF-8文件读取成Unicode（方便统一操作），处理完后保存成UFT-8文件（节省空间）<br>python3现在用unicode统一进行表示  </p><figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">s = <span class="string">"我爱python"</span></span><br><span class="line">s.encode(<span class="string">"utf8"</span>) <span class="comment"># 此时s必须是unicode，不然会报错</span></span><br></pre></td></tr></table></figure><p>前面介绍了基本背景(First)，正则表达式(Second)，和去重及编码，下章节开始讲解Scrapy框架</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;URL网络实际是一个树形结构，因此分为广度优先和深度优先搜索。&lt;br&gt;真实网站是存在许多环路的，因此一个重要的方法就是去重。本文介绍去重和字符串编码问题  &lt;/p&gt;
-&lt;h4 id=&quot;一、Depth-First-amp-Width-First&quot;&gt;&lt;a href=&quot;#一、Dep
-      
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Pyspider (Second) regular expression</title>
-    <link href="http://yoursite.com/2018/11/10/pyspider2/"/>
-    <id>http://yoursite.com/2018/11/10/pyspider2/</id>
-    <published>2018-11-11T04:06:18.000Z</published>
-    <updated>2018-11-11T04:06:18.000Z</updated>
-    
-    <content type="html"><![CDATA[<h4 id="一、基本规则"><a href="#一、基本规则" class="headerlink" title="一、基本规则"></a>一、基本规则</h4><p> ^b: 强制以b开头<br> .: 可以匹配任意字符<br> *: 可以代表无限多个前一字符<br> 3$: 必须以3强制结尾<br> (): 返回括号内匹配的内容<br> ？: 非贪婪匹配，遇到该字符的第一个就停下 </p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line">line = <span class="string">"waaaaangww123"</span></span><br><span class="line"></span><br><span class="line">regex_str = <span class="string">".*?(w.*w).*"</span> <span class="comment"># waaaaangww</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">regex_str = ".*?(w.*?w).*" # waaaaangw</span></span><br><span class="line"><span class="string">regex_str = ".*(w.*w).*" # ww</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line">match_str = re.match(regex_str, line)</span><br><span class="line"><span class="keyword">if</span> match_str:</span><br><span class="line">    print(match_str.group(<span class="number">1</span>))</span><br></pre></td></tr></table></figure><p>+: 前面的字符至少出现一次(与<em>都是次数限定符)<br>{2}: 前面的出现2次  {2,}:前面的出现至少两次  {2，5}: 前面的出现至少两次至多5次<br>|：或, 模式1或者模式2 (优先提取竖线前的模式)<br>[abcd]:前面的字符是abcd中任意一个均可<br>[0-9]:区间任意一个字符<br>[^1]: 不为1<br>[.</em>]: 去除特殊字符的特殊含义</p><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br><span class="line"><span class="section"># 举个例子提取电话号码</span></span><br><span class="line">phone_num = "17673168577"</span><br><span class="line">regex_str = "(1[<span class="string">5678</span>][<span class="symbol">0-9</span>]&#123;9&#125;)" # "(1[<span class="string">5678</span>][<span class="symbol">^1</span>]&#123;9&#125;)"</span><br><span class="line"><span class="section"># 17673168577</span></span><br><span class="line"><span class="section"># 以1开头，后面跟5or6or7or8, 再跟9个任意数字</span></span><br><span class="line">match<span class="emphasis">_str = re.match(regex_</span>str, phone_num)</span><br><span class="line">if match_str:</span><br><span class="line"><span class="code">    print(match_str.group(1))</span></span><br></pre></td></tr></table></figure><p>\s: 空格(小写)<br>\S: 单一字符且只要不为空格都可以(大写)<br>\w: 与[A-Za-z0-9_]相同<br>\W: 与上面的相反<br>[\u4E00–u9FA5]: 任意汉字</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h4 id=&quot;一、基本规则&quot;&gt;&lt;a href=&quot;#一、基本规则&quot; class=&quot;headerlink&quot; title=&quot;一、基本规则&quot;&gt;&lt;/a&gt;一、基本规则&lt;/h4&gt;&lt;p&gt; ^b: 强制以b开头&lt;br&gt; .: 可以匹配任意字符&lt;br&gt; *: 可以代表无限多个前一字符&lt;br&gt; 3$
       
     
     </summary>
